@@ -10,8 +10,9 @@ import "server-only";
  */
 export async function notifyTeam(subject: string, fields: Record<string, string | null | undefined>) {
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.NOTIFY_EMAIL;
-  if (!apiKey || !to) {
+  // NOTIFY_EMAIL may hold several addresses separated by commas.
+  const to = (process.env.NOTIFY_EMAIL ?? "").split(",").map((e) => e.trim()).filter(Boolean);
+  if (!apiKey || to.length === 0) {
     console.warn("[notify] RESEND_API_KEY or NOTIFY_EMAIL not set; skipping email:", subject);
     return;
   }
@@ -42,7 +43,7 @@ export async function notifyTeam(subject: string, fields: Record<string, string 
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         from,
-        to: [to],
+        to,
         subject: `[Miftah AI] ${subject}`,
         html,
         reply_to: fields["Email"] || undefined,
