@@ -82,7 +82,7 @@ export function Footer() {
           <p>{t("attribution")}</p>
           <div className="mt-4 flex flex-col justify-between gap-3 sm:flex-row">
             <p>© {year} Miftah AI. {t("rights")}</p>
-            <p dir="ltr">miftah.ai</p>
+            <p dir="ltr">miftahai.co</p>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Params) {
   return pageMetadata({ locale, path: "/developers", title: t("title"), description: t("subtitle") });
 }
 
-const sample = `curl https://api.miftah.ai/v1/districts/al-malqa/stats \\
+const sample = `curl https://api.miftahai.co/v1/districts/al-malqa/stats \\
   -H "Authorization: Bearer $MIFTAH_API_KEY"
 
 {
