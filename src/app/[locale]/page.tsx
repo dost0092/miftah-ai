@@ -54,7 +54,7 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
         <div className="pointer-events-none absolute -bottom-40 end-[-10%] h-[420px] w-[620px] rounded-full bg-gold-500/20 blur-[120px]" />
 
         <div className="container-x relative grid items-center gap-14 pb-28 [&>*]:min-w-0 pt-16 sm:pt-20 lg:grid-cols-[1.05fr_1fr] lg:pb-36 lg:pt-24">
-          <Reveal>
+          <div className="hero-in">
             <Link href="/trust" className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/10 px-3 py-1.5 text-xs font-semibold text-gold-300 transition hover:bg-gold-400/15">
               <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-gold-400" />
               {t("hero.badge")}
@@ -82,10 +82,10 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               <IconShield width={16} height={16} className="text-gold-400" />
               {t("hero.trustNote")}
             </p>
-          </Reveal>
-          <Reveal delay={150}>
+          </div>
+          <div className="hero-in-delay">
             <ChatDemo />
-          </Reveal>
+          </div>
         </div>
 
         {/* Desert dunes */}

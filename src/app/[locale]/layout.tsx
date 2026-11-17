@@ -2,20 +2,24 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Geist, Geist_Mono, Instrument_Serif, IBM_Plex_Sans_Arabic, Noto_Nastaliq_Urdu, Noto_Sans_Devanagari, Noto_Sans_SC } from "next/font/google";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SITE_URL, pageMetadata } from "@/lib/site";
+// Fonts are bundled from npm (Fontsource), so builds never depend on reaching Google Fonts.
+// Each file uses unicode-range, so browsers only download the scripts a page actually uses.
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+import "@fontsource/ibm-plex-sans-arabic/400.css";
+import "@fontsource/ibm-plex-sans-arabic/500.css";
+import "@fontsource/ibm-plex-sans-arabic/600.css";
+import "@fontsource/ibm-plex-sans-arabic/700.css";
+import "@fontsource-variable/noto-nastaliq-urdu";
+import "@fontsource-variable/noto-sans-devanagari";
+import "@fontsource-variable/noto-sans-sc";
 import "../globals.css";
-
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
-const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
-const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-serif", display: "swap" });
-const arabic = IBM_Plex_Sans_Arabic({ subsets: ["arabic"], weight: ["400", "500", "600", "700"], variable: "--font-arabic", display: "swap", preload: false });
-const urdu = Noto_Nastaliq_Urdu({ subsets: ["arabic"], weight: ["400", "600", "700"], variable: "--font-urdu", display: "swap", preload: false });
-const devanagari = Noto_Sans_Devanagari({ subsets: ["devanagari"], weight: ["400", "500", "600", "700"], variable: "--font-devanagari", display: "swap", preload: false });
-const sc = Noto_Sans_SC({ weight: ["400", "500", "700"], variable: "--font-sc", display: "swap", preload: false });
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -45,7 +49,6 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   setRequestLocale(locale);
 
   const dir = rtlLocales.includes(locale as Locale) ? "rtl" : "ltr";
-  const fontVars = [geist.variable, geistMono.variable, serif.variable, arabic.variable, urdu.variable, devanagari.variable, sc.variable].join(" ");
 
   const orgJsonLd = {
     "@context": "https://schema.org",
@@ -59,7 +62,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   };
 
   return (
-    <html lang={locale} dir={dir} className={fontVars}>
+    <html lang={locale} dir={dir}>
       <body className="min-h-screen font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
         <NextIntlClientProvider>

@@ -38,7 +38,7 @@ export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: stri
       <div className="sadu-pattern pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute -top-40 start-1/2 h-[480px] w-[780px] -translate-x-1/2 rounded-full bg-green-500/25 blur-3xl rtl:translate-x-1/2" />
       <div className="container-x relative py-20 sm:py-24">
-        <Reveal className="max-w-3xl">
+        <div className="hero-in max-w-3xl">
           <p className="eyebrow !text-gold-300">
             <span className="h-px w-6 bg-gold-400" />
             {eyebrow}
@@ -46,7 +46,7 @@ export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: stri
           <h1 className="font-display mt-5 text-4xl leading-[1.05] tracking-tight sm:text-6xl">{title}</h1>
           {subtitle && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">{subtitle}</p>}
           {children}
-        </Reveal>
+        </div>
       </div>
       <div className="sadu-band opacity-70" />
     </section>

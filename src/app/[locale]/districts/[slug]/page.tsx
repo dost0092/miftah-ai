@@ -5,7 +5,6 @@ import { routing } from "@/i18n/routing";
 import { DATA_UNTIL, QUARTERS, districts, getDistrict, trendChange } from "@/lib/districts";
 import { cn, fmtDate, fmtNumber, fmtPercent } from "@/lib/format";
 import { pageMetadata } from "@/lib/site";
-import { Reveal } from "@/components/Reveal";
 import { SampleBanner } from "@/components/Section";
 import { Sparkline, TrendChart } from "@/components/Sparkline";
 import { ZoneBadge } from "@/components/ZoneBadge";
@@ -57,17 +56,17 @@ export default async function DistrictPage({ params }: Params) {
             <IconArrow width={14} height={14} className="rotate-180" /> {t("back")}
           </Link>
           <div className="mt-6 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-            <Reveal>
+            <div className="hero-in">
               <p className="text-sm font-semibold text-gold-300">{city}</p>
               <h1 className="font-display mt-2 text-5xl sm:text-6xl">{name}</h1>
               <p className="mt-2 text-xl text-white/50" lang={rtl ? "en" : "ar"}>{alt}</p>
               <p className="mt-5 max-w-xl text-white/70">{t("subtitle", { name, city })}</p>
-            </Reveal>
-            <Reveal delay={120} className="grid grid-cols-3 gap-3 sm:min-w-[440px]">
+            </div>
+            <div className="hero-in-delay grid grid-cols-3 gap-3 sm:min-w-[440px]">
               <HeroStat label={c("medianPrice")} value={fmtNumber(locale, d.median.apartment)} unit={c("perSqm")} />
               <HeroStat label={t("liquidity")} value={fmtNumber(locale, d.deals)} unit="Q3 2026" />
               <HeroStat label={c("trend12m")} value={fmtPercent(locale, change)} unit={c("type.apartment")} />
-            </Reveal>
+            </div>
           </div>
         </div>
         <div className="sadu-band opacity-70" />

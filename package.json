@@ -10,6 +10,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@fontsource-variable/noto-nastaliq-urdu": "^5.3.0",
+    "@fontsource-variable/noto-sans-devanagari": "^5.3.0",
+    "@fontsource-variable/noto-sans-sc": "^5.3.1",
+    "@fontsource/ibm-plex-sans-arabic": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
     "@supabase/supabase-js": "^2.119.0",
     "clsx": "^2.1.1",
     "next": "^15.5.29",
