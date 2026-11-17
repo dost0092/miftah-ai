@@ -1,0 +1,937 @@
+{
+  "meta": {
+    "title": "Miftah AI — Your AI key to property in Saudi Arabia",
+    "description": "Miftah AI tells foreigners where in Saudi Arabia they can legally buy property, what prices really are from official government data, and what the total cost will be — in English, Arabic, Urdu, Hindi and Chinese."
+  },
+  "nav": {
+    "product": "Product",
+    "districts": "Districts",
+    "calculator": "Cost calculator",
+    "pricing": "Pricing",
+    "solutions": "Solutions",
+    "trust": "Trust & data",
+    "developers": "Developers",
+    "company": "Company",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Join the waitlist",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language",
+    "productItems": {
+      "advisor": {
+        "title": "AI Advisor",
+        "desc": "Ask anything, get answers with sources"
+      },
+      "districts": {
+        "title": "District Explorer",
+        "desc": "Prices, deals and trends by district"
+      },
+      "calculator": {
+        "title": "Cost Calculator",
+        "desc": "Every known fee, before you sign"
+      },
+      "reports": {
+        "title": "Area Reports",
+        "desc": "Shareable PDF reports for family and partners"
+      }
+    }
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "sampleData": "Illustrative sample data",
+    "sampleDataLong": "Numbers on this page are illustrative placeholders while we finish loading official MOJ and REGA data. Do not use them for decisions.",
+    "dataUntil": "Data until",
+    "source": "Source",
+    "sar": "SAR",
+    "perSqm": "SAR/m²",
+    "deals": "Deals",
+    "medianPrice": "Median price",
+    "trend12m": "12-month trend",
+    "foreignZone": "Foreign ownership",
+    "notAdvice": "Miftah AI provides information, not legal, financial or brokerage advice. Always confirm with REGA and a licensed professional before buying.",
+    "comingSoon": "Coming soon",
+    "new": "New",
+    "zone": {
+      "yes": "Allowed",
+      "no": "Not allowed",
+      "conditional": "Conditional",
+      "unknown": "To be verified"
+    },
+    "zoneHint": {
+      "yes": "Designated zone open to non-Saudi buyers",
+      "no": "Not open to non-Saudi buyers",
+      "conditional": "Allowed with special conditions",
+      "unknown": "Not yet verified — confirm with REGA or a licensed broker"
+    },
+    "type": {
+      "apartment": "Apartment",
+      "villa": "Villa",
+      "land": "Land"
+    },
+    "city": {
+      "all": "All cities",
+      "riyadh": "Riyadh",
+      "jeddah": "Jeddah"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Foreign ownership law now in force — 2026",
+      "titleA": "Your AI key to",
+      "titleHighlight": "property",
+      "titleB": "in Saudi Arabia",
+      "subtitle": "Miftah AI tells you where foreigners can legally buy, what homes really sell for according to official government records, and the full cost before you sign — in your own language.",
+      "ctaPrimary": "Join the waitlist",
+      "ctaSecondary": "Explore districts",
+      "askPlaceholder": "Ask anything about buying property in Saudi Arabia…",
+      "askButton": "Ask",
+      "suggestions": [
+        "Can a foreigner buy in Al Malqa?",
+        "Compare Hittin vs Al Narjis for 1.5M SAR",
+        "What fees will I pay as a foreign buyer?",
+        "Is 1.2M SAR fair for a 160 m² flat in Al Yasmin?"
+      ],
+      "trustNote": "Built on official open data from the Ministry of Justice, REGA and KAPSARC"
+    },
+    "demo": {
+      "label": "Live answer preview",
+      "question": "Can I buy an apartment in Al Malqa as a foreigner, and what is a fair price?",
+      "intro": "Here is what official records show for Al Malqa, Riyadh:",
+      "zoneLine": "Foreign ownership status is not yet verified for this district. Please confirm with REGA or a licensed broker before buying.",
+      "tools": "Tools used",
+      "reportButton": "Get PDF report",
+      "flag": "Report a mistake"
+    },
+    "sources": {
+      "title": "Grounded in official Saudi data sources",
+      "items": [
+        "Ministry of Justice",
+        "REGA Indicators",
+        "KAPSARC",
+        "National Open Data Portal",
+        "Umm Al-Qura Gazette",
+        "OpenStreetMap"
+      ]
+    },
+    "problem": {
+      "eyebrow": "The problem",
+      "title": "The market just opened. The information didn't.",
+      "subtitle": "In January 2026 Saudi Arabia opened property ownership to non-Saudis in designated zones. But the tools buyers need were built for Arabic-speaking locals.",
+      "items": [
+        {
+          "title": "Where can I buy?",
+          "body": "Designated zones, special conditions for Makkah and Madinah, and rules that keep changing. Most foreign buyers can't tell what applies to them."
+        },
+        {
+          "title": "What's a fair price?",
+          "body": "Official transaction data exists — millions of records — but it's in Arabic, scattered across portals and hard to read."
+        },
+        {
+          "title": "What will it really cost?",
+          "body": "Transaction tax, brokerage, VAT and the 2% disposal fee for non-Saudi sellers. Surprises arrive after you've signed."
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "An AI agent that checks the records before it speaks",
+      "subtitle": "Miftah AI doesn't guess. It calls dedicated tools that query verified data, then answers in your language with the source and date.",
+      "steps": [
+        {
+          "title": "You ask, in your language",
+          "body": "English, Arabic, Urdu, Hindi or Chinese. Type it like you'd ask a friend."
+        },
+        {
+          "title": "The agent picks the right tool",
+          "body": "District stats, foreign-zone check, cost estimate, rule search or asking-price check."
+        },
+        {
+          "title": "Tools query verified data",
+          "body": "Fixed, safe database queries over cleaned MOJ and REGA records and dated rule texts."
+        },
+        {
+          "title": "You get a sourced answer",
+          "body": "Key answer first, a small table, then the source and 'data until' date. Every time."
+        }
+      ]
+    },
+    "features": {
+      "eyebrow": "The platform",
+      "title": "Everything a foreign buyer needs, in one place",
+      "subtitle": "From your first question to a report you can send to family back home.",
+      "items": [
+        {
+          "title": "AI Property Advisor",
+          "body": "Chat that answers with real numbers, a chart and a citation — never an invented price."
+        },
+        {
+          "title": "Foreign-zone check",
+          "body": "Allowed, not allowed, conditional or unverified — with the official source and checked date."
+        },
+        {
+          "title": "District Explorer",
+          "body": "Median price per m², deal counts and quarterly trends for every district in Riyadh and Jeddah."
+        },
+        {
+          "title": "Total-cost calculator",
+          "body": "Put in a price, see every known fee with a link to the rule behind it."
+        },
+        {
+          "title": "Asking-price checker",
+          "body": "See if an asking price sits below, around or above recent official transactions."
+        },
+        {
+          "title": "Shareable PDF reports",
+          "body": "Beautiful area and comparison reports to share with your partner, family or bank."
+        }
+      ]
+    },
+    "principle": {
+      "eyebrow": "Our number-one rule",
+      "title": "The AI never invents numbers or rules.",
+      "body": "Numbers come only from our data tools. Rules come only from stored, dated official texts. If something is unclear, Miftah AI says so and links the official source. Trust is the whole business.",
+      "points": [
+        "Every number shows its source and date",
+        "Unknown is shown as unknown — never guessed",
+        "Every answer is logged and reviewed for quality",
+        "A 'Report a mistake' button under every answer"
+      ]
+    },
+    "languages": {
+      "eyebrow": "Made for everyone",
+      "title": "Speak to it in your language",
+      "subtitle": "Saudi Arabia is home to millions of people from around the world. Miftah AI speaks to them in the language they think in.",
+      "sample": "Can I buy property in Riyadh?"
+    },
+    "personas": {
+      "eyebrow": "Who it's for",
+      "title": "Built for every kind of foreign buyer",
+      "items": [
+        {
+          "title": "Expats in Saudi Arabia",
+          "body": "Check if you can buy a flat near work and what a fair price is before you sign."
+        },
+        {
+          "title": "Overseas investors",
+          "body": "Compare districts, see official trends and understand the full cost from abroad."
+        },
+        {
+          "title": "Brokers",
+          "body": "Send foreign clients fast, credible numbers in their language — with your logo on the report."
+        },
+        {
+          "title": "Relocation & HR teams",
+          "body": "Help international staff decide where to live or buy, with bulk reports."
+        }
+      ]
+    },
+    "stats": {
+      "items": [
+        {
+          "value": "9.5M+",
+          "label": "official transaction records to learn from"
+        },
+        {
+          "value": "5",
+          "label": "languages, including Arabic and Urdu"
+        },
+        {
+          "value": "2",
+          "label": "launch cities: Riyadh and Jeddah"
+        },
+        {
+          "value": "0",
+          "label": "invented numbers. Ever."
+        }
+      ]
+    },
+    "pricingTeaser": {
+      "eyebrow": "Pricing",
+      "title": "Start free. Pay only when you're serious.",
+      "subtitle": "Free daily questions for everyone. Detailed reports and Pro plans when you're ready to buy.",
+      "cta": "See pricing"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Questions, answered",
+      "items": [
+        {
+          "q": "Can foreigners really buy property in Saudi Arabia now?",
+          "a": "Yes. The Law of Real Estate Ownership by Non-Saudis came into force in January 2026, allowing ownership in designated zones — mainly in Riyadh and Jeddah — with special conditions for Makkah and Madinah. The Executive Regulation was published in the Umm Al-Qura gazette on 3 July 2026. Always confirm specifics with REGA."
+        },
+        {
+          "q": "Where does Miftah AI's data come from?",
+          "a": "From official open data: Ministry of Justice transaction records published on the National Open Data Portal, REGA's Real Estate Indicators, and KAPSARC price indices. We never scrape private websites."
+        },
+        {
+          "q": "Is Miftah AI a broker or a lawyer?",
+          "a": "No. We provide facts and official data so you can make your own decision. We don't list properties, recommend what to buy, or give legal or financial advice."
+        },
+        {
+          "q": "How current are the prices?",
+          "a": "Official transaction data is updated periodically, usually quarterly. Every number shows a 'data until' date, and these are recorded deal prices, not live asking prices."
+        },
+        {
+          "q": "Which languages are supported?",
+          "a": "English, Arabic, Urdu, Hindi and Chinese. The AI replies in whatever language you write in."
+        },
+        {
+          "q": "When can I use it?",
+          "a": "We're launching in phases, starting with Riyadh and Jeddah. Join the waitlist to get early access and help shape the product."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Get your key to Saudi property",
+      "subtitle": "Join the waitlist for early access, free reports for founding members, and monthly market updates.",
+      "button": "Join the waitlist",
+      "secondary": "Talk to us"
+    }
+  },
+  "product": {
+    "eyebrow": "Product",
+    "title": "One intelligent advisor. Every answer a foreign buyer needs.",
+    "subtitle": "Miftah AI combines an AI agent, official government data and the new foreign-ownership rules into simple answers you can trust.",
+    "modules": [
+      {
+        "tag": "AI Advisor",
+        "title": "Ask like you'd ask a friend. Get answers like an analyst.",
+        "body": "Our agent understands your question in five languages, calls the right data tool and replies with the key answer first, a compact table, and the source and date underneath.",
+        "points": [
+          "Replies in your language",
+          "Numbers only from verified tools",
+          "Source + 'data until' on every answer",
+          "Report-a-mistake on every message"
+        ]
+      },
+      {
+        "tag": "Foreign-zone check",
+        "title": "Know if you're allowed to buy — before you fall in love with a home.",
+        "body": "Every district carries a clear status: allowed, not allowed, conditional, or to be verified. Each status links to the official REGA publication and shows when we last checked.",
+        "points": [
+          "Four honest statuses",
+          "Linked official sources",
+          "Re-checked monthly",
+          "Alerts when rules change"
+        ]
+      },
+      {
+        "tag": "District Explorer",
+        "title": "Every district, in plain English and Arabic.",
+        "body": "Median price per square metre, deals per quarter and price trends — from official MOJ records, cleaned, translated and de-duplicated.",
+        "points": [
+          "Riyadh and Jeddah at launch",
+          "Apartments, villas and land",
+          "Quarterly trend charts",
+          "Small samples hidden for accuracy"
+        ]
+      },
+      {
+        "tag": "Cost calculator",
+        "title": "The true cost. No surprises after signing.",
+        "body": "Enter a price and see every known fee — transaction tax, brokerage, VAT and the non-Saudi disposal fee when selling — each linked to the rule behind it.",
+        "points": [
+          "Buy and sell scenarios",
+          "Editable rates",
+          "Links to each official rule",
+          "Shareable breakdown"
+        ]
+      },
+      {
+        "tag": "Reports",
+        "title": "A report you can send to your family.",
+        "body": "Branded PDF area and comparison reports with charts, official figures and plain-language explanations. Brokers can add their own logo.",
+        "points": [
+          "Area & comparison reports",
+          "Charts and official sources",
+          "Broker white-label",
+          "Delivered by email"
+        ]
+      }
+    ],
+    "roadmap": {
+      "eyebrow": "Roadmap",
+      "title": "Built in the right order",
+      "items": [
+        {
+          "stage": "MVP",
+          "when": "Weeks 1–4",
+          "body": "AI chat in English and Urdu, Riyadh and Jeddah district pages, price trends, foreign-zone status, cost calculator, waitlist."
+        },
+        {
+          "stage": "V2",
+          "when": "Months 2–3",
+          "body": "Paid PDF reports, Hindi, Chinese and Arabic, asking-price checker, saved searches and price alerts, broker plan."
+        },
+        {
+          "stage": "V3",
+          "when": "Months 4–12",
+          "body": "District and zone map, more cities, rental indicators, business API, Dubai module, mobile app."
+        }
+      ]
+    }
+  },
+  "districts": {
+    "eyebrow": "District Explorer",
+    "title": "Saudi property prices, district by district",
+    "subtitle": "Median price per square metre, deal volume and trends for Riyadh and Jeddah — from official transaction records.",
+    "search": "Search districts…",
+    "type": "Property type",
+    "sort": "Sort by",
+    "sortDeals": "Most deals",
+    "sortPriceHigh": "Highest price",
+    "sortPriceLow": "Lowest price",
+    "sortTrend": "Strongest trend",
+    "empty": "No districts match your search.",
+    "district": "District",
+    "view": "View",
+    "legend": "Foreign-ownership status legend"
+  },
+  "district": {
+    "back": "All districts",
+    "titleSuffix": "property prices for foreigners",
+    "subtitle": "Official transaction statistics, trends and foreign-ownership status for {name}, {city}.",
+    "overview": "Overview",
+    "byType": "Median price by property type",
+    "trendTitle": "Apartment price trend (SAR/m²)",
+    "liquidity": "Deals last quarter",
+    "zoneTitle": "Can foreigners buy here?",
+    "zoneBody": "We haven't verified the foreign-ownership status of this district yet. Until we do, treat it as unknown and confirm with REGA or a licensed broker before buying.",
+    "askTitle": "Ask the advisor about {name}",
+    "askBody": "Compare with nearby districts, check an asking price or estimate your total cost.",
+    "askCta": "Get early access",
+    "calcCta": "Estimate total cost",
+    "nearby": "Other districts in {city}"
+  },
+  "calculator": {
+    "eyebrow": "Cost calculator",
+    "title": "What will it really cost?",
+    "subtitle": "Enter a property price and see every known fee for a foreign buyer or seller, with a link to the rule behind each one.",
+    "price": "Property price (SAR)",
+    "mode": "I am",
+    "buy": "Buying",
+    "sell": "Selling",
+    "isNonSaudi": "I am a non-Saudi",
+    "includeBrokerage": "Using a broker",
+    "rettPayer": "Transaction tax paid by me",
+    "breakdown": "Cost breakdown",
+    "fee": "Fee",
+    "rate": "Rate",
+    "amount": "Amount",
+    "total": "Total extra costs",
+    "grandBuy": "Total you pay",
+    "grandSell": "You receive (approx.)",
+    "rule": "Rule",
+    "fees": {
+      "rett": {
+        "name": "Real Estate Transaction Tax (RETT)",
+        "note": "Charged on the property value. Who pays is usually agreed between buyer and seller."
+      },
+      "brokerage": {
+        "name": "Brokerage fee",
+        "note": "Maximum typically capped by REGA brokerage rules; often negotiable."
+      },
+      "brokerageVat": {
+        "name": "VAT on brokerage",
+        "note": "Applied to the brokerage fee, not the property price."
+      },
+      "disposal": {
+        "name": "Non-Saudi disposal fee",
+        "note": "Fixed fee for non-Saudi sellers in major designated zones (Riyadh, Jeddah, Makkah, Madinah), per the 2026 Executive Regulation."
+      }
+    },
+    "disclaimer": "Rates are based on public sources and may change. This is an estimate, not tax or legal advice. Verify every fee with ZATCA, REGA and a licensed professional.",
+    "editRates": "Rates are editable — tap a rate to adjust it."
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Simple pricing. Start free.",
+    "subtitle": "Planned launch pricing — founding members on the waitlist get early-access discounts.",
+    "monthly": "/month",
+    "perReport": "/report",
+    "custom": "Custom",
+    "popular": "Most popular",
+    "plans": [
+      {
+        "name": "Free",
+        "price": "$0",
+        "period": "",
+        "desc": "For curious expats and early research.",
+        "features": [
+          "Daily AI questions",
+          "All district pages",
+          "Foreign-zone status",
+          "Cost calculator"
+        ],
+        "cta": "Join the waitlist"
+      },
+      {
+        "name": "Area Report",
+        "price": "$29",
+        "period": "perReport",
+        "desc": "One detailed PDF report for a district or comparison.",
+        "features": [
+          "Full district analysis",
+          "8-quarter price history",
+          "Fee breakdown",
+          "Shareable PDF"
+        ],
+        "cta": "Join the waitlist"
+      },
+      {
+        "name": "Buyer Pro",
+        "price": "$19",
+        "period": "monthly",
+        "desc": "For active buyers over 2–6 months.",
+        "features": [
+          "Unlimited AI chat",
+          "5 reports per month",
+          "Saved searches",
+          "Price & rule-change alerts",
+          "Asking-price checker"
+        ],
+        "cta": "Join the waitlist",
+        "popular": true
+      },
+      {
+        "name": "Broker",
+        "price": "$99",
+        "period": "monthly",
+        "desc": "For brokers serving foreign clients.",
+        "features": [
+          "Everything in Buyer Pro",
+          "Branded white-label reports",
+          "Client sharing links",
+          "Priority support"
+        ],
+        "cta": "Talk to sales"
+      }
+    ],
+    "enterprise": {
+      "title": "Data & API for businesses",
+      "body": "Clean, English-translated district-level data for banks, developers, portals and relocation firms.",
+      "cta": "Contact us"
+    },
+    "note": "Prices in USD. Planned prices may change before launch. Payments via a merchant-of-record provider."
+  },
+  "solutions": {
+    "eyebrow": "Solutions",
+    "title": "One advisor, built for every side of the market",
+    "subtitle": "Whether you're buying your first home in Riyadh or advising hundreds of international clients.",
+    "items": [
+      {
+        "id": "expats",
+        "title": "Expats living in Saudi Arabia",
+        "question": "\"Can I buy a flat in my area — and what's a fair price?\"",
+        "body": "Millions of Pakistani, Indian, Egyptian, Filipino and Western residents can now consider owning instead of renting. Miftah AI answers their first question honestly.",
+        "points": [
+          "Foreign-zone check by district",
+          "Price check before you sign",
+          "Full cost estimate",
+          "Answers in Urdu, Hindi, Arabic and more"
+        ]
+      },
+      {
+        "id": "investors",
+        "title": "Overseas investors",
+        "question": "\"Which zones allow foreigners, and what trend can I expect?\"",
+        "body": "From Lahore to London to Shanghai, investors can research Saudi districts with official data — without flying in first.",
+        "points": [
+          "District comparisons",
+          "Quarterly trend data",
+          "Investor PDF reports",
+          "Chinese and English support"
+        ]
+      },
+      {
+        "id": "brokers",
+        "title": "Brokers & agencies",
+        "question": "\"I need fast, credible numbers in English for my clients.\"",
+        "body": "Give foreign clients professional, sourced reports with your branding — and turn hours of research into minutes.",
+        "points": [
+          "White-label reports",
+          "Client sharing",
+          "Monthly subscription",
+          "5 free reports to start"
+        ]
+      },
+      {
+        "id": "relocation",
+        "title": "Relocation firms & HR teams",
+        "question": "\"Where should our international staff live or buy?\"",
+        "body": "Support employees moving to Riyadh and Jeddah with clear, comparable district information in their language.",
+        "points": [
+          "Bulk reports",
+          "Team accounts",
+          "Multi-language",
+          "API access (later)"
+        ]
+      },
+      {
+        "id": "enterprise",
+        "title": "Banks, developers & portals",
+        "question": "\"We need clean district-level data in English.\"",
+        "body": "Our cleaned, translated district dataset — including the Arabic-to-English district dictionary — available by API or licence.",
+        "points": [
+          "District-level API",
+          "English district names",
+          "Data licence",
+          "Custom integrations"
+        ]
+      }
+    ]
+  },
+  "trust": {
+    "eyebrow": "Trust & data",
+    "title": "Trust is the whole business",
+    "subtitle": "Here's exactly where our numbers come from, how our AI is allowed to answer, and how we check its work.",
+    "rulesTitle": "How the advisor is allowed to answer",
+    "rules": [
+      "Use only numbers returned by data tools. Never estimate or guess a price.",
+      "Use only rule text from stored, dated official sources. If a rule is unclear or missing, say so and link the official source.",
+      "Always show the data source and 'data until' date under numbers.",
+      "If foreign-ownership status is unknown, clearly tell the user to confirm with REGA or a licensed broker.",
+      "Never act as a lawyer, broker or financial adviser. Give facts, not recommendations.",
+      "Key answer first, then a small table, then the source."
+    ],
+    "sourcesTitle": "Our data sources",
+    "sources": [
+      {
+        "name": "Ministry of Justice — Open Data",
+        "body": "Registered real estate transactions: city, district, type, area, price and date.",
+        "url": "https://moj.gov.sa/english/opendata/pages/advantageopendata.aspx"
+      },
+      {
+        "name": "REGA Real Estate Indicators",
+        "body": "Official sales and rental indicators used to cross-check our figures.",
+        "url": "https://rei.rega.gov.sa/en"
+      },
+      {
+        "name": "KAPSARC Data Portal",
+        "body": "Real estate price indices, construction costs and building permits.",
+        "url": "https://data.kapsarc.org"
+      },
+      {
+        "name": "National Open Data Portal",
+        "body": "The official home of Saudi government open datasets.",
+        "url": "https://open.data.gov.sa"
+      },
+      {
+        "name": "REGA rules & zone documents",
+        "body": "Who can buy, where, fees and procedures — stored with dates and links.",
+        "url": "https://rega.gov.sa/en"
+      },
+      {
+        "name": "OpenStreetMap",
+        "body": "Open map base and district boundaries (ODbL licence).",
+        "url": "https://www.openstreetmap.org"
+      }
+    ],
+    "pipelineTitle": "From raw records to a trustworthy answer",
+    "pipeline": [
+      {
+        "title": "Download",
+        "body": "Official MOJ transaction files from the National Open Data Portal."
+      },
+      {
+        "title": "Clean",
+        "body": "Fix types, remove empty prices and areas, drop extreme outliers per district."
+      },
+      {
+        "title": "Translate",
+        "body": "Map every Arabic district name to a checked English name."
+      },
+      {
+        "title": "Aggregate",
+        "body": "Median, quartiles and counts per quarter. Figures with fewer than 5 deals are hidden."
+      },
+      {
+        "title": "Verify",
+        "body": "Cross-check districts against REGA's indicators before publishing."
+      },
+      {
+        "title": "Refresh",
+        "body": "Automated monthly runs, with 'data until' recorded on every figure."
+      }
+    ],
+    "qualityTitle": "Quality control",
+    "quality": [
+      {
+        "title": "Test set",
+        "body": "100+ real questions in English and Urdu with verified answers, run after every change."
+      },
+      {
+        "title": "Weekly review",
+        "body": "Random answers reviewed by a human every week; mistakes fixed at the source."
+      },
+      {
+        "title": "Report a mistake",
+        "body": "One click under every answer flags it for review."
+      },
+      {
+        "title": "Exact digits",
+        "body": "Numbers are returned as structured data and formatted by the app, so the model never changes a digit."
+      }
+    ],
+    "noScrape": "We never scrape private websites or copy other platforms' data. Only official, openly licensed sources — with attribution.",
+    "eyebrows": {
+      "ai": "AI rules",
+      "data": "Data",
+      "pipeline": "Pipeline",
+      "qa": "Quality"
+    }
+  },
+  "developers": {
+    "eyebrow": "Developers",
+    "title": "The Saudi property data layer, by API",
+    "subtitle": "Clean, English-translated district statistics and foreign-ownership status for your app, bank or portal.",
+    "badge": "Planned for V3",
+    "cta": "Request early API access",
+    "endpointsTitle": "Planned endpoints",
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/v1/districts",
+        "desc": "List districts with English and Arabic names"
+      },
+      {
+        "method": "GET",
+        "path": "/v1/districts/{slug}/stats",
+        "desc": "Quarterly median, quartiles and deal counts"
+      },
+      {
+        "method": "GET",
+        "path": "/v1/zones/check",
+        "desc": "Foreign-ownership status with source and checked date"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/costs/estimate",
+        "desc": "Fee breakdown for a buy or sell scenario"
+      },
+      {
+        "method": "POST",
+        "path": "/v1/prices/check",
+        "desc": "Where an asking price sits vs recent deals"
+      }
+    ],
+    "features": [
+      {
+        "title": "English district dictionary",
+        "body": "Every Arabic district name mapped to a checked English spelling."
+      },
+      {
+        "title": "Sourced and dated",
+        "body": "Every response includes source and data-until fields."
+      },
+      {
+        "title": "Privacy-first",
+        "body": "Aggregated district-level data only. No personal data."
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About Miftah AI",
+    "title": "Opening the door to Saudi property for the world",
+    "story": "Miftah means 'key' in Arabic. When Saudi Arabia opened property ownership to non-Saudis in 2026, millions of people — residents and investors alike — suddenly had a new door in front of them. But the key was missing: clear answers in their language, from official data. We're building that key.",
+    "missionTitle": "Mission",
+    "mission": "Give every foreign buyer clear, honest, sourced answers about Saudi property — in their own language.",
+    "visionTitle": "Vision",
+    "vision": "Become the trusted data layer for international real estate in Saudi Arabia and the wider Gulf.",
+    "vision2030Title": "Aligned with Saudi Vision 2030",
+    "vision2030": "Vision 2030 aims to diversify the economy and welcome global investment. Transparent information for foreign buyers supports a healthy, trusted real estate market — and that's exactly what we're here to provide.",
+    "valuesTitle": "What we believe",
+    "values": [
+      {
+        "title": "Facts over hype",
+        "body": "Official data, shown honestly — including when we don't know."
+      },
+      {
+        "title": "Your language first",
+        "body": "Information is only useful if you can read it."
+      },
+      {
+        "title": "Respect for the Kingdom",
+        "body": "We follow Saudi law, PDPL and REGA rules, and credit official sources."
+      },
+      {
+        "title": "Trust is earned",
+        "body": "Every answer is sourced, dated, logged and open to correction."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's talk",
+    "subtitle": "Partnerships, brokers, press, data licensing or just a question — we read every message.",
+    "name": "Full name",
+    "email": "Email",
+    "company": "Company (optional)",
+    "topic": "Topic",
+    "topics": {
+      "general": "General question",
+      "broker": "Broker partnership",
+      "data": "Data / API licence",
+      "press": "Press",
+      "other": "Other"
+    },
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Thank you — your message has been received. We'll reply within 2 business days.",
+    "error": "Something went wrong. Please try again or email us directly.",
+    "channels": {
+      "email": "Email",
+      "partners": "Partnerships",
+      "hq": "Focus markets",
+      "hqValue": "Riyadh · Jeddah"
+    }
+  },
+  "waitlist": {
+    "eyebrow": "Early access",
+    "title": "Join the Miftah AI waitlist",
+    "subtitle": "Be first to use the AI advisor. Founding members get free reports at launch and a monthly Saudi foreign-buyer market update.",
+    "email": "Email address",
+    "nationality": "Nationality",
+    "nationalityPlaceholder": "e.g. Pakistani, Indian, British",
+    "city": "City of interest",
+    "cityOptions": {
+      "riyadh": "Riyadh",
+      "jeddah": "Jeddah",
+      "makkah": "Makkah",
+      "madinah": "Madinah",
+      "other": "Other / not sure"
+    },
+    "role": "I am a…",
+    "roleOptions": {
+      "expat": "Expat living in Saudi Arabia",
+      "investor": "Investor abroad",
+      "broker": "Broker / agent",
+      "business": "Business / HR / relocation",
+      "other": "Other"
+    },
+    "language": "Preferred language",
+    "consent": "I agree to receive emails from Miftah AI and accept the Privacy Policy. I can unsubscribe at any time.",
+    "submit": "Join the waitlist",
+    "submitting": "Joining…",
+    "successTitle": "You're on the list",
+    "successBody": "Welcome to Miftah AI. We'll email you as soon as early access opens.",
+    "error": "Something went wrong. Please try again.",
+    "perks": [
+      "Early access to the AI advisor",
+      "Free area reports for founding members",
+      "Monthly foreign-buyer market update",
+      "Help shape what we build next"
+    ],
+    "invalidEmail": "Please enter a valid email address."
+  },
+  "legal": {
+    "updated": "Last updated",
+    "privacy": {
+      "title": "Privacy Policy",
+      "intro": "Miftah AI respects your privacy and is designed to comply with the Saudi Personal Data Protection Law (PDPL). We collect the minimum data needed to run the service.",
+      "sections": [
+        {
+          "h": "What we collect",
+          "p": "Waitlist and contact details you give us (email, name, nationality, city of interest, role, preferred language), questions you ask the advisor, and basic anonymous usage analytics."
+        },
+        {
+          "h": "Why we collect it",
+          "p": "To provide and improve the service, answer your messages, send updates you've agreed to, and check the quality and accuracy of AI answers."
+        },
+        {
+          "h": "How long we keep it",
+          "p": "Only as long as needed for these purposes. Chat logs are reviewed for quality and deleted or anonymised on a regular schedule."
+        },
+        {
+          "h": "Who we share it with",
+          "p": "Only service providers that help us run Miftah AI (such as hosting, database, email and analytics), under contracts that protect your data. We never sell personal data."
+        },
+        {
+          "h": "Your rights",
+          "p": "You can ask to access, correct or delete your data, or withdraw consent, at any time by emailing privacy@miftah.ai."
+        },
+        {
+          "h": "Contact",
+          "p": "Questions about privacy: privacy@miftah.ai."
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "intro": "By using Miftah AI you agree to these terms. Please read them together with our Disclaimer and Privacy Policy.",
+      "sections": [
+        {
+          "h": "The service",
+          "p": "Miftah AI provides information about Saudi property based on official open data and published regulations. It does not list properties for sale or act as a broker."
+        },
+        {
+          "h": "No advice",
+          "p": "Nothing on Miftah AI is legal, financial, tax or brokerage advice. You are responsible for your own decisions and should consult licensed professionals."
+        },
+        {
+          "h": "Accuracy",
+          "p": "We work hard to keep data accurate and sourced, but official data can be delayed or incomplete and rules can change. Always verify with official sources."
+        },
+        {
+          "h": "Acceptable use",
+          "p": "Do not misuse the service, attempt to scrape it, resell its data without a licence, or use it for unlawful purposes."
+        },
+        {
+          "h": "Paid products",
+          "p": "Paid reports and plans will be sold through a merchant-of-record provider, whose terms also apply."
+        },
+        {
+          "h": "Changes",
+          "p": "We may update these terms. Continued use means you accept the updated terms."
+        }
+      ]
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "intro": "Miftah AI is an information service. Please read this carefully.",
+      "sections": [
+        {
+          "h": "Not professional advice",
+          "p": "Miftah AI is not a lawyer, licensed real estate broker, tax adviser or financial adviser. We give facts so you can decide; we do not tell you what to buy."
+        },
+        {
+          "h": "Official data, with limits",
+          "p": "Prices are based on registered transactions from official sources, usually updated quarterly. They are recorded deal prices, not live asking prices, and are shown at district level."
+        },
+        {
+          "h": "Foreign-ownership status",
+          "p": "Zone status is based on official publications and is re-checked regularly. Where status is 'to be verified', you must confirm with REGA or a licensed broker before buying."
+        },
+        {
+          "h": "Sample data",
+          "p": "During the pre-launch period, some numbers on this website are illustrative samples and are clearly labelled as such. Do not use them for decisions."
+        },
+        {
+          "h": "Third-party sources",
+          "p": "Data from the Ministry of Justice, REGA, KAPSARC and OpenStreetMap belongs to its owners and is used under their open-data terms with attribution."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "Your AI key to property in Saudi Arabia.",
+    "product": "Product",
+    "solutions": "Solutions",
+    "company": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "disclaimer": "Disclaimer",
+    "rights": "All rights reserved.",
+    "newsletterTitle": "Monthly Saudi foreign-buyer market update",
+    "newsletterCta": "Subscribe",
+    "attribution": "Data: Ministry of Justice, REGA, KAPSARC (open data). Map data © OpenStreetMap contributors."
+  },
+  "notFound": {
+    "title": "This door is locked",
+    "body": "We couldn't find the page you're looking for.",
+    "cta": "Back to home"
+  }
+}

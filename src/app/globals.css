@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+@theme {
+  /* Saudi palette: flag green, deep palm, desert sand gold, warm cream */
+  --color-green-950: #04140d;
+  --color-green-900: #062a1c;
+  --color-green-800: #0a3d2a;
+  --color-green-700: #0d5236;
+  --color-green-600: #006c35; /* Saudi flag green */
+  --color-green-500: #12854a;
+  --color-green-400: #3fa66f;
+  --color-green-300: #7cc79d;
+  --color-green-100: #dcefe3;
+  --color-green-50: #eef7f1;
+
+  --color-gold-700: #8a6a26;
+  --color-gold-600: #a8822f;
+  --color-gold-500: #c49a3c;
+  --color-gold-400: #d4b26a;
+  --color-gold-300: #e3cb94;
+  --color-gold-100: #f5ecd6;
+
+  --color-sand-50: #fcfaf5;
+  --color-sand-100: #f7f2e7;
+  --color-sand-200: #ede4d0;
+  --color-sand-300: #ddd0b3;
+
+  --color-ink-900: #0f1a15;
+  --color-ink-700: #2c3a33;
+  --color-ink-500: #5b6a62;
+  --color-ink-400: #7d8a83;
+  --color-ink-200: #d3d9d5;
+
+  --font-sans: var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-serif), var(--font-arabic), Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .45; }
+  }
+}
+
+:root {
+  --bg: var(--color-sand-50);
+  --fg: var(--color-ink-900);
+  color-scheme: light;
+}
+
+html, body { overflow-x: clip; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* RTL scripts read better slightly larger with more line height */
+html[dir="rtl"] body { line-height: 1.75; }
+/* Nastaliq script is tall: give Urdu headings extra room */
+html[lang="ur"] h1, html[lang="ur"] h2, html[lang="ur"] h3 { line-height: 1.7 !important; }
+html[lang="ur"] body { line-height: 2; }
+html[lang="ur"] body { font-family: var(--font-urdu), var(--font-arabic), ui-sans-serif, sans-serif; }
+html[lang="ar"] .font-display, html[lang="ur"] .font-display { font-family: var(--font-arabic), serif; font-weight: 700; letter-spacing: 0; }
+html[lang="zh"] .font-display, html[lang="hi"] .font-display { font-family: var(--font-sans); font-weight: 700; letter-spacing: -0.01em; }
+html:not([lang="en"]) .italic { font-style: normal; }
+html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+
+::selection { background: var(--color-gold-300); color: var(--color-green-950); }
+
+@layer components {
+  .container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
+  @media (min-width: 640px) { .container-x { padding-inline: 1.5rem; } }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    border-radius: 9999px; padding: .75rem 1.25rem; font-weight: 600; font-size: .95rem;
+    transition: transform .15s ease, background-color .2s ease, box-shadow .2s ease, color .2s ease;
+    white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--color-green-600); color: white; box-shadow: 0 8px 24px -10px rgb(0 108 53 / .6); }
+  .btn-primary:hover { background: var(--color-green-700); }
+  .btn-gold { background: var(--color-gold-400); color: var(--color-green-950); }
+  .btn-gold:hover { background: var(--color-gold-300); }
+  .btn-ghost { background: white; color: var(--color-ink-900); border: 1px solid var(--color-sand-200); }
+  .btn-ghost:hover { border-color: var(--color-sand-300); background: var(--color-sand-100); }
+  .btn-ghost-dark { background: rgb(255 255 255 / .06); color: white; border: 1px solid rgb(255 255 255 / .14); }
+  .btn-ghost-dark:hover { background: rgb(255 255 255 / .12); }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--color-green-600);
+  }
+  html[dir="rtl"] .eyebrow { letter-spacing: 0; font-size: .85rem; }
+
+  .card {
+    background: white; border: 1px solid var(--color-sand-200); border-radius: 1.25rem;
+    box-shadow: 0 1px 0 rgb(15 26 21 / .02), 0 12px 32px -20px rgb(15 26 21 / .18);
+  }
+  .card-dark {
+    background: linear-gradient(180deg, rgb(255 255 255 / .06), rgb(255 255 255 / .02));
+    border: 1px solid rgb(255 255 255 / .1); border-radius: 1.25rem;
+  }
+  .input {
+    width: 100%; border-radius: .85rem; border: 1px solid var(--color-sand-300); background: white;
+    padding: .75rem 1rem; font-size: .95rem; outline: none; transition: border-color .15s, box-shadow .15s;
+  }
+  .input:focus { border-color: var(--color-green-500); box-shadow: 0 0 0 4px rgb(18 133 74 / .14); }
+
+  .text-gradient-gold {
+    background: linear-gradient(100deg, var(--color-gold-300), var(--color-gold-500) 60%, var(--color-gold-300));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  /* Al-Sadu inspired geometric pattern (traditional Saudi Bedouin weaving) */
+  .sadu-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23d4b26a' stroke-opacity='.14' stroke-width='1.2'%3E%3Cpath d='M24 4 44 24 24 44 4 24Z'/%3E%3Cpath d='M24 14 34 24 24 34 14 24Z'/%3E%3Cpath d='M0 0 8 8M48 0 40 8M0 48 8 40M48 48 40 40'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .sadu-band {
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M0 10 10 0 20 10Z' fill='%23c49a3c'/%3E%3Cpath d='M5 10 10 5 15 10Z' fill='%23006c35'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+  }
+  .grid-fade {
+    background-image: linear-gradient(rgb(255 255 255 / .05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+}
+
+/* Reveal-on-scroll */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* Grid children must be allowed to shrink below their content width on phones */
+.grid > * { min-width: 0; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
