@@ -11,7 +11,8 @@ export async function GET() {
   }
   const tables: Record<string, "ok" | "missing" | "error"> = {};
   for (const table of ["waitlist", "contact_messages", "districts"]) {
-    const { error } = await supabase.from(table).select("*", { count: "exact", head: true });
+    // A normal (non-HEAD) read: HEAD requests drop the error body and can hide "table not found".
+    const { error } = await supabase.from(table).select("*").limit(0);
     tables[table] = !error ? "ok" : error.code === "42P01" || error.code === "PGRST205" ? "missing" : "error";
   }
   const ok = Object.values(tables).every((v) => v === "ok");
