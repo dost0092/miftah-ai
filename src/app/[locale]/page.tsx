@@ -9,6 +9,7 @@ import { CTASection } from "@/components/CTASection";
 import { FAQ } from "@/components/FAQ";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/Section";
+import { ProductTour } from "@/components/ProductTour";
 import {
   IconArrow, IconBriefcase, IconBuilding, IconCalc, IconChat, IconCheck, IconDatabase, IconDoc, IconGlobe,
   IconMap, IconPlane, IconSearch, IconShield, IconSpark, IconTag, IconUser,
@@ -37,6 +38,7 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
   type Item = { title: string; body: string };
   const problems = t.raw("problem.items") as Item[];
   const steps = t.raw("how.steps") as Item[];
+  const tt = useTranslations("tour");
   const features = t.raw("features.items") as Item[];
   const points = t.raw("principle.points") as string[];
   const personas = t.raw("personas.items") as Item[];
@@ -134,9 +136,9 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               const Icon = stepIcons[i];
               return (
                 <Reveal key={i} delay={i * 120} className="relative text-center">
-                  <span className="relative mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-green-600 text-white shadow-lg shadow-green-600/30">
+                  <span className="relative mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-night-900 text-gold-300 shadow-lg shadow-night-900/25">
                     <Icon width={26} height={26} />
-                    <span className="absolute -end-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-gold-400 text-xs font-bold text-green-950">{i + 1}</span>
+                    <span className="absolute -end-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-gold-400 text-xs font-bold text-night-950">{i + 1}</span>
                   </span>
                   <h3 className="mt-6 text-lg font-semibold">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-500">{s.body}</p>
@@ -144,6 +146,14 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ───────────── PRODUCT TOUR ───────────── */}
+      <section id="demo" className="container-x scroll-mt-24 py-24 sm:py-32">
+        <SectionHeading eyebrow={tt("section.eyebrow")} title={tt("section.title")} subtitle={tt("section.subtitle")} />
+        <div className="mt-14">
+          <ProductTour />
         </div>
       </section>
 
@@ -166,10 +176,10 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               <Reveal
                 key={i}
                 delay={(i % 3) * 100}
-                className={highlight ? "relative overflow-hidden rounded-[1.25rem] bg-green-800 p-7 text-white" : "card p-7 transition hover:-translate-y-1 hover:shadow-xl"}
+                className={highlight ? "relative overflow-hidden rounded-[1.25rem] bg-night-800 p-7 text-white" : "card p-7 transition hover:-translate-y-1 hover:shadow-xl"}
               >
                 {highlight && <div className="sadu-pattern pointer-events-none absolute inset-0" />}
-                <span className={highlight ? "relative grid h-12 w-12 place-items-center rounded-xl bg-gold-400 text-green-950" : "grid h-12 w-12 place-items-center rounded-xl bg-green-50 text-green-600"}>
+                <span className={highlight ? "relative grid h-12 w-12 place-items-center rounded-xl bg-gold-400 text-night-950" : "grid h-12 w-12 place-items-center rounded-xl bg-green-50 text-green-600"}>
                   <Icon width={22} height={22} />
                 </span>
                 <h3 className="relative mt-6 text-lg font-semibold">{f.title}</h3>
@@ -181,7 +191,7 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
       </section>
 
       {/* ───────────── PRINCIPLE ───────────── */}
-      <section className="relative overflow-hidden bg-green-950 py-24 text-white sm:py-32">
+      <section className="relative overflow-hidden bg-night-950 py-24 text-white sm:py-32">
         <div className="sadu-pattern pointer-events-none absolute inset-0 opacity-70" />
         <div className="container-x relative grid items-center gap-14 lg:grid-cols-2">
           <div>

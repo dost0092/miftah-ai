@@ -45,7 +45,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-green-950 text-white">
+    <footer className="relative overflow-hidden bg-night-950 text-white">
       <div className="sadu-band opacity-80" />
       <div className="sadu-pattern pointer-events-none absolute inset-0 opacity-60" />
       <div className="container-x relative py-16">

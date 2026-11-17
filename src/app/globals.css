@@ -1,13 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Saudi palette: flag green, deep palm, desert sand gold, warm cream */
-  /* Refined Saudi emerald: rich but not heavy */
+  /* Corporate Saudi palette (in the spirit of Aramco / PIF / ROSHN):
+     deep navy for dark surfaces, Saudi green as a restrained accent,
+     muted gold used sparingly, warm neutral backgrounds. */
+  --color-night-950: #070f1c;
+  --color-night-900: #0b1626;
+  --color-night-800: #102036;
+  --color-night-700: #1a2d47;
+  --color-night-600: #2a4062;
+
   --color-green-950: #072a1e;
   --color-green-900: #0b3a2a;
   --color-green-800: #0f4a36;
-  --color-green-700: #115e43;
-  --color-green-600: #0b7a4c; /* primary, close to the Saudi flag green, a touch brighter */
+  --color-green-700: #006b3e;
+  --color-green-600: #00804a; /* primary accent: Saudi green */
   --color-green-500: #179563;
   --color-green-400: #4bb388;
   --color-green-300: #8fd2b3;
@@ -22,16 +29,16 @@
   --color-gold-300: #ead6a6;
   --color-gold-100: #f8f0dc;
 
-  --color-sand-50: #fcfaf5;
-  --color-sand-100: #f7f2e7;
-  --color-sand-200: #ede4d0;
-  --color-sand-300: #ddd0b3;
+  --color-sand-50: #fbfaf7;
+  --color-sand-100: #f4f1ea;
+  --color-sand-200: #e7e2d7;
+  --color-sand-300: #d6cdbb;
 
-  --color-ink-900: #0f1a15;
-  --color-ink-700: #2c3a33;
-  --color-ink-500: #5b6a62;
-  --color-ink-400: #7d8a83;
-  --color-ink-200: #d3d9d5;
+  --color-ink-900: #0e1726;
+  --color-ink-700: #2f3b4c;
+  --color-ink-500: #5d6878;
+  --color-ink-400: #808a98;
+  --color-ink-200: #d6dbe2;
 
   --font-sans: var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-serif), var(--font-arabic), Georgia, serif;
@@ -88,14 +95,14 @@ html[lang="zh"] .font-display, html[lang="hi"] .font-display { font-family: var(
 html:not([lang="en"]) .italic { font-style: normal; }
 html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 
-::selection { background: var(--color-gold-300); color: var(--color-green-950); }
+::selection { background: var(--color-gold-300); color: var(--color-night-950); }
 
 @layer components {
   .bg-hero {
     background:
-      radial-gradient(1200px 600px at 15% -10%, rgb(23 149 99 / .45), transparent 60%),
-      radial-gradient(900px 500px at 100% 110%, rgb(201 162 78 / .22), transparent 60%),
-      linear-gradient(160deg, #0f4a36 0%, #0b3a2a 55%, #0a3326 100%);
+      radial-gradient(900px 520px at 12% -10%, rgb(0 128 74 / .22), transparent 60%),
+      radial-gradient(800px 480px at 100% 115%, rgb(201 162 78 / .10), transparent 60%),
+      linear-gradient(165deg, #102036 0%, #0b1626 55%, #070f1c 100%);
   }
   .container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
   @media (min-width: 640px) { .container-x { padding-inline: 1.5rem; } }
@@ -107,9 +114,9 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
     white-space: nowrap;
   }
   .btn:active { transform: translateY(1px); }
-  .btn-primary { background: var(--color-green-600); color: white; box-shadow: 0 8px 24px -10px rgb(11 122 76 / .55); }
+  .btn-primary { background: var(--color-green-600); color: white; box-shadow: 0 8px 24px -10px rgb(0 128 74 / .45); }
   .btn-primary:hover { background: var(--color-green-700); }
-  .btn-gold { background: var(--color-gold-400); color: var(--color-green-950); }
+  .btn-gold { background: var(--color-gold-400); color: var(--color-night-950); }
   .btn-gold:hover { background: var(--color-gold-300); }
   .btn-ghost { background: white; color: var(--color-ink-900); border: 1px solid var(--color-sand-200); }
   .btn-ghost:hover { border-color: var(--color-sand-300); background: var(--color-sand-100); }
@@ -125,7 +132,7 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 
   .card {
     background: white; border: 1px solid var(--color-sand-200); border-radius: 1.25rem;
-    box-shadow: 0 1px 0 rgb(15 26 21 / .02), 0 12px 32px -20px rgb(15 26 21 / .18);
+    box-shadow: 0 1px 0 rgb(14 23 38 / .02), 0 12px 32px -20px rgb(14 23 38 / .18);
   }
   .card-dark {
     background: linear-gradient(180deg, rgb(255 255 255 / .06), rgb(255 255 255 / .02));
@@ -144,11 +151,11 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 
   /* Al-Sadu inspired geometric pattern (traditional Saudi Bedouin weaving) */
   .sadu-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23d4b26a' stroke-opacity='.14' stroke-width='1.2'%3E%3Cpath d='M24 4 44 24 24 44 4 24Z'/%3E%3Cpath d='M24 14 34 24 24 34 14 24Z'/%3E%3Cpath d='M0 0 8 8M48 0 40 8M0 48 8 40M48 48 40 40'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23d4b26a' stroke-opacity='.05' stroke-width='1.2'%3E%3Cpath d='M24 4 44 24 24 44 4 24Z'/%3E%3Cpath d='M24 14 34 24 24 34 14 24Z'/%3E%3Cpath d='M0 0 8 8M48 0 40 8M0 48 8 40M48 48 40 40'/%3E%3C/g%3E%3C/svg%3E");
   }
   .sadu-band {
     height: 10px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M0 10 10 0 20 10Z' fill='%23c49a3c'/%3E%3Cpath d='M5 10 10 5 15 10Z' fill='%23006c35'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M0 10 10 0 20 10Z' fill='%23c49a3c'/%3E%3Cpath d='M5 10 10 5 15 10Z' fill='%2300804a'/%3E%3C/svg%3E");
     background-repeat: repeat-x;
   }
   .grid-fade {
@@ -176,3 +183,10 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
+
+/* Product tour */
+@keyframes tour-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes tour-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.tour-in { animation: tour-in .45s cubic-bezier(.2,.7,.2,1) both; }
+.tour-chip { opacity: 0; animation: tour-in .4s cubic-bezier(.2,.7,.2,1) forwards; }
+@media (prefers-reduced-motion: reduce) { .tour-in, .tour-chip { animation: none; opacity: 1; } }

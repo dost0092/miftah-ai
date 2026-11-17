@@ -20,7 +20,7 @@ export function AuthShell({ children }: { children: ReactNode }) {
           <ul className="mt-8 space-y-4">
             {points.map((p) => (
               <li key={p} className="flex items-center gap-3 text-white/85">
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gold-400 text-green-950"><IconCheck width={14} height={14} /></span>
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gold-400 text-night-950"><IconCheck width={14} height={14} /></span>
                 {p}
               </li>
             ))}

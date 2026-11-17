@@ -62,7 +62,7 @@ export default async function DevelopersPage({ params }: Params) {
           </ul>
         </Reveal>
         <Reveal delay={120}>
-          <div className="overflow-hidden rounded-[1.25rem] bg-green-950 text-white shadow-2xl" dir="ltr">
+          <div className="overflow-hidden rounded-[1.25rem] bg-night-950 text-white shadow-2xl" dir="ltr">
             <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3 text-xs text-white/50">
               <IconCode width={14} height={14} className="text-gold-400" /> GET /v1/districts/al-malqa/stats
             </div>

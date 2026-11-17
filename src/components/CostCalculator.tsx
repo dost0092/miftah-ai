@@ -139,7 +139,7 @@ export function CostCalculator() {
             </li>
           ))}
         </ul>
-        <div className="space-y-2 border-t border-sand-200 bg-green-900 px-6 py-5 text-white">
+        <div className="space-y-2 border-t border-sand-200 bg-night-900 px-6 py-5 text-white">
           <div className="flex justify-between text-sm text-white/70">
             <span>{t("total")}</span>
             <span className="tabular-nums" dir="ltr">{fmtNumber(locale, total)} SAR</span>

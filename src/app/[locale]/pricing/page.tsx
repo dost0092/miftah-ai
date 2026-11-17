@@ -37,12 +37,12 @@ export default async function PricingPage({ params }: Params) {
               delay={i * 80}
               className={cn(
                 "flex flex-col rounded-[1.5rem] p-7",
-                p.popular ? "bg-green-800 text-white shadow-2xl shadow-green-900/30 ring-2 ring-gold-400" : "card",
+                p.popular ? "bg-night-800 text-white shadow-2xl shadow-night-900/30 ring-2 ring-gold-400" : "card",
               )}
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold">{p.name}</h2>
-                {p.popular && <span className="rounded-full bg-gold-400 px-2.5 py-1 text-xs font-bold text-green-950">{t("popular")}</span>}
+                {p.popular && <span className="rounded-full bg-gold-400 px-2.5 py-1 text-xs font-bold text-night-950">{t("popular")}</span>}
               </div>
               <p className={cn("mt-2 text-sm", p.popular ? "text-white/70" : "text-ink-500")}>{p.desc}</p>
               <p className="mt-6 flex items-baseline gap-1" dir="ltr">

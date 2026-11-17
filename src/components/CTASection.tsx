@@ -9,7 +9,7 @@ export function CTASection() {
   return (
     <section className="container-x py-20 sm:py-28">
       <Reveal>
-        <div className="relative overflow-hidden rounded-[2rem] bg-green-800 px-6 py-16 text-center text-white sm:px-12 sm:py-20">
+        <div className="relative overflow-hidden rounded-[2rem] bg-night-800 px-6 py-16 text-center text-white sm:px-12 sm:py-20">
           <div className="sadu-pattern pointer-events-none absolute inset-0" />
           <div className="pointer-events-none absolute -bottom-32 start-1/2 h-80 w-[640px] -translate-x-1/2 rounded-full bg-gold-500/25 blur-3xl rtl:translate-x-1/2" />
           <div className="relative mx-auto max-w-2xl">

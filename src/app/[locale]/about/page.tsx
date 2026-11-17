@@ -30,7 +30,7 @@ export default async function AboutPage({ params }: Params) {
         <Reveal>
           <p className="font-display text-2xl leading-relaxed text-ink-900 sm:text-3xl sm:leading-snug">{t("story")}</p>
         </Reveal>
-        <Reveal delay={120} className="relative mx-auto grid aspect-square w-full max-w-sm place-items-center overflow-hidden rounded-[2rem] bg-green-800">
+        <Reveal delay={120} className="relative mx-auto grid aspect-square w-full max-w-sm place-items-center overflow-hidden rounded-[2rem] bg-night-800">
           <div className="sadu-pattern absolute inset-0" />
           <div className="absolute -bottom-20 -end-20 h-64 w-64 rounded-full bg-gold-500/30 blur-3xl" />
           <div className="relative text-center">
@@ -47,7 +47,7 @@ export default async function AboutPage({ params }: Params) {
             <p className="eyebrow"><span className="h-px w-6 bg-green-600" />{t("missionTitle")}</p>
             <p className="mt-5 text-2xl font-semibold leading-snug">{t("mission")}</p>
           </Reveal>
-          <Reveal delay={100} className="rounded-[1.25rem] bg-green-800 p-8 text-white sm:p-10">
+          <Reveal delay={100} className="rounded-[1.25rem] bg-night-800 p-8 text-white sm:p-10">
             <p className="eyebrow !text-gold-300"><span className="h-px w-6 bg-gold-400" />{t("visionTitle")}</p>
             <p className="mt-5 text-2xl font-semibold leading-snug">{t("vision")}</p>
           </Reveal>

@@ -53,7 +53,7 @@ export default async function AccountPage({ params }: Params) {
         <div className="sadu-pattern pointer-events-none absolute inset-0" />
         <div className="container-x relative flex flex-col justify-between gap-6 py-14 sm:flex-row sm:items-end">
           <div className="hero-in flex items-center gap-5">
-            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-gold-400 text-2xl font-bold text-green-950">
+            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-gold-400 text-2xl font-bold text-night-950">
               {(name || user.email || "?").trim().charAt(0).toUpperCase()}
             </span>
             <div>
@@ -116,7 +116,7 @@ export default async function AccountPage({ params }: Params) {
         </div>
 
         <aside className="space-y-6">
-          <div className={cn("rounded-[1.25rem] p-6", onWaitlist ? "bg-green-800 text-white" : "card")}>
+          <div className={cn("rounded-[1.25rem] p-6", onWaitlist ? "bg-night-800 text-white" : "card")}>
             <div className="flex items-center gap-2">
               <IconSpark width={18} height={18} className={onWaitlist ? "text-gold-300" : "text-green-600"} />
               <h2 className="font-semibold">{t("earlyAccess")}</h2>
@@ -125,7 +125,7 @@ export default async function AccountPage({ params }: Params) {
               {onWaitlist ? t("onWaitlist") : t("notOnWaitlist")}
             </p>
             {onWaitlist ? (
-              <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-gold-400 px-3 py-1 text-xs font-bold text-green-950"><IconCheck width={13} height={13} /> {t("onList")}</span>
+              <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-gold-400 px-3 py-1 text-xs font-bold text-night-950"><IconCheck width={13} height={13} /> {t("onList")}</span>
             ) : (
               <Link href="/waitlist" className="btn btn-primary mt-4 !rounded-xl text-sm">{t("joinWaitlist")}</Link>
             )}

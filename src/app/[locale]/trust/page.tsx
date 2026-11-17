@@ -68,7 +68,7 @@ export default async function TrustPage({ params }: Params) {
       </section>
 
       {/* Pipeline */}
-      <section className="relative overflow-hidden bg-green-950 py-24 text-white">
+      <section className="relative overflow-hidden bg-night-950 py-24 text-white">
         <div className="sadu-pattern pointer-events-none absolute inset-0 opacity-70" />
         <div className="container-x relative">
           <SectionHeading dark eyebrow={t("eyebrows.pipeline")} title={t("pipelineTitle")} />

@@ -46,12 +46,12 @@ export default async function SolutionsPage({ params }: Params) {
                 id={item.id}
                 className={cn(
                   "relative grid scroll-mt-28 gap-10 overflow-hidden rounded-[1.75rem] p-8 sm:p-12 lg:grid-cols-[1.2fr_1fr]",
-                  dark ? "bg-green-800 text-white" : "card",
+                  dark ? "bg-night-800 text-white" : "card",
                 )}
               >
                 {dark && <div className="sadu-pattern pointer-events-none absolute inset-0" />}
                 <div className="relative">
-                  <span className={cn("grid h-14 w-14 place-items-center rounded-2xl", dark ? "bg-gold-400 text-green-950" : "bg-green-50 text-green-600")}>
+                  <span className={cn("grid h-14 w-14 place-items-center rounded-2xl", dark ? "bg-gold-400 text-night-950" : "bg-green-50 text-green-600")}>
                     <Icon width={26} height={26} />
                   </span>
                   <h2 className="font-display mt-6 text-3xl sm:text-4xl">{item.title}</h2>

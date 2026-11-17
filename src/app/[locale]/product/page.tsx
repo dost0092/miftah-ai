@@ -56,7 +56,7 @@ export default async function ProductPage({ params }: Params) {
           </li>
         ))}
       </ul>
-      <div className="flex items-center justify-between bg-green-900 px-6 py-5 text-white">
+      <div className="flex items-center justify-between bg-night-900 px-6 py-5 text-white">
         <span className="font-semibold">{calc("grandBuy")}</span>
         <span className="h-3 w-28 rounded-full bg-gold-400/70" />
       </div>
@@ -102,9 +102,9 @@ export default async function ProductPage({ params }: Params) {
           <SectionHeading center eyebrow={t("roadmap.eyebrow")} title={t("roadmap.title")} />
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {roadmap.map((r, i) => (
-              <Reveal key={i} delay={i * 100} className={i === 0 ? "rounded-[1.25rem] bg-green-800 p-8 text-white" : "card p-8"}>
+              <Reveal key={i} delay={i * 100} className={i === 0 ? "rounded-[1.25rem] bg-night-800 p-8 text-white" : "card p-8"}>
                 <div className="flex items-center justify-between">
-                  <span className={i === 0 ? "rounded-full bg-gold-400 px-3 py-1 text-sm font-bold text-green-950" : "rounded-full bg-sand-100 px-3 py-1 text-sm font-bold text-ink-700"}>{r.stage}</span>
+                  <span className={i === 0 ? "rounded-full bg-gold-400 px-3 py-1 text-sm font-bold text-night-950" : "rounded-full bg-sand-100 px-3 py-1 text-sm font-bold text-ink-700"}>{r.stage}</span>
                   <span className={i === 0 ? "text-sm text-white/60" : "text-sm text-ink-400"}>{r.when}</span>
                 </div>
                 <p className={i === 0 ? "mt-6 leading-relaxed text-white/85" : "mt-6 leading-relaxed text-ink-500"}>{r.body}</p>
@@ -126,7 +126,7 @@ export default async function ProductPage({ params }: Params) {
 
 function ReportMock({ title }: { title: string }) {
   return (
-    <div className="relative grid place-items-center overflow-hidden rounded-[1.5rem] bg-green-800 px-6 py-12">
+    <div className="relative grid place-items-center overflow-hidden rounded-[1.5rem] bg-night-800 px-6 py-12">
       <div className="sadu-pattern absolute inset-0" />
       <div className="absolute -bottom-24 -end-24 h-72 w-72 rounded-full bg-gold-500/30 blur-3xl" />
       <div className="relative w-full max-w-xs rotate-[-3deg] rounded-xl bg-white p-6 shadow-2xl animate-float">
@@ -137,7 +137,7 @@ function ReportMock({ title }: { title: string }) {
         <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-600">{title}</p>
         <p className="mt-1 text-lg font-semibold">Al Malqa, Riyadh</p>
         <svg viewBox="0 0 200 60" className="mt-4 w-full" aria-hidden>
-          <path d="M0 50 L30 44 L60 46 L90 34 L120 30 L150 22 L200 12" fill="none" stroke="#006c35" strokeWidth="3" strokeLinecap="round" />
+          <path d="M0 50 L30 44 L60 46 L90 34 L120 30 L150 22 L200 12" fill="none" stroke="#00804a" strokeWidth="3" strokeLinecap="round" />
         </svg>
         <div className="mt-4 space-y-2">
           <span className="block h-2 w-full rounded-full bg-sand-200" />

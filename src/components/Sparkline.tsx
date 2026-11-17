@@ -1,6 +1,6 @@
 import { cn, numberLocale } from "@/lib/format";
 
-export function Sparkline({ values, className, stroke = "#006c35", id }: { values: number[]; className?: string; stroke?: string; id: string }) {
+export function Sparkline({ values, className, stroke = "#00804a", id }: { values: number[]; className?: string; stroke?: string; id: string }) {
   const w = 120, h = 36, pad = 3;
   const min = Math.min(...values), max = Math.max(...values);
   const span = max - min || 1;
@@ -37,8 +37,8 @@ export function TrendChart({ values, labels, locale, label }: { values: number[]
     <svg viewBox={`0 0 ${w} ${h}`} className="h-auto w-full" direction="ltr" role="img" aria-label={label}>
       <defs>
         <linearGradient id="tc-fill" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stopColor="#006c35" stopOpacity=".18" />
-          <stop offset="1" stopColor="#006c35" stopOpacity="0" />
+          <stop offset="0" stopColor="#00804a" stopOpacity=".18" />
+          <stop offset="1" stopColor="#00804a" stopOpacity="0" />
         </linearGradient>
       </defs>
       {ticks.map((v, i) => (
@@ -48,12 +48,12 @@ export function TrendChart({ values, labels, locale, label }: { values: number[]
         </g>
       ))}
       <path d={`${d} L${x(values.length - 1)},${h - b} L${x(0)},${h - b} Z`} fill="url(#tc-fill)" />
-      <path d={d} fill="none" stroke="#006c35" strokeWidth="2.5" strokeLinejoin="round" />
+      <path d={d} fill="none" stroke="#00804a" strokeWidth="2.5" strokeLinejoin="round" />
       {values.map((v, i) => {
         const isLast = i === values.length - 1;
         return (
           <g key={i}>
-            <circle cx={x(i)} cy={y(v)} r={isLast ? 5 : 3} fill={isLast ? "#c49a3c" : "#006c35"} stroke="white" strokeWidth="1.5" />
+            <circle cx={x(i)} cy={y(v)} r={isLast ? 5 : 3} fill={isLast ? "#c49a3c" : "#00804a"} stroke="white" strokeWidth="1.5" />
             <text x={x(i)} y={h - 10} textAnchor="middle" fontSize="10.5" fill="#7d8a83">{labels[i].replace("-", " ")}</text>
           </g>
         );

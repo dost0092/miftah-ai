@@ -114,11 +114,11 @@ export default async function DistrictPage({ params }: Params) {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-[1.5rem] bg-green-800 p-8 text-white sm:p-10">
+        <div className="relative overflow-hidden rounded-[1.5rem] bg-night-800 p-8 text-white sm:p-10">
           <div className="sadu-pattern pointer-events-none absolute inset-0" />
           <div className="relative flex flex-col justify-between gap-6 md:flex-row md:items-center">
             <div className="flex items-start gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gold-400 text-green-950"><IconSpark /></span>
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gold-400 text-night-950"><IconSpark /></span>
               <div>
                 <h2 className="text-xl font-semibold">{t("askTitle", { name })}</h2>
                 <p className="mt-1 text-white/70">{t("askBody")}</p>

@@ -830,7 +830,8 @@
       "Monthly foreign-buyer market update",
       "Help shape what we build next"
     ],
-    "invalidEmail": "Please enter a valid email address."
+    "invalidEmail": "Please enter a valid email address.",
+    "consentRequired": "Please tick the box to agree before joining."
   },
   "legal": {
     "updated": "Last updated",
@@ -1013,5 +1014,77 @@
     "advisorTitle": "AI advisor",
     "advisorBody": "Ask anything about buying in Saudi Arabia and get answers with sources, in your language.",
     "quickLinks": "Quick links"
+  },
+  "tour": {
+    "section": {
+      "eyebrow": "Product tour",
+      "title": "See Miftah AI in action",
+      "subtitle": "One question, five answers you would otherwise spend weeks collecting. Click any step, or let it play."
+    },
+    "label": "Product tour steps",
+    "stepN": "Step {n}",
+    "sample": "Sample data",
+    "source": "Source: Ministry of Justice deals (cleaned)",
+    "ask": {
+      "tab": "Ask in your language",
+      "desc": "Type a question the way you'd ask a friend. The agent decides which verified tools to call.",
+      "q": "Can I buy an apartment in Al Malqa as a foreigner, and what is a fair price?",
+      "tool": {
+        "zone": "check_foreign_zone",
+        "stats": "get_district_stats",
+        "cost": "estimate_costs"
+      },
+      "a1": "{district} sits inside Riyadh's proposed foreign-ownership zone. Final status is being verified against REGA's published list.",
+      "a2": "Apartments there recently sold at a median of {price} SAR/m². Anything well above that deserves a second look."
+    },
+    "zone": {
+      "tab": "Check if you can buy",
+      "desc": "A clear yes, no or 'conditional' for every district, with the official rule and the date it was checked.",
+      "kicker": "Foreign-ownership check",
+      "status": "Verification pending",
+      "statusBody": "We only show a final answer once it matches REGA's published zone list. Until then, we tell you exactly that.",
+      "r1": "Who can buy",
+      "v1": "Non-Saudi individuals and companies",
+      "r2": "Property types",
+      "v2": "Residential, commercial",
+      "r3": "Rule source",
+      "v3": "REGA · Real Estate Ownership Law"
+    },
+    "price": {
+      "tab": "Know the fair price",
+      "desc": "Median prices per m² from real recorded deals, the trend over 2 years and how nearby districts compare.",
+      "kicker": "Price check",
+      "title": "Apartments, median price per m²",
+      "colDistrict": "District",
+      "colTrend": "2-year trend",
+      "colChange": "Change",
+      "verdictLabel": "Verdict:",
+      "verdict": "An asking price of {asking} SAR/m² is about 12% above the recorded median of {median}. Room to negotiate."
+    },
+    "cost": {
+      "tab": "See the full cost",
+      "desc": "Every tax and fee added up before you sign, with each rate linked to its official source.",
+      "kicker": "Cost estimate",
+      "title": "Buying a 1.5M SAR apartment",
+      "price": "Purchase price",
+      "rett": "Real estate transaction tax",
+      "brokerage": "Brokerage",
+      "vat": "VAT on brokerage",
+      "total": "Total to budget",
+      "note": "Estimate only. Rates are linked to ZATCA and REGA and re-checked before launch."
+    },
+    "report": {
+      "tab": "Get a shareable report",
+      "desc": "A clean PDF in your language to share with family, your bank or your lawyer.",
+      "kicker": "District report",
+      "title": "{district} buyer report",
+      "items": [
+        "Foreign-ownership status and rule",
+        "Price per m² and 2-year trend",
+        "Full cost breakdown",
+        "Sources and data dates"
+      ],
+      "cta": "Download PDF"
+    }
   }
 }

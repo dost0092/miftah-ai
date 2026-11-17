@@ -18,6 +18,7 @@ export function WaitlistForm() {
   const question = params.get("q") ?? "";
   const [status, setStatus] = useState<Status>("idle");
   const [emailError, setEmailError] = useState(false);
+  const [consentError, setConsentError] = useState(false);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -28,6 +29,11 @@ export function WaitlistForm() {
       return;
     }
     setEmailError(false);
+    if (fd.get("consent") !== "on") {
+      setConsentError(true);
+      return;
+    }
+    setConsentError(false);
     setStatus("loading");
     try {
       const res = await fetch("/api/waitlist", {
@@ -102,13 +108,14 @@ export function WaitlistForm() {
       </div>
       {/* honeypot */}
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
-      <label className="flex items-start gap-3 text-sm text-ink-500">
-        <input type="checkbox" name="consent" required className="mt-1 h-4 w-4 accent-green-600" />
+      <label className={`flex items-start gap-3 rounded-xl text-sm text-ink-500 transition ${consentError ? "bg-red-50 p-3 ring-1 ring-red-200" : ""}`}>
+        <input type="checkbox" name="consent" required className="mt-1 h-4 w-4 shrink-0 accent-green-600" aria-invalid={consentError} onChange={(e) => e.target.checked && setConsentError(false)} />
         <span>
           {t("consent")}{" "}
           <Link href="/legal/privacy" className="font-semibold text-green-700 underline-offset-2 hover:underline">{f("privacy")}</Link>
         </span>
       </label>
+      {consentError && <p className="-mt-2 text-sm font-medium text-red-600" role="alert">{t("consentRequired")}</p>}
       <button type="submit" disabled={status === "loading"} className="btn btn-primary w-full !py-3.5 disabled:opacity-60">
         {status === "loading" ? t("submitting") : t("submit")}
         {status !== "loading" && <IconCheck width={16} height={16} />}
