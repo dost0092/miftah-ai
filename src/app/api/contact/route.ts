@@ -20,6 +20,11 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ ok: false, error: "invalid_json" }, { status: 400 });
   }
+
+  // Honeypot filled in: almost certainly a bot. Pretend success, store nothing.
+  if (body && typeof body === "object" && typeof (body as { website?: unknown }).website === "string" && (body as { website: string }).website.length > 0) {
+    return NextResponse.json({ ok: true, stored: true });
+  }
   const parsed = schema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ ok: false, error: "invalid_input" }, { status: 400 });
   const { website: _honeypot, ...row } = parsed.data;
