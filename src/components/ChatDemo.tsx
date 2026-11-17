@@ -29,7 +29,6 @@ export function ChatDemo() {
 
   return (
     <div ref={ref} className="relative">
-      <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-gold-400/30 via-green-400/10 to-transparent blur-2xl" />
       <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white shadow-2xl shadow-night-950/40">
         {/* window chrome */}
         <div className="flex items-center justify-between border-b border-sand-200 bg-sand-50 px-5 py-3">

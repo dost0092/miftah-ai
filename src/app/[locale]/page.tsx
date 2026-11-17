@@ -50,19 +50,11 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
     <>
       {/* ───────────── HERO ───────────── */}
       <section className="relative overflow-hidden bg-hero text-white">
-        <div className="sadu-pattern pointer-events-none absolute inset-0" />
-        <div className="grid-fade pointer-events-none absolute inset-0" />
 
-        <div className="container-x relative grid items-center gap-14 pb-28 [&>*]:min-w-0 pt-16 sm:pt-20 lg:grid-cols-[1.05fr_1fr] lg:pb-36 lg:pt-24">
+        <div className="container-x relative grid items-center gap-14 pb-20 [&>*]:min-w-0 pt-16 sm:pt-20 lg:grid-cols-[1.05fr_1fr] lg:pb-28 lg:pt-24">
           <div className="hero-in">
-            <Link href="/trust" className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/10 px-3 py-1.5 text-xs font-semibold text-gold-300 transition hover:bg-gold-400/15">
-              <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-gold-400" />
-              {t("hero.badge")}
-              <IconArrow width={13} height={13} />
-            </Link>
-            <h1 className="font-display mt-7 text-[2.75rem] leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.5rem]">
-              {t("hero.titleA")} <span className="text-gradient-gold italic">{t("hero.titleHighlight")}</span>
-              <br className="hidden sm:block" /> {t("hero.titleB")}
+            <h1 className="font-display max-w-[14ch] text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.25rem]">
+              {t("hero.titleA")} {t("hero.titleHighlight")} {t("hero.titleB")}
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">{t("hero.subtitle")}</p>
             <div className="mt-8">
@@ -79,7 +71,7 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               </Link>
             </div>
             <p className="mt-8 flex items-center gap-2 text-sm text-white/55">
-              <IconShield width={16} height={16} className="text-gold-400" />
+              <IconShield width={16} height={16} className="text-white/50" />
               {t("hero.trustNote")}
             </p>
           </div>
@@ -88,11 +80,6 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
           </div>
         </div>
 
-        {/* Desert dunes */}
-        <svg className="pointer-events-none absolute inset-x-0 bottom-0 h-16 w-full sm:h-24" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden>
-          <path fill="#c49a3c" fillOpacity=".25" d="M0 70C180 40 360 30 560 52s420 34 620 8 220-30 260-26V100H0Z" />
-          <path fill="var(--color-sand-50)" d="M0 82C240 58 420 60 640 76s400 22 560 4 200-22 240-18V100H0Z" />
-        </svg>
       </section>
 
       {/* ───────────── SOURCES STRIP ───────────── */}
@@ -118,7 +105,7 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {problems.map((p, i) => (
             <Reveal key={i} delay={i * 100} className="card group relative overflow-hidden p-7">
-              <span className="font-display text-6xl text-gold-300 transition group-hover:text-gold-400" dir="ltr">0{i + 1}</span>
+              <span className="text-sm font-semibold text-ink-400" dir="ltr">0{i + 1}</span>
               <h3 className="mt-4 text-xl font-semibold text-ink-900">{p.title}</h3>
               <p className="mt-3 leading-relaxed text-ink-500">{p.body}</p>
             </Reveal>
@@ -136,9 +123,9 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               const Icon = stepIcons[i];
               return (
                 <Reveal key={i} delay={i * 120} className="relative text-center">
-                  <span className="relative mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-night-900 text-gold-300 shadow-lg shadow-night-900/25">
+                  <span className="relative mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-night-900 text-white">
                     <Icon width={26} height={26} />
-                    <span className="absolute -end-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-gold-400 text-xs font-bold text-night-950">{i + 1}</span>
+                    <span className="absolute -end-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-white text-xs font-bold text-night-950 ring-1 ring-sand-200">{i + 1}</span>
                   </span>
                   <h3 className="mt-6 text-lg font-semibold">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-500">{s.body}</p>

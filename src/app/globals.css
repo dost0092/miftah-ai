@@ -41,7 +41,7 @@
   --color-ink-200: #d6dbe2;
 
   --font-sans: var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-serif), var(--font-arabic), Georgia, serif;
+  --font-display: var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --animate-float: float 7s ease-in-out infinite;
@@ -100,24 +100,25 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 @layer components {
   .bg-hero {
     background:
-      radial-gradient(900px 520px at 12% -10%, rgb(0 128 74 / .22), transparent 60%),
-      radial-gradient(800px 480px at 100% 115%, rgb(201 162 78 / .10), transparent 60%),
-      linear-gradient(165deg, #102036 0%, #0b1626 55%, #070f1c 100%);
+      radial-gradient(1000px 600px at 85% -20%, rgb(42 64 98 / .55), transparent 65%),
+      #0b1626;
   }
+  /* Clean sans-serif headings: confident, not decorative */
+  .font-display { font-weight: 600; letter-spacing: -0.035em; }
   .container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
   @media (min-width: 640px) { .container-x { padding-inline: 1.5rem; } }
 
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-    border-radius: 9999px; padding: .75rem 1.25rem; font-weight: 600; font-size: .95rem;
+    border-radius: .625rem; padding: .75rem 1.25rem; font-weight: 600; font-size: .95rem;
     transition: transform .15s ease, background-color .2s ease, box-shadow .2s ease, color .2s ease;
     white-space: nowrap;
   }
   .btn:active { transform: translateY(1px); }
-  .btn-primary { background: var(--color-green-600); color: white; box-shadow: 0 8px 24px -10px rgb(0 128 74 / .45); }
+  .btn-primary { background: var(--color-green-600); color: white;  }
   .btn-primary:hover { background: var(--color-green-700); }
-  .btn-gold { background: var(--color-gold-400); color: var(--color-night-950); }
-  .btn-gold:hover { background: var(--color-gold-300); }
+  .btn-gold { background: white; color: var(--color-night-950); }
+  .btn-gold:hover { background: var(--color-sand-100); }
   .btn-ghost { background: white; color: var(--color-ink-900); border: 1px solid var(--color-sand-200); }
   .btn-ghost:hover { border-color: var(--color-sand-300); background: var(--color-sand-100); }
   .btn-ghost-dark { background: rgb(255 255 255 / .06); color: white; border: 1px solid rgb(255 255 255 / .14); }
@@ -131,8 +132,8 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   html[dir="rtl"] .eyebrow { letter-spacing: 0; font-size: .85rem; }
 
   .card {
-    background: white; border: 1px solid var(--color-sand-200); border-radius: 1.25rem;
-    box-shadow: 0 1px 0 rgb(14 23 38 / .02), 0 12px 32px -20px rgb(14 23 38 / .18);
+    background: white; border: 1px solid var(--color-sand-200); border-radius: 1rem;
+    box-shadow: 0 1px 2px rgb(14 23 38 / .04);
   }
   .card-dark {
     background: linear-gradient(180deg, rgb(255 255 255 / .06), rgb(255 255 255 / .02));
@@ -151,6 +152,7 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 
   /* Al-Sadu inspired geometric pattern (traditional Saudi Bedouin weaving) */
   .sadu-pattern {
+    opacity: .5;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23d4b26a' stroke-opacity='.05' stroke-width='1.2'%3E%3Cpath d='M24 4 44 24 24 44 4 24Z'/%3E%3Cpath d='M24 14 34 24 24 34 14 24Z'/%3E%3Cpath d='M0 0 8 8M48 0 40 8M0 48 8 40M48 48 40 40'/%3E%3C/g%3E%3C/svg%3E");
   }
   .sadu-band {

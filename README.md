@@ -40,7 +40,7 @@ git push -u origin main
 2. Add these **Environment Variables**:
    | Name | Value |
    |---|---|
-   | `NEXT_PUBLIC_SITE_URL` | `https://miftah.ai` (or your Vercel URL for now) |
+   | `NEXT_PUBLIC_SITE_URL` | `https://miftahai.co` (or your Vercel URL for now) |
    | `NEXT_PUBLIC_SUPABASE_URL` | your Supabase project URL |
    | `SUPABASE_SERVICE_ROLE_KEY` | your service_role key (server-only, never exposed to the browser) |
 3. Deploy. Every push to `main` deploys automatically, and every pull request gets a preview URL.

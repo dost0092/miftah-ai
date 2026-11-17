@@ -1,16 +1,18 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, useRouter } from "@/i18n/navigation";
 import { localeNames, locales } from "@/i18n/routing";
 import { getBrowserSupabase } from "@/lib/supabase-auth";
 import { cn } from "@/lib/format";
+import { saveProfile, savedFromUser, setSaved, type Profile } from "@/lib/account-store";
+import type { User } from "@supabase/supabase-js";
 import { IconCheck, IconPin } from "../Icons";
 
-export type Profile = { full_name: string | null; nationality: string | null; city: string | null; preferred_language: string | null };
+export type { Profile };
 
-export function ProfileForm({ userId, profile }: { userId: string; profile: Profile | null }) {
+export function ProfileForm({ profile }: { profile: Profile | null }) {
   const t = useTranslations("account");
   const w = useTranslations("waitlist");
   const a = useTranslations("auth");
@@ -23,16 +25,14 @@ export function ProfileForm({ userId, profile }: { userId: string; profile: Prof
     if (!supabase) return setStatus("error");
     const fd = new FormData(e.currentTarget);
     setStatus("saving");
-    const { error } = await supabase.from("profiles").upsert({
-      id: userId,
+    const { ok } = await saveProfile(supabase, {
       full_name: String(fd.get("full_name") ?? "").trim() || null,
       nationality: String(fd.get("nationality") ?? "").trim() || null,
       city: String(fd.get("city") ?? "") || null,
       preferred_language: String(fd.get("preferred_language") ?? "") || null,
-      updated_at: new Date().toISOString(),
     });
-    setStatus(error ? "error" : "saved");
-    if (!error) router.refresh();
+    setStatus(ok ? "saved" : "error");
+    if (ok) router.refresh();
   }
 
   const cities = ["riyadh", "jeddah", "makkah", "madinah", "other"] as const;
@@ -95,28 +95,25 @@ export function SignOutButton({ className }: { className?: string }) {
 export function SaveDistrictButton({ slug, variant = "dark" }: { slug: string; variant?: "dark" | "light" }) {
   const t = useTranslations("account");
   const router = useRouter();
-  const [userId, setUserId] = useState<string | null | undefined>(undefined);
-  const [saved, setSaved] = useState(false);
+  const locale = useLocale();
+  const [user, setUser] = useState<User | null | undefined>(undefined);
+  const [saved, setSavedState] = useState(false);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     const supabase = getBrowserSupabase();
-    if (!supabase) return setUserId(null);
-    supabase.auth.getUser().then(async ({ data }) => {
-      const id = data.user?.id ?? null;
-      setUserId(id);
-      if (id) {
-        const { data: row } = await supabase.from("saved_districts").select("district_slug").eq("user_id", id).eq("district_slug", slug).maybeSingle();
-        setSaved(Boolean(row));
-      }
+    if (!supabase) return setUser(null);
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user ?? null);
+      setSavedState(savedFromUser(data.user).includes(slug));
     });
   }, [slug]);
 
   const base = variant === "dark" ? "btn btn-ghost-dark !py-2.5 text-sm" : "btn btn-ghost !py-2 text-sm";
 
-  if (userId === null) {
+  if (user === null) {
     return (
-      <Link href={{ pathname: "/login", query: { next: `/${typeof window !== "undefined" ? window.location.pathname.split("/")[1] : "en"}/districts/${slug}` } }} className={base}>
+      <Link href={{ pathname: "/login", query: { next: `/${locale}/districts/${slug}` } }} className={base}>
         <IconPin width={16} height={16} /> {t("signInToSave")}
       </Link>
     );
@@ -125,16 +122,17 @@ export function SaveDistrictButton({ slug, variant = "dark" }: { slug: string; v
   return (
     <button
       type="button"
-      disabled={busy || userId === undefined}
+      disabled={busy || user === undefined}
       className={cn(base, saved && (variant === "dark" ? "!border-gold-400/60 !text-gold-300" : "!border-green-600/40 !text-green-700"), "disabled:opacity-60")}
       onClick={async () => {
         const supabase = getBrowserSupabase();
-        if (!supabase || !userId) return;
+        if (!supabase || !user) return;
         setBusy(true);
-        const { error } = saved
-          ? await supabase.from("saved_districts").delete().eq("user_id", userId).eq("district_slug", slug)
-          : await supabase.from("saved_districts").insert({ user_id: userId, district_slug: slug });
-        if (!error) setSaved(!saved);
+        const res = await setSaved(supabase, user, slug, !saved);
+        if (res.ok) {
+          setSavedState(!saved);
+          setUser({ ...user, user_metadata: { ...user.user_metadata, saved_districts: res.list } });
+        }
         setBusy(false);
         router.refresh();
       }}

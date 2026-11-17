@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 import { useRouter } from "@/i18n/navigation";
-import { IconArrow, IconSpark } from "./Icons";
+import { IconArrow, IconSearch } from "./Icons";
 
 export function HeroAsk() {
   const t = useTranslations("home.hero");
@@ -23,8 +23,8 @@ export function HeroAsk() {
 
   return (
     <div className="w-full max-w-xl">
-      <form onSubmit={onSubmit} className="group flex items-center gap-2 rounded-2xl border border-white/15 bg-white/[0.07] p-2 backdrop-blur transition focus-within:border-gold-400/60 focus-within:bg-white/10">
-        <IconSpark className="ms-2 shrink-0 text-gold-300" />
+      <form onSubmit={onSubmit} className="group flex items-center gap-2 rounded-2xl border border-white/15 bg-white/[0.07] p-2 backdrop-blur transition focus-within:border-white/40 focus-within:bg-white/10">
+        <IconSearch className="ms-2 shrink-0 text-white/50" />
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
@@ -43,7 +43,7 @@ export function HeroAsk() {
             key={s}
             type="button"
             onClick={() => go(s)}
-            className="shrink-0 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs text-white/70 transition hover:border-gold-400/50 hover:text-white"
+            className="shrink-0 rounded-full border border-white/12 bg-white/[0.04] px-3 py-1.5 text-xs text-white/70 transition hover:border-white/40 hover:text-white"
           >
             {s}
           </button>

@@ -91,7 +91,7 @@ export function ProductTour() {
         <div className="overflow-hidden rounded-[20px] border border-ink-200/70 bg-white shadow-[0_40px_80px_-40px_rgb(14_23_38/.45)]">
           <div className="flex items-center gap-3 border-b border-sand-200 bg-sand-50 px-4 py-3">
             <span className="flex gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /></span>
-            <span className="mx-auto truncate rounded-md bg-white px-3 py-1 text-xs text-ink-400 ring-1 ring-sand-200" dir="ltr">app.miftah.ai/{current}</span>
+            <span className="mx-auto truncate rounded-md bg-white px-3 py-1 text-xs text-ink-400 ring-1 ring-sand-200" dir="ltr">app.miftahai.co/{current}</span>
             <span className="hidden rounded-full bg-gold-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gold-700 sm:block">{t("sample")}</span>
           </div>
           <div className="grid min-h-[440px] sm:grid-cols-[56px_1fr]">

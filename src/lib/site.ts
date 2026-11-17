@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { locales } from "@/i18n/routing";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://miftah.ai").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://miftahai.co").replace(/\/$/, "");
 
 /** Builds per-page metadata with canonical + hreflang alternates for every language. */
 export function pageMetadata({ locale, path = "", title, description }: { locale: string; path?: string; title?: string; description?: string }): Metadata {

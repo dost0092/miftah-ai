@@ -5,7 +5,8 @@ import { createCookieSupabase } from "@/lib/supabase-auth";
 import { getServerSupabase } from "@/lib/supabase";
 import { getDistrict, trendChange } from "@/lib/districts";
 import { cn, fmtDate, fmtNumber, fmtPercent } from "@/lib/format";
-import { ProfileForm, SaveDistrictButton, SignOutButton, type Profile } from "@/components/auth/AccountWidgets";
+import { ProfileForm, SaveDistrictButton, SignOutButton } from "@/components/auth/AccountWidgets";
+import { profileFromUser, savedFromUser } from "@/lib/account-store";
 import { IconArrow, IconCalc, IconChat, IconCheck, IconMap, IconSpark, IconUser } from "@/components/Icons";
 
 export const dynamic = "force-dynamic";
@@ -33,18 +34,15 @@ export default async function AccountPage({ params }: Params) {
   const user = auth.user;
   if (!user) return redirect({ href: { pathname: "/login", query: { next: `/${locale}/account` } }, locale });
 
-  // These reads tolerate missing tables (before the accounts migration is run).
-  const [{ data: profile }, { data: savedRows }] = await Promise.all([
-    supabase.from("profiles").select("full_name, nationality, city, preferred_language").eq("id", user.id).maybeSingle<Profile>(),
-    supabase.from("saved_districts").select("district_slug, created_at").eq("user_id", user.id).order("created_at", { ascending: false }),
-  ]);
+  const profile = profileFromUser(user);
+  const savedSlugs = savedFromUser(user);
   const admin = getServerSupabase();
   const onWaitlist = user.email && admin
     ? Boolean((await admin.from("waitlist").select("email").eq("email", user.email.toLowerCase()).maybeSingle()).data)
     : false;
 
-  const name = profile?.full_name || (user.user_metadata?.full_name as string | undefined) || "";
-  const saved = (savedRows ?? []).map((r) => getDistrict(r.district_slug)).filter((d): d is NonNullable<typeof d> => Boolean(d));
+  const name = profile.full_name || "";
+  const saved = savedSlugs.map((slug) => getDistrict(slug)).filter((d): d is NonNullable<typeof d> => Boolean(d));
   const rtl = locale === "ar" || locale === "ur";
 
   return (
@@ -76,7 +74,7 @@ export default async function AccountPage({ params }: Params) {
             </div>
             <p className="mt-1 text-sm text-ink-500">{t("profileSubtitle")}</p>
             <div className="mt-6">
-              <ProfileForm userId={user.id} profile={profile ?? null} />
+              <ProfileForm profile={profile} />
             </div>
           </div>
 

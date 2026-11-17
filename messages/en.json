@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Miftah AI — Your AI key to property in Saudi Arabia",
-    "description": "Miftah AI tells foreigners where in Saudi Arabia they can legally buy property, what prices really are from official government data, and what the total cost will be — in English, Arabic, Urdu, Hindi and Chinese."
+    "title": "Miftah AI, Your AI key to property in Saudi Arabia",
+    "description": "Miftah AI tells foreigners where in Saudi Arabia they can legally buy property, what prices really are from official government data, and what the total cost will be, in English, Arabic, Urdu, Hindi and Chinese."
   },
   "nav": {
     "product": "Product",
@@ -65,7 +65,7 @@
       "yes": "Designated zone open to non-Saudi buyers",
       "no": "Not open to non-Saudi buyers",
       "conditional": "Allowed with special conditions",
-      "unknown": "Not yet verified — confirm with REGA or a licensed broker"
+      "unknown": "Not yet verified, confirm with REGA or a licensed broker"
     },
     "type": {
       "apartment": "Apartment",
@@ -80,11 +80,11 @@
   },
   "home": {
     "hero": {
-      "badge": "Foreign ownership law now in force — 2026",
+      "badge": "Foreign ownership law now in force, 2026",
       "titleA": "Your AI key to",
       "titleHighlight": "property",
       "titleB": "in Saudi Arabia",
-      "subtitle": "Miftah AI tells you where foreigners can legally buy, what homes really sell for according to official government records, and the full cost before you sign — in your own language.",
+      "subtitle": "Miftah AI tells you where foreigners can legally buy, what homes really sell for according to official government records, and the full cost before you sign, in your own language.",
       "ctaPrimary": "Join the waitlist",
       "ctaSecondary": "Explore districts",
       "askPlaceholder": "Ask anything about buying property in Saudi Arabia…",
@@ -128,7 +128,7 @@
         },
         {
           "title": "What's a fair price?",
-          "body": "Official transaction data exists — millions of records — but it's in Arabic, scattered across portals and hard to read."
+          "body": "Official transaction data exists, millions of records, but it's in Arabic, scattered across portals and hard to read."
         },
         {
           "title": "What will it really cost?",
@@ -166,11 +166,11 @@
       "items": [
         {
           "title": "AI Property Advisor",
-          "body": "Chat that answers with real numbers, a chart and a citation — never an invented price."
+          "body": "Chat that answers with real numbers, a chart and a citation, never an invented price."
         },
         {
           "title": "Foreign-zone check",
-          "body": "Allowed, not allowed, conditional or unverified — with the official source and checked date."
+          "body": "Allowed, not allowed, conditional or unverified, with the official source and checked date."
         },
         {
           "title": "District Explorer",
@@ -196,7 +196,7 @@
       "body": "Numbers come only from our data tools. Rules come only from stored, dated official texts. If something is unclear, Miftah AI says so and links the official source. Trust is the whole business.",
       "points": [
         "Every number shows its source and date",
-        "Unknown is shown as unknown — never guessed",
+        "Unknown is shown as unknown, never guessed",
         "Every answer is logged and reviewed for quality",
         "A 'Report a mistake' button under every answer"
       ]
@@ -221,7 +221,7 @@
         },
         {
           "title": "Brokers",
-          "body": "Send foreign clients fast, credible numbers in their language — with your logo on the report."
+          "body": "Send foreign clients fast, credible numbers in their language, with your logo on the report."
         },
         {
           "title": "Relocation & HR teams",
@@ -261,7 +261,7 @@
       "items": [
         {
           "q": "Can foreigners really buy property in Saudi Arabia now?",
-          "a": "Yes. The Law of Real Estate Ownership by Non-Saudis came into force in January 2026, allowing ownership in designated zones — mainly in Riyadh and Jeddah — with special conditions for Makkah and Madinah. The Executive Regulation was published in the Umm Al-Qura gazette on 3 July 2026. Always confirm specifics with REGA."
+          "a": "Yes. The Law of Real Estate Ownership by Non-Saudis came into force in January 2026, allowing ownership in designated zones, mainly in Riyadh and Jeddah, with special conditions for Makkah and Madinah. The Executive Regulation was published in the Umm Al-Qura gazette on 3 July 2026. Always confirm specifics with REGA."
         },
         {
           "q": "Where does Miftah AI's data come from?",
@@ -310,7 +310,7 @@
       },
       {
         "tag": "Foreign-zone check",
-        "title": "Know if you're allowed to buy — before you fall in love with a home.",
+        "title": "Know if you're allowed to buy, before you fall in love with a home.",
         "body": "Every district carries a clear status: allowed, not allowed, conditional, or to be verified. Each status links to the official REGA publication and shows when we last checked.",
         "points": [
           "Four honest statuses",
@@ -322,7 +322,7 @@
       {
         "tag": "District Explorer",
         "title": "Every district, in plain English and Arabic.",
-        "body": "Median price per square metre, deals per quarter and price trends — from official MOJ records, cleaned, translated and de-duplicated.",
+        "body": "Median price per square metre, deals per quarter and price trends, from official MOJ records, cleaned, translated and de-duplicated.",
         "points": [
           "Riyadh and Jeddah at launch",
           "Apartments, villas and land",
@@ -333,7 +333,7 @@
       {
         "tag": "Cost calculator",
         "title": "The true cost. No surprises after signing.",
-        "body": "Enter a price and see every known fee — transaction tax, brokerage, VAT and the non-Saudi disposal fee when selling — each linked to the rule behind it.",
+        "body": "Enter a price and see every known fee, transaction tax, brokerage, VAT and the non-Saudi disposal fee when selling, each linked to the rule behind it.",
         "points": [
           "Buy and sell scenarios",
           "Editable rates",
@@ -378,7 +378,7 @@
   "districts": {
     "eyebrow": "District Explorer",
     "title": "Saudi property prices, district by district",
-    "subtitle": "Median price per square metre, deal volume and trends for Riyadh and Jeddah — from official transaction records.",
+    "subtitle": "Median price per square metre, deal volume and trends for Riyadh and Jeddah, from official transaction records.",
     "search": "Search districts…",
     "type": "Property type",
     "sort": "Sort by",
@@ -445,12 +445,12 @@
       }
     },
     "disclaimer": "Rates are based on public sources and may change. This is an estimate, not tax or legal advice. Verify every fee with ZATCA, REGA and a licensed professional.",
-    "editRates": "Rates are editable — tap a rate to adjust it."
+    "editRates": "Rates are editable, tap a rate to adjust it."
   },
   "pricing": {
     "eyebrow": "Pricing",
     "title": "Simple pricing. Start free.",
-    "subtitle": "Planned launch pricing — founding members on the waitlist get early-access discounts.",
+    "subtitle": "Planned launch pricing, founding members on the waitlist get early-access discounts.",
     "monthly": "/month",
     "perReport": "/report",
     "custom": "Custom",
@@ -526,7 +526,7 @@
       {
         "id": "expats",
         "title": "Expats living in Saudi Arabia",
-        "question": "\"Can I buy a flat in my area — and what's a fair price?\"",
+        "question": "\"Can I buy a flat in my area, and what's a fair price?\"",
         "body": "Millions of Pakistani, Indian, Egyptian, Filipino and Western residents can now consider owning instead of renting. Miftah AI answers their first question honestly.",
         "points": [
           "Foreign-zone check by district",
@@ -539,7 +539,7 @@
         "id": "investors",
         "title": "Overseas investors",
         "question": "\"Which zones allow foreigners, and what trend can I expect?\"",
-        "body": "From Lahore to London to Shanghai, investors can research Saudi districts with official data — without flying in first.",
+        "body": "From Lahore to London to Shanghai, investors can research Saudi districts with official data, without flying in first.",
         "points": [
           "District comparisons",
           "Quarterly trend data",
@@ -551,7 +551,7 @@
         "id": "brokers",
         "title": "Brokers & agencies",
         "question": "\"I need fast, credible numbers in English for my clients.\"",
-        "body": "Give foreign clients professional, sourced reports with your branding — and turn hours of research into minutes.",
+        "body": "Give foreign clients professional, sourced reports with your branding, and turn hours of research into minutes.",
         "points": [
           "White-label reports",
           "Client sharing",
@@ -575,7 +575,7 @@
         "id": "enterprise",
         "title": "Banks, developers & portals",
         "question": "\"We need clean district-level data in English.\"",
-        "body": "Our cleaned, translated district dataset — including the Arabic-to-English district dictionary — available by API or licence.",
+        "body": "Our cleaned, translated district dataset, including the Arabic-to-English district dictionary, available by API or licence.",
         "points": [
           "District-level API",
           "English district names",
@@ -601,7 +601,7 @@
     "sourcesTitle": "Our data sources",
     "sources": [
       {
-        "name": "Ministry of Justice — Open Data",
+        "name": "Ministry of Justice, Open Data",
         "body": "Registered real estate transactions: city, district, type, area, price and date.",
         "url": "https://moj.gov.sa/english/opendata/pages/advantageopendata.aspx"
       },
@@ -622,7 +622,7 @@
       },
       {
         "name": "REGA rules & zone documents",
-        "body": "Who can buy, where, fees and procedures — stored with dates and links.",
+        "body": "Who can buy, where, fees and procedures, stored with dates and links.",
         "url": "https://rega.gov.sa/en"
       },
       {
@@ -677,7 +677,7 @@
         "body": "Numbers are returned as structured data and formatted by the app, so the model never changes a digit."
       }
     ],
-    "noScrape": "We never scrape private websites or copy other platforms' data. Only official, openly licensed sources — with attribution.",
+    "noScrape": "We never scrape private websites or copy other platforms' data. Only official, openly licensed sources, with attribution.",
     "eyebrows": {
       "ai": "AI rules",
       "data": "Data",
@@ -737,18 +737,18 @@
   "about": {
     "eyebrow": "About Miftah AI",
     "title": "Opening the door to Saudi property for the world",
-    "story": "Miftah means 'key' in Arabic. When Saudi Arabia opened property ownership to non-Saudis in 2026, millions of people — residents and investors alike — suddenly had a new door in front of them. But the key was missing: clear answers in their language, from official data. We're building that key.",
+    "story": "Miftah means 'key' in Arabic. When Saudi Arabia opened property ownership to non-Saudis in 2026, millions of people, residents and investors alike, suddenly had a new door in front of them. But the key was missing: clear answers in their language, from official data. We're building that key.",
     "missionTitle": "Mission",
-    "mission": "Give every foreign buyer clear, honest, sourced answers about Saudi property — in their own language.",
+    "mission": "Give every foreign buyer clear, honest, sourced answers about Saudi property, in their own language.",
     "visionTitle": "Vision",
     "vision": "Become the trusted data layer for international real estate in Saudi Arabia and the wider Gulf.",
     "vision2030Title": "Aligned with Saudi Vision 2030",
-    "vision2030": "Vision 2030 aims to diversify the economy and welcome global investment. Transparent information for foreign buyers supports a healthy, trusted real estate market — and that's exactly what we're here to provide.",
+    "vision2030": "Vision 2030 aims to diversify the economy and welcome global investment. Transparent information for foreign buyers supports a healthy, trusted real estate market, and that's exactly what we're here to provide.",
     "valuesTitle": "What we believe",
     "values": [
       {
         "title": "Facts over hype",
-        "body": "Official data, shown honestly — including when we don't know."
+        "body": "Official data, shown honestly, including when we don't know."
       },
       {
         "title": "Your language first",
@@ -767,7 +767,7 @@
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's talk",
-    "subtitle": "Partnerships, brokers, press, data licensing or just a question — we read every message.",
+    "subtitle": "Partnerships, brokers, press, data licensing or just a question, we read every message.",
     "name": "Full name",
     "email": "Email",
     "company": "Company (optional)",
@@ -782,7 +782,7 @@
     "message": "Message",
     "send": "Send message",
     "sending": "Sending…",
-    "success": "Thank you — your message has been received. We'll reply within 2 business days.",
+    "success": "Thank you, your message has been received. We'll reply within 2 business days.",
     "error": "Something went wrong. Please try again or email us directly.",
     "channels": {
       "email": "Email",

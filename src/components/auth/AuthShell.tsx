@@ -13,9 +13,8 @@ export function AuthShell({ children }: { children: ReactNode }) {
         <div className="hero-in w-full max-w-md">{children}</div>
       </div>
       <aside className="bg-hero relative hidden overflow-hidden text-white lg:flex lg:items-center">
-        <div className="sadu-pattern pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto max-w-md px-10">
-          <LogoMark className="h-14 w-14 animate-float" />
+                <div className="relative mx-auto max-w-md px-10">
+          <LogoMark className="h-12 w-12" />
           <p className="font-display mt-8 text-4xl leading-tight">{t("sideTitle")}</p>
           <ul className="mt-8 space-y-4">
             {points.map((p) => (
