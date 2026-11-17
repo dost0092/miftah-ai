@@ -37,22 +37,28 @@ export async function notifyTeam(subject: string, fields: Record<string, string 
     <div style="padding:12px 24px 20px;color:#7d8a83;font-size:12px">Sent automatically by miftah-ai. The full record is stored in Supabase.</div>
   </div></body></html>`;
 
-  try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from,
-        to,
-        subject: `[Miftah AI] ${subject}`,
-        html,
-        reply_to: fields["Email"] || undefined,
-      }),
-    });
-    if (!res.ok) console.error("[notify] Resend error", res.status, await res.text());
-  } catch (err) {
-    console.error("[notify] failed", err);
-  }
+  // One request per recipient, so a rejected address never blocks the others
+  // (e.g. Resend's test sender only delivers to the account owner).
+  await Promise.all(
+    to.map(async (recipient) => {
+      try {
+        const res = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            from,
+            to: [recipient],
+            subject: `[Miftah AI] ${subject}`,
+            html,
+            reply_to: fields["Email"] || undefined,
+          }),
+        });
+        if (!res.ok) console.error("[notify] Resend error", res.status, await res.text());
+      } catch (err) {
+        console.error("[notify] failed", err);
+      }
+    }),
+  );
 }
 
 function escapeHtml(s: string) {
