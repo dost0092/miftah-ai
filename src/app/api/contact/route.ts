@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getServerSupabase } from "@/lib/supabase";
+import { notifyTeam } from "@/lib/notify";
 
 const schema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -37,5 +38,13 @@ export async function POST(req: Request) {
     console.error("[contact] insert failed", error.message);
     return NextResponse.json({ ok: false, error: "db_error" }, { status: 500 });
   }
+  await notifyTeam(`New contact message: ${row.topic}`, {
+    Name: row.name,
+    Email: row.email,
+    Company: row.company,
+    Topic: row.topic,
+    Language: row.language,
+    Message: row.message,
+  });
   return NextResponse.json({ ok: true, stored: true });
 }

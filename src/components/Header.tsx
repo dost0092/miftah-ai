@@ -7,6 +7,22 @@ import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { IconArrow, IconCalc, IconChat, IconChevron, IconDoc, IconMap, IconMenu, IconX } from "./Icons";
 import { cn } from "@/lib/format";
+import { getBrowserSupabase } from "@/lib/supabase-auth";
+
+/** Tracks the signed-in user (null = signed out, undefined = still checking). */
+function useUser() {
+  const [user, setUser] = useState<{ email?: string; name?: string } | null | undefined>(undefined);
+  useEffect(() => {
+    const supabase = getBrowserSupabase();
+    if (!supabase) return setUser(null);
+    const map = (u: { email?: string; user_metadata?: Record<string, unknown> } | null | undefined) =>
+      u ? { email: u.email, name: (u.user_metadata?.full_name as string | undefined) ?? undefined } : null;
+    supabase.auth.getSession().then(({ data }) => setUser(map(data.session?.user)));
+    const { data } = supabase.auth.onAuthStateChange((_e, session) => setUser(map(session?.user)));
+    return () => data.subscription.unsubscribe();
+  }, []);
+  return user;
+}
 
 const productItems = [
   { key: "advisor", href: "/product", Icon: IconChat },
@@ -29,6 +45,8 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productOpen, setProductOpen] = useState(false);
+  const user = useUser();
+  const initial = (user?.name || user?.email || "?").trim().charAt(0).toUpperCase();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -98,10 +116,22 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <LanguageSwitcher className="hidden sm:block" />
-          <Link href="/waitlist" className="btn btn-primary hidden !py-2.5 text-sm sm:inline-flex">
-            {t("cta")}
-            <IconArrow width={16} height={16} />
-          </Link>
+          {user ? (
+            <Link href="/account" className="hidden items-center gap-2 rounded-full border border-sand-200 bg-white py-1 pe-3.5 ps-1 text-sm font-semibold text-ink-800 transition hover:border-green-600/40 sm:inline-flex" title={user.email}>
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-green-600 text-xs font-bold text-white">{initial}</span>
+              {t("account")}
+            </Link>
+          ) : (
+            <>
+              <Link href="/login" className={cn("hidden rounded-full px-3.5 py-2 text-sm font-semibold text-ink-700 transition hover:bg-sand-100 hover:text-ink-900 md:inline-flex", user === undefined && "invisible")}>
+                {t("signIn")}
+              </Link>
+              <Link href="/waitlist" className="btn btn-primary hidden !py-2.5 text-sm sm:inline-flex">
+                {t("cta")}
+                <IconArrow width={16} height={16} />
+              </Link>
+            </>
+          )}
           <button
             type="button"
             className="grid h-10 w-10 place-items-center rounded-full border border-sand-200 bg-white lg:hidden"
@@ -132,9 +162,14 @@ export function Header() {
             ))}
             <div className="mt-4 flex flex-col gap-3">
               <LanguageSwitcher align="start" />
-              <Link href="/waitlist" className="btn btn-primary w-full">
-                {t("cta")}
-              </Link>
+              {user ? (
+                <Link href="/account" className="btn btn-primary w-full">{t("account")}</Link>
+              ) : (
+                <>
+                  <Link href="/waitlist" className="btn btn-primary w-full">{t("cta")}</Link>
+                  <Link href="/login" className="btn btn-ghost w-full">{t("signIn")}</Link>
+                </>
+              )}
             </div>
           </div>
         </div>

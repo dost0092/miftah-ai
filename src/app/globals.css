@@ -2,23 +2,25 @@
 
 @theme {
   /* Saudi palette: flag green, deep palm, desert sand gold, warm cream */
-  --color-green-950: #04140d;
-  --color-green-900: #062a1c;
-  --color-green-800: #0a3d2a;
-  --color-green-700: #0d5236;
-  --color-green-600: #006c35; /* Saudi flag green */
-  --color-green-500: #12854a;
-  --color-green-400: #3fa66f;
-  --color-green-300: #7cc79d;
-  --color-green-100: #dcefe3;
-  --color-green-50: #eef7f1;
+  /* Refined Saudi emerald: rich but not heavy */
+  --color-green-950: #072a1e;
+  --color-green-900: #0b3a2a;
+  --color-green-800: #0f4a36;
+  --color-green-700: #115e43;
+  --color-green-600: #0b7a4c; /* primary, close to the Saudi flag green, a touch brighter */
+  --color-green-500: #179563;
+  --color-green-400: #4bb388;
+  --color-green-300: #8fd2b3;
+  --color-green-100: #ddf1e6;
+  --color-green-50: #f0f8f3;
 
-  --color-gold-700: #8a6a26;
-  --color-gold-600: #a8822f;
-  --color-gold-500: #c49a3c;
-  --color-gold-400: #d4b26a;
-  --color-gold-300: #e3cb94;
-  --color-gold-100: #f5ecd6;
+  /* Champagne gold */
+  --color-gold-700: #8c6b2c;
+  --color-gold-600: #a98637;
+  --color-gold-500: #c9a24e;
+  --color-gold-400: #dcbd78;
+  --color-gold-300: #ead6a6;
+  --color-gold-100: #f8f0dc;
 
   --color-sand-50: #fcfaf5;
   --color-sand-100: #f7f2e7;
@@ -89,6 +91,12 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 ::selection { background: var(--color-gold-300); color: var(--color-green-950); }
 
 @layer components {
+  .bg-hero {
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgb(23 149 99 / .45), transparent 60%),
+      radial-gradient(900px 500px at 100% 110%, rgb(201 162 78 / .22), transparent 60%),
+      linear-gradient(160deg, #0f4a36 0%, #0b3a2a 55%, #0a3326 100%);
+  }
   .container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
   @media (min-width: 640px) { .container-x { padding-inline: 1.5rem; } }
 
@@ -99,7 +107,7 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
     white-space: nowrap;
   }
   .btn:active { transform: translateY(1px); }
-  .btn-primary { background: var(--color-green-600); color: white; box-shadow: 0 8px 24px -10px rgb(0 108 53 / .6); }
+  .btn-primary { background: var(--color-green-600); color: white; box-shadow: 0 8px 24px -10px rgb(11 122 76 / .55); }
   .btn-primary:hover { background: var(--color-green-700); }
   .btn-gold { background: var(--color-gold-400); color: var(--color-green-950); }
   .btn-gold:hover { background: var(--color-gold-300); }

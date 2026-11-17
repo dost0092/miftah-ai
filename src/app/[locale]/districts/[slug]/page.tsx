@@ -8,6 +8,7 @@ import { pageMetadata } from "@/lib/site";
 import { SampleBanner } from "@/components/Section";
 import { Sparkline, TrendChart } from "@/components/Sparkline";
 import { ZoneBadge } from "@/components/ZoneBadge";
+import { SaveDistrictButton } from "@/components/auth/AccountWidgets";
 import { IconArrow, IconCalc, IconShield, IconSpark } from "@/components/Icons";
 
 type Params = { params: Promise<{ locale: string; slug: string }> };
@@ -49,7 +50,7 @@ export default async function DistrictPage({ params }: Params) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-green-900 text-white">
+      <section className="relative overflow-hidden bg-hero text-white">
         <div className="sadu-pattern pointer-events-none absolute inset-0" />
         <div className="container-x relative py-16 sm:py-20">
           <Link href="/districts" className="inline-flex items-center gap-1.5 text-sm text-white/60 transition hover:text-white">
@@ -61,6 +62,7 @@ export default async function DistrictPage({ params }: Params) {
               <h1 className="font-display mt-2 text-5xl sm:text-6xl">{name}</h1>
               <p className="mt-2 text-xl text-white/50" lang={rtl ? "en" : "ar"}>{alt}</p>
               <p className="mt-5 max-w-xl text-white/70">{t("subtitle", { name, city })}</p>
+              <div className="mt-6"><SaveDistrictButton slug={d.slug} /></div>
             </div>
             <div className="hero-in-delay grid grid-cols-3 gap-3 sm:min-w-[440px]">
               <HeroStat label={c("medianPrice")} value={fmtNumber(locale, d.median.apartment)} unit={c("perSqm")} />

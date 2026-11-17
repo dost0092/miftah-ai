@@ -19,7 +19,7 @@ export default async function WaitlistPage({ params }: Params) {
   const perks = t.raw("perks") as string[];
 
   return (
-    <section className="relative overflow-hidden bg-green-900">
+    <section className="relative overflow-hidden bg-hero">
       <div className="sadu-pattern pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute -top-40 start-[-10%] h-[520px] w-[720px] rounded-full bg-green-500/25 blur-[120px]" />
       <div className="container-x relative grid gap-12 py-20 sm:py-24 lg:grid-cols-[1fr_1.1fr] lg:items-center">

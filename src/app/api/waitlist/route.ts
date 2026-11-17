@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getServerSupabase } from "@/lib/supabase";
 import { locales } from "@/i18n/routing";
+import { notifyTeam } from "@/lib/notify";
 
 const schema = z.object({
   email: z.string().trim().toLowerCase().email().max(254),
@@ -46,5 +47,13 @@ export async function POST(req: Request) {
     console.error("[waitlist] insert failed", error.message);
     return NextResponse.json({ ok: false, error: "db_error" }, { status: 500 });
   }
+  await notifyTeam("New waitlist signup", {
+    Email: row.email,
+    Nationality: row.nationality,
+    City: row.city,
+    Role: row.role,
+    Language: row.language,
+    Question: row.question,
+  });
   return NextResponse.json({ ok: true, stored: true });
 }

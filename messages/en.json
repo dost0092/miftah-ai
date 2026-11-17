@@ -35,7 +35,10 @@
         "title": "Area Reports",
         "desc": "Shareable PDF reports for family and partners"
       }
-    }
+    },
+    "signIn": "Sign in",
+    "account": "My account",
+    "getStarted": "Get started"
   },
   "common": {
     "learnMore": "Learn more",
@@ -785,7 +788,10 @@
       "email": "Email",
       "partners": "Partnerships",
       "hq": "Focus markets",
-      "hqValue": "Riyadh · Jeddah"
+      "hqValue": "Riyadh · Jeddah",
+      "formValue": "Use the form on this page",
+      "replyValue": "Reply within 1 business day",
+      "responseLabel": "Response time"
     }
   },
   "waitlist": {
@@ -850,11 +856,11 @@
         },
         {
           "h": "Your rights",
-          "p": "You can ask to access, correct or delete your data, or withdraw consent, at any time by emailing privacy@miftah.ai."
+          "p": "You can ask to access, correct or delete your data, or withdraw consent, at any time through the contact page on this website."
         },
         {
           "h": "Contact",
-          "p": "Questions about privacy: privacy@miftah.ai."
+          "p": "Questions about privacy: through the contact page on this website."
         }
       ]
     },
@@ -933,5 +939,79 @@
     "title": "This door is locked",
     "body": "We couldn't find the page you're looking for.",
     "cta": "Back to home"
+  },
+  "announce": {
+    "text": "New: foreigners can now buy property in approved zones of Riyadh and Jeddah.",
+    "cta": "See what changed"
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Sign in to your Miftah AI account.",
+    "signupTitle": "Create your account",
+    "signupSubtitle": "Save districts, track prices and get early access to the AI advisor.",
+    "forgotTitle": "Reset your password",
+    "forgotSubtitle": "Enter your email and we will send you a secure link.",
+    "resetTitle": "Choose a new password",
+    "name": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "newPassword": "New password",
+    "passwordHint": "At least 8 characters.",
+    "forgot": "Forgot password?",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "signOut": "Sign out",
+    "sendLink": "Send reset link",
+    "savePassword": "Save password",
+    "working": "Please wait…",
+    "google": "Continue with Google",
+    "or": "or",
+    "noAccount": "New to Miftah AI?",
+    "createOne": "Create an account",
+    "haveAccount": "Already have an account?",
+    "terms": "By creating an account you agree to our Terms and Privacy Policy.",
+    "checkEmail": "Almost there. We have sent a confirmation link to your email. Open it to activate your account.",
+    "resetSent": "If an account exists for that email, a reset link is on its way.",
+    "passwordUpdated": "Your password has been updated.",
+    "account": "Go to my account",
+    "errorInvalid": "That email and password do not match.",
+    "errorUnconfirmed": "Please confirm your email first. Check your inbox.",
+    "errorExists": "An account with this email already exists. Try signing in.",
+    "errorLink": "That link is invalid or has expired. Please try again.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "notConfigured": "Accounts are temporarily unavailable.",
+    "sideTitle": "Your AI key to property in Saudi Arabia.",
+    "sidePoints": [
+      "Save and compare districts",
+      "Track price trends over time",
+      "Early access to the AI advisor",
+      "Available in 5 languages"
+    ],
+    "sideNote": "Your data is stored securely and never sold."
+  },
+  "account": {
+    "title": "My account",
+    "welcome": "Welcome, {name}",
+    "welcomeNoName": "Welcome",
+    "memberSince": "Member since",
+    "profile": "Profile",
+    "profileSubtitle": "Helps us tailor answers to your situation.",
+    "save": "Save changes",
+    "saved": "Saved",
+    "savedDistricts": "Saved districts",
+    "noSaved": "You have not saved any districts yet.",
+    "browse": "Browse districts",
+    "saveDistrict": "Save district",
+    "savedDistrict": "Saved",
+    "remove": "Remove",
+    "signInToSave": "Sign in to save",
+    "earlyAccess": "Early access",
+    "onWaitlist": "You are on the early-access list. We will email you as soon as the AI advisor opens.",
+    "notOnWaitlist": "Join the early-access list to be among the first to use the AI advisor.",
+    "onList": "On the list",
+    "joinWaitlist": "Join early access",
+    "advisorTitle": "AI advisor",
+    "advisorBody": "Ask anything about buying in Saudi Arabia and get answers with sources, in your language.",
+    "quickLinks": "Quick links"
   }
 }

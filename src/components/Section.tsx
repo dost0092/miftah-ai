@@ -34,7 +34,7 @@ export function SectionHeading({
 /** Dark green hero used at the top of inner pages. */
 export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: string; title: ReactNode; subtitle?: ReactNode; children?: ReactNode }) {
   return (
-    <section className="relative overflow-hidden bg-green-900 text-white">
+    <section className="relative overflow-hidden bg-hero text-white">
       <div className="sadu-pattern pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute -top-40 start-1/2 h-[480px] w-[780px] -translate-x-1/2 rounded-full bg-green-500/25 blur-3xl rtl:translate-x-1/2" />
       <div className="container-x relative py-20 sm:py-24">

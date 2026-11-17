@@ -47,11 +47,9 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
   return (
     <>
       {/* ───────────── HERO ───────────── */}
-      <section className="relative overflow-hidden bg-green-900 text-white">
+      <section className="relative overflow-hidden bg-hero text-white">
         <div className="sadu-pattern pointer-events-none absolute inset-0" />
         <div className="grid-fade pointer-events-none absolute inset-0" />
-        <div className="pointer-events-none absolute -top-48 start-[-10%] h-[560px] w-[760px] rounded-full bg-green-500/30 blur-[120px]" />
-        <div className="pointer-events-none absolute -bottom-40 end-[-10%] h-[420px] w-[620px] rounded-full bg-gold-500/20 blur-[120px]" />
 
         <div className="container-x relative grid items-center gap-14 pb-28 [&>*]:min-w-0 pt-16 sm:pt-20 lg:grid-cols-[1.05fr_1fr] lg:pb-36 lg:pt-24">
           <div className="hero-in">
