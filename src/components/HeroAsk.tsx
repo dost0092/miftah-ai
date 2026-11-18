@@ -1,19 +1,25 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 import { useRouter } from "@/i18n/navigation";
+import { getBrowserSupabase } from "@/lib/supabase-auth";
 import { IconArrow, IconSearch } from "./Icons";
 
 export function HeroAsk() {
   const t = useTranslations("home.hero");
   const router = useRouter();
+  const locale = useLocale();
   const [q, setQ] = useState("");
   const suggestions = t.raw("suggestions") as string[];
 
-  function go(question: string) {
+  // Signed in: straight to Miftah AI. Otherwise sign up first, then land on the answer.
+  async function go(question: string) {
     const value = question.trim();
-    router.push(value ? { pathname: "/waitlist", query: { q: value } } : "/waitlist");
+    const target = value ? `/app/advisor?q=${encodeURIComponent(value)}` : "/app/advisor";
+    const { data } = (await getBrowserSupabase()?.auth.getSession()) ?? { data: { session: null } };
+    if (data.session) router.push(target);
+    else router.push({ pathname: "/signup", query: { next: `/${locale}${target}` } });
   }
 
   function onSubmit(e: FormEvent) {

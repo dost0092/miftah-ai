@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getAppSession } from "@/lib/workspace/session";
+import { getAllowance } from "@/lib/billing";
 import { activityByDay, activityCounts, recentActivity, type ActivityKind } from "@/lib/workspace/store";
 import { savedFromUser } from "@/lib/account-store";
 import { getDistrict } from "@/lib/districts";
@@ -28,7 +29,8 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
   const tc = await getTranslations("common");
   const session = (await getAppSession())!;
   const rtl = locale === "ar" || locale === "ur";
-  const [counts, days, history] = await Promise.all([activityCounts(session), activityByDay(session, 14), recentActivity(session, 25)]);
+  const [counts, days, history, allowance] = await Promise.all([activityCounts(session), activityByDay(session, 14), recentActivity(session, 25), getAllowance(session)]);
+  const tb = await getTranslations("app.billing");
   const saved = savedFromUser(session.user).map(getDistrict).filter((d): d is NonNullable<typeof d> => Boolean(d));
   const maxDay = Math.max(1, ...days.map((d) => d.count));
 
@@ -120,12 +122,13 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
           <Panel title={t("sections.plan")}>
             <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-sand-50 p-4">
               <div>
-                <span className="rounded-full bg-night-950 px-2.5 py-1 text-xs font-semibold text-white">{td("planName")}</span>
-                <p className="mt-2 max-w-md text-sm text-ink-600">{t("planBody")}</p>
+                <span className="rounded-full bg-night-950 px-2.5 py-1 text-xs font-semibold text-white">{allowance.plan.plan === "pro" ? tb("proName") : tb("planBadge", { plan: tb("free") })}</span>
+                <p className="mt-2 max-w-md text-sm text-ink-600">
+                  {allowance.limits ? `${tb("questions")}: ${fmtNumber(locale, allowance.used.chat)} / ${fmtNumber(locale, allowance.limits.chat)} · ${tb("reports")}: ${fmtNumber(locale, allowance.used.report)} / ${fmtNumber(locale, allowance.limits.report)}` : tb("proFeatures.0")}
+                </p>
               </div>
-              <Link href="/pricing" className="btn btn-ghost !py-2 text-sm">{td("viewPlans")}</Link>
+              <Link href="/app/billing" className="btn btn-ghost !py-2 text-sm">{allowance.plan.plan === "pro" ? tb("manage") : tb("upgrade")}</Link>
             </div>
-            <EmptyState icon={<IconBriefcase width={22} height={22} />} title={t("billingEmpty")} />
           </Panel>
         </div>
 

@@ -1,10 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
-import { PageHero, SectionHeading } from "@/components/Section";
+import { PageHero } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { CTASection } from "@/components/CTASection";
 import { ChatDemo } from "@/components/ChatDemo";
-import { IconArrow, IconCalc, IconCheck, IconDoc, IconShield } from "@/components/Icons";
+import { IconCalc, IconCheck, IconDoc, IconShield } from "@/components/Icons";
 import { DistrictExplorer } from "@/components/DistrictExplorer";
 import { LogoMark } from "@/components/Logo";
 import { ZoneBadge } from "@/components/ZoneBadge";
@@ -26,9 +25,7 @@ export default async function ProductPage({ params }: Params) {
   const t = await getTranslations("product");
   const c = await getTranslations("common");
   const calc = await getTranslations("calculator");
-  const nav = await getTranslations("nav");
   const modules = t.raw("modules") as Array<{ tag: string; title: string; body: string; points: string[] }>;
-  const roadmap = t.raw("roadmap.items") as Array<{ stage: string; when: string; body: string }>;
 
   const visuals = [
     <ChatDemo key="chat" />,
@@ -97,28 +94,6 @@ export default async function ProductPage({ params }: Params) {
         ))}
       </div>
 
-      <section className="bg-sand-100 py-24 sm:py-32">
-        <div className="container-x">
-          <SectionHeading center eyebrow={t("roadmap.eyebrow")} title={t("roadmap.title")} />
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {roadmap.map((r, i) => (
-              <Reveal key={i} delay={i * 100} className={i === 0 ? "rounded-[.875rem] bg-night-950 p-8 text-white" : "card p-8"}>
-                <div className="flex items-center justify-between">
-                  <span className={i === 0 ? "rounded-full bg-white px-3 py-1 text-sm font-semibold text-night-950" : "rounded-full bg-sand-100 px-3 py-1 text-sm font-bold text-ink-700"}>{r.stage}</span>
-                  <span className={i === 0 ? "text-sm text-white/60" : "text-sm text-ink-400"}>{r.when}</span>
-                </div>
-                <p className={i === 0 ? "mt-6 leading-relaxed text-white/85" : "mt-6 leading-relaxed text-ink-500"}>{r.body}</p>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link href="/waitlist" className="btn btn-primary">
-              {nav("cta")}
-              <IconArrow width={16} height={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
       <CTASection />
     </>
   );

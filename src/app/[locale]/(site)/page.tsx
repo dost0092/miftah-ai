@@ -66,7 +66,7 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               <HeroAsk />
             </div>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/waitlist" className="btn btn-primary">
+              <Link href="/signup" className="btn btn-primary">
                 {t("hero.ctaPrimary")}
                 <IconArrow width={16} height={16} className="flip-rtl" />
               </Link>

@@ -12,7 +12,7 @@ const TYPES: ReportType[] = ["district", "due_diligence", "cost"];
 const typeStyle: Record<ReportType, string> = {
   district: "bg-green-50 text-green-700",
   due_diligence: "bg-emerald-50 text-emerald-700",
-  cost: "bg-amber-50 text-amber-700",
+  cost: "bg-sand-100 text-ink-700",
 };
 
 export function ReportsTable({ reports: initial }: { reports: UserReport[] }) {
@@ -84,7 +84,7 @@ export function ReportsTable({ reports: initial }: { reports: UserReport[] }) {
                   <td className="px-5 py-3.5">
                     <div className="flex justify-end gap-1">
                       <Link href={`/app/reports/${r.id}`} className="grid h-8 w-8 place-items-center rounded-lg text-ink-500 hover:bg-sand-100 hover:text-ink-900" title={t("open")} aria-label={t("open")}><IconExternal width={16} height={16} /></Link>
-                      <button type="button" onClick={() => remove(r.id)} className="grid h-8 w-8 place-items-center rounded-lg text-ink-500 hover:bg-red-50 hover:text-red-600" title={t("delete")} aria-label={t("delete")}><IconTrash width={16} height={16} /></button>
+                      <button type="button" onClick={() => remove(r.id)} className="grid h-8 w-8 place-items-center rounded-lg text-ink-500 hover:bg-sand-100 hover:text-ink-900" title={t("delete")} aria-label={t("delete")}><IconTrash width={16} height={16} /></button>
                     </div>
                   </td>
                 </tr>

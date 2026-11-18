@@ -7,7 +7,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LogoMark } from "@/components/Logo";
 import { getBrowserSupabase } from "@/lib/supabase-auth";
 import { cn } from "@/lib/format";
-import { IconBook, IconChat, IconExternal, IconLogout, IconPin, IconSearch, IconUser } from "@/components/Icons";
+import { IconBook, IconBolt, IconChat, IconExternal, IconLogout, IconPin, IconSearch, IconTag, IconUser } from "@/components/Icons";
 
 type Results = { districts: { slug: string; nameEn: string; nameAr: string; city: string }[]; documents: { id: string; title: string; category: string; excerpt: string }[] };
 
@@ -161,6 +161,7 @@ function UserMenu({ name, email, preview }: { name: string; email: string; previ
             <p className="truncate text-xs text-ink-400" dir="ltr">{email}</p>
           </div>
           <Link href="/app/account" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-4 py-2 text-sm text-ink-700 hover:bg-sand-50"><IconUser width={16} height={16} className="text-ink-400" /> {t("account")}</Link>
+          <Link href="/app/billing" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-4 py-2 text-sm text-ink-700 hover:bg-sand-50"><IconTag width={16} height={16} className="text-ink-400" /> {t("billing")}</Link>
           <Link href="/" className="flex items-center gap-2.5 px-4 py-2 text-sm text-ink-700 hover:bg-sand-50"><IconExternal width={16} height={16} className="text-ink-400" /> {t("backToSite")}</Link>
           {!preview && (
             <button type="button" onClick={signOut} className="flex w-full items-center gap-2.5 px-4 py-2 text-start text-sm text-ink-700 hover:bg-sand-50"><IconLogout width={16} height={16} className="flip-rtl text-ink-400" /> {t("signOut")}</button>
@@ -171,14 +172,22 @@ function UserMenu({ name, email, preview }: { name: string; email: string; previ
   );
 }
 
-export function AppTopbar({ name, email, preview }: { name: string; email: string; preview: boolean }) {
+export function AppTopbar({ name, email, preview, plan }: { name: string; email: string; preview: boolean; plan: "free" | "pro" }) {
   const t = useTranslations("app");
+  const tb = useTranslations("app.billing");
   return (
     <header className="sticky top-0 z-30 flex h-16 shrink-0 items-center gap-3 border-b border-sand-200 bg-white/90 px-4 backdrop-blur print:hidden sm:px-6">
       <Link href="/app" className="md:hidden" aria-label="Miftah AI"><LogoMark className="h-8 w-8" /></Link>
       <GlobalSearch />
       <div className="ms-auto flex items-center gap-2 sm:gap-3">
-        {preview && <span className={cn("hidden rounded-full bg-amber-50 px-2.5 py-1 text-[11px] font-medium text-amber-700 ring-1 ring-inset ring-amber-600/20 lg:inline")}>{t("preview")}</span>}
+        {preview && <span className={cn("hidden rounded-full bg-sand-100 px-2.5 py-1 text-[11px] font-medium text-ink-500 ring-1 ring-inset ring-sand-200 lg:inline")}>{t("preview")}</span>}
+        {plan === "pro" ? (
+          <Link href="/app/billing" className="hidden rounded-full bg-night-950 px-2.5 py-1 text-[11px] font-semibold text-white sm:inline">{tb("pro")}</Link>
+        ) : (
+          <Link href="/app/billing" className="hidden items-center gap-1.5 rounded-full border border-green-600/20 bg-green-50 px-3 py-1.5 text-xs font-semibold text-green-700 transition hover:bg-green-100 sm:inline-flex">
+            <IconBolt width={13} height={13} /> {tb("upgrade")}
+          </Link>
+        )}
         <LanguageSwitcher className="hidden sm:block" />
         <span className="hidden h-6 w-px bg-sand-200 sm:block" />
         <UserMenu name={name} email={email} preview={preview} />

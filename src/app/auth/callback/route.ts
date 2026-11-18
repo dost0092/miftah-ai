@@ -20,8 +20,10 @@ export async function GET(req: Request) {
     const result = await supabase?.auth.exchangeCodeForSession(code);
     if (result && !result.error) {
       const user = result.data.user;
-      // Confirmation link of a brand-new account: tell the team.
-      if (searchParams.get("new") === "1" && user && Date.now() - new Date(user.created_at).getTime() < 3 * 24 * 3600 * 1000) {
+      const age = user ? Date.now() - new Date(user.created_at).getTime() : Infinity;
+      const viaOAuth = user?.app_metadata?.provider && user.app_metadata.provider !== "email";
+      // New account: email confirmation link, or first Google sign-in.
+      if (user && ((searchParams.get("new") === "1" && age < 3 * 24 * 3600 * 1000) || (viaOAuth && age < 2 * 60 * 1000))) {
         await notifyTeam("New account created", {
           Email: user.email,
           Name: (user.user_metadata?.full_name as string | undefined) ?? "",

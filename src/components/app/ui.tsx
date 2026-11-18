@@ -29,7 +29,7 @@ export function PageHeader({ title, subtitle, actions }: { title: string; subtit
 
 const statusStyle: Record<string, string> = {
   verified: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
-  needs_review: "bg-amber-50 text-amber-700 ring-amber-600/25",
+  needs_review: "bg-sand-100 text-ink-700 ring-sand-300",
   guidance: "bg-green-50 text-green-700 ring-green-600/20",
   sample: "bg-sand-100 text-ink-500 ring-ink-400/25",
 };

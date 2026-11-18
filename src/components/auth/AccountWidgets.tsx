@@ -67,7 +67,7 @@ export function ProfileForm({ profile }: { profile: Profile | null }) {
           {status === "saving" ? a("working") : t("save")}
         </button>
         {status === "saved" && <span className="inline-flex items-center gap-1 text-sm font-medium text-emerald-700"><IconCheck width={16} height={16} /> {t("saved")}</span>}
-        {status === "error" && <span className="text-sm text-red-600">{a("errorGeneric")}</span>}
+        {status === "error" && <span className="text-sm text-ink-500">{a("errorGeneric")}</span>}
       </div>
     </form>
   );

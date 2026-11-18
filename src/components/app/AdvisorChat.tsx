@@ -8,6 +8,7 @@ import { cn } from "@/lib/format";
 import type { ChatSource, ChatThread } from "@/lib/workspace/store";
 import { Markdown } from "./Markdown";
 import { StatusBadge } from "./ui";
+import { UpgradeNotice } from "./billing";
 import {
   IconBook,
   IconCalc,
@@ -29,7 +30,7 @@ import {
   IconX,
 } from "@/components/Icons";
 
-type Msg = { role: "user" | "assistant"; content: string; sources: ChatSource[]; pending?: boolean; error?: boolean; phase?: "search" | "read" | "write" };
+type Msg = { role: "user" | "assistant"; content: string; sources: ChatSource[]; pending?: boolean; error?: boolean; limit?: number; phase?: "search" | "read" | "write" };
 
 const suggestionIcons = [IconShield, IconCoins, IconTrend, IconKey, IconDoc, IconMap];
 
@@ -165,15 +166,17 @@ function AssistantMessage({ m, idx, last, onRegenerate }: { m: Msg; idx: number;
           )}
         </p>
         <SourceStrip id={id} sources={m.sources} highlight={hl} />
-        {m.pending && !m.content ? (
+        {m.limit ? (
+          <UpgradeNotice kind="chat" limit={m.limit} />
+        ) : m.pending && !m.content ? (
           <Progress phase={m.phase} count={m.sources.length} />
         ) : (
           <div className={cn(streaming && "streaming")}>
             <Markdown text={m.content} onCite={cite} />
           </div>
         )}
-        {m.error && <p className="mt-2 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 ring-1 ring-inset ring-red-600/15">{t("error")}</p>}
-        {!m.pending && m.content && (
+        {m.error && <p className="mt-2 rounded-lg border border-sand-200 bg-sand-50 px-3 py-2 text-sm text-ink-700">{t("error")}</p>}
+        {!m.pending && m.content && !m.limit && (
           <div className="mt-3 flex items-center gap-1 text-ink-400">
             <button
               type="button"
@@ -284,6 +287,7 @@ export function AdvisorChat({
   initialQuestion,
   aiMode,
   firstName,
+  quota,
 }: {
   threads: ChatThread[];
   threadId: string | null;
@@ -291,6 +295,8 @@ export function AdvisorChat({
   initialQuestion: string | null;
   aiMode: boolean;
   firstName?: string;
+  /** Free-plan allowance: questions left this month, or null on Pro. */
+  quota: { left: number; limit: number } | null;
 }) {
   const t = useTranslations("app.advisor");
   const locale = useLocale();
@@ -301,6 +307,7 @@ export function AdvisorChat({
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  const [left, setLeft] = useState(quota?.left ?? null);
   const scroller = useRef<HTMLDivElement>(null);
   const textarea = useRef<HTMLTextAreaElement>(null);
   const abort = useRef<AbortController | null>(null);
@@ -330,7 +337,14 @@ export function AdvisorChat({
       abort.current = ctrl;
       try {
         const res = await fetch("/api/app/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q, threadId }), signal: ctrl.signal });
+        if (res.status === 402) {
+          const data = await res.json().catch(() => ({}));
+          setLeft(0);
+          patch((m) => ({ ...m, pending: false, limit: data.limit ?? quota?.limit ?? 10 }));
+          return;
+        }
         if (!res.ok || !res.body) throw new Error(String(res.status));
+        setLeft((n) => (n === null ? null : Math.max(0, n - 1)));
         const reader = res.body.getReader();
         const decoder = new TextDecoder();
         let buf = "";
@@ -422,7 +436,7 @@ export function AdvisorChat({
                     <Link href={`/app/advisor?t=${th.id}`} onClick={() => setShowHistory(false)} className="min-w-0 flex-1 px-3 py-2" title={th.title}>
                       <span className={cn("block truncate text-[13.5px]", th.id === threadId ? "font-medium text-ink-900" : "text-ink-700")}>{th.title}</span>
                     </Link>
-                    <button type="button" onClick={() => remove(th.id)} className="me-1 hidden h-7 w-7 shrink-0 place-items-center rounded-md text-ink-400 hover:bg-red-50 hover:text-red-600 group-hover:grid" aria-label={t("delete")} title={t("delete")}>
+                    <button type="button" onClick={() => remove(th.id)} className="me-1 hidden h-7 w-7 shrink-0 place-items-center rounded-md text-ink-400 hover:bg-sand-200 hover:text-ink-900 group-hover:grid" aria-label={t("delete")} title={t("delete")}>
                       <IconTrash width={14} height={14} />
                     </button>
                   </div>
@@ -435,6 +449,15 @@ export function AdvisorChat({
   );
 
   const empty = messages.length === 0;
+  const tb = useTranslations("app.billing");
+  const quotaLine =
+    left !== null && quota ? (
+      <p className="mt-2 text-center text-xs text-ink-500">
+        {tb("left", { n: left, limit: quota.limit })}
+        {" · "}
+        <Link href="/app/billing" className="font-medium text-green-700 hover:underline">{tb("upgrade")}</Link>
+      </p>
+    ) : null;
 
   return (
     <div className="flex h-full min-h-0">
@@ -466,7 +489,7 @@ export function AdvisorChat({
               </div>
               <div className="mt-8">
                 <Composer value={input} onChange={setInput} onSend={() => send(input)} onStop={() => abort.current?.abort()} busy={busy} big inputRef={textarea} />
-                {!aiMode && <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-600/20">{t("libraryMode")}</p>}
+                {!aiMode && <p className="mt-3 rounded-lg border border-sand-200 bg-sand-50 px-3 py-2 text-xs text-ink-500">{t("libraryMode")}</p>}
               </div>
               <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
                 {suggestions.map((s, i) => {
@@ -490,6 +513,7 @@ export function AdvisorChat({
                 })}
               </div>
               <p className="mt-6 text-center text-[11px] text-ink-400">{t("disclaimer")}</p>
+              {quotaLine}
             </div>
           </div>
         ) : (
@@ -518,8 +542,9 @@ export function AdvisorChat({
             <div className="relative px-4 pb-4 sm:px-6">
               <div className="pointer-events-none absolute inset-x-0 -top-8 h-8 bg-gradient-to-t from-white to-transparent" aria-hidden />
               <div className="mx-auto max-w-3xl">
-                {!aiMode && <p className="mb-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-inset ring-amber-600/20">{t("libraryMode")}</p>}
+                {!aiMode && <p className="mb-2 rounded-lg border border-sand-200 bg-sand-50 px-3 py-2 text-xs text-ink-500">{t("libraryMode")}</p>}
                 <Composer value={input} onChange={setInput} onSend={() => send(input)} onStop={() => abort.current?.abort()} busy={busy} inputRef={textarea} />
+                {quotaLine}
                 <p className="mt-2 hidden text-center text-[11px] text-ink-400 sm:block">{t("disclaimer")}</p>
               </div>
             </div>

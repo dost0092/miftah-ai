@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { getAppSession, displayName } from "@/lib/workspace/session";
 import { activityByDay, activityCounts, recentActivity, type ActivityKind } from "@/lib/workspace/store";
 import { getLibrary } from "@/lib/workspace/library";
+import { getAllowance } from "@/lib/billing";
 import { savedFromUser } from "@/lib/account-store";
 import { DATA_UNTIL, IS_SAMPLE_DATA, getDistrict, trendChange } from "@/lib/districts";
 import { cn, fmtDate, fmtNumber, fmtPercent, fmtRelative } from "@/lib/format";
@@ -32,7 +33,9 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
   const session = (await getAppSession())!;
   const rtl = locale === "ar" || locale === "ur";
 
-  const [counts, recent, library, days] = await Promise.all([activityCounts(session), recentActivity(session, 6), getLibrary(), activityByDay(session, 14)]);
+  const [counts, recent, library, days, allowance] = await Promise.all([activityCounts(session), recentActivity(session, 6), getLibrary(), activityByDay(session, 14), getAllowance(session)]);
+  const tb = await getTranslations("app.billing");
+  const pro = allowance.plan.plan === "pro";
   const name = displayName(session);
   const saved = savedFromUser(session.user).map(getDistrict).filter((d): d is NonNullable<typeof d> => Boolean(d));
   const toVerify = library.docs.filter((d) => d.status === "needs_review").length;
@@ -214,12 +217,24 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
               <div className="pointer-events-none absolute -end-16 -top-16 h-48 w-48 rounded-full bg-green-600/30 blur-3xl" aria-hidden />
               <p className="relative text-sm text-white/60">{t("plan")}</p>
               <p className="relative mt-1 flex items-center gap-2 text-lg font-semibold">
-                {t("planName")}
+                {pro ? tb("proName") : tb("planBadge", { plan: tb("free") })}
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden />
               </p>
-              <p className="relative mt-2 text-sm leading-relaxed text-white/65">{t("planBody")}</p>
-              <Link href="/pricing" className="relative mt-5 inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-2 text-sm font-medium text-ink-900 transition hover:bg-sand-100">
-                {t("viewPlans")} <IconArrow width={14} height={14} className="flip-rtl" />
+              {allowance.limits ? (
+                <div className="relative mt-4">
+                  <div className="flex items-baseline justify-between text-sm">
+                    <span className="text-white/70">{tb("questions")}</span>
+                    <span className="tabular-nums text-white" dir="ltr">{fmtNumber(locale, allowance.used.chat)} / {fmtNumber(locale, allowance.limits.chat)}</span>
+                  </div>
+                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+                    <div className="h-full rounded-full bg-green-400" style={{ width: `${Math.min(100, (allowance.used.chat / allowance.limits.chat) * 100)}%` }} />
+                  </div>
+                </div>
+              ) : (
+                <p className="relative mt-2 text-sm leading-relaxed text-white/65">{tb("proFeatures.0")}</p>
+              )}
+              <Link href="/app/billing" className="relative mt-5 inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-2 text-sm font-medium text-ink-900 transition hover:bg-sand-100">
+                {pro ? tb("manage") : `${tb("upgrade")} · ${tb("price")}`} <IconArrow width={14} height={14} className="flip-rtl" />
               </Link>
             </section>
 
@@ -241,7 +256,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
                 <span>{t("marketUntil")}</span>
                 <span className="font-medium text-ink-900">{fmtDate(locale, DATA_UNTIL)}</span>
               </p>
-              {IS_SAMPLE_DATA && <p className="mt-2 text-xs leading-relaxed text-amber-700">{t("sampleNote")}</p>}
+              {IS_SAMPLE_DATA && <p className="mt-2 text-xs leading-relaxed text-ink-400">{t("sampleNote")}</p>}
               <Link href="/app/library" className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-green-600 hover:text-green-700">
                 <IconDatabase width={15} height={15} /> {t("openLibrary")}
               </Link>
@@ -265,9 +280,9 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
                           <span className="block truncate text-sm font-medium text-ink-900">{rtl ? d.nameAr : d.nameEn}</span>
                           <span className="text-xs text-ink-400">{c(`city.${d.city}`)}</span>
                         </span>
-                        <Sparkline id={`dash-${d.slug}`} values={d.trend} stroke={ch >= 0 ? "#047857" : "#b45309"} className="h-7 w-16" />
+                        <Sparkline id={`dash-${d.slug}`} values={d.trend} stroke={ch >= 0 ? "#047857" : "#8b919b"} className="h-7 w-16" />
                         <span className="w-24 text-end text-sm tabular-nums text-ink-900" dir="ltr">{fmtNumber(locale, d.median.apartment)}</span>
-                        <span className={cn("w-14 text-end text-xs font-semibold tabular-nums", ch >= 0 ? "text-emerald-700" : "text-amber-700")} dir="ltr">{fmtPercent(locale, ch)}</span>
+                        <span className={cn("w-14 text-end text-xs font-semibold tabular-nums", ch >= 0 ? "text-emerald-700" : "text-ink-500")} dir="ltr">{fmtPercent(locale, ch)}</span>
                       </Link>
                     </li>
                   );

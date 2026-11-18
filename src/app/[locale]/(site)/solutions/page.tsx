@@ -57,7 +57,7 @@ export default async function SolutionsPage({ params }: Params) {
                   <h2 className="font-display mt-6 text-3xl sm:text-4xl">{item.title}</h2>
                   <p className={cn("mt-4 text-lg italic", dark ? "text-white/90" : "text-ink-900")}>{item.question}</p>
                   <p className={cn("mt-4 leading-relaxed", dark ? "text-white/75" : "text-ink-500")}>{item.body}</p>
-                  <Link href={item.id === "brokers" || item.id === "enterprise" ? "/contact" : "/waitlist"} className={cn("btn mt-8", dark ? "btn-gold" : "btn-primary")}>
+                  <Link href={item.id === "brokers" || item.id === "enterprise" ? "/contact" : "/signup"} className={cn("btn mt-8", dark ? "btn-gold" : "btn-primary")}>
                     {item.id === "brokers" || item.id === "enterprise" ? nav("contact") : nav("cta")}
                     <IconArrow width={16} height={16} />
                   </Link>

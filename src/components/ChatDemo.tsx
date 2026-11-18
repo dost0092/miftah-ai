@@ -90,7 +90,7 @@ export function ChatDemo() {
 
               <div className={cn("flex flex-wrap items-center justify-between gap-2 border-t border-sand-200 pt-3 transition-all duration-700", stage >= 4 ? "opacity-100" : "opacity-0")}>
                 <p className="text-[11px] text-ink-400">
-                  {c("source")}: MOJ · {c("dataUntil")} {fmtDate(locale, DATA_UNTIL)} · <span className="font-semibold text-amber-700">{c("sampleData")}</span>
+                  {c("source")}: MOJ · {c("dataUntil")} {fmtDate(locale, DATA_UNTIL)} · <span className="font-semibold text-ink-500">{c("sampleData")}</span>
                 </p>
                 <div className="flex gap-1.5">
                   <span className="inline-flex items-center gap-1 rounded-lg bg-night-950 px-2 py-1 text-[11px] font-medium text-white">

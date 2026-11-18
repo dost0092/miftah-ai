@@ -37,7 +37,7 @@ export function ChangePasswordForm() {
         <span className="text-sm font-semibold text-ink-700">{t("confirmPassword")}</span>
         <input name="confirm" type="password" autoComplete="new-password" minLength={8} required className="input mt-2" />
       </label>
-      {msg && <p className={msg.ok ? "text-sm text-emerald-700" : "text-sm text-red-600"}>{msg.text}</p>}
+      {msg && <p className={msg.ok ? "text-sm text-emerald-700" : "text-sm text-ink-500"}>{msg.text}</p>}
       <button type="submit" disabled={busy} className="btn btn-primary !py-2.5 text-sm disabled:opacity-60">{t("updatePassword")}</button>
     </form>
   );

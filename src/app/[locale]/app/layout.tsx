@@ -4,6 +4,7 @@ import { redirect } from "@/i18n/navigation";
 import { getAppSession, displayName } from "@/lib/workspace/session";
 import { AppSidebar } from "@/components/app/AppSidebar";
 import { AppTopbar } from "@/components/app/AppTopbar";
+import { getPlan } from "@/lib/billing";
 
 export const dynamic = "force-dynamic";
 
@@ -15,12 +16,13 @@ export default async function AppLayout({ children, params }: { children: React.
   setRequestLocale(locale);
   const session = await getAppSession();
   if (!session) return redirect({ href: { pathname: "/login", query: { next: `/${locale}/app` } }, locale });
+  const plan = await getPlan(session);
 
   return (
     <div className="app-root flex h-dvh overflow-hidden bg-white">
       <AppSidebar />
       <div className="flex min-w-0 flex-1 flex-col">
-        <AppTopbar name={displayName(session)} email={session.user.email ?? ""} preview={session.preview} />
+        <AppTopbar name={displayName(session)} email={session.user.email ?? ""} preview={session.preview} plan={plan.plan} />
         <main id="main" className="app-main min-h-0 flex-1 overflow-y-auto pb-16 md:pb-0">{children}</main>
       </div>
     </div>
