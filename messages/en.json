@@ -506,7 +506,7 @@
       "body": "Clean, English-translated district-level data for banks, developers, portals and relocation firms.",
       "cta": "Contact us"
     },
-    "note": "Prices in Saudi riyals. Our order process is handled by our online reseller Paddle.com, the merchant of record, which also handles VAT, billing questions and returns. Cancel anytime."
+    "note": "Prices shown in Saudi riyals; Pro is billed as US$26.40 a month (SAR 99 at the fixed rate). Our order process is handled by our online reseller Paddle.com, the merchant of record, which also handles VAT, billing questions and returns. Cancel anytime."
   },
   "solutions": {
     "eyebrow": "Solutions",
@@ -1430,7 +1430,7 @@
       "manage": "Manage billing",
       "renews": "Renews on {date}",
       "ends": "Access ends on {date}",
-      "billedNote": "Billed monthly through Paddle, our reseller and merchant of record, which handles payment and VAT. Cancel anytime from Manage billing.",
+      "billedNote": "Billed monthly as US$26.40 (SAR 99) through Paddle, our reseller and merchant of record, which handles payment and VAT. Cancel anytime from Manage billing.",
       "notConfigured": "Online payment is being enabled. Contact us and we will activate Pro on your account.",
       "contact": "Contact us",
       "error": "We couldn't open checkout. Please try again in a moment.",
