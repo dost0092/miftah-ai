@@ -231,3 +231,57 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 .map-tiles { filter: grayscale(1) contrast(.9) brightness(1.06); }
+
+/* ── Miftah AI chat ── */
+@keyframes msg-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.msg-in { animation: msg-in .35s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 1.6s linear infinite; }
+@keyframes shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+.shimmer-text {
+  background: linear-gradient(90deg, var(--color-ink-500) 0%, var(--color-ink-500) 40%, var(--color-ink-900) 50%, var(--color-ink-500) 60%, var(--color-ink-500) 100%);
+  background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 1.8s linear infinite;
+}
+@keyframes caret { 50% { opacity: 0; } }
+.streaming .prose-chat > :is(p, h3, h4):last-child::after,
+.streaming .prose-chat > :is(ul, ol):last-child > li:last-child::after {
+  content: ""; display: inline-block; width: .5em; height: 1.05em; margin-inline-start: 2px; vertical-align: -.15em;
+  border-radius: 2px; background: var(--color-green-600); animation: caret 1s steps(1) infinite;
+}
+.ai-stage { background: linear-gradient(180deg, #f7f9ff 0%, #ffffff 46%); }
+.ai-orb {
+  position: absolute; top: -180px; left: 50%; width: 760px; height: 420px; transform: translateX(-50%); pointer-events: none;
+  background:
+    radial-gradient(closest-side, rgb(65 102 234 / .16), transparent 70%),
+    radial-gradient(closest-side at 30% 60%, rgb(114 144 242 / .14), transparent 70%);
+  filter: blur(10px);
+}
+.ai-stage::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(to right, rgb(11 13 18 / .035) 1px, transparent 1px), linear-gradient(to bottom, rgb(11 13 18 / .035) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 45% at 50% 0%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 60% 45% at 50% 0%, #000 30%, transparent 75%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .msg-in, .animate-spin-slow, .shimmer-text, .streaming *::after { animation: none !important; }
+  .shimmer-text { color: var(--color-ink-700); background: none; }
+}
+
+/* Dashboard AI hero: deep navy into brand blue, faint grid, soft glow. */
+.ai-hero {
+  position: relative; overflow: hidden; border-radius: 1.25rem; color: white;
+  background:
+    radial-gradient(600px 300px at 85% -10%, rgb(114 144 242 / .45), transparent 65%),
+    radial-gradient(500px 260px at 0% 120%, rgb(42 80 216 / .55), transparent 70%),
+    linear-gradient(135deg, #0b1233 0%, #13256f 55%, #1f3fb0 100%);
+  box-shadow: 0 1px 2px rgb(11 13 18 / .12), 0 24px 48px -24px rgb(19 37 111 / .6);
+}
+.ai-hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(to right, rgb(255 255 255 / .06) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / .06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  -webkit-mask-image: linear-gradient(to bottom left, #000, transparent 70%);
+  mask-image: linear-gradient(to bottom left, #000, transparent 70%);
+}
