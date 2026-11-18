@@ -3,7 +3,7 @@ import { getServerSupabase } from "@/lib/supabase";
 import type { AppSession } from "@/lib/workspace/session";
 
 /** Plan limits. Free gets a monthly allowance; Pro is unlimited. */
-export const FREE_LIMITS = { chat: 10, report: 1 } as const;
+export const FREE_LIMITS = { chat: 5, report: 1 } as const;
 export const PRO_PRICE_SAR = 99;
 export type UsageKind = keyof typeof FREE_LIMITS;
 
