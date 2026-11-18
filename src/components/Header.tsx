@@ -126,7 +126,7 @@ export function Header() {
               <Link href="/login" className={cn("hidden rounded-lg px-3 py-2 text-sm font-medium text-ink-700 transition hover:bg-sand-100 hover:text-ink-900 md:inline-flex", user === undefined && "invisible")}>
                 {t("signIn")}
               </Link>
-              <Link href="/waitlist" className="btn btn-primary hidden !py-2 text-sm sm:inline-flex">
+              <Link href="/signup" className="btn btn-primary hidden !py-2 text-sm sm:inline-flex">
                 {t("cta")}
                 <IconArrow width={16} height={16} />
               </Link>
@@ -166,7 +166,7 @@ export function Header() {
                 <Link href="/app" className="btn btn-primary w-full">{t("account")}</Link>
               ) : (
                 <>
-                  <Link href="/waitlist" className="btn btn-primary w-full">{t("cta")}</Link>
+                  <Link href="/signup" className="btn btn-primary w-full">{t("cta")}</Link>
                   <Link href="/login" className="btn btn-ghost w-full">{t("signIn")}</Link>
                 </>
               )}

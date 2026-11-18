@@ -93,7 +93,7 @@ export default async function ReportPage({ params }: Props) {
             <p className="text-sm leading-relaxed text-ink-700">
               {d.nameEn} ({cityName}): median apartment price SAR {fmtNumber(locale, d.median.apartment)}/m² in {QUARTERS[QUARTERS.length - 1]}, {fmtNumber(locale, d.deals)} registered deals last quarter, {fmtPercent(locale, change)} over 12 months. Foreign ownership: {tc(`zoneHint.${d.zone}`)}.
             </p>
-            {IS_SAMPLE_DATA && <p className="mt-2 text-xs leading-relaxed text-amber-700">{tc("sampleDataLong")}</p>}
+            {IS_SAMPLE_DATA && <p className="mt-2 text-xs leading-relaxed text-ink-400">{tc("sampleDataLong")}</p>}
           </Section>
         )}
 

@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/format";
+import { UpgradeNotice } from "./billing";
 import type { ReportType } from "@/lib/workspace/store";
 import { IconCalc, IconCheck, IconReport } from "@/components/Icons";
 
@@ -27,6 +28,7 @@ export function NewReportForm({ districts, initialType, initialDistrict }: { dis
   const [area, setArea] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
+  const [limit, setLimit] = useState<number | null>(null);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -38,6 +40,12 @@ export function NewReportForm({ districts, initialType, initialDistrict }: { dis
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type, district, propertyType, price: num(price), area: num(area) }),
     }).catch(() => null);
+    if (res?.status === 402) {
+      const d = await res.json().catch(() => ({}));
+      setLimit(d.limit ?? 1);
+      setBusy(false);
+      return;
+    }
     const data = res?.ok ? await res.json() : null;
     if (data?.id) router.push(`/app/reports/${data.id}`);
     else {
@@ -94,7 +102,8 @@ export function NewReportForm({ districts, initialType, initialDistrict }: { dis
         )}
       </div>
 
-      {error && <p className="text-sm text-red-600">{t("error")}</p>}
+      {limit !== null && <UpgradeNotice kind="report" limit={limit} />}
+      {error && <p className="rounded-xl border border-sand-200 bg-sand-50 px-4 py-3 text-sm text-ink-700">{t("error")}</p>}
       <button type="submit" disabled={busy} className="btn btn-primary">{busy ? t("generating") : t("generate")}</button>
     </form>
   );

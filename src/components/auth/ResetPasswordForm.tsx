@@ -34,7 +34,7 @@ export function ResetPasswordForm() {
             <input name="password" type="password" required minLength={8} autoComplete="new-password" dir="ltr" className="input mt-2" />
             <span className="mt-1.5 block text-xs text-ink-400">{t("passwordHint")}</span>
           </label>
-          {status === "error" && <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{t("errorLink")}</p>}
+          {status === "error" && <p className="rounded-xl border border-sand-200 bg-sand-50 px-4 py-3 text-sm text-ink-700">{t("errorLink")}</p>}
           <button type="submit" disabled={status === "loading"} className="btn btn-primary w-full !rounded-xl !py-3.5 disabled:opacity-60">
             {status === "loading" ? t("working") : t("savePassword")}
           </button>

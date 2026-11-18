@@ -31,7 +31,7 @@ export function Footer() {
         { href: "/about", label: n("about") },
         { href: "/trust", label: n("trust") },
         { href: "/contact", label: n("contact") },
-        { href: "/waitlist", label: n("cta") },
+        { href: "/signup", label: n("cta") },
       ],
     },
     {
@@ -53,7 +53,7 @@ export function Footer() {
             <p className="mt-5 text-sm leading-relaxed text-ink-500">{t("tagline")}</p>
             <div className="mt-8 rounded-xl border border-sand-200 bg-white p-5">
               <p className="text-sm font-semibold text-ink-900">{t("newsletterTitle")}</p>
-              <Link href="/waitlist" className="btn btn-primary mt-4 !py-2.5 text-sm">
+              <Link href="/signup" className="btn btn-primary mt-4 !py-2.5 text-sm">
                 <IconMail width={16} height={16} />
                 {t("newsletterCta")}
               </Link>

@@ -14,7 +14,7 @@ export function CTASection() {
             <h2 className="font-display text-3xl leading-tight text-ink-900 sm:text-5xl">{t("title")}</h2>
             <p className="mx-auto mt-5 max-w-xl text-lg text-ink-500">{t("subtitle")}</p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/waitlist" className="btn btn-primary">
+              <Link href="/signup" className="btn btn-primary">
                 {t("button")}
                 <IconArrow width={16} height={16} className="flip-rtl" />
               </Link>

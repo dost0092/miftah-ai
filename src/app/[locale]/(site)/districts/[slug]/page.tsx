@@ -124,7 +124,7 @@ export default async function DistrictPage({ params }: Params) {
               </div>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link href="/waitlist" className="btn btn-gold">{t("askCta")} <IconArrow width={16} height={16} /></Link>
+              <Link href="/signup" className="btn btn-gold">{t("askCta")} <IconArrow width={16} height={16} /></Link>
               <Link href="/calculator" className="btn btn-ghost-dark"><IconCalc width={16} height={16} /> {t("calcCta")}</Link>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default async function DistrictPage({ params }: Params) {
                     </div>
                     <div className="text-end">
                       <Sparkline id={`nb-${n.slug}`} values={n.trend} className="h-7 w-20" />
-                      <p className={cn("text-xs font-semibold", ch >= 0 ? "text-emerald-700" : "text-amber-700")} dir="ltr">{fmtPercent(locale, ch)}</p>
+                      <p className={cn("text-xs font-semibold", ch >= 0 ? "text-emerald-700" : "text-ink-500")} dir="ltr">{fmtPercent(locale, ch)}</p>
                     </div>
                   </div>
                 </Link>

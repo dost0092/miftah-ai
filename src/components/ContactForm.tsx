@@ -74,7 +74,7 @@ export function ContactForm() {
         {status === "loading" ? t("sending") : t("send")}
         {status !== "loading" && <IconArrow width={16} height={16} />}
       </button>
-      {status === "error" && <p className="text-sm text-red-600">{t("error")}</p>}
+      {status === "error" && <p role="alert" className="rounded-xl border border-sand-200 bg-sand-50 px-4 py-3 text-sm text-ink-700">{t("error")}</p>}
     </form>
   );
 }

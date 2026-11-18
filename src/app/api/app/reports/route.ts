@@ -2,6 +2,7 @@ import { z } from "zod";
 import { getAppSession } from "@/lib/workspace/session";
 import { createReport, logActivity } from "@/lib/workspace/store";
 import { getDistrict } from "@/lib/districts";
+import { canUse, getAllowance, recordUsage } from "@/lib/billing";
 
 const Body = z.object({
   type: z.enum(["district", "due_diligence", "cost"]),
@@ -23,8 +24,13 @@ export async function POST(req: Request) {
   const d = getDistrict(district);
   if (!d) return Response.json({ error: "district" }, { status: 400 });
   const title = `${TYPE_TITLE[type]}: ${d.nameEn}, ${d.city === "riyadh" ? "Riyadh" : "Jeddah"}`;
+  const allowance = await getAllowance(session);
+  if (!canUse(allowance, "report")) {
+    return Response.json({ error: "limit", used: allowance.used.report, limit: allowance.limits?.report ?? 0 }, { status: 402 });
+  }
   const id = await createReport(session, { type, title, district_slug: d.slug, params: rest });
   if (!id) return Response.json({ error: "save" }, { status: 500 });
+  await recordUsage(session, "report");
   await logActivity(session, { kind: "report", title, href: `/app/reports/${id}` });
   return Response.json({ id });
 }

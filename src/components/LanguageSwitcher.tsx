@@ -4,7 +4,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { localeNames, locales, type Locale } from "@/i18n/routing";
-import { IconCheck, IconChevron, IconGlobe } from "./Icons";
+import { IconCheck, IconChevron } from "./Icons";
+import { Flag } from "./Flag";
 import { cn } from "@/lib/format";
 
 export function LanguageSwitcher({ className, align = "end" }: { className?: string; align?: "start" | "end" }) {
@@ -43,19 +44,19 @@ export function LanguageSwitcher({ className, align = "end" }: { className?: str
         aria-expanded={open}
         aria-label={t("language")}
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-full border border-sand-200 bg-white px-3 py-2 text-sm font-medium text-ink-700 transition hover:border-sand-300",
+          "inline-flex h-9 items-center gap-2 rounded-lg border border-sand-200 bg-white px-2.5 text-[13px] font-medium text-ink-700 transition hover:border-sand-300 hover:bg-sand-50",
           pending && "opacity-60",
         )}
       >
-        <IconGlobe width={16} height={16} />
+        <Flag locale={locale} className="h-3 w-[17px]" />
         <span>{localeNames[locale].native}</span>
-        <IconChevron width={14} height={14} className={cn("transition", open && "rotate-180")} />
+        <IconChevron width={13} height={13} className={cn("text-ink-400 transition", open && "rotate-180")} />
       </button>
       {open && (
         <ul
           role="listbox"
           className={cn(
-            "absolute top-full z-50 mt-2 w-48 overflow-hidden rounded-2xl border border-sand-200 bg-white p-1.5 shadow-xl shadow-ink-900/10",
+            "absolute top-full z-50 mt-2 w-52 overflow-hidden rounded-xl border border-sand-200 bg-white p-1 shadow-frame",
             align === "end" ? "end-0" : "start-0",
           )}
         >
@@ -67,15 +68,14 @@ export function LanguageSwitcher({ className, align = "end" }: { className?: str
                 aria-selected={l === locale}
                 onClick={() => choose(l)}
                 className={cn(
-                  "flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-start text-sm transition hover:bg-sand-100",
-                  l === locale && "bg-green-50 text-green-700",
+                  "flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-start text-[13px] transition hover:bg-sand-100",
+                  l === locale && "bg-sand-100",
                 )}
               >
-                <span className="flex flex-col">
-                  <span className="font-semibold" lang={l}>{localeNames[l].native}</span>
-                  <span className="text-xs text-ink-400">{localeNames[l].english}</span>
-                </span>
-                {l === locale && <IconCheck width={16} height={16} />}
+                <Flag locale={l} className="h-3 w-[17px]" />
+                <span className="min-w-0 flex-1 font-medium text-ink-900" lang={l}>{localeNames[l].native}</span>
+                <span className="text-[11px] text-ink-400">{localeNames[l].english}</span>
+                {l === locale && <IconCheck width={14} height={14} className="text-green-600" />}
               </button>
             </li>
           ))}

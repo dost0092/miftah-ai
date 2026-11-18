@@ -4,6 +4,7 @@ import { getAppSession } from "@/lib/workspace/session";
 import { addMessage, createThread, getThread, logActivity } from "@/lib/workspace/store";
 import { SYSTEM_PROMPT, extractiveAnswer, ground } from "@/lib/workspace/advisor";
 import { aiProvider, streamOpenRouter } from "@/lib/workspace/llm";
+import { canUse, getAllowance, recordUsage } from "@/lib/billing";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -27,6 +28,13 @@ export async function POST(req: Request) {
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "invalid" }, { status: 400 });
   const { question } = parsed.data;
+
+  // Free plan: monthly question allowance. Pro is unlimited.
+  const allowance = await getAllowance(session);
+  if (!canUse(allowance, "chat")) {
+    return Response.json({ error: "limit", used: allowance.used.chat, limit: allowance.limits?.chat ?? 0 }, { status: 402 });
+  }
+  await recordUsage(session, "chat");
 
   // Thread: continue an existing conversation or start a new one titled by the question.
   let threadId = parsed.data.threadId ?? null;

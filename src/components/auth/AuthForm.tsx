@@ -10,9 +10,7 @@ import { IconArrow } from "../Icons";
 type Mode = "login" | "signup" | "forgot";
 type Status = { kind: "idle" | "loading" | "error" | "success"; message?: string };
 
-const googleEnabled = process.env.NEXT_PUBLIC_AUTH_GOOGLE === "true";
-
-export function AuthForm({ mode }: { mode: Mode }) {
+export function AuthForm({ mode, google: googleEnabled = false }: { mode: Mode; google?: boolean }) {
   const t = useTranslations("auth");
   const locale = useLocale();
   const router = useRouter();
@@ -48,13 +46,13 @@ export function AuthForm({ mode }: { mode: Mode }) {
         password,
         options: {
           data: { full_name, preferred_language: locale },
-          emailRedirectTo: callback(`/${locale}/app`, "&new=1"),
+          emailRedirectTo: callback(nextPath, "&new=1"),
         },
       });
       if (error) return setStatus({ kind: "error", message: /registered|exists/i.test(error.message) ? t("errorExists") : /password/i.test(error.message) ? t("passwordHint") : t("errorGeneric") });
       if (data.session) {
         await fetch("/api/account/created", { method: "POST" }).catch(() => {});
-        router.replace("/app");
+        router.replace(nextPath.replace(`/${locale}`, "") || "/app");
         router.refresh();
         return;
       }
@@ -68,7 +66,9 @@ export function AuthForm({ mode }: { mode: Mode }) {
 
   async function google() {
     if (!supabase) return setStatus({ kind: "error", message: t("notConfigured") });
-    await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: callback(nextPath) } });
+    setStatus({ kind: "loading" });
+    const { error } = await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: callback(nextPath) } });
+    if (error) setStatus({ kind: "error", message: t("errorGeneric") });
   }
 
   const title = mode === "login" ? t("loginTitle") : mode === "signup" ? t("signupTitle") : t("forgotTitle");
@@ -113,7 +113,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
             </Field>
           )}
 
-          {status.kind === "error" && <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">{status.message}</p>}
+          {status.kind === "error" && <p role="alert" className="rounded-xl border border-sand-200 bg-sand-50 px-4 py-3 text-sm text-ink-700">{status.message}</p>}
 
           <button type="submit" disabled={loading} className="btn btn-primary w-full !rounded-xl !py-3.5 disabled:opacity-60">
             {loading ? t("working") : mode === "login" ? t("signIn") : mode === "signup" ? t("signUp") : t("sendLink")}
@@ -125,9 +125,9 @@ export function AuthForm({ mode }: { mode: Mode }) {
 
       <p className="mt-8 text-center text-sm text-ink-500">
         {mode === "login" ? (
-          <>{t("noAccount")} <Link href="/signup" className="font-semibold text-green-700 hover:underline">{t("createOne")}</Link></>
+          <>{t("noAccount")} <Link href={params.get("next") ? { pathname: "/signup", query: { next: nextPath } } : "/signup"} className="font-semibold text-green-700 hover:underline">{t("createOne")}</Link></>
         ) : (
-          <>{t("haveAccount")} <Link href="/login" className="font-semibold text-green-700 hover:underline">{t("signIn")}</Link></>
+          <>{t("haveAccount")} <Link href={params.get("next") ? { pathname: "/login", query: { next: nextPath } } : "/login"} className="font-semibold text-green-700 hover:underline">{t("signIn")}</Link></>
         )}
       </p>
     </div>

@@ -45,8 +45,8 @@ export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: stri
 
 export function SampleBanner({ text }: { text: string }) {
   return (
-    <div className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-amber-500 text-[11px] font-bold text-white">!</span>
+    <div className="flex items-start gap-3 rounded-xl border border-sand-200 bg-sand-50 p-4 text-sm text-ink-500">
+      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-ink-400 text-[11px] font-bold text-white">i</span>
       <p>{text}</p>
     </div>
   );

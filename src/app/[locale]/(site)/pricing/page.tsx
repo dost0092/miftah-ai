@@ -4,12 +4,12 @@ import { PageHero } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { FAQ } from "@/components/FAQ";
 import { CTASection } from "@/components/CTASection";
-import { IconArrow, IconCheck, IconDatabase } from "@/components/Icons";
+import { IconCheck } from "@/components/Icons";
 import { cn } from "@/lib/format";
 import { pageMetadata } from "@/lib/site";
 
 type Params = { params: Promise<{ locale: string }> };
-type Plan = { name: string; price: string; period: string; desc: string; features: string[]; cta: string; popular?: boolean };
+type Plan = { name: string; price: string; period: string; desc: string; features: string[]; cta: string; href: "signup" | "pro" | "contact"; popular?: boolean };
 
 export async function generateMetadata({ params }: Params) {
   const { locale } = await params;
@@ -30,7 +30,7 @@ export default async function PricingPage({ params }: Params) {
     <>
       <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
       <section className="container-x -mt-10 pb-16 sm:-mt-12">
-        <div className="relative grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="relative mx-auto grid max-w-5xl gap-5 md:grid-cols-3">
           {plans.map((p, i) => (
             <Reveal
               key={p.name}
@@ -46,7 +46,7 @@ export default async function PricingPage({ params }: Params) {
               </div>
               <p className={cn("mt-2 text-sm", p.popular ? "text-white/70" : "text-ink-500")}>{p.desc}</p>
               <p className="mt-6 flex items-baseline gap-1" dir="ltr">
-                <span className="font-display text-5xl">{p.price}</span>
+                <span className="text-4xl font-semibold tracking-[-0.03em]">{p.price}</span>
                 <span className={cn("text-sm", p.popular ? "text-white/60" : "text-ink-400")}>{periodLabel(p.period)}</span>
               </p>
               <ul className="mt-6 flex-1 space-y-3">
@@ -57,27 +57,16 @@ export default async function PricingPage({ params }: Params) {
                   </li>
                 ))}
               </ul>
-              <Link href={i === 3 ? "/contact" : "/waitlist"} className={cn("btn mt-8 w-full", p.popular ? "btn-gold" : "btn-ghost")}>
+              <Link
+                href={p.href === "contact" ? "/contact" : p.href === "pro" ? { pathname: "/signup", query: { next: `/${locale}/app/billing` } } : "/signup"}
+                className={cn("btn mt-8 w-full", p.popular ? "!bg-white !text-ink-900 hover:!bg-sand-100" : "btn-ghost")}
+              >
                 {p.cta}
               </Link>
             </Reveal>
           ))}
         </div>
 
-        <Reveal className="mt-6">
-          <div className="card flex flex-col items-start justify-between gap-6 p-7 sm:flex-row sm:items-center">
-            <div className="flex items-start gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"><IconDatabase /></span>
-              <div>
-                <h2 className="text-lg font-semibold">{t("enterprise.title")}</h2>
-                <p className="mt-1 text-ink-500">{t("enterprise.body")}</p>
-              </div>
-            </div>
-            <Link href="/contact" className="btn btn-primary shrink-0">
-              {t("enterprise.cta")} <IconArrow width={16} height={16} />
-            </Link>
-          </div>
-        </Reveal>
         <p className="mt-6 text-center text-xs text-ink-400">{t("note")}</p>
       </section>
 

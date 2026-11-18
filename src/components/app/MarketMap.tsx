@@ -248,13 +248,13 @@ export function MarketMap({ districts, quarters, dataUntil, isSample, rules, ini
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     <div className="rounded-xl bg-sand-50 p-3"><p className="text-[11px] text-ink-500">{t("deals")}</p><p className="mt-1 text-lg font-semibold text-ink-900" dir="ltr">{fmtNumber(locale, d.deals)}</p></div>
-                    <div className="rounded-xl bg-sand-50 p-3"><p className="text-[11px] text-ink-500">{t("change")}</p><p className={cn("mt-1 text-lg font-semibold", change >= 0 ? "text-emerald-700" : "text-amber-700")} dir="ltr">{fmtPercent(locale, change)}</p></div>
+                    <div className="rounded-xl bg-sand-50 p-3"><p className="text-[11px] text-ink-500">{t("change")}</p><p className={cn("mt-1 text-lg font-semibold", change >= 0 ? "text-emerald-700" : "text-ink-500")} dir="ltr">{fmtPercent(locale, change)}</p></div>
                   </div>
                   <div>
                     <p className="text-xs font-medium text-ink-500">{t("trend")}</p>
                     <div className="mt-2 rounded-xl border border-sand-200 p-2"><TrendChart values={d.trend} labels={quarters} locale={locale} label={t("trend")} /></div>
                   </div>
-                  {isSample && <p className="text-xs leading-relaxed text-amber-700">{tc("sampleDataLong")}</p>}
+                  {isSample && <p className="text-xs leading-relaxed text-ink-400">{tc("sampleDataLong")}</p>}
                 </div>
               )}
 

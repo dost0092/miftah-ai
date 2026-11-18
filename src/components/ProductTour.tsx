@@ -91,8 +91,8 @@ export function ProductTour() {
         <div className="overflow-hidden rounded-[20px] border border-ink-200/70 bg-white shadow-[0_40px_80px_-40px_rgb(14_23_38/.45)]">
           <div className="flex items-center gap-3 border-b border-sand-200 bg-sand-50 px-4 py-3">
             <span className="flex gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /></span>
-            <span className="mx-auto truncate rounded-md bg-white px-3 py-1 text-xs text-ink-400 ring-1 ring-sand-200" dir="ltr">app.miftahai.co/{current}</span>
-            <span className="hidden rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-700 sm:block">{t("sample")}</span>
+            <span className="mx-auto truncate rounded-md bg-white px-3 py-1 text-xs text-ink-400 ring-1 ring-sand-200" dir="ltr">miftahai.co/app/{current}</span>
+            <span className="hidden rounded-full bg-sand-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-ink-500 sm:block">{t("sample")}</span>
           </div>
           <div className="grid min-h-[440px] sm:grid-cols-[56px_1fr]">
             <aside className="hidden flex-col items-center gap-3 border-e border-sand-200 bg-sand-50/60 py-4 sm:flex">
@@ -154,11 +154,11 @@ function Screen({ step }: { step: StepKey }) {
       <div>
         <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">{t("zone.kicker")}</p>
         <h4 className="mt-1 text-2xl font-semibold text-ink-900">{nm(malqa)}, {c("city.riyadh")}</h4>
-        <div className="mt-5 flex items-start gap-4 rounded-2xl border border-amber-200 bg-amber-50 p-5">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-amber-100 text-amber-700"><IconShield width={20} height={20} /></span>
+        <div className="mt-5 flex items-start gap-4 rounded-2xl border border-green-600/15 bg-green-50 p-5">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-green-600 ring-1 ring-green-600/15"><IconShield width={20} height={20} /></span>
           <div>
-            <p className="font-semibold text-amber-900">{t("zone.status")}</p>
-            <p className="mt-1 text-sm leading-relaxed text-amber-800/80">{t("zone.statusBody")}</p>
+            <p className="font-semibold text-ink-900">{t("zone.status")}</p>
+            <p className="mt-1 text-sm leading-relaxed text-ink-500">{t("zone.statusBody")}</p>
           </div>
         </div>
         <dl className="mt-5 divide-y divide-sand-100 rounded-2xl border border-sand-200">
@@ -197,7 +197,7 @@ function Screen({ step }: { step: StepKey }) {
                     <td className="px-4 py-3 font-medium text-ink-900">{nm(d)}</td>
                     <td className="px-4 py-3 text-end tabular-nums" dir="ltr">{sar(d.median.apartment)}</td>
                     <td className="hidden px-4 py-2 sm:table-cell"><Sparkline id={`tour-${d.slug}`} values={d.trend} stroke="#2a50d8" className="ms-auto h-7 w-24" /></td>
-                    <td className={cn("px-4 py-3 text-end font-semibold tabular-nums", ch >= 0 ? "text-emerald-700" : "text-amber-700")} dir="ltr">{fmtPercent(locale, ch)}</td>
+                    <td className={cn("px-4 py-3 text-end font-semibold tabular-nums", ch >= 0 ? "text-emerald-700" : "text-ink-500")} dir="ltr">{fmtPercent(locale, ch)}</td>
                   </tr>
                 );
               })}

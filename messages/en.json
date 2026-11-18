@@ -14,7 +14,7 @@
     "company": "Company",
     "about": "About",
     "contact": "Contact",
-    "cta": "Join the waitlist",
+    "cta": "Start free",
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
@@ -85,7 +85,7 @@
       "titleHighlight": "property",
       "titleB": "in Saudi Arabia",
       "subtitle": "Miftah AI tells you where foreigners can legally buy, what homes really sell for according to official government records, and the full cost before you sign, in your own language.",
-      "ctaPrimary": "Join the waitlist",
+      "ctaPrimary": "Start free",
       "ctaSecondary": "Explore districts",
       "askPlaceholder": "Ask anything about buying property in Saudi Arabia…",
       "askButton": "Ask",
@@ -241,7 +241,7 @@
         },
         {
           "value": "2",
-          "label": "launch cities: Riyadh and Jeddah"
+          "label": "cities covered: Riyadh and Jeddah"
         },
         {
           "value": "0",
@@ -280,15 +280,15 @@
           "a": "English, Arabic, Urdu, Hindi and Chinese. The AI replies in whatever language you write in."
         },
         {
-          "q": "When can I use it?",
-          "a": "We're launching in phases, starting with Riyadh and Jeddah. Join the waitlist to get early access and help shape the product."
+          "q": "How much does it cost?",
+          "a": "The free plan includes 10 Miftah AI questions and 1 report a month, plus the market map, cost calculator and official library. Pro is SAR 99 a month for unlimited questions and reports. Cancel anytime."
         }
       ]
     },
     "cta": {
       "title": "Get your key to Saudi property",
-      "subtitle": "Join the waitlist for early access, free reports for founding members, and monthly market updates.",
-      "button": "Join the waitlist",
+      "subtitle": "Create a free account and ask your first questions today. 10 cited answers a month on the free plan, unlimited on Pro.",
+      "button": "Start free",
       "secondary": "Talk to us"
     }
   },
@@ -324,7 +324,7 @@
         "title": "Every district, in plain English and Arabic.",
         "body": "Median price per square metre, deals per quarter and price trends, from official MOJ records, cleaned, translated and de-duplicated.",
         "points": [
-          "Riyadh and Jeddah at launch",
+          "Riyadh and Jeddah covered today",
           "Apartments, villas and land",
           "Quarterly trend charts",
           "Small samples hidden for accuracy"
@@ -403,7 +403,7 @@
     "zoneBody": "We haven't verified the foreign-ownership status of this district yet. Until we do, treat it as unknown and confirm with REGA or a licensed broker before buying.",
     "askTitle": "Ask the advisor about {name}",
     "askBody": "Compare with nearby districts, check an asking price or estimate your total cost.",
-    "askCta": "Get early access",
+    "askCta": "Ask Miftah AI",
     "calcCta": "Estimate total cost",
     "nearby": "Other districts in {city}"
   },
@@ -449,8 +449,8 @@
   },
   "pricing": {
     "eyebrow": "Pricing",
-    "title": "Simple pricing. Start free.",
-    "subtitle": "Planned launch pricing, founding members on the waitlist get early-access discounts.",
+    "title": "Start free. Upgrade when you're ready to buy.",
+    "subtitle": "Every plan uses the same official sources. Pro removes the monthly limits.",
     "monthly": "/month",
     "perReport": "/report",
     "custom": "Custom",
@@ -458,57 +458,47 @@
     "plans": [
       {
         "name": "Free",
-        "price": "$0",
+        "price": "SAR 0",
         "period": "",
-        "desc": "For curious expats and early research.",
+        "desc": "For early research and first questions.",
         "features": [
-          "Daily AI questions",
-          "All district pages",
-          "Foreign-zone status",
-          "Cost calculator"
+          "10 Miftah AI questions a month",
+          "1 report a month",
+          "Market map and district prices",
+          "Cost calculator and official library"
         ],
-        "cta": "Join the waitlist"
+        "cta": "Create free account",
+        "href": "signup"
       },
       {
-        "name": "Area Report",
-        "price": "$29",
-        "period": "perReport",
-        "desc": "One detailed PDF report for a district or comparison.",
-        "features": [
-          "Full district analysis",
-          "8-quarter price history",
-          "Fee breakdown",
-          "Shareable PDF"
-        ],
-        "cta": "Join the waitlist"
-      },
-      {
-        "name": "Buyer Pro",
-        "price": "$19",
+        "name": "Pro",
+        "price": "SAR 99",
         "period": "monthly",
-        "desc": "For active buyers over 2–6 months.",
+        "desc": "For buyers actively comparing districts and costs.",
         "features": [
-          "Unlimited AI chat",
-          "5 reports per month",
-          "Saved searches",
-          "Price & rule-change alerts",
-          "Asking-price checker"
+          "Unlimited Miftah AI questions",
+          "Unlimited district, cost and due-diligence reports",
+          "Full conversation history",
+          "Saved districts",
+          "Priority support"
         ],
-        "cta": "Join the waitlist",
+        "cta": "Get Pro",
+        "href": "pro",
         "popular": true
       },
       {
-        "name": "Broker",
-        "price": "$99",
-        "period": "monthly",
-        "desc": "For brokers serving foreign clients.",
+        "name": "Business",
+        "price": "Custom",
+        "period": "",
+        "desc": "For brokers, relocation firms, banks and developers.",
         "features": [
-          "Everything in Buyer Pro",
-          "Branded white-label reports",
-          "Client sharing links",
-          "Priority support"
+          "Everything in Pro for your team",
+          "Branded reports for clients",
+          "District data and API access",
+          "Dedicated onboarding"
         ],
-        "cta": "Talk to sales"
+        "cta": "Talk to us",
+        "href": "contact"
       }
     ],
     "enterprise": {
@@ -516,7 +506,7 @@
       "body": "Clean, English-translated district-level data for banks, developers, portals and relocation firms.",
       "cta": "Contact us"
     },
-    "note": "Prices in USD. Planned prices may change before launch. Payments via a merchant-of-record provider."
+    "note": "Prices in Saudi riyals, billed monthly through Stripe. Cancel anytime."
   },
   "solutions": {
     "eyebrow": "Solutions",
@@ -841,7 +831,7 @@
       "sections": [
         {
           "h": "What we collect",
-          "p": "Waitlist and contact details you give us (email, name, nationality, city of interest, role, preferred language), questions you ask the advisor, and basic anonymous usage analytics."
+          "p": "Account and contact details you give us (email, name, nationality, city of interest, role, preferred language), questions you ask the advisor, and basic anonymous usage analytics."
         },
         {
           "h": "Why we collect it",
@@ -913,7 +903,7 @@
         },
         {
           "h": "Sample data",
-          "p": "During the pre-launch period, some numbers on this website are illustrative samples and are clearly labelled as such. Do not use them for decisions."
+          "p": "Some district price figures are illustrative samples until the official Ministry of Justice price feed is connected. They are clearly labelled as samples. Do not use them for decisions."
         },
         {
           "h": "Third-party sources",
@@ -942,14 +932,14 @@
     "cta": "Back to home"
   },
   "announce": {
-    "text": "New: foreigners can now buy property in approved zones of Riyadh and Jeddah.",
-    "cta": "See what changed"
+    "text": "Miftah AI is now open. Ask about foreign ownership, fees and prices in Riyadh and Jeddah.",
+    "cta": "Start free"
   },
   "auth": {
     "loginTitle": "Welcome back",
     "loginSubtitle": "Sign in to your Miftah AI account.",
     "signupTitle": "Create your account",
-    "signupSubtitle": "Save districts, track prices and get early access to the AI advisor.",
+    "signupSubtitle": "Free plan included. 10 cited answers a month, no card needed.",
     "forgotTitle": "Reset your password",
     "forgotSubtitle": "Enter your email and we will send you a secure link.",
     "resetTitle": "Choose a new password",
@@ -985,7 +975,7 @@
     "sidePoints": [
       "Save and compare districts",
       "Track price trends over time",
-      "Early access to the AI advisor",
+      "Answers cited to REGA, ZATCA, MOJ and Ejar",
       "Available in 5 languages"
     ],
     "sideNote": "Your data is stored securely and never sold."
@@ -1074,7 +1064,7 @@
       "brokerage": "Brokerage",
       "vat": "VAT on brokerage",
       "total": "Total to budget",
-      "note": "Estimate only. Rates are linked to ZATCA and REGA and re-checked before launch."
+      "note": "Estimate only. Rates come from ZATCA and REGA publications and are reviewed regularly."
     },
     "report": {
       "tab": "Get a shareable report",
@@ -1101,7 +1091,8 @@
       "account": "Account",
       "backToSite": "Back to website",
       "signOut": "Sign out",
-      "menu": "Workspace navigation"
+      "menu": "Workspace navigation",
+      "billing": "Billing"
     },
     "search": {
       "placeholder": "Search a district, a rule or a question…",
@@ -1133,8 +1124,8 @@
       "resumeEmpty": "Your questions, district views and reports will appear here.",
       "startAsking": "Ask your first question",
       "plan": "Your plan",
-      "planName": "Early access",
-      "planBody": "Free while we are in early access: unlimited questions, map and reports.",
+      "planName": "Free plan",
+      "planBody": "You are on the Free plan: 10 Miftah AI questions and 1 report a month. Upgrade to Pro for unlimited use.",
       "viewPlans": "View plans",
       "data": "Data status",
       "dataLive": "Live from database",
@@ -1215,7 +1206,7 @@
         "sample": "Sample data"
       },
       "disclaimer": "Miftah AI gives information from official sources, not legal or financial advice. Always confirm with REGA or a licensed professional.",
-      "libraryMode": "Library mode: answers quote the official library directly. Add an OpenRouter or Anthropic API key to get written answers.",
+      "libraryMode": "Answers on this server quote the official library directly.",
       "error": "Something went wrong. Please try again.",
       "copy": "Copy",
       "copied": "Copied",
@@ -1364,7 +1355,7 @@
       "last14": "Activity, last 14 days",
       "history": "History",
       "historyEmpty": "No activity yet.",
-      "planBody": "You are on the free early-access plan. Paid plans with higher limits and white-label reports are coming.",
+      "planBody": "You are on the Free plan: 10 Miftah AI questions and 1 report a month. Upgrade to Pro for unlimited use.",
       "billingEmpty": "No purchases yet. Receipts will appear here.",
       "securityTitle": "Change password",
       "newPassword": "New password",
@@ -1376,6 +1367,50 @@
       "passwordError": "Could not update the password. Sign in again and retry.",
       "email": "Email",
       "memberSince": "Member since"
+    },
+    "billing": {
+      "title": "Plan & billing",
+      "subtitle": "Your plan, this month's usage and payment details.",
+      "free": "Free",
+      "pro": "Pro",
+      "currentPlan": "Current plan",
+      "usage": "Usage this month",
+      "questions": "Miftah AI questions",
+      "reports": "Reports",
+      "resets": "Resets on {date}",
+      "unlimited": "Unlimited",
+      "proName": "Miftah AI Pro",
+      "price": "SAR 99",
+      "perMonth": "per month",
+      "proFeatures": [
+        "Unlimited Miftah AI questions",
+        "Unlimited district, cost and due-diligence reports",
+        "Answers cited to REGA, ZATCA, MOJ and Ejar",
+        "Saved districts and full conversation history",
+        "Priority support"
+      ],
+      "freeFeatures": [
+        "10 Miftah AI questions a month",
+        "1 report a month",
+        "Market map, cost calculator and official library"
+      ],
+      "upgrade": "Upgrade to Pro",
+      "redirecting": "Opening secure checkout…",
+      "manage": "Manage billing",
+      "renews": "Renews on {date}",
+      "ends": "Access ends on {date}",
+      "billedNote": "Billed monthly in Saudi riyals through Stripe. Cancel anytime from Manage billing.",
+      "notConfigured": "Online payment is being enabled. Contact us and we will activate Pro on your account.",
+      "contact": "Contact us",
+      "error": "We couldn't open checkout. Please try again in a moment.",
+      "success": "Thank you. Miftah AI Pro is now active on your account.",
+      "cancelled": "Checkout was closed before payment. You have not been charged.",
+      "limitChatTitle": "You've used this month's {limit} free questions",
+      "limitReportTitle": "You've used this month's free report",
+      "limitBody": "Upgrade to Pro for unlimited questions and reports. Your free allowance renews on {date}.",
+      "seePlans": "See plans",
+      "left": "{n} of {limit} free questions left this month",
+      "planBadge": "{plan} plan"
     }
   }
 }

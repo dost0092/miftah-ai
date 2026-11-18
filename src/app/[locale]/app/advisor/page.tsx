@@ -3,6 +3,7 @@ import { getAppSession, displayName } from "@/lib/workspace/session";
 import { getThread, listThreads } from "@/lib/workspace/store";
 import { AdvisorChat } from "@/components/app/AdvisorChat";
 import { aiProvider } from "@/lib/workspace/llm";
+import { getAllowance } from "@/lib/billing";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +20,7 @@ export default async function AdvisorPage({ params, searchParams }: Props) {
   setRequestLocale(locale);
   const { t: threadParam, q } = await searchParams;
   const session = (await getAppSession())!;
-  const [threads, current] = await Promise.all([listThreads(session), threadParam ? getThread(session, threadParam) : null]);
+  const [threads, current, allowance] = await Promise.all([listThreads(session), threadParam ? getThread(session, threadParam) : null, getAllowance(session)]);
 
   return (
     <AdvisorChat
@@ -29,6 +30,7 @@ export default async function AdvisorPage({ params, searchParams }: Props) {
       initialMessages={(current?.messages ?? []).map((m) => ({ role: m.role, content: m.content, sources: m.sources ?? [] }))}
       initialQuestion={!current && q ? q.slice(0, 2000) : null}
       aiMode={aiProvider() !== null}
+      quota={allowance.limits ? { left: Math.max(0, allowance.limits.chat - allowance.used.chat), limit: allowance.limits.chat } : null}
       firstName={displayName(session).split(/\s+/)[0] || undefined}
     />
   );
