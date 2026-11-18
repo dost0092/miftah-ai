@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { getAppSession } from "@/lib/workspace/session";
+import { getAppSession, displayName } from "@/lib/workspace/session";
 import { getThread, listThreads } from "@/lib/workspace/store";
 import { AdvisorChat } from "@/components/app/AdvisorChat";
 import { aiProvider } from "@/lib/workspace/llm";
@@ -29,6 +29,7 @@ export default async function AdvisorPage({ params, searchParams }: Props) {
       initialMessages={(current?.messages ?? []).map((m) => ({ role: m.role, content: m.content, sources: m.sources ?? [] }))}
       initialQuestion={!current && q ? q.slice(0, 2000) : null}
       aiMode={aiProvider() !== null}
+      firstName={displayName(session).split(/\s+/)[0] || undefined}
     />
   );
 }

@@ -1156,7 +1156,20 @@
         "chat": "AI question",
         "report": "Report",
         "calc": "Cost estimate"
-      }
+      },
+      "aiTitle": "Ask Miftah AI",
+      "aiBody": "Cited answers on ownership rules, fees, taxes and prices, from REGA, ZATCA, MOJ and Ejar.",
+      "activity": "Your activity",
+      "last14": "Last 14 days",
+      "actions": "Actions",
+      "quick": "Shortcuts",
+      "newReport": "New report",
+      "quickMap": "Explore the market map",
+      "quickCalc": "Estimate buying costs",
+      "quickLibrary": "Browse official rules",
+      "quickReport": "Create a district report",
+      "noActivity": "No activity yet. Ask a question or open the map to get started.",
+      "heroTitle": "What would you like to know today?"
     },
     "advisor": {
       "history": "Conversations",
@@ -1207,7 +1220,24 @@
       "copy": "Copy",
       "copied": "Copied",
       "showHistory": "Show conversations",
-      "hideHistory": "Hide conversations"
+      "hideHistory": "Hide conversations",
+      "greeting": "How can I help with your property search?",
+      "grounded": "Grounded in official sources",
+      "stop": "Stop",
+      "regenerate": "Regenerate",
+      "steps": {
+        "search": "Searching the official library",
+        "read": "Reading {n} sources",
+        "write": "Writing the answer",
+        "readAny": "Reading sources"
+      },
+      "readSources": "{n} sources",
+      "today": "Today",
+      "week": "Previous 7 days",
+      "older": "Older",
+      "enterHint": "Enter to send · Shift + Enter for a new line",
+      "assistant": "Miftah AI",
+      "hi": "Hi {name}"
     },
     "map": {
       "city": {
