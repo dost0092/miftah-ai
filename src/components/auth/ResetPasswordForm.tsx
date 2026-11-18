@@ -25,7 +25,7 @@ export function ResetPasswordForm() {
       {status === "done" ? (
         <div className="mt-8 space-y-4">
           <p className="rounded-2xl border border-green-600/20 bg-green-50 p-5 text-green-800">{t("passwordUpdated")}</p>
-          <Link href="/account" className="btn btn-primary w-full !rounded-xl">{t("account")}</Link>
+          <Link href="/app" className="btn btn-primary w-full !rounded-xl">{t("account")}</Link>
         </div>
       ) : (
         <form onSubmit={onSubmit} className="mt-8 space-y-4">

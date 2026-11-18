@@ -3,9 +3,6 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
-import { Header } from "@/components/Header";
-import { AnnouncementBar } from "@/components/AnnouncementBar";
-import { Footer } from "@/components/Footer";
 import { SITE_URL, pageMetadata } from "@/lib/site";
 // Fonts are bundled from npm (Fontsource), so builds never depend on reaching Google Fonts.
 // Each file uses unicode-range, so browsers only download the scripts a page actually uses.
@@ -67,13 +64,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       <body className="min-h-screen font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
         <NextIntlClientProvider>
-          <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2">
-            Skip to content
-          </a>
-          <AnnouncementBar />
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>

@@ -36,7 +36,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
     if (mode === "login") {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) return setStatus({ kind: "error", message: /invalid/i.test(error.message) ? t("errorInvalid") : /confirm/i.test(error.message) ? t("errorUnconfirmed") : t("errorGeneric") });
-      router.replace(nextPath.replace(`/${locale}`, "") || "/account");
+      router.replace(nextPath.replace(`/${locale}`, "") || "/app");
       router.refresh();
       return;
     }
@@ -48,13 +48,13 @@ export function AuthForm({ mode }: { mode: Mode }) {
         password,
         options: {
           data: { full_name, preferred_language: locale },
-          emailRedirectTo: callback(`/${locale}/account`, "&new=1"),
+          emailRedirectTo: callback(`/${locale}/app`, "&new=1"),
         },
       });
       if (error) return setStatus({ kind: "error", message: /registered|exists/i.test(error.message) ? t("errorExists") : /password/i.test(error.message) ? t("passwordHint") : t("errorGeneric") });
       if (data.session) {
         await fetch("/api/account/created", { method: "POST" }).catch(() => {});
-        router.replace("/account");
+        router.replace("/app");
         router.refresh();
         return;
       }
@@ -135,7 +135,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
 }
 
 function safeNext(next: string | null, locale: string) {
-  return next && next.startsWith("/") && !next.startsWith("//") ? next : `/${locale}/account`;
+  return next && next.startsWith("/") && !next.startsWith("//") ? next : `/${locale}/app`;
 }
 
 function Field({ label, children, aside, hint }: { label: string; children: React.ReactNode; aside?: React.ReactNode; hint?: string }) {

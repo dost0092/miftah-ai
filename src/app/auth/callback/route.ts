@@ -10,9 +10,9 @@ import { notifyTeam } from "@/lib/notify";
 export async function GET(req: Request) {
   const { searchParams, origin } = new URL(req.url);
   const code = searchParams.get("code");
-  const nextParam = searchParams.get("next") ?? "/en/account";
+  const nextParam = searchParams.get("next") ?? "/en/app";
   // Only allow same-site relative redirects.
-  const next = nextParam.startsWith("/") && !nextParam.startsWith("//") ? nextParam : "/en/account";
+  const next = nextParam.startsWith("/") && !nextParam.startsWith("//") ? nextParam : "/en/app";
 
   if (code) {
     const store = await cookies();

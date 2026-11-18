@@ -60,7 +60,23 @@ src/lib/fees.ts      fee rates for the calculator — verify each with ZATCA / R
 supabase/migrations/ database schema
 ```
 
+## Signed-in workspace (`/[locale]/app`)
+
+After sign-in users land in the workspace: **Dashboard**, **Miftah AI advisor** (chat with cited sources and saved conversations), **Market map** (districts, prices, ownership status, costs), **Official data** library, **Reports** (district brief, due-diligence checklist, cost estimate; printable to PDF), **Costs** calculator and **Account & usage**.
+
+**Official data + RAG.** `src/lib/official/` holds the official sources and rule summaries (REGA, ZATCA, MOJ/Najiz, Ejar, Premium Residency…). `npm run db:setup` creates the tables in `supabase/migrations/0003_workspace.sql` and loads them into Supabase (`official_sources`, `knowledge_documents`, `knowledge_chunks` with full-text search, `fee_rules`, `districts`, `district_stats`). The advisor retrieves matching passages with the `search_knowledge` SQL function, numbers them, and answers only from them with `[n]` citations. With `ANTHROPIC_API_KEY` set it writes answers with Claude; without it, it quotes the library directly. Until the tables exist, the app reads the same content from the bundled files.
+
+```bash
+npm run db:setup -- --dry   # show what will be loaded
+npm run db:setup            # uses DATABASE_URL or POSTGRES_URL_NON_POOLING from .env*.local
+```
+
+Local design preview without signing in: put `APP_DEV_PREVIEW=1` in `.env.development.local` (never active in production).
+
 ## Before public launch: must-do
+
+- [ ] Run `npm run db:setup` against production and set `ANTHROPIC_API_KEY` in Vercel.
+- [ ] Have every library entry marked `needs_review` in `src/lib/official/knowledge.ts` checked against the official text, then set `status: "verified"` and `checked`.
 
 - [ ] Replace sample district numbers in `src/lib/districts.ts` with real `district_stats` from the data pipeline (pages already label them "Illustrative sample data").
 - [ ] Set each district's `zone` from official REGA publications (currently all `unknown`, "To be verified").
