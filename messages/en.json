@@ -1202,7 +1202,7 @@
         "sample": "Sample data"
       },
       "disclaimer": "Miftah AI gives information from official sources, not legal or financial advice. Always confirm with REGA or a licensed professional.",
-      "libraryMode": "Library mode: answers quote the official library directly. Add an ANTHROPIC_API_KEY to get written answers.",
+      "libraryMode": "Library mode: answers quote the official library directly. Add an OpenRouter or Anthropic API key to get written answers.",
       "error": "Something went wrong. Please try again.",
       "copy": "Copy",
       "copied": "Copied",

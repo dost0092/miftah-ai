@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getAppSession } from "@/lib/workspace/session";
 import { addMessage, createThread, getThread, logActivity } from "@/lib/workspace/store";
 import { SYSTEM_PROMPT, extractiveAnswer, ground } from "@/lib/workspace/advisor";
+import { aiProvider, streamOpenRouter } from "@/lib/workspace/llm";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -14,7 +15,6 @@ const Body = z.object({
 });
 
 const MODEL = "claude-opus-5-5";
-const aiConfigured = () => Boolean(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN);
 
 /**
  * AI advisor endpoint. Streams newline-delimited JSON events:
@@ -43,21 +43,33 @@ export async function POST(req: Request) {
   const stream = new ReadableStream({
     async start(controller) {
       const send = (e: unknown) => controller.enqueue(encoder.encode(JSON.stringify(e) + "\n"));
-      send({ type: "meta", threadId, sources: g.sources, mode: aiConfigured() ? "ai" : "library" });
+      const provider = aiProvider();
+      send({ type: "meta", threadId, sources: g.sources, mode: provider ? "ai" : "library" });
       let answer = "";
+      const userTurn = `Sources:\n\n${g.context || "(no matching official sources found)"}\n\n---\nQuestion: ${question}`;
 
       try {
-        if (!aiConfigured()) {
+        if (!provider) {
           answer = extractiveAnswer(g);
           send({ type: "delta", text: answer });
+        } else if (provider === "openrouter") {
+          await streamOpenRouter(
+            [
+              { role: "system", content: SYSTEM_PROMPT },
+              ...history.map((m) => ({ role: m.role, content: m.content })),
+              { role: "user", content: userTurn },
+            ],
+            (text) => {
+              answer += text;
+              send({ type: "delta", text });
+            },
+            { signal: req.signal },
+          );
         } else {
           const client = new Anthropic();
           const messages: Anthropic.MessageParam[] = [
             ...history.map((m) => ({ role: m.role, content: m.content }) as Anthropic.MessageParam),
-            {
-              role: "user",
-              content: `Sources:\n\n${g.context || "(no matching official sources found)"}\n\n---\nQuestion: ${question}`,
-            },
+            { role: "user", content: userTurn },
           ];
           const s = client.messages.stream({
             model: MODEL,

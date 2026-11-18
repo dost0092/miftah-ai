@@ -64,7 +64,7 @@ supabase/migrations/ database schema
 
 After sign-in users land in the workspace: **Dashboard**, **Miftah AI advisor** (chat with cited sources and saved conversations), **Market map** (districts, prices, ownership status, costs), **Official data** library, **Reports** (district brief, due-diligence checklist, cost estimate; printable to PDF), **Costs** calculator and **Account & usage**.
 
-**Official data + RAG.** `src/lib/official/` holds the official sources and rule summaries (REGA, ZATCA, MOJ/Najiz, Ejar, Premium Residency…). `npm run db:setup` creates the tables in `supabase/migrations/0003_workspace.sql` and loads them into Supabase (`official_sources`, `knowledge_documents`, `knowledge_chunks` with full-text search, `fee_rules`, `districts`, `district_stats`). The advisor retrieves matching passages with the `search_knowledge` SQL function, numbers them, and answers only from them with `[n]` citations. With `ANTHROPIC_API_KEY` set it writes answers with Claude; without it, it quotes the library directly. Until the tables exist, the app reads the same content from the bundled files.
+**Official data + RAG.** `src/lib/official/` holds the official sources and rule summaries (REGA, ZATCA, MOJ/Najiz, Ejar, Premium Residency…). `npm run db:setup` creates the tables in `supabase/migrations/0003_workspace.sql` and loads them into Supabase (`official_sources`, `knowledge_documents`, `knowledge_chunks` with full-text search, `fee_rules`, `districts`, `district_stats`). The advisor retrieves matching passages with the `search_knowledge` SQL function, numbers them, and answers only from them with `[n]` citations. With `ANTHROPIC_API_KEY` set it writes answers with Claude. Otherwise, with `OPENROUTER_API_KEY` (and optionally `OPENROUTER_API_KEY_2`) set, it uses a free OpenRouter model and moves to the next key when one is rate-limited or fails. With no key it quotes the library directly. Until the tables exist, the app reads the same content from the bundled files.
 
 ```bash
 npm run db:setup -- --dry   # show what will be loaded
@@ -75,7 +75,7 @@ Local design preview without signing in: put `APP_DEV_PREVIEW=1` in `.env.develo
 
 ## Before public launch: must-do
 
-- [ ] Run `npm run db:setup` against production and set `ANTHROPIC_API_KEY` in Vercel.
+- [ ] Run `npm run db:setup` against production and set `ANTHROPIC_API_KEY` or `OPENROUTER_API_KEY` / `OPENROUTER_API_KEY_2` in Vercel.
 - [ ] Have every library entry marked `needs_review` in `src/lib/official/knowledge.ts` checked against the official text, then set `status: "verified"` and `checked`.
 
 - [ ] Replace sample district numbers in `src/lib/districts.ts` with real `district_stats` from the data pipeline (pages already label them "Illustrative sample data").

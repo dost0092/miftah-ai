@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getAppSession } from "@/lib/workspace/session";
 import { getThread, listThreads } from "@/lib/workspace/store";
 import { AdvisorChat } from "@/components/app/AdvisorChat";
+import { aiProvider } from "@/lib/workspace/llm";
 
 export const dynamic = "force-dynamic";
 
@@ -27,7 +28,7 @@ export default async function AdvisorPage({ params, searchParams }: Props) {
       threadId={current?.thread.id ?? null}
       initialMessages={(current?.messages ?? []).map((m) => ({ role: m.role, content: m.content, sources: m.sources ?? [] }))}
       initialQuestion={!current && q ? q.slice(0, 2000) : null}
-      aiMode={Boolean(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN)}
+      aiMode={aiProvider() !== null}
     />
   );
 }
