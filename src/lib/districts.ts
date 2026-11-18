@@ -22,6 +22,8 @@ export interface District {
   deals: number;
   /** last 8 quarters median SAR/sqm for apartments, oldest first */
   trend: number[];
+  /** approximate district centre [lat, lng] (OpenStreetMap), used for the map */
+  center: [number, number];
 }
 
 export const QUARTERS = ["2024-Q4", "2025-Q1", "2025-Q2", "2025-Q3", "2025-Q4", "2026-Q1", "2026-Q2", "2026-Q3"];
@@ -53,6 +55,32 @@ const raw: Array<[City, string, string, string, number, number]> = [
   ["jeddah", "al-khalidiyah", "Al Khalidiyah", "الخالدية", 6500, 77],
   ["jeddah", "al-andalus", "Al Andalus", "الأندلس", 5400, 109],
 ];
+
+/** Approximate district centres (OpenStreetMap). Boundaries come later from the GIS pipeline. */
+export const DISTRICT_CENTERS: Record<string, [number, number]> = {
+  "al-malqa": [24.8105, 46.6105],
+  hittin: [24.7635, 46.6005],
+  "al-narjis": [24.8635, 46.6655],
+  "al-yasmin": [24.8255, 46.6455],
+  "al-sahafah": [24.8015, 46.6355],
+  "al-aqiq": [24.7735, 46.6255],
+  "al-olaya": [24.6955, 46.6855],
+  "al-nakheel": [24.7455, 46.6305],
+  "al-rawdah": [24.7335, 46.7705],
+  "al-muruj": [24.7555, 46.6605],
+  qurtubah: [24.8105, 46.7405],
+  "al-arid": [24.8805, 46.6205],
+  "al-shati": [21.5905, 39.1105],
+  "al-zahra": [21.6005, 39.1305],
+  "al-rawdah-jeddah": [21.5605, 39.1505],
+  "obhur-al-shamaliyah": [21.7705, 39.1105],
+  "al-hamra": [21.5205, 39.1705],
+  "al-salamah": [21.5905, 39.1505],
+  "al-naeem": [21.6205, 39.1405],
+  "al-murjan": [21.6805, 39.1105],
+  "al-khalidiyah": [21.5605, 39.1305],
+  "al-andalus": [21.5405, 39.1505],
+};
 
 // Deterministic pseudo-random so server and client render the same numbers.
 function seeded(seed: number) {
@@ -86,6 +114,7 @@ export const districts: District[] = raw.map(([city, slug, nameEn, nameAr, base,
     },
     deals,
     trend,
+    center: DISTRICT_CENTERS[slug],
   };
 });
 

@@ -1089,5 +1089,263 @@
       ],
       "cta": "Download PDF"
     }
+  },
+  "app": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "advisor": "Miftah AI",
+      "map": "Market map",
+      "library": "Official data",
+      "reports": "Reports",
+      "calculator": "Costs",
+      "account": "Account",
+      "backToSite": "Back to website",
+      "signOut": "Sign out",
+      "menu": "Workspace navigation"
+    },
+    "search": {
+      "placeholder": "Search a district, a rule or a question…",
+      "districts": "Districts",
+      "documents": "Official documents",
+      "ask": "Ask Miftah AI: “{q}”",
+      "empty": "No matches. Press Enter to ask the AI advisor."
+    },
+    "preview": "Local preview: data is kept in memory only",
+    "dashboard": {
+      "welcome": "Welcome back, {name}",
+      "welcomeNoName": "Welcome back",
+      "subtitle": "Ask about ownership rules, taxes, fees or prices. Every answer is grounded in official sources.",
+      "askPlaceholder": "Ask about buying property in Saudi Arabia, or name a district…",
+      "chips": [
+        "Can a foreigner buy in Riyadh?",
+        "Total cost of a SAR 1.5M apartment",
+        "Prices in Al Malqa",
+        "How does RETT work?"
+      ],
+      "kpi": {
+        "chat": "AI questions",
+        "map_view": "District views",
+        "search": "Searches",
+        "report": "Reports"
+      },
+      "allTime": "all time",
+      "resume": "Pick up where you left off",
+      "resumeEmpty": "Your questions, district views and reports will appear here.",
+      "startAsking": "Ask your first question",
+      "plan": "Your plan",
+      "planName": "Early access",
+      "planBody": "Free while we are in early access: unlimited questions, map and reports.",
+      "viewPlans": "View plans",
+      "data": "Data status",
+      "dataLive": "Live from database",
+      "dataBundled": "Bundled library",
+      "documents": "Official documents",
+      "sources": "Official sources",
+      "toVerify": "Awaiting verification",
+      "marketUntil": "Market data until",
+      "sampleNote": "District prices are sample values until the MOJ pipeline is connected.",
+      "openLibrary": "Open the library",
+      "saved": "Saved districts",
+      "savedEmpty": "Save districts from the map to track them here.",
+      "openMap": "Open the map",
+      "updates": "Official rules in the library",
+      "viewAll": "View all",
+      "kind": {
+        "search": "Search",
+        "map_view": "District view",
+        "chat": "AI question",
+        "report": "Report",
+        "calc": "Cost estimate"
+      }
+    },
+    "advisor": {
+      "history": "Conversations",
+      "new": "New conversation",
+      "noHistory": "No conversations yet.",
+      "delete": "Delete conversation",
+      "emptyTitle": "Ask anything about property in Saudi Arabia",
+      "emptyBody": "Answers come only from official sources (REGA, ZATCA, MOJ, Ejar) and Miftah AI market data, with every claim cited.",
+      "suggestions": [
+        {
+          "title": "Foreign ownership",
+          "q": "Can a foreigner own an apartment in Jeddah under the new law?"
+        },
+        {
+          "title": "Taxes and fees",
+          "q": "What taxes and fees do I pay when buying a SAR 1,500,000 apartment?"
+        },
+        {
+          "title": "District prices",
+          "q": "What is the price per square metre in Hittin, Riyadh?"
+        },
+        {
+          "title": "Buying process",
+          "q": "What are the steps to buy a home as a foreigner, from search to title deed?"
+        },
+        {
+          "title": "Off-plan",
+          "q": "How am I protected when buying off-plan?"
+        },
+        {
+          "title": "Renting out",
+          "q": "Can I increase the rent on my Riyadh apartment?"
+        }
+      ],
+      "placeholder": "Ask Miftah AI…",
+      "send": "Send",
+      "thinking": "Searching official sources…",
+      "sources": "Sources",
+      "status": {
+        "verified": "Verified",
+        "needs_review": "Verify with source",
+        "guidance": "Miftah guidance",
+        "sample": "Sample data"
+      },
+      "disclaimer": "Miftah AI gives information from official sources, not legal or financial advice. Always confirm with REGA or a licensed professional.",
+      "libraryMode": "Library mode: answers quote the official library directly. Add an ANTHROPIC_API_KEY to get written answers.",
+      "error": "Something went wrong. Please try again.",
+      "copy": "Copy",
+      "copied": "Copied",
+      "showHistory": "Show conversations",
+      "hideHistory": "Hide conversations"
+    },
+    "map": {
+      "city": {
+        "riyadh": "Riyadh",
+        "jeddah": "Jeddah"
+      },
+      "byPrice": "Price",
+      "byZone": "Ownership",
+      "legendPrice": "Median apartment price, SAR/m²",
+      "legendZone": "Foreign ownership",
+      "pick": "Select a district",
+      "pickBody": "Click any district on the map to see prices, ownership status, costs and the official rules behind them.",
+      "tabs": {
+        "overview": "Overview",
+        "ownership": "Ownership",
+        "costs": "Costs",
+        "sources": "Sources"
+      },
+      "jurisdiction": "City",
+      "medianByType": "Median price by type, SAR/m²",
+      "deals": "Deals last quarter",
+      "change": "12-month change",
+      "trend": "Apartment price trend, SAR/m²",
+      "ownershipBody": "Whether non-Saudis may buy here depends on REGA's published zone list under the 2025 ownership law. This district has not been verified against that list yet.",
+      "relatedRules": "Related official rules",
+      "costsFor": "Estimated costs for a {area} m² apartment at the median price",
+      "price": "Price",
+      "total": "Estimated total",
+      "askAi": "Ask AI",
+      "brief": "District brief",
+      "checklist": "Checklist",
+      "approx": "Markers show approximate district centres. Official boundaries are being added.",
+      "close": "Close"
+    },
+    "library": {
+      "title": "Official data library",
+      "subtitle": "The rules and sources the AI advisor is allowed to answer from. Every entry links to the authority that publishes it.",
+      "searchPlaceholder": "Search the library…",
+      "all": "All",
+      "category": {
+        "ownership": "Ownership",
+        "tax": "Tax",
+        "fees": "Fees & brokers",
+        "process": "Process",
+        "rental": "Rental",
+        "offplan": "Off-plan",
+        "residency": "Residency",
+        "land": "Land",
+        "market-data": "Market data"
+      },
+      "effective": "Effective",
+      "checked": "Checked",
+      "notChecked": "Not yet checked",
+      "ask": "Ask about this",
+      "sourcesTitle": "Official sources",
+      "noResults": "Nothing matches your search.",
+      "statusNote": "Entries marked “Verify with source” summarise public announcements and are being checked line by line against the official text.",
+      "readMore": "Read",
+      "chunks": "Passages"
+    },
+    "reports": {
+      "title": "Your reports",
+      "subtitle": "District briefs, due-diligence checklists and cost estimates. Open any report to print it or save it as PDF.",
+      "create": "Create report",
+      "searchPlaceholder": "Search by district or title…",
+      "all": "All",
+      "type": {
+        "district": "District brief",
+        "due_diligence": "Due diligence",
+        "cost": "Cost estimate"
+      },
+      "typeBody": {
+        "district": "Prices, trend, ownership status and the rules that apply, on one page.",
+        "due_diligence": "A step-by-step checklist for buying in this district as a foreigner.",
+        "cost": "Every tax and fee on top of the price, with the official source for each."
+      },
+      "cols": {
+        "title": "Report",
+        "type": "Type",
+        "date": "Created",
+        "actions": "Actions"
+      },
+      "empty": "No reports yet",
+      "emptyBody": "Create a district brief, a due-diligence checklist or a cost estimate.",
+      "open": "Open",
+      "delete": "Delete",
+      "confirmDelete": "Delete this report?",
+      "newTitle": "Create a report",
+      "chooseType": "Report type",
+      "district": "District",
+      "propertyType": "Property type",
+      "priceOptional": "Price, SAR (optional)",
+      "areaOptional": "Area, m² (optional)",
+      "generate": "Create report",
+      "generating": "Creating…",
+      "print": "Print / Save PDF",
+      "back": "All reports",
+      "preparedFor": "Prepared for",
+      "generatedOn": "Generated",
+      "summary": "Summary",
+      "prices": "Market prices",
+      "ownership": "Foreign ownership",
+      "rules": "Rules that apply",
+      "costBreakdown": "Cost breakdown",
+      "checklist": "Checklist",
+      "sources": "Sources",
+      "error": "Could not create the report. Please try again.",
+      "disclaimer": "This report compiles information from official sources and Miftah AI market data. It is not legal, tax, financial or brokerage advice. Confirm every point with REGA, ZATCA, the Ministry of Justice or a licensed professional before acting."
+    },
+    "calculator": {
+      "title": "Purchase cost calculator",
+      "subtitle": "Every tax and fee on top of the price. Rates link to their official source."
+    },
+    "account": {
+      "title": "Account & usage",
+      "sections": {
+        "profile": "Profile",
+        "usage": "Usage",
+        "plan": "Plan & billing",
+        "security": "Security",
+        "saved": "Saved districts"
+      },
+      "usageSubtitle": "What you have done in your workspace.",
+      "last14": "Activity, last 14 days",
+      "history": "History",
+      "historyEmpty": "No activity yet.",
+      "planBody": "You are on the free early-access plan. Paid plans with higher limits and white-label reports are coming.",
+      "billingEmpty": "No purchases yet. Receipts will appear here.",
+      "securityTitle": "Change password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm new password",
+      "updatePassword": "Update password",
+      "passwordUpdated": "Password updated.",
+      "passwordMismatch": "Passwords do not match.",
+      "passwordShort": "Use at least 8 characters.",
+      "passwordError": "Could not update the password. Sign in again and retry.",
+      "email": "Email",
+      "memberSince": "Member since"
+    }
   }
 }

@@ -117,7 +117,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <LanguageSwitcher className="hidden sm:block" />
           {user ? (
-            <Link href="/account" className="hidden items-center gap-2 rounded-lg border border-sand-200 bg-white py-1 pe-3 ps-1 text-sm font-medium text-ink-800 transition hover:border-sand-300 sm:inline-flex" title={user.email}>
+            <Link href="/app" className="hidden items-center gap-2 rounded-lg border border-sand-200 bg-white py-1 pe-3 ps-1 text-sm font-medium text-ink-800 transition hover:border-sand-300 sm:inline-flex" title={user.email}>
               <span className="grid h-7 w-7 place-items-center rounded-md bg-night-950 text-xs font-semibold text-white">{initial}</span>
               {t("account")}
             </Link>
@@ -163,7 +163,7 @@ export function Header() {
             <div className="mt-4 flex flex-col gap-3">
               <LanguageSwitcher align="start" />
               {user ? (
-                <Link href="/account" className="btn btn-primary w-full">{t("account")}</Link>
+                <Link href="/app" className="btn btn-primary w-full">{t("account")}</Link>
               ) : (
                 <>
                   <Link href="/waitlist" className="btn btn-primary w-full">{t("cta")}</Link>

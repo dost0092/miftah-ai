@@ -189,3 +189,45 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 .tour-in { animation: tour-in .45s cubic-bezier(.2,.7,.2,1) both; }
 .tour-chip { opacity: 0; animation: tour-in .4s cubic-bezier(.2,.7,.2,1) forwards; }
 @media (prefers-reduced-motion: reduce) { .tour-in, .tour-chip { animation: none; opacity: 1; } }
+
+/* ───────── Workspace (signed-in app) ───────── */
+.kpi-card {
+  position: relative; overflow: hidden; border-radius: 1rem; color: white;
+  background: linear-gradient(135deg, #142463 0%, #1f3fb0 55%, #2a50d8 100%);
+  box-shadow: 0 1px 2px rgb(11 13 18 / .12), 0 14px 30px -14px rgb(26 47 134 / .55);
+}
+.kpi-card::after {
+  content: ""; position: absolute; inset-inline-end: -60px; bottom: -80px; width: 220px; height: 220px; border-radius: 9999px;
+  background: repeating-radial-gradient(circle, rgb(255 255 255 / .12) 0 1px, transparent 1px 14px);
+  pointer-events: none;
+}
+.app-canvas {
+  background:
+    radial-gradient(700px 320px at 50% -80px, rgb(42 80 216 / .09), transparent 70%),
+    radial-gradient(500px 260px at 85% 10%, rgb(196 154 60 / .07), transparent 70%),
+    #ffffff;
+}
+.prose-chat p { margin: .5rem 0; }
+.prose-chat ul, .prose-chat ol { margin: .5rem 0; padding-inline-start: 1.25rem; }
+.prose-chat ul { list-style: disc; }
+.prose-chat ol { list-style: decimal; }
+.prose-chat li { margin: .25rem 0; }
+.prose-chat strong { font-weight: 600; color: var(--color-ink-900); }
+.prose-chat h3, .prose-chat h4 { font-weight: 600; margin: .9rem 0 .35rem; color: var(--color-ink-900); }
+.prose-chat table { width: 100%; border-collapse: collapse; margin: .75rem 0; font-size: .85rem; }
+.prose-chat th, .prose-chat td { border: 1px solid var(--color-sand-200); padding: .4rem .6rem; text-align: start; }
+.prose-chat th { background: var(--color-sand-50); font-weight: 600; }
+.cite { display: inline-grid; place-items: center; min-width: 1.15rem; height: 1.15rem; padding: 0 .25rem; margin-inline: 1px; border-radius: .35rem; background: var(--color-green-50); color: var(--color-green-700); font-size: .68rem; font-weight: 600; vertical-align: .15em; line-height: 1; }
+.cite:hover { background: var(--color-green-600); color: white; }
+.leaflet-container { font-family: var(--font-sans); background: #eef1f5; }
+.leaflet-tooltip.district-label { background: rgb(255 255 255 / .95); border: 0; border-radius: 6px; box-shadow: 0 1px 3px rgb(11 13 18 / .2); padding: 2px 7px; font-size: 11px; font-weight: 600; color: #0b0d12; }
+.leaflet-tooltip.district-label::before { display: none; }
+
+@media print {
+  @page { margin: 14mm; }
+  .app-root { height: auto !important; overflow: visible !important; display: block !important; }
+  .app-main { overflow: visible !important; padding: 0 !important; }
+  .no-print { display: none !important; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+.map-tiles { filter: grayscale(1) contrast(.9) brightness(1.06); }
