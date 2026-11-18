@@ -5,7 +5,7 @@ import { routing } from "@/i18n/routing";
 import { fmtDate } from "@/lib/format";
 import { pageMetadata } from "@/lib/site";
 
-const docs = ["privacy", "terms", "disclaimer"] as const;
+const docs = ["privacy", "terms", "refunds", "disclaimer"] as const;
 type Doc = (typeof docs)[number];
 type Params = { params: Promise<{ locale: string; doc: string }> };
 

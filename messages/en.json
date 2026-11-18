@@ -506,7 +506,7 @@
       "body": "Clean, English-translated district-level data for banks, developers, portals and relocation firms.",
       "cta": "Contact us"
     },
-    "note": "Prices in Saudi riyals, billed monthly through Stripe. Cancel anytime."
+    "note": "Prices in Saudi riyals. Our order process is handled by our online reseller Paddle.com, the merchant of record, which also handles VAT, billing questions and returns. Cancel anytime."
   },
   "solutions": {
     "eyebrow": "Solutions",
@@ -876,8 +876,12 @@
           "p": "Do not misuse the service, attempt to scrape it, resell its data without a licence, or use it for unlawful purposes."
         },
         {
-          "h": "Paid products",
-          "p": "Paid reports and plans will be sold through a merchant-of-record provider, whose terms also apply."
+          "h": "Paid plans",
+          "p": "Miftah AI Pro is a monthly subscription. Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders and handles payment, VAT, billing enquiries and refunds; Paddle's buyer terms also apply to your purchase."
+        },
+        {
+          "h": "Renewal and cancellation",
+          "p": "Subscriptions renew automatically each month until cancelled. You can cancel at any time from Plan & billing → Manage billing; you keep Pro until the end of the period already paid for. Refunds follow our Refund Policy."
         },
         {
           "h": "Changes",
@@ -910,6 +914,32 @@
           "p": "Data from the Ministry of Justice, REGA, KAPSARC and OpenStreetMap belongs to its owners and is used under their open-data terms with attribution."
         }
       ]
+    },
+    "refunds": {
+      "title": "Refund Policy",
+      "intro": "We want you to be confident subscribing to Miftah AI Pro. This policy explains when you can get your money back. Payments are processed by Paddle.com, our merchant of record.",
+      "sections": [
+        {
+          "h": "14-day refund on your first payment",
+          "p": "If Miftah AI Pro is not right for you, ask for a refund within 14 days of your first subscription payment and we will refund it in full, no questions asked."
+        },
+        {
+          "h": "Renewals",
+          "p": "Monthly renewals are not refunded once the new month has started, but you can cancel at any time to stop future charges. You keep Pro until the end of the period you have paid for."
+        },
+        {
+          "h": "Billing errors",
+          "p": "If you were charged twice, charged after cancelling, or charged in error, we refund the incorrect amount in full."
+        },
+        {
+          "h": "How to request a refund",
+          "p": "Reply to your Paddle receipt email, use paddle.net to find your order, or contact us from the Contact page with the email address you paid with. Refunds go back to the original payment method, usually within 5 to 10 business days."
+        },
+        {
+          "h": "Your legal rights",
+          "p": "This policy does not limit any rights you have under the consumer law that applies to you."
+        }
+      ]
     }
   },
   "footer": {
@@ -924,7 +954,8 @@
     "rights": "All rights reserved.",
     "newsletterTitle": "Monthly Saudi foreign-buyer market update",
     "newsletterCta": "Subscribe",
-    "attribution": "Data: Ministry of Justice, REGA, KAPSARC (open data). Map data © OpenStreetMap contributors."
+    "attribution": "Data: Ministry of Justice, REGA, KAPSARC (open data). Map data © OpenStreetMap contributors.",
+    "refunds": "Refunds"
   },
   "notFound": {
     "title": "This door is locked",
@@ -1399,7 +1430,7 @@
       "manage": "Manage billing",
       "renews": "Renews on {date}",
       "ends": "Access ends on {date}",
-      "billedNote": "Billed monthly in Saudi riyals through Stripe. Cancel anytime from Manage billing.",
+      "billedNote": "Billed monthly through Paddle, our reseller and merchant of record, which handles payment and VAT. Cancel anytime from Manage billing.",
       "notConfigured": "Online payment is being enabled. Contact us and we will activate Pro on your account.",
       "contact": "Contact us",
       "error": "We couldn't open checkout. Please try again in a moment.",
@@ -1410,7 +1441,9 @@
       "limitBody": "Upgrade to Pro for unlimited questions and reports. Your free allowance renews on {date}.",
       "seePlans": "See plans",
       "left": "{n} of {limit} free questions left this month",
-      "planBadge": "{plan} plan"
+      "planBadge": "{plan} plan",
+      "activating": "Payment received. Activating Pro on your account…",
+      "activatingSlow": "Your payment went through. Activation is taking longer than usual; refresh this page in a minute or contact us."
     }
   }
 }

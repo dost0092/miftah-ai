@@ -1,12 +1,13 @@
--- Plans, Stripe subscriptions and metered usage.
+-- Plans, subscriptions (Paddle) and metered usage.
 -- Users can read their own rows; only the server (service role) writes, so usage cannot be reset from the browser.
 
 create table if not exists public.subscriptions (
   user_id                uuid primary key references auth.users(id) on delete cascade,
   plan                   text not null default 'free' check (plan in ('free', 'pro')),
   status                 text not null default 'inactive',
-  stripe_customer_id     text unique,
-  stripe_subscription_id text unique,
+  provider               text not null default 'paddle',
+  customer_id            text,
+  subscription_id        text unique,
   current_period_end     timestamptz,
   cancel_at_period_end   boolean not null default false,
   updated_at             timestamptz not null default now()

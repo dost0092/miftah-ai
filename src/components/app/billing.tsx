@@ -1,8 +1,8 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useState } from "react";
-import { Link } from "@/i18n/navigation";
+import { useEffect, useState } from "react";
+import { Link, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/format";
 import { IconArrow, IconLock } from "@/components/Icons";
 
@@ -13,15 +13,74 @@ export function nextReset(locale: string) {
   return new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", timeZone: "UTC" }).format(next);
 }
 
-async function openStripe(path: "/api/billing/checkout" | "/api/billing/portal", locale: string): Promise<"ok" | "not_configured" | "error"> {
-  const res = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ locale }) }).catch(() => null);
+type PaddleGlobal = {
+  Environment: { set: (env: string) => void };
+  Initialize: (opts: { token: string; eventCallback?: (e: { name?: string }) => void }) => void;
+  Checkout: { open: (opts: Record<string, unknown>) => void };
+};
+declare global {
+  interface Window {
+    Paddle?: PaddleGlobal;
+  }
+}
+
+let paddleReady: Promise<PaddleGlobal> | null = null;
+let paddleToken: string | null = null;
+
+/** Loads Paddle.js once and initialises it with the client token. */
+function loadPaddle(token: string, environment: string, onComplete: () => void): Promise<PaddleGlobal> {
+  paddleReady ??= new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
+    s.async = true;
+    s.onload = () => (window.Paddle ? resolve(window.Paddle) : reject(new Error("paddle")));
+    s.onerror = () => {
+      paddleReady = null;
+      reject(new Error("paddle"));
+    };
+    document.head.appendChild(s);
+  });
+  return paddleReady.then((P) => {
+    if (paddleToken !== token) {
+      if (environment === "sandbox") P.Environment.set("sandbox");
+      P.Initialize({ token, eventCallback: (e) => e.name === "checkout.completed" && onComplete() });
+      paddleToken = token;
+    }
+    return P;
+  });
+}
+
+const paddleLocale = (l: string) => (l === "ar" ? "ar" : l === "zh" ? "zh-Hans" : "en");
+
+/** Opens Paddle's overlay checkout for Pro. */
+async function openCheckout(locale: string): Promise<"ok" | "not_configured" | "error"> {
+  const res = await fetch("/api/billing/checkout", { method: "POST" }).catch(() => null);
   if (!res) return "error";
-  const data = await res.json().catch(() => ({}));
-  if (res.ok && data.url) {
+  const cfg = await res.json().catch(() => ({}));
+  if (!res.ok) return cfg.error === "not_configured" ? "not_configured" : "error";
+  try {
+    const successUrl = `${window.location.origin}/${locale}/app/billing?status=success`;
+    const P = await loadPaddle(cfg.token, cfg.environment, () => window.setTimeout(() => window.location.assign(successUrl), 1500));
+    P.Checkout.open({
+      items: [{ priceId: cfg.priceId, quantity: 1 }],
+      customer: cfg.email ? { email: cfg.email } : undefined,
+      customData: { user_id: cfg.userId },
+      settings: { displayMode: "overlay", theme: "light", locale: paddleLocale(locale), successUrl },
+    });
+    return "ok";
+  } catch {
+    return "error";
+  }
+}
+
+async function openPortal(): Promise<"ok" | "error"> {
+  const res = await fetch("/api/billing/portal", { method: "POST" }).catch(() => null);
+  const data = res ? await res.json().catch(() => ({})) : {};
+  if (res?.ok && data.url) {
     window.location.assign(data.url);
     return "ok";
   }
-  return data.error === "not_configured" ? "not_configured" : "error";
+  return "error";
 }
 
 export function UpgradeButton({ className, label }: { className?: string; label?: string }) {
@@ -35,8 +94,8 @@ export function UpgradeButton({ className, label }: { className?: string; label?
         disabled={state === "busy"}
         onClick={async () => {
           setState("busy");
-          const r = await openStripe("/api/billing/checkout", locale);
-          if (r !== "ok") setState(r);
+          const r = await openCheckout(locale);
+          setState(r === "ok" ? "idle" : r);
         }}
         className={cn("btn btn-primary disabled:opacity-70", className)}
       >
@@ -56,7 +115,6 @@ export function UpgradeButton({ className, label }: { className?: string; label?
 
 export function ManageBillingButton() {
   const t = useTranslations("app.billing");
-  const locale = useLocale();
   const [state, setState] = useState<"idle" | "busy" | "error">("idle");
   return (
     <div>
@@ -65,7 +123,7 @@ export function ManageBillingButton() {
         disabled={state === "busy"}
         onClick={async () => {
           setState("busy");
-          const r = await openStripe("/api/billing/portal", locale);
+          const r = await openPortal();
           if (r !== "ok") setState("error");
         }}
         className="btn btn-ghost disabled:opacity-70"
@@ -95,5 +153,26 @@ export function UpgradeNotice({ kind, limit, className }: { kind: "chat" | "repo
         </div>
       </div>
     </div>
+  );
+}
+
+/** After checkout, Paddle's webhook can lag a few seconds: refresh until the plan turns Pro. */
+export function ActivationWatcher() {
+  const t = useTranslations("app.billing");
+  const router = useRouter();
+  const [tries, setTries] = useState(0);
+  useEffect(() => {
+    if (tries >= 10) return;
+    const id = window.setTimeout(() => {
+      router.refresh();
+      setTries((n) => n + 1);
+    }, 3000);
+    return () => window.clearTimeout(id);
+  }, [tries, router]);
+  return (
+    <p className="mt-6 flex items-center gap-2.5 rounded-xl border border-green-600/15 bg-green-50 px-4 py-3 text-sm text-ink-700">
+      <span className="h-2 w-2 animate-pulse-soft rounded-full bg-green-600" />
+      {tries >= 10 ? t("activatingSlow") : t("activating")}
+    </p>
   );
 }

@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getAppSession } from "@/lib/workspace/session";
 import { FREE_LIMITS, getAllowance, monthStart } from "@/lib/billing";
 import { PageHeader, Panel } from "@/components/app/ui";
-import { ManageBillingButton, UpgradeButton } from "@/components/app/billing";
+import { ActivationWatcher, ManageBillingButton, UpgradeButton } from "@/components/app/billing";
 import { IconCheck } from "@/components/Icons";
 import { cn, fmtNumber } from "@/lib/format";
 
@@ -50,7 +50,7 @@ export default async function BillingPage({ params, searchParams }: Props) {
       <div className="mx-auto max-w-5xl px-4 pb-14 pt-8 sm:px-6 lg:pt-10">
         <PageHeader title={t("title")} subtitle={t("subtitle")} />
 
-        {status === "success" && <p className="mt-6 rounded-xl border border-emerald-600/15 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">{t("success")}</p>}
+        {status === "success" && (pro ? <p className="mt-6 rounded-xl border border-emerald-600/15 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">{t("success")}</p> : <ActivationWatcher />)}
         {status === "cancelled" && <p className="mt-6 rounded-xl border border-sand-200 bg-white px-4 py-3 text-sm text-ink-500">{t("cancelled")}</p>}
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_1.1fr]">

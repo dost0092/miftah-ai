@@ -13,9 +13,10 @@ export type Plan = {
   renewsAt: string | null;
   cancelAtPeriodEnd: boolean;
   customerId: string | null;
+  subscriptionId: string | null;
 };
 
-const FREE: Plan = { plan: "free", status: "inactive", renewsAt: null, cancelAtPeriodEnd: false, customerId: null };
+const FREE: Plan = { plan: "free", status: "inactive", renewsAt: null, cancelAtPeriodEnd: false, customerId: null, subscriptionId: null };
 
 // Local preview (no database): keep usage in memory.
 const g = globalThis as unknown as { __usage?: Map<string, { kind: UsageKind; at: number }[]> };
@@ -28,7 +29,7 @@ export function monthStart(d = new Date()) {
 export async function getPlan(s: AppSession): Promise<Plan> {
   const db = s.preview ? null : getServerSupabase();
   if (!db) return FREE;
-  const { data } = await db.from("subscriptions").select("plan, status, current_period_end, cancel_at_period_end, stripe_customer_id").eq("user_id", s.user.id).maybeSingle();
+  const { data } = await db.from("subscriptions").select("plan, status, current_period_end, cancel_at_period_end, customer_id, subscription_id").eq("user_id", s.user.id).maybeSingle();
   if (!data) return FREE;
   const active = data.plan === "pro" && ["active", "trialing", "past_due"].includes(data.status);
   return {
@@ -36,7 +37,8 @@ export async function getPlan(s: AppSession): Promise<Plan> {
     status: data.status,
     renewsAt: data.current_period_end,
     cancelAtPeriodEnd: Boolean(data.cancel_at_period_end),
-    customerId: data.stripe_customer_id,
+    customerId: data.customer_id,
+    subscriptionId: data.subscription_id,
   };
 }
 
