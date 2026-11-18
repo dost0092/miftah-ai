@@ -79,6 +79,19 @@
 
 html, body { overflow-x: clip; }
 html { scroll-behavior: smooth; }
+/* Clicks respond immediately on touch screens (no double-tap delay, no grey flash) */
+a, button, [role="button"], label, summary, select { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+button:not(:disabled), [role="button"], summary { cursor: pointer; }
+/* Pressed feedback for icon buttons and nav items that are not .btn */
+.press { transition: transform .08s ease; }
+.press:active { transform: scale(.94); transition-duration: 0s; }
+/* Top bar that starts the instant an internal link is clicked */
+.nav-progress { position: fixed; inset-inline: 0; top: 0; z-index: 100; height: 2px; pointer-events: none;
+  background: var(--color-green-600); transform-origin: left; animation: nav-progress 8s cubic-bezier(.1,.7,.2,1) forwards; }
+html[dir="rtl"] .nav-progress { transform-origin: right; }
+.nav-progress-done { animation: none; transform: scaleX(1); opacity: 0; transition: opacity .25s ease .05s; }
+@keyframes nav-progress { from { transform: scaleX(.08); } 20% { transform: scaleX(.45); } to { transform: scaleX(.92); } }
+@media (prefers-reduced-motion: reduce) { .nav-progress { animation-duration: 0s; } }
 body {
   background: var(--bg);
   color: var(--fg);
@@ -119,10 +132,12 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
     border-radius: .625rem; padding: .7rem 1.15rem; font-weight: 500; font-size: .925rem;
-    transition: background-color .15s ease, box-shadow .15s ease, color .15s ease, border-color .15s ease;
-    white-space: nowrap;
+    transition: background-color .12s ease, box-shadow .12s ease, color .12s ease, border-color .12s ease, transform .08s ease;
+    white-space: nowrap; cursor: pointer; user-select: none;
   }
-  .btn:active { transform: translateY(1px); }
+  /* Firm, instant press: shrinks and darkens the moment the pointer goes down */
+  .btn:not(:disabled):active { transform: scale(.97); transition-duration: 0s; filter: brightness(.92); box-shadow: none; }
+  .btn:disabled { cursor: not-allowed; }
   .btn-primary { background: var(--color-night-950); color: white; box-shadow: 0 1px 2px rgb(11 13 18 / .2), inset 0 1px 0 rgb(255 255 255 / .08); }
   .btn-primary:hover { background: var(--color-night-700); }
   .btn-accent { background: var(--color-green-600); color: white; box-shadow: 0 1px 2px rgb(42 80 216 / .3); }

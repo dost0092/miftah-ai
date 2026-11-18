@@ -43,6 +43,13 @@ export async function GET() {
     const { error } = await supabase.from(table).select("*").limit(0);
     tables[table] = !error ? "ok" : error.code === "42P01" || error.code === "PGRST205" ? "missing" : "error";
   }
-  const ok = Object.values(tables).every((v) => v === "ok") && ai.ok;
-  return NextResponse.json({ ok, supabase: "connected", tables, ai }, { status: ok ? 200 : 500 });
+  // Billing: migration 0005 renamed the columns; Paddle needs all five settings (values never returned).
+  const cols = await supabase.from("subscriptions").select("user_id,customer_id,subscription_id,provider").limit(0);
+  const billing = {
+    schema: cols.error ? "outdated" : "ok",
+    paddleEnv: process.env.PADDLE_ENV?.trim() === "production" ? "production" : "sandbox",
+    paddleConfigured: ["PADDLE_CLIENT_TOKEN", "PADDLE_PRICE_ID", "PADDLE_API_KEY", "PADDLE_WEBHOOK_SECRET"].every((k) => !!process.env[k]?.trim()),
+  };
+  const ok = Object.values(tables).every((v) => v === "ok") && ai.ok && billing.schema === "ok" && billing.paddleConfigured;
+  return NextResponse.json({ ok, supabase: "connected", tables, billing, ai }, { status: ok ? 200 : 500 });
 }

@@ -281,13 +281,13 @@
         },
         {
           "q": "How much does it cost?",
-          "a": "The free plan includes 10 Miftah AI questions and 1 report a month, plus the market map, cost calculator and official library. Pro is SAR 99 a month for unlimited questions and reports. Cancel anytime."
+          "a": "The free plan includes 5 Miftah AI questions and 1 report a month, plus the market map, cost calculator and official library. Pro is SAR 99 a month for unlimited questions and reports. Cancel anytime."
         }
       ]
     },
     "cta": {
       "title": "Get your key to Saudi property",
-      "subtitle": "Create a free account and ask your first questions today. 10 cited answers a month on the free plan, unlimited on Pro.",
+      "subtitle": "Create a free account and ask your first questions today. 5 cited answers a month on the free plan, unlimited on Pro.",
       "button": "Start free",
       "secondary": "Talk to us"
     }
@@ -462,7 +462,7 @@
         "period": "",
         "desc": "For early research and first questions.",
         "features": [
-          "10 Miftah AI questions a month",
+          "5 Miftah AI questions a month",
           "1 report a month",
           "Market map and district prices",
           "Cost calculator and official library"
@@ -970,7 +970,7 @@
     "loginTitle": "Welcome back",
     "loginSubtitle": "Sign in to your Miftah AI account.",
     "signupTitle": "Create your account",
-    "signupSubtitle": "Free plan included. 10 cited answers a month, no card needed.",
+    "signupSubtitle": "Free plan included. 5 cited answers a month, no card needed.",
     "forgotTitle": "Reset your password",
     "forgotSubtitle": "Enter your email and we will send you a secure link.",
     "resetTitle": "Choose a new password",
@@ -1156,7 +1156,7 @@
       "startAsking": "Ask your first question",
       "plan": "Your plan",
       "planName": "Free plan",
-      "planBody": "You are on the Free plan: 10 Miftah AI questions and 1 report a month. Upgrade to Pro for unlimited use.",
+      "planBody": "You are on the Free plan: 5 Miftah AI questions and 1 report a month. Upgrade to Pro for unlimited use.",
       "viewPlans": "View plans",
       "data": "Data status",
       "dataLive": "Live from database",
@@ -1386,7 +1386,7 @@
       "last14": "Activity, last 14 days",
       "history": "History",
       "historyEmpty": "No activity yet.",
-      "planBody": "You are on the Free plan: 10 Miftah AI questions and 1 report a month. Upgrade to Pro for unlimited use.",
+      "planBody": "You are on the Free plan: 5 Miftah AI questions and 1 report a month. Upgrade to Pro for unlimited use.",
       "billingEmpty": "No purchases yet. Receipts will appear here.",
       "securityTitle": "Change password",
       "newPassword": "New password",
@@ -1421,7 +1421,7 @@
         "Priority support"
       ],
       "freeFeatures": [
-        "10 Miftah AI questions a month",
+        "5 Miftah AI questions a month",
         "1 report a month",
         "Market map, cost calculator and official library"
       ],

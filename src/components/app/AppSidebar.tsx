@@ -17,7 +17,7 @@ export function AppSidebar() {
         key={href}
         href={href}
         aria-current={active ? "page" : undefined}
-        className={cn("group flex w-full flex-col items-center gap-1.5 rounded-xl px-1 py-2 text-[11px] font-medium leading-tight transition", active ? "text-white" : "text-white/55 hover:text-white")}
+        className={cn("press group flex w-full flex-col items-center gap-1.5 rounded-xl px-1 py-2 text-[11px] font-medium leading-tight transition", active ? "text-white" : "text-white/55 hover:text-white")}
       >
         <span className={cn("grid h-9 w-9 place-items-center rounded-lg transition", active ? "bg-green-600 text-white shadow-[0_6px_16px_-6px_rgb(42_80_216/.9)]" : "group-hover:bg-white/10")}>
           <Icon width={19} height={19} />
@@ -44,7 +44,7 @@ export function AppSidebar() {
         {[...appNav.filter((n) => n.key !== "calculator"), accountNav].map(({ href, key, Icon }) => {
           const active = isActive(pathname, href);
           return (
-            <Link key={href} href={href} className={cn("flex min-w-0 flex-1 flex-col items-center gap-0.5 py-2 text-[10px] font-medium", active ? "text-green-600" : "text-ink-500")}>
+            <Link key={href} href={href} className={cn("press flex min-w-0 flex-1 flex-col items-center gap-0.5 py-2 text-[10px] font-medium", active ? "text-green-600" : "text-ink-500")}>
               <Icon width={20} height={20} />
               <span className="max-w-full truncate">{t(key)}</span>
             </Link>

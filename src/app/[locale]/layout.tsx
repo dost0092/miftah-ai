@@ -18,6 +18,7 @@ import "@fontsource-variable/noto-nastaliq-urdu";
 import "@fontsource-variable/noto-sans-devanagari";
 import "@fontsource-variable/noto-sans-sc";
 import "../globals.css";
+import { NavProgress } from "@/components/NavProgress";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -63,6 +64,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
     <html lang={locale} dir={dir}>
       <body className="min-h-screen font-sans">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+        <NavProgress />
         <NextIntlClientProvider>
           {children}
         </NextIntlClientProvider>
