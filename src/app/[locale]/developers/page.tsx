@@ -41,8 +41,8 @@ export default async function DevelopersPage({ params }: Params) {
     <>
       <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")}>
         <div className="mt-8 flex flex-wrap items-center gap-4">
-          <Link href="/contact" className="btn btn-gold">{t("cta")} <IconArrow width={16} height={16} /></Link>
-          <span className="rounded-full border border-gold-400/40 px-3 py-1.5 text-xs font-semibold text-gold-300">{t("badge")}</span>
+          <Link href="/contact" className="btn btn-primary">{t("cta")} <IconArrow width={16} height={16} /></Link>
+          <span className="rounded-full border border-sand-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-500">{t("badge")}</span>
         </div>
       </PageHero>
 
@@ -53,7 +53,7 @@ export default async function DevelopersPage({ params }: Params) {
             {endpoints.map((e) => (
               <li key={e.path} className="card flex flex-col gap-2 p-4 sm:flex-row sm:items-center sm:gap-4">
                 <span className="flex items-center gap-3" dir="ltr">
-                  <span className={e.method === "GET" ? "rounded-md bg-green-50 px-2 py-0.5 font-mono text-xs font-bold text-green-700" : "rounded-md bg-gold-100 px-2 py-0.5 font-mono text-xs font-bold text-gold-700"}>{e.method}</span>
+                  <span className={e.method === "GET" ? "rounded-md bg-green-50 px-2 py-0.5 font-mono text-xs font-bold text-green-700" : "rounded-md bg-sand-100 px-2 py-0.5 font-mono text-xs font-bold text-ink-700"}>{e.method}</span>
                   <code className="font-mono text-sm font-semibold text-ink-900">{e.path}</code>
                 </span>
                 <span className="text-sm text-ink-500 sm:ms-auto sm:text-end">{e.desc}</span>
@@ -62,9 +62,9 @@ export default async function DevelopersPage({ params }: Params) {
           </ul>
         </Reveal>
         <Reveal delay={120}>
-          <div className="overflow-hidden rounded-[1.25rem] bg-night-950 text-white shadow-2xl" dir="ltr">
+          <div className="overflow-hidden shadow-frame rounded-[.875rem] bg-night-950 text-white" dir="ltr">
             <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3 text-xs text-white/50">
-              <IconCode width={14} height={14} className="text-gold-400" /> GET /v1/districts/al-malqa/stats
+              <IconCode width={14} height={14} className="text-green-400" /> GET /v1/districts/al-malqa/stats
             </div>
             <pre className="overflow-x-auto p-5 font-mono text-[12.5px] leading-6 text-green-100/90">{sample}</pre>
           </div>
@@ -76,7 +76,7 @@ export default async function DevelopersPage({ params }: Params) {
           const Icon = icons[i];
           return (
             <Reveal key={f.title} delay={i * 80} className="card p-6">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-green-50 text-green-600"><Icon width={20} height={20} /></span>
+              <span className="grid h-11 w-11 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"><Icon width={20} height={20} /></span>
               <h3 className="mt-5 font-semibold">{f.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-500">{f.body}</p>
             </Reveal>

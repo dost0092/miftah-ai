@@ -67,7 +67,7 @@ export function Header() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <header className={cn("sticky top-0 z-40 transition-all duration-300", scrolled ? "border-b border-sand-200/80 bg-sand-50/85 backdrop-blur-xl" : "bg-sand-50")}>
+    <header className={cn("sticky top-0 z-40 transition-all duration-300", scrolled ? "border-b border-sand-200 bg-white/80 backdrop-blur-xl" : "border-b border-transparent bg-white")}>
       <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-[72px]">
         <Link href="/" className="shrink-0" aria-label="Miftah AI home">
           <Logo />
@@ -77,7 +77,7 @@ export function Header() {
           <div className="relative" onMouseEnter={() => setProductOpen(true)} onMouseLeave={() => setProductOpen(false)}>
             <button
               type="button"
-              className={cn("inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium text-ink-700 transition hover:bg-sand-100 hover:text-ink-900", productOpen && "bg-sand-100")}
+              className={cn("inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-ink-700 transition hover:bg-sand-100 hover:text-ink-900", productOpen && "bg-sand-100")}
               aria-expanded={productOpen}
               onClick={() => setProductOpen((v) => !v)}
             >
@@ -85,10 +85,10 @@ export function Header() {
               <IconChevron width={14} height={14} className={cn("transition", productOpen && "rotate-180")} />
             </button>
             <div className={cn("absolute start-0 top-full pt-2 transition", productOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0")}>
-              <div className="grid w-[420px] gap-1 rounded-2xl border border-sand-200 bg-white p-2 shadow-2xl shadow-ink-900/10">
+              <div className="grid w-[420px] gap-1 rounded-xl border border-sand-200 bg-white p-2 shadow-frame">
                 {productItems.map(({ key, href, Icon }) => (
                   <Link key={key} href={href} className="group flex items-start gap-3 rounded-xl p-3 transition hover:bg-sand-100">
-                    <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-green-50 text-green-600 transition group-hover:bg-green-600 group-hover:text-white">
+                    <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sand-100 text-ink-900 ring-1 ring-sand-200 transition group-hover:bg-white group-hover:text-green-600">
                       <Icon width={18} height={18} />
                     </span>
                     <span>
@@ -105,8 +105,8 @@ export function Header() {
               key={l.key}
               href={l.href}
               className={cn(
-                "rounded-full px-3.5 py-2 text-sm font-medium transition hover:bg-sand-100 hover:text-ink-900",
-                isActive(l.href) ? "text-green-700" : "text-ink-700",
+                "rounded-lg px-3 py-2 text-sm font-medium transition hover:bg-sand-100 hover:text-ink-900",
+                isActive(l.href) ? "text-ink-900" : "text-ink-500",
               )}
             >
               {t(l.key)}
@@ -117,16 +117,16 @@ export function Header() {
         <div className="flex items-center gap-2">
           <LanguageSwitcher className="hidden sm:block" />
           {user ? (
-            <Link href="/account" className="hidden items-center gap-2 rounded-full border border-sand-200 bg-white py-1 pe-3.5 ps-1 text-sm font-semibold text-ink-800 transition hover:border-green-600/40 sm:inline-flex" title={user.email}>
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-green-600 text-xs font-bold text-white">{initial}</span>
+            <Link href="/account" className="hidden items-center gap-2 rounded-lg border border-sand-200 bg-white py-1 pe-3 ps-1 text-sm font-medium text-ink-800 transition hover:border-sand-300 sm:inline-flex" title={user.email}>
+              <span className="grid h-7 w-7 place-items-center rounded-md bg-night-950 text-xs font-semibold text-white">{initial}</span>
               {t("account")}
             </Link>
           ) : (
             <>
-              <Link href="/login" className={cn("hidden rounded-full px-3.5 py-2 text-sm font-semibold text-ink-700 transition hover:bg-sand-100 hover:text-ink-900 md:inline-flex", user === undefined && "invisible")}>
+              <Link href="/login" className={cn("hidden rounded-lg px-3 py-2 text-sm font-medium text-ink-700 transition hover:bg-sand-100 hover:text-ink-900 md:inline-flex", user === undefined && "invisible")}>
                 {t("signIn")}
               </Link>
-              <Link href="/waitlist" className="btn btn-primary hidden !py-2.5 text-sm sm:inline-flex">
+              <Link href="/waitlist" className="btn btn-primary hidden !py-2 text-sm sm:inline-flex">
                 {t("cta")}
                 <IconArrow width={16} height={16} />
               </Link>
@@ -134,7 +134,7 @@ export function Header() {
           )}
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-full border border-sand-200 bg-white lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-lg border border-sand-200 bg-white lg:hidden"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? t("close") : t("menu")}
             aria-expanded={mobileOpen}
@@ -145,12 +145,12 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto bg-sand-50 lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto bg-white lg:hidden">
           <div className="container-x flex flex-col gap-1 py-6">
             <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-wider text-ink-400">{t("product")}</p>
             {productItems.map(({ key, href, Icon }) => (
               <Link key={key} href={href} className="flex items-center gap-3 rounded-xl px-3 py-3 text-base font-medium hover:bg-sand-100">
-                <Icon width={18} height={18} className="text-green-600" />
+                <Icon width={18} height={18} className="text-ink-500" />
                 {t(`productItems.${key}.title`)}
               </Link>
             ))}

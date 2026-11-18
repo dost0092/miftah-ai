@@ -1013,7 +1013,10 @@
     "joinWaitlist": "انضم للوصول المبكر",
     "advisorTitle": "المستشار الذكي",
     "advisorBody": "اسأل عن أي شيء يخص الشراء في السعودية واحصل على إجابات موثّقة بلغتك.",
-    "quickLinks": "روابط سريعة"
+    "quickLinks": "روابط سريعة",
+    "overview": "نظرة عامة",
+    "avgPrice": "متوسط سعر المحفوظ",
+    "statusPending": "غير منضم"
   },
   "tour": {
     "section": {

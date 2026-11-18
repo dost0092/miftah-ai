@@ -35,7 +35,7 @@ export default async function TrustPage({ params }: Params) {
         <ol className="space-y-3">
           {rules.map((r, i) => (
             <Reveal key={i} delay={i * 60} className="card flex items-start gap-4 p-5">
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-green-600 font-semibold text-white" dir="ltr">{i + 1}</span>
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-night-950 font-semibold text-white" dir="ltr">{i + 1}</span>
               <p className="pt-1.5 leading-relaxed text-ink-700">{r}</p>
             </Reveal>
           ))}
@@ -50,7 +50,7 @@ export default async function TrustPage({ params }: Params) {
             {sources.map((s, i) => (
               <Reveal key={s.name} delay={(i % 3) * 80}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer" className="card group flex h-full flex-col p-6 transition hover:-translate-y-1">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-gold-100 text-gold-700"><IconDatabase width={20} height={20} /></span>
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"><IconDatabase width={20} height={20} /></span>
                   <h3 className="mt-5 font-semibold">{s.name}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">{s.body}</p>
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-green-700" dir="ltr">
@@ -75,7 +75,7 @@ export default async function TrustPage({ params }: Params) {
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
             {pipeline.map((p, i) => (
               <Reveal key={i} delay={i * 80} className="card-dark relative p-5">
-                <span className="text-xs font-semibold text-gold-300" dir="ltr">0{i + 1}</span>
+                <span className="text-xs font-semibold text-green-300" dir="ltr">0{i + 1}</span>
                 <h3 className="mt-3 font-semibold">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/65">{p.body}</p>
               </Reveal>
@@ -92,7 +92,7 @@ export default async function TrustPage({ params }: Params) {
             const Icon = qualityIcons[i];
             return (
               <Reveal key={i} delay={i * 80} className="card p-6">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-green-50 text-green-600"><Icon width={20} height={20} /></span>
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"><Icon width={20} height={20} /></span>
                 <h3 className="mt-5 font-semibold">{q.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">{q.body}</p>
               </Reveal>

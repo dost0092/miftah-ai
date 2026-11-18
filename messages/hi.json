@@ -1013,7 +1013,10 @@
     "joinWaitlist": "अर्ली एक्सेस पाएँ",
     "advisorTitle": "AI सलाहकार",
     "advisorBody": "सऊदी अरब में खरीदारी के बारे में कुछ भी पूछें और अपनी भाषा में स्रोतों सहित जवाब पाएँ।",
-    "quickLinks": "त्वरित लिंक"
+    "quickLinks": "त्वरित लिंक",
+    "overview": "अवलोकन",
+    "avgPrice": "सहेजे गए की औसत कीमत",
+    "statusPending": "शामिल नहीं"
   },
   "tour": {
     "section": {

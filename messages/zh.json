@@ -1013,7 +1013,10 @@
     "joinWaitlist": "加入抢先体验",
     "advisorTitle": "AI 顾问",
     "advisorBody": "询问在沙特购房的任何问题，用您的语言获得附带来源的回答。",
-    "quickLinks": "快捷链接"
+    "quickLinks": "快捷链接",
+    "overview": "概览",
+    "avgPrice": "已收藏均价",
+    "statusPending": "未加入"
   },
   "tour": {
     "section": {

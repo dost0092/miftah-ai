@@ -1013,7 +1013,10 @@
     "joinWaitlist": "جلد رسائی حاصل کریں",
     "advisorTitle": "AI مشیر",
     "advisorBody": "سعودی عرب میں خریداری کے بارے میں کچھ بھی پوچھیں اور اپنی زبان میں حوالوں کے ساتھ جواب پائیں۔",
-    "quickLinks": "فوری لنکس"
+    "quickLinks": "فوری لنکس",
+    "overview": "جائزہ",
+    "avgPrice": "محفوظ کی اوسط قیمت",
+    "statusPending": "شامل نہیں"
   },
   "tour": {
     "section": {

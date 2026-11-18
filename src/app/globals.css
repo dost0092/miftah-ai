@@ -1,44 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  /* Corporate Saudi palette (in the spirit of Aramco / PIF / ROSHN):
-     deep navy for dark surfaces, Saudi green as a restrained accent,
-     muted gold used sparingly, warm neutral backgrounds. */
-  --color-night-950: #070f1c;
-  --color-night-900: #0b1626;
-  --color-night-800: #102036;
-  --color-night-700: #1a2d47;
-  --color-night-600: #2a4062;
+  /* White-first SaaS palette.
+     night = near-black for text, buttons and the rare dark surface;
+     green = the single brand accent (a deep cobalt blue, kept under the old token name);
+     gold  = cool slate, used for quiet secondary details;
+     sand  = cool neutral greys for surfaces and hairlines. */
+  --color-night-950: #0a0b0d;
+  --color-night-900: #111318;
+  --color-night-800: #171a20;
+  --color-night-700: #23272f;
+  --color-night-600: #343944;
 
-  --color-green-950: #072a1e;
-  --color-green-900: #0b3a2a;
-  --color-green-800: #0f4a36;
-  --color-green-700: #006b3e;
-  --color-green-600: #00804a; /* primary accent: Saudi green */
-  --color-green-500: #179563;
-  --color-green-400: #4bb388;
-  --color-green-300: #8fd2b3;
-  --color-green-100: #ddf1e6;
-  --color-green-50: #f0f8f3;
+  --color-green-950: #0d1a45;
+  --color-green-900: #142463;
+  --color-green-800: #1a2f86;
+  --color-green-700: #1f3fb0;
+  --color-green-600: #2a50d8; /* brand accent */
+  --color-green-500: #4166ea;
+  --color-green-400: #7290f2;
+  --color-green-300: #a9bdf8;
+  --color-green-100: #e3eaff;
+  --color-green-50: #f3f6ff;
 
-  /* Champagne gold */
-  --color-gold-700: #8c6b2c;
-  --color-gold-600: #a98637;
-  --color-gold-500: #c9a24e;
-  --color-gold-400: #dcbd78;
-  --color-gold-300: #ead6a6;
-  --color-gold-100: #f8f0dc;
+  --color-gold-700: #3f4652;
+  --color-gold-600: #5b6372;
+  --color-gold-500: #8a929f;
+  --color-gold-400: #c3c9d2;
+  --color-gold-300: #dfe3e9;
+  --color-gold-100: #f2f4f7;
 
-  --color-sand-50: #fbfaf7;
-  --color-sand-100: #f4f1ea;
-  --color-sand-200: #e7e2d7;
-  --color-sand-300: #d6cdbb;
+  --color-sand-50: #fafbfc;
+  --color-sand-100: #f4f5f7;
+  --color-sand-200: #e7e9ed;
+  --color-sand-300: #d5d9df;
 
-  --color-ink-900: #0e1726;
-  --color-ink-700: #2f3b4c;
-  --color-ink-500: #5d6878;
-  --color-ink-400: #808a98;
-  --color-ink-200: #d6dbe2;
+  --color-ink-900: #0b0d12;
+  --color-ink-800: #1d2027;
+  --color-ink-700: #363b45;
+  --color-ink-500: #5f6672;
+  --color-ink-400: #8b919b;
+  --color-ink-200: #dcdfe4;
 
   --font-sans: var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
@@ -70,7 +72,7 @@
   --font-urdu: "Noto Nastaliq Urdu Variable";
   --font-devanagari: "Noto Sans Devanagari Variable";
   --font-sc: "Noto Sans SC Variable";
-  --bg: var(--color-sand-50);
+  --bg: #ffffff;
   --fg: var(--color-ink-900);
   color-scheme: light;
 }
@@ -95,76 +97,71 @@ html[lang="zh"] .font-display, html[lang="hi"] .font-display { font-family: var(
 html:not([lang="en"]) .italic { font-style: normal; }
 html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 
-::selection { background: var(--color-gold-300); color: var(--color-night-950); }
+::selection { background: var(--color-green-100); color: var(--color-night-950); }
 
 @layer components {
-  .bg-hero {
+  .bg-hero { background: #0a0b0d; }
+  /* Soft hero canvas: white with a faint grid and a cool glow at the top */
+  .bg-canvas {
     background:
-      radial-gradient(1000px 600px at 85% -20%, rgb(42 64 98 / .55), transparent 65%),
-      #0b1626;
+      radial-gradient(900px 420px at 50% -120px, rgb(42 80 216 / .10), transparent 70%),
+      #ffffff;
   }
-  /* Clean sans-serif headings: confident, not decorative */
+  .grid-lines {
+    background-image: linear-gradient(rgb(11 13 18 / .045) 1px, transparent 1px), linear-gradient(90deg, rgb(11 13 18 / .045) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 20%, transparent 75%);
+  }
   .font-display { font-weight: 600; letter-spacing: -0.035em; }
   .container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
   @media (min-width: 640px) { .container-x { padding-inline: 1.5rem; } }
 
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-    border-radius: .625rem; padding: .75rem 1.25rem; font-weight: 600; font-size: .95rem;
-    transition: transform .15s ease, background-color .2s ease, box-shadow .2s ease, color .2s ease;
+    border-radius: .625rem; padding: .7rem 1.15rem; font-weight: 500; font-size: .925rem;
+    transition: background-color .15s ease, box-shadow .15s ease, color .15s ease, border-color .15s ease;
     white-space: nowrap;
   }
   .btn:active { transform: translateY(1px); }
-  .btn-primary { background: var(--color-green-600); color: white;  }
-  .btn-primary:hover { background: var(--color-green-700); }
+  .btn-primary { background: var(--color-night-950); color: white; box-shadow: 0 1px 2px rgb(11 13 18 / .2), inset 0 1px 0 rgb(255 255 255 / .08); }
+  .btn-primary:hover { background: var(--color-night-700); }
+  .btn-accent { background: var(--color-green-600); color: white; box-shadow: 0 1px 2px rgb(42 80 216 / .3); }
+  .btn-accent:hover { background: var(--color-green-700); }
   .btn-gold { background: white; color: var(--color-night-950); }
   .btn-gold:hover { background: var(--color-sand-100); }
-  .btn-ghost { background: white; color: var(--color-ink-900); border: 1px solid var(--color-sand-200); }
-  .btn-ghost:hover { border-color: var(--color-sand-300); background: var(--color-sand-100); }
+  .btn-ghost { background: white; color: var(--color-ink-900); border: 1px solid var(--color-sand-200); box-shadow: 0 1px 2px rgb(11 13 18 / .04); }
+  .btn-ghost:hover { border-color: var(--color-sand-300); background: var(--color-sand-50); }
   .btn-ghost-dark { background: rgb(255 255 255 / .06); color: white; border: 1px solid rgb(255 255 255 / .14); }
   .btn-ghost-dark:hover { background: rgb(255 255 255 / .12); }
 
   .eyebrow {
     display: inline-flex; align-items: center; gap: .5rem;
-    font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    font-size: .8125rem; font-weight: 600; letter-spacing: 0;
     color: var(--color-green-600);
   }
-  html[dir="rtl"] .eyebrow { letter-spacing: 0; font-size: .85rem; }
+  html[dir="rtl"] .eyebrow { font-size: .875rem; }
 
   .card {
-    background: white; border: 1px solid var(--color-sand-200); border-radius: 1rem;
-    box-shadow: 0 1px 2px rgb(14 23 38 / .04);
+    background: white; border: 1px solid var(--color-sand-200); border-radius: .875rem;
+    box-shadow: 0 1px 2px rgb(11 13 18 / .03);
   }
   .card-dark {
-    background: linear-gradient(180deg, rgb(255 255 255 / .06), rgb(255 255 255 / .02));
-    border: 1px solid rgb(255 255 255 / .1); border-radius: 1.25rem;
+    background: rgb(255 255 255 / .04);
+    border: 1px solid rgb(255 255 255 / .1); border-radius: .875rem;
   }
+  .shadow-frame { box-shadow: 0 0 0 1px rgb(11 13 18 / .06), 0 2px 4px rgb(11 13 18 / .04), 0 24px 60px -12px rgb(11 13 18 / .16); }
   .input {
-    width: 100%; border-radius: .85rem; border: 1px solid var(--color-sand-300); background: white;
-    padding: .75rem 1rem; font-size: .95rem; outline: none; transition: border-color .15s, box-shadow .15s;
+    width: 100%; border-radius: .625rem; border: 1px solid var(--color-sand-300); background: white;
+    padding: .7rem .9rem; font-size: .95rem; outline: none; transition: border-color .15s, box-shadow .15s;
   }
-  .input:focus { border-color: var(--color-green-500); box-shadow: 0 0 0 4px rgb(18 133 74 / .14); }
+  .input:focus { border-color: var(--color-green-500); box-shadow: 0 0 0 3px rgb(42 80 216 / .15); }
 
-  .text-gradient-gold {
-    background: linear-gradient(100deg, var(--color-gold-300), var(--color-gold-500) 60%, var(--color-gold-300));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
+  .text-gradient-gold { color: var(--color-green-600); }
 
-  /* Al-Sadu inspired geometric pattern (traditional Saudi Bedouin weaving) */
-  .sadu-pattern {
-    opacity: .5;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23d4b26a' stroke-opacity='.05' stroke-width='1.2'%3E%3Cpath d='M24 4 44 24 24 44 4 24Z'/%3E%3Cpath d='M24 14 34 24 24 34 14 24Z'/%3E%3Cpath d='M0 0 8 8M48 0 40 8M0 48 8 40M48 48 40 40'/%3E%3C/g%3E%3C/svg%3E");
-  }
-  .sadu-band {
-    height: 10px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10' viewBox='0 0 20 10'%3E%3Cpath d='M0 10 10 0 20 10Z' fill='%23c49a3c'/%3E%3Cpath d='M5 10 10 5 15 10Z' fill='%2300804a'/%3E%3C/svg%3E");
-    background-repeat: repeat-x;
-  }
-  .grid-fade {
-    background-image: linear-gradient(rgb(255 255 255 / .05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / .05) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-  }
+  /* Kept for compatibility; intentionally invisible in the white design */
+  .sadu-pattern { display: none; }
+  .sadu-band { display: none; }
+  .grid-fade { display: none; }
 }
 
 /* Above-the-fold entrance: pure CSS, so it plays before JavaScript loads */

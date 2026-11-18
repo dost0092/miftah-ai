@@ -29,16 +29,16 @@ export function ChatDemo() {
 
   return (
     <div ref={ref} className="relative">
-      <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white shadow-2xl shadow-night-950/40">
+      <div className="relative overflow-hidden rounded-2xl bg-white shadow-frame">
         {/* window chrome */}
-        <div className="flex items-center justify-between border-b border-sand-200 bg-sand-50 px-5 py-3">
+        <div className="flex items-center justify-between border-b border-sand-200 bg-sand-50/70 px-5 py-3">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-sand-300" />
             <span className="h-2.5 w-2.5 rounded-full bg-sand-300" />
             <span className="h-2.5 w-2.5 rounded-full bg-sand-300" />
           </div>
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-400">
-            <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-green-500" />
+            <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-emerald-500" />
             {t("label")}
           </span>
         </div>
@@ -46,7 +46,7 @@ export function ChatDemo() {
         <div className="space-y-4 p-5 sm:p-6">
           {/* user */}
           <div className="flex justify-end">
-            <p className="max-w-[85%] rounded-2xl rounded-ee-md bg-green-600 px-4 py-3 text-sm leading-relaxed text-white">{t("question")}</p>
+            <p className="max-w-[85%] rounded-2xl rounded-ee-md bg-night-950 px-4 py-3 text-sm leading-relaxed text-white">{t("question")}</p>
           </div>
 
           {/* agent */}
@@ -64,7 +64,7 @@ export function ChatDemo() {
                       className={cn(
                         "inline-flex items-center gap-1.5 rounded-lg border px-2 py-1 font-mono text-[11px] transition-all duration-500",
                         visible ? "opacity-100" : "opacity-0",
-                        done ? "border-green-600/20 bg-green-50 text-green-700" : "border-sand-200 bg-sand-50 text-ink-500",
+                        done ? "border-emerald-600/20 bg-emerald-50 text-emerald-700" : "border-sand-200 bg-sand-50 text-ink-500",
                       )}
                       dir="ltr"
                     >
@@ -90,10 +90,10 @@ export function ChatDemo() {
 
               <div className={cn("flex flex-wrap items-center justify-between gap-2 border-t border-sand-200 pt-3 transition-all duration-700", stage >= 4 ? "opacity-100" : "opacity-0")}>
                 <p className="text-[11px] text-ink-400">
-                  {c("source")}: MOJ · {c("dataUntil")} {fmtDate(locale, DATA_UNTIL)} · <span className="font-semibold text-gold-600">{c("sampleData")}</span>
+                  {c("source")}: MOJ · {c("dataUntil")} {fmtDate(locale, DATA_UNTIL)} · <span className="font-semibold text-amber-700">{c("sampleData")}</span>
                 </p>
                 <div className="flex gap-1.5">
-                  <span className="inline-flex items-center gap-1 rounded-lg bg-green-50 px-2 py-1 text-[11px] font-semibold text-green-700">
+                  <span className="inline-flex items-center gap-1 rounded-lg bg-night-950 px-2 py-1 text-[11px] font-medium text-white">
                     <IconDoc width={12} height={12} />
                     {t("reportButton")}
                   </span>

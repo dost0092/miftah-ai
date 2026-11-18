@@ -63,10 +63,10 @@ export function ProfileForm({ profile }: { profile: Profile | null }) {
         </label>
       </div>
       <div className="flex items-center gap-3">
-        <button type="submit" disabled={status === "saving"} className="btn btn-primary !rounded-xl disabled:opacity-60">
+        <button type="submit" disabled={status === "saving"} className="btn btn-primary disabled:opacity-60">
           {status === "saving" ? a("working") : t("save")}
         </button>
-        {status === "saved" && <span className="inline-flex items-center gap-1 text-sm font-semibold text-green-700"><IconCheck width={16} height={16} /> {t("saved")}</span>}
+        {status === "saved" && <span className="inline-flex items-center gap-1 text-sm font-medium text-emerald-700"><IconCheck width={16} height={16} /> {t("saved")}</span>}
         {status === "error" && <span className="text-sm text-red-600">{a("errorGeneric")}</span>}
       </div>
     </form>
@@ -79,7 +79,7 @@ export function SignOutButton({ className }: { className?: string }) {
   return (
     <button
       type="button"
-      className={className ?? "btn btn-ghost-dark !py-2.5 text-sm"}
+      className={className ?? "btn btn-ghost !py-2 text-sm"}
       onClick={async () => {
         await getBrowserSupabase()?.auth.signOut();
         router.replace("/");
@@ -92,7 +92,7 @@ export function SignOutButton({ className }: { className?: string }) {
 }
 
 /** Save / unsave a district for the signed-in user. Prompts sign-in otherwise. */
-export function SaveDistrictButton({ slug, variant = "dark" }: { slug: string; variant?: "dark" | "light" }) {
+export function SaveDistrictButton({ slug, variant = "light" }: { slug: string; variant?: "dark" | "light" }) {
   const t = useTranslations("account");
   const router = useRouter();
   const locale = useLocale();
@@ -123,7 +123,7 @@ export function SaveDistrictButton({ slug, variant = "dark" }: { slug: string; v
     <button
       type="button"
       disabled={busy || user === undefined}
-      className={cn(base, saved && (variant === "dark" ? "!border-gold-400/60 !text-gold-300" : "!border-green-600/40 !text-green-700"), "disabled:opacity-60")}
+      className={cn(base, saved && (variant === "dark" ? "!border-white/40 !text-white" : "!border-green-600/40 !bg-green-50 !text-green-700"), "disabled:opacity-60")}
       onClick={async () => {
         const supabase = getBrowserSupabase();
         if (!supabase || !user) return;

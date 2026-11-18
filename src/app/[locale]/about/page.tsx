@@ -30,12 +30,11 @@ export default async function AboutPage({ params }: Params) {
         <Reveal>
           <p className="font-display text-2xl leading-relaxed text-ink-900 sm:text-3xl sm:leading-snug">{t("story")}</p>
         </Reveal>
-        <Reveal delay={120} className="relative mx-auto grid aspect-square w-full max-w-sm place-items-center overflow-hidden rounded-[2rem] bg-night-800">
+        <Reveal delay={120} className="relative mx-auto grid aspect-square w-full max-w-sm place-items-center overflow-hidden rounded-2xl bg-night-950">
           <div className="sadu-pattern absolute inset-0" />
-          <div className="absolute -bottom-20 -end-20 h-64 w-64 rounded-full bg-gold-500/30 blur-3xl" />
           <div className="relative text-center">
             <LogoMark className="mx-auto h-24 w-24 animate-float" />
-            <p className="mt-6 text-5xl font-bold text-gold-300" lang="ar" dir="rtl" style={{ fontFamily: "var(--font-arabic)" }}>مفتاح</p>
+            <p className="mt-6 text-5xl font-bold text-white" lang="ar" dir="rtl" style={{ fontFamily: "var(--font-arabic)" }}>مفتاح</p>
             <p className="mt-2 text-sm text-white/60">Miftah · &ldquo;key&rdquo;</p>
           </div>
         </Reveal>
@@ -47,15 +46,15 @@ export default async function AboutPage({ params }: Params) {
             <p className="eyebrow"><span className="h-px w-6 bg-green-600" />{t("missionTitle")}</p>
             <p className="mt-5 text-2xl font-semibold leading-snug">{t("mission")}</p>
           </Reveal>
-          <Reveal delay={100} className="rounded-[1.25rem] bg-night-800 p-8 text-white sm:p-10">
-            <p className="eyebrow !text-gold-300"><span className="h-px w-6 bg-gold-400" />{t("visionTitle")}</p>
+          <Reveal delay={100} className="rounded-[.875rem] bg-night-950 p-8 text-white sm:p-10">
+            <p className="eyebrow !text-green-300">{t("visionTitle")}</p>
             <p className="mt-5 text-2xl font-semibold leading-snug">{t("vision")}</p>
           </Reveal>
         </div>
         <div className="container-x mt-5">
-          <Reveal className="relative overflow-hidden rounded-[1.25rem] border border-gold-300 bg-gradient-to-br from-gold-100 to-white p-8 sm:p-10">
+          <Reveal className="relative overflow-hidden rounded-[.875rem] border border-sand-200 bg-sand-50 p-8 sm:p-10">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-              <span className="font-display shrink-0 text-6xl text-gold-600" dir="ltr">2030</span>
+              <span className="font-display shrink-0 text-6xl text-green-600" dir="ltr">2030</span>
               <div>
                 <h2 className="text-xl font-semibold">{t("vision2030Title")}</h2>
                 <p className="mt-2 leading-relaxed text-ink-500">{t("vision2030")}</p>
@@ -72,7 +71,7 @@ export default async function AboutPage({ params }: Params) {
             const Icon = valueIcons[i];
             return (
               <Reveal key={v.title} delay={i * 80} className="card p-6">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-green-50 text-green-600"><Icon width={20} height={20} /></span>
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"><Icon width={20} height={20} /></span>
                 <h3 className="mt-5 font-semibold">{v.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">{v.body}</p>
               </Reveal>

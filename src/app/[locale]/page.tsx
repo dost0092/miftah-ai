@@ -49,48 +49,48 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
   return (
     <>
       {/* ───────────── HERO ───────────── */}
-      <section className="relative overflow-hidden bg-hero text-white">
-
-        <div className="container-x relative grid items-center gap-14 pb-20 [&>*]:min-w-0 pt-16 sm:pt-20 lg:grid-cols-[1.05fr_1fr] lg:pb-28 lg:pt-24">
-          <div className="hero-in">
-            <h1 className="font-display max-w-[14ch] text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.25rem]">
-              {t("hero.titleA")} {t("hero.titleHighlight")} {t("hero.titleB")}
+      <section className="relative overflow-hidden bg-canvas">
+        <div className="grid-lines pointer-events-none absolute inset-0" />
+        <div className="container-x relative pb-20 pt-16 sm:pt-24 lg:pb-28">
+          <div className="hero-in mx-auto max-w-3xl text-center">
+            <Link href="/trust" className="inline-flex items-center gap-2 rounded-full border border-sand-200 bg-white py-1 pe-3 ps-1 text-[13px] text-ink-700 shadow-sm transition hover:border-sand-300">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-green-50 text-green-600 ring-1 ring-inset ring-green-600/15"><IconShield width={13} height={13} /></span>
+              {t("hero.trustNote")}
+              <IconArrow width={13} height={13} className="flip-rtl text-ink-400" />
+            </Link>
+            <h1 className="font-display mx-auto mt-7 max-w-[18ch] text-[2.6rem] leading-[1.04] text-ink-900 sm:text-6xl lg:text-[4.5rem]">
+              {t("hero.titleA")} <span className="text-green-600">{t("hero.titleHighlight")}</span> {t("hero.titleB")}
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">{t("hero.subtitle")}</p>
-            <div className="mt-8">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-500 sm:text-xl">{t("hero.subtitle")}</p>
+            <div className="mx-auto mt-9 flex max-w-xl justify-center">
               <HeroAsk />
             </div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/waitlist" className="btn btn-gold">
+            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link href="/waitlist" className="btn btn-primary">
                 {t("hero.ctaPrimary")}
-                <IconArrow width={16} height={16} />
+                <IconArrow width={16} height={16} className="flip-rtl" />
               </Link>
-              <Link href="/districts" className="btn btn-ghost-dark">
+              <Link href="/districts" className="btn btn-ghost">
                 <IconSearch width={16} height={16} />
                 {t("hero.ctaSecondary")}
               </Link>
             </div>
-            <p className="mt-8 flex items-center gap-2 text-sm text-white/55">
-              <IconShield width={16} height={16} className="text-white/50" />
-              {t("hero.trustNote")}
-            </p>
           </div>
-          <div className="hero-in-delay">
+          <div className="hero-in-delay mx-auto mt-16 max-w-4xl sm:mt-20">
             <ChatDemo />
           </div>
         </div>
-
       </section>
 
       {/* ───────────── SOURCES STRIP ───────────── */}
-      <section className="border-b border-sand-200 bg-sand-50 py-10">
+      <section className="border-y border-sand-200 bg-white py-10">
         <div className="container-x">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-400 rtl:tracking-normal">{t("sources.title")}</p>
+          <p className="text-center text-sm text-ink-400">{t("sources.title")}</p>
           <div className="relative mt-6 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]" dir="ltr">
-            <div className="flex w-max animate-marquee gap-12">
+            <div className="flex w-max animate-marquee gap-14">
               {[...sources, ...sources].map((s, i) => (
-                <span key={i} className="flex items-center gap-2.5 whitespace-nowrap text-lg font-semibold text-ink-400">
-                  <IconDatabase width={18} height={18} className="text-gold-500" />
+                <span key={i} className="flex items-center gap-2.5 whitespace-nowrap text-base font-semibold text-ink-400">
+                  <IconDatabase width={17} height={17} className="text-sand-300" />
                   {s}
                 </span>
               ))}
@@ -114,18 +114,18 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
       </section>
 
       {/* ───────────── HOW IT WORKS ───────────── */}
-      <section className="relative bg-sand-100 py-24 sm:py-32">
+      <section className="relative border-y border-sand-200 bg-sand-50 py-24 sm:py-32">
         <div className="container-x">
           <SectionHeading center eyebrow={t("how.eyebrow")} title={t("how.title")} subtitle={t("how.subtitle")} />
           <div className="relative mt-16 grid gap-6 md:grid-cols-4">
-            <div className="absolute inset-x-[12%] top-8 hidden h-px bg-gradient-to-r from-green-600/0 via-green-600/40 to-green-600/0 md:block" />
+            <div className="absolute inset-x-[12%] top-8 hidden h-px bg-sand-300 md:block" />
             {steps.map((s, i) => {
               const Icon = stepIcons[i];
               return (
                 <Reveal key={i} delay={i * 120} className="relative text-center">
-                  <span className="relative mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-night-900 text-white">
+                  <span className="relative mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-sand-200 bg-white text-ink-900 shadow-sm">
                     <Icon width={26} height={26} />
-                    <span className="absolute -end-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-white text-xs font-bold text-night-950 ring-1 ring-sand-200">{i + 1}</span>
+                    <span className="absolute -end-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-night-950 text-xs font-semibold text-white">{i + 1}</span>
                   </span>
                   <h3 className="mt-6 text-lg font-semibold">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-500">{s.body}</p>
@@ -163,14 +163,14 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               <Reveal
                 key={i}
                 delay={(i % 3) * 100}
-                className={highlight ? "relative overflow-hidden rounded-[1.25rem] bg-night-800 p-7 text-white" : "card p-7 transition hover:-translate-y-1 hover:shadow-xl"}
+                className={highlight ? "relative overflow-hidden rounded-[.875rem] bg-night-950 p-7 text-white" : "card p-7 transition hover:border-sand-300 hover:shadow-md"}
               >
                 {highlight && <div className="sadu-pattern pointer-events-none absolute inset-0" />}
-                <span className={highlight ? "relative grid h-12 w-12 place-items-center rounded-xl bg-gold-400 text-night-950" : "grid h-12 w-12 place-items-center rounded-xl bg-green-50 text-green-600"}>
+                <span className={highlight ? "relative grid h-12 w-12 place-items-center rounded-xl bg-white/10 text-white ring-1 ring-white/15" : "grid h-12 w-12 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"}>
                   <Icon width={22} height={22} />
                 </span>
                 <h3 className="relative mt-6 text-lg font-semibold">{f.title}</h3>
-                <p className={highlight ? "relative mt-2 leading-relaxed text-white/75" : "mt-2 leading-relaxed text-ink-500"}>{f.body}</p>
+                <p className={highlight ? "relative mt-2 leading-relaxed text-white/65" : "mt-2 leading-relaxed text-ink-500"}>{f.body}</p>
               </Reveal>
             );
           })}
@@ -178,30 +178,29 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
       </section>
 
       {/* ───────────── PRINCIPLE ───────────── */}
-      <section className="relative overflow-hidden bg-night-950 py-24 text-white sm:py-32">
-        <div className="sadu-pattern pointer-events-none absolute inset-0 opacity-70" />
+      <section className="relative overflow-hidden border-y border-sand-200 bg-sand-50 py-24 sm:py-32">
         <div className="container-x relative grid items-center gap-14 lg:grid-cols-2">
           <div>
-            <SectionHeading dark eyebrow={t("principle.eyebrow")} title={t("principle.title")} subtitle={t("principle.body")} />
+            <SectionHeading eyebrow={t("principle.eyebrow")} title={t("principle.title")} subtitle={t("principle.body")} />
             <ul className="mt-10 space-y-4">
               {points.map((p, i) => (
                 <Reveal key={i} delay={i * 80} className="flex items-center gap-3">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gold-400/15 text-gold-300"><IconCheck width={15} height={15} /></span>
-                  <span className="text-white/85">{p}</span>
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-green-50 text-green-600 ring-1 ring-inset ring-green-600/15"><IconCheck width={15} height={15} /></span>
+                  <span className="text-ink-700">{p}</span>
                 </Reveal>
               ))}
             </ul>
             <Reveal className="mt-10">
-              <Link href="/trust" className="btn btn-ghost-dark">
+              <Link href="/trust" className="btn btn-ghost">
                 {tc("learnMore")}
                 <IconArrow width={16} height={16} />
               </Link>
             </Reveal>
           </div>
           <Reveal delay={150}>
-            <div className="card-dark overflow-hidden font-mono text-[13px]" dir="ltr">
+            <div className="shadow-frame overflow-hidden rounded-[.875rem] bg-night-950 font-mono text-[13px] text-white" dir="ltr">
               <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3 text-xs text-white/50">
-                <IconShield width={14} height={14} className="text-gold-400" /> advisor.system.ts
+                <IconShield width={14} height={14} className="text-green-400" /> advisor.system.ts
               </div>
               <pre className="overflow-x-auto p-5 leading-7 text-white/80">
 {`const rules = [
@@ -243,17 +242,17 @@ const tools = [`}
       </section>
 
       {/* ───────────── LANGUAGES ───────────── */}
-      <section className="bg-sand-100 py-24 sm:py-32">
+      <section className="border-y border-sand-200 bg-sand-50 py-24 sm:py-32">
         <div className="container-x">
           <SectionHeading center eyebrow={t("languages.eyebrow")} title={t("languages.title")} subtitle={t("languages.subtitle")} />
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {languageSamples.map((s, i) => (
               <Reveal key={s.locale} delay={i * 80} className="card flex flex-col justify-between p-6">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gold-600">{localeNames[s.locale].native}</span>
+                <span className="text-xs font-medium text-ink-400">{localeNames[s.locale].native}</span>
                 <p lang={s.locale} dir={s.locale === "ar" || s.locale === "ur" ? "rtl" : "ltr"} className="mt-6 text-lg font-semibold leading-snug text-ink-900">
                   &ldquo;{s.text}&rdquo;
                 </p>
-                <Link href="/" locale={s.locale} className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-green-700">
+                <Link href="/" locale={s.locale} className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-ink-900 hover:text-green-600">
                   {localeNames[s.locale].native} <IconArrow width={14} height={14} />
                 </Link>
               </Reveal>
@@ -270,13 +269,13 @@ const tools = [`}
             const Icon = personaIcons[i];
             return (
               <Reveal key={i} delay={i * 90}>
-                <Link href="/solutions" className="card group flex h-full flex-col p-7 transition hover:-translate-y-1 hover:border-green-600/30">
-                  <span className="grid h-12 w-12 place-items-center rounded-full border border-sand-200 text-green-600 transition group-hover:border-green-600 group-hover:bg-green-600 group-hover:text-white">
+                <Link href="/solutions" className="card group flex h-full flex-col p-7 transition hover:border-sand-300 hover:shadow-md">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl border border-sand-200 bg-sand-50 text-ink-900 transition group-hover:text-green-600">
                     <Icon width={22} height={22} />
                   </span>
                   <h3 className="mt-6 text-lg font-semibold">{p.title}</h3>
                   <p className="mt-2 flex-1 leading-relaxed text-ink-500">{p.body}</p>
-                  <IconArrow width={18} height={18} className="mt-6 text-green-600 transition group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+                  <IconArrow width={18} height={18} className="flip-rtl mt-6 text-ink-400 transition group-hover:translate-x-1 group-hover:text-ink-900 rtl:group-hover:-translate-x-1" />
                 </Link>
               </Reveal>
             );
@@ -286,10 +285,10 @@ const tools = [`}
 
       {/* ───────────── STATS ───────────── */}
       <section className="container-x">
-        <div className="grid overflow-hidden rounded-[2rem] border border-sand-200 bg-white sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid overflow-hidden rounded-2xl border border-sand-200 bg-white sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal key={i} delay={i * 80} className="border-sand-200 p-8 text-center [&:not(:last-child)]:border-b sm:[&:nth-child(odd)]:border-e lg:border-b-0 lg:[&:not(:last-child)]:border-e">
-              <p className="font-display text-5xl text-green-600" dir="ltr">{s.value}</p>
+              <p className="font-display text-5xl text-ink-900" dir="ltr">{s.value}</p>
               <p className="mt-3 text-sm text-ink-500">{s.label}</p>
             </Reveal>
           ))}
@@ -298,10 +297,10 @@ const tools = [`}
 
       {/* ───────────── PRICING TEASER ───────────── */}
       <section className="container-x py-24 sm:py-32">
-        <Reveal className="relative overflow-hidden rounded-[2rem] border border-gold-300 bg-gradient-to-br from-gold-100 via-sand-50 to-white p-8 sm:p-14">
+        <Reveal className="relative overflow-hidden rounded-2xl border border-sand-200 bg-sand-50 p-8 sm:p-14">
           <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             <div className="max-w-xl">
-              <p className="eyebrow !text-gold-700"><span className="h-px w-6 bg-gold-500" />{t("pricingTeaser.eyebrow")}</p>
+              <p className="eyebrow">{t("pricingTeaser.eyebrow")}</p>
               <h2 className="font-display mt-4 text-3xl leading-tight sm:text-4xl">{t("pricingTeaser.title")}</h2>
               <p className="mt-3 text-lg text-ink-500">{t("pricingTeaser.subtitle")}</p>
             </div>

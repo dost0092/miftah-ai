@@ -1013,7 +1013,10 @@
     "joinWaitlist": "Join early access",
     "advisorTitle": "AI advisor",
     "advisorBody": "Ask anything about buying in Saudi Arabia and get answers with sources, in your language.",
-    "quickLinks": "Quick links"
+    "quickLinks": "Quick links",
+    "overview": "Overview",
+    "avgPrice": "Avg. price, saved",
+    "statusPending": "Not joined"
   },
   "tour": {
     "section": {

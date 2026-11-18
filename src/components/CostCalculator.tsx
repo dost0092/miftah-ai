@@ -146,7 +146,7 @@ export function CostCalculator() {
           </div>
           <div className="flex items-end justify-between">
             <span className="font-semibold">{mode === "buy" ? t("grandBuy") : t("grandSell")}</span>
-            <span className="text-3xl font-semibold tabular-nums text-gold-300" dir="ltr">{fmtNumber(locale, grand)} <span className="text-base">SAR</span></span>
+            <span className="text-3xl font-semibold tabular-nums text-white" dir="ltr">{fmtNumber(locale, grand)} <span className="text-base">SAR</span></span>
           </div>
         </div>
       </div>

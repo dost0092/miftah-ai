@@ -37,12 +37,12 @@ export default async function PricingPage({ params }: Params) {
               delay={i * 80}
               className={cn(
                 "flex flex-col rounded-[1.5rem] p-7",
-                p.popular ? "bg-night-800 text-white shadow-2xl shadow-night-900/30 ring-2 ring-gold-400" : "card",
+                p.popular ? "rounded-[.875rem] bg-night-950 text-white shadow-frame" : "card",
               )}
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold">{p.name}</h2>
-                {p.popular && <span className="rounded-full bg-gold-400 px-2.5 py-1 text-xs font-bold text-night-950">{t("popular")}</span>}
+                {p.popular && <span className="rounded-full bg-green-600 px-2.5 py-1 text-xs font-semibold text-white">{t("popular")}</span>}
               </div>
               <p className={cn("mt-2 text-sm", p.popular ? "text-white/70" : "text-ink-500")}>{p.desc}</p>
               <p className="mt-6 flex items-baseline gap-1" dir="ltr">
@@ -52,7 +52,7 @@ export default async function PricingPage({ params }: Params) {
               <ul className="mt-6 flex-1 space-y-3">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm">
-                    <IconCheck width={16} height={16} className={cn("mt-0.5 shrink-0", p.popular ? "text-gold-300" : "text-green-600")} />
+                    <IconCheck width={16} height={16} className={cn("mt-0.5 shrink-0", p.popular ? "text-green-300" : "text-green-600")} />
                     {f}
                   </li>
                 ))}
@@ -67,7 +67,7 @@ export default async function PricingPage({ params }: Params) {
         <Reveal className="mt-6">
           <div className="card flex flex-col items-start justify-between gap-6 p-7 sm:flex-row sm:items-center">
             <div className="flex items-start gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gold-100 text-gold-700"><IconDatabase /></span>
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"><IconDatabase /></span>
               <div>
                 <h2 className="text-lg font-semibold">{t("enterprise.title")}</h2>
                 <p className="mt-1 text-ink-500">{t("enterprise.body")}</p>

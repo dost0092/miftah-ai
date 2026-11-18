@@ -92,7 +92,7 @@ export function ProductTour() {
           <div className="flex items-center gap-3 border-b border-sand-200 bg-sand-50 px-4 py-3">
             <span className="flex gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /><i className="h-2.5 w-2.5 rounded-full bg-ink-200" /></span>
             <span className="mx-auto truncate rounded-md bg-white px-3 py-1 text-xs text-ink-400 ring-1 ring-sand-200" dir="ltr">app.miftahai.co/{current}</span>
-            <span className="hidden rounded-full bg-gold-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gold-700 sm:block">{t("sample")}</span>
+            <span className="hidden rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-700 sm:block">{t("sample")}</span>
           </div>
           <div className="grid min-h-[440px] sm:grid-cols-[56px_1fr]">
             <aside className="hidden flex-col items-center gap-3 border-e border-sand-200 bg-sand-50/60 py-4 sm:flex">
@@ -196,8 +196,8 @@ function Screen({ step }: { step: StepKey }) {
                   <tr key={d.slug} className={cn(i === 0 && "bg-green-50/40")}>
                     <td className="px-4 py-3 font-medium text-ink-900">{nm(d)}</td>
                     <td className="px-4 py-3 text-end tabular-nums" dir="ltr">{sar(d.median.apartment)}</td>
-                    <td className="hidden px-4 py-2 sm:table-cell"><Sparkline id={`tour-${d.slug}`} values={d.trend} stroke="#00804a" className="ms-auto h-7 w-24" /></td>
-                    <td className={cn("px-4 py-3 text-end font-semibold tabular-nums", ch >= 0 ? "text-green-700" : "text-amber-700")} dir="ltr">{fmtPercent(locale, ch)}</td>
+                    <td className="hidden px-4 py-2 sm:table-cell"><Sparkline id={`tour-${d.slug}`} values={d.trend} stroke="#2a50d8" className="ms-auto h-7 w-24" /></td>
+                    <td className={cn("px-4 py-3 text-end font-semibold tabular-nums", ch >= 0 ? "text-emerald-700" : "text-amber-700")} dir="ltr">{fmtPercent(locale, ch)}</td>
                   </tr>
                 );
               })}
@@ -205,7 +205,7 @@ function Screen({ step }: { step: StepKey }) {
           </table>
         </div>
         <div className="mt-4 rounded-2xl bg-night-900 p-4 text-sm text-white/85">
-          <span className="font-semibold text-gold-300">{t("price.verdictLabel")} </span>
+          <span className="font-semibold text-white">{t("price.verdictLabel")} </span>
           {t("price.verdict", { asking: sar(malqa.median.apartment * 1.12), median: sar(malqa.median.apartment) })}
         </div>
       </div>
@@ -263,7 +263,7 @@ function Screen({ step }: { step: StepKey }) {
         <div className="flex items-center gap-1.5"><LogoMark className="h-5 w-5" /><span className="text-[10px] font-bold text-ink-900">Miftah AI</span></div>
         <div className="mt-3 h-2 w-3/4 rounded bg-ink-900/80" />
         <div className="mt-1.5 h-1.5 w-1/2 rounded bg-ink-200" />
-        <Sparkline id="tour-report" values={malqa.trend} stroke="#00804a" className="mt-4 h-10 w-full" />
+        <Sparkline id="tour-report" values={malqa.trend} stroke="#2a50d8" className="mt-4 h-10 w-full" />
         {[0, 1, 2, 3].map((i) => <div key={i} className="mt-2 h-1.5 rounded bg-sand-200" style={{ width: `${90 - i * 12}%` }} />)}
         <div className="mt-4 h-6 rounded bg-green-50" />
       </div>

@@ -28,7 +28,7 @@ export default async function ContactPage({ params }: Params) {
         <div className="space-y-4">
           {channels.map(({ Icon, label, value }) => (
             <div key={label} className="card flex items-center gap-4 p-5">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-green-50 text-green-600"><Icon width={20} height={20} /></span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"><Icon width={20} height={20} /></span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">{label}</p>
                 <p className="font-semibold text-ink-900">{value}</p>
