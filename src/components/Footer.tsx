@@ -14,6 +14,7 @@ export function Footer() {
     {
       title: t("product"),
       links: [
+        { href: "/guide", label: n("guide") },
         { href: "/product", label: n("productItems.advisor.title") },
         { href: "/districts", label: n("productItems.districts.title") },
         { href: "/calculator", label: n("productItems.calculator.title") },
@@ -52,6 +53,7 @@ export function Footer() {
           <div className="max-w-sm">
             <Logo />
             <p className="mt-5 text-sm leading-relaxed text-ink-500">{t("tagline")}</p>
+            <p className="mt-3 text-xs leading-relaxed text-ink-400">{t("independent")}</p>
             <div className="mt-8 rounded-xl border border-sand-200 bg-white p-5">
               <p className="text-sm font-semibold text-ink-900">{t("newsletterTitle")}</p>
               <Link href="/signup" className="btn btn-primary mt-4 !py-2.5 text-sm">

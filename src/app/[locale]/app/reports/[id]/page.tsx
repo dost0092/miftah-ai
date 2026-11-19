@@ -12,6 +12,10 @@ import { TrendChart } from "@/components/Sparkline";
 import { ZoneBadge } from "@/components/ZoneBadge";
 import { StatusBadge } from "@/components/app/ui";
 import { PrintButton } from "@/components/app/PrintButton";
+import { FactLabels, OfficialChecks } from "@/components/TrustKit";
+import { officialSources } from "@/lib/official/sources";
+import { KNOWLEDGE_AS_OF } from "@/lib/official/knowledge";
+import { DISPOSAL_FEE_CITIES, FEES_CHECKED } from "@/lib/fees";
 
 export const dynamic = "force-dynamic";
 
@@ -50,12 +54,18 @@ export default async function ReportPage({ params }: Props) {
     report.type === "cost"
       ? ["rett", "vat-real-estate", "brokerage-law"]
       : report.type === "due_diligence"
-        ? ["non-saudi-ownership-law-2025", "title-deeds-registry", "brokerage-law", "wafi-off-plan", "rett"]
-        : ["non-saudi-ownership-law-2025", "rett", "brokerage-law", "market-data-method"];
+        ? ["non-saudi-ownership-law-2025", "saudi-properties-portal", "title-deeds-registry", "brokerage-law", "wafi-off-plan", "rett"]
+        : ["non-saudi-ownership-law-2025", "non-saudi-executive-regulations-2026", "rett", "brokerage-law", "market-data-method"];
   const rules = ruleIds.map(doc).filter((x): x is NonNullable<typeof x> => Boolean(x));
   const steps = doc("buying-process-foreigner");
+  const ref = `MFT-${report.id.slice(0, 8).toUpperCase()}`;
+  const ruleSourceIds = new Set(["rega", "saudi-properties", ...rules.map((r) => r.sourceId), ...(report.type === "cost" ? ["zatca"] : ["moj-srem", "zatca"])]);
+  const reportSources = officialSources.filter((o) => ruleSourceIds.has(o.id));
+  const verifiedCount = rules.filter((r) => r.status === "verified").length;
+  // A cost report for a price the user typed uses no sample market figures.
+  const usesSample = IS_SAMPLE_DATA && !(report.type === "cost" && typeof report.params.price === "number");
   const checklist = [
-    `Confirm with REGA that ${d.nameEn} (${cityName}) is inside a zone open to non-Saudi buyers. Current status in Miftah AI: ${tc(`zone.${d.zone}`)}.`,
+    `Find the exact property on REGA's official zone map (saudiproperties.rega.gov.sa/zones) and confirm that ${d.nameEn} (${cityName}) is open to non-Saudi buyers. Current status in Miftah AI: ${tc(`zone.${d.zone}`)}.`,
     ...(steps?.paragraphs.slice(1).map((p) => p.replace(/^\d+\.\s*/, "")) ?? []),
     `Compare the asking price with the district median (SAR ${fmtNumber(locale, d.median.apartment)}/m² for apartments) and recent registered deals on the MOJ indicators.`,
   ];
@@ -73,7 +83,8 @@ export default async function ReportPage({ params }: Props) {
           <div className="text-end text-xs text-ink-500">
             <p>{t("preparedFor")}: <span className="font-medium text-ink-900">{displayName(session)}</span></p>
             <p className="mt-0.5">{t("generatedOn")}: {fmtDate(locale, report.created_at)}</p>
-            <p className="mt-0.5 font-mono text-[10px] text-ink-400" dir="ltr">{report.id.slice(0, 8).toUpperCase()}</p>
+            <p className="mt-0.5">{t("reference")}: <span className="font-mono font-medium text-ink-900" dir="ltr">{ref}</span></p>
+            <p className="mt-0.5">{t("rulesReviewed")}: {fmtDate(locale, KNOWLEDGE_AS_OF)}</p>
           </div>
         </header>
 
@@ -83,15 +94,25 @@ export default async function ReportPage({ params }: Props) {
           <p className="mt-1 text-ink-500"><span dir="rtl">{d.nameAr}</span></p>
           <div className="mt-3 flex flex-wrap gap-2">
             <ZoneBadge status={d.zone} label={`${tc("foreignZone")}: ${tc(`zone.${d.zone}`)}`} />
-            {IS_SAMPLE_DATA && <StatusBadge status="sample" label={tc("sampleData")} />}
-            <StatusBadge status="verified" label={`${tc("dataUntil")} ${fmtDate(locale, DATA_UNTIL)}`} />
+            {usesSample && <StatusBadge status="sample" label={tc("sampleData")} />}
+            {!IS_SAMPLE_DATA && <StatusBadge status="verified" label={`${tc("dataUntil")} ${fmtDate(locale, DATA_UNTIL)}`} />}
           </div>
+        </div>
+
+        <div className="break-inside-avoid rounded-lg border border-sand-200 bg-sand-50 p-4">
+          <p className="text-sm font-semibold text-ink-900">{t("howToRead")}</p>
+          <p className="mt-1 text-xs leading-relaxed text-ink-600">
+            {t("howToReadBody", { rules: rules.length, verified: verifiedCount })}
+            {usesSample && <> {t("sampleWarning")}</>}
+          </p>
+          <FactLabels compact className="mt-3" />
         </div>
 
         {report.type !== "cost" && (
           <Section title={t("summary")}>
             <p className="text-sm leading-relaxed text-ink-700">
-              {d.nameEn} ({cityName}): median apartment price SAR {fmtNumber(locale, d.median.apartment)}/m² in {QUARTERS[QUARTERS.length - 1]}, {fmtNumber(locale, d.deals)} registered deals last quarter, {fmtPercent(locale, change)} over 12 months. Foreign ownership: {tc(`zoneHint.${d.zone}`)}.
+              {IS_SAMPLE_DATA ? <span className="font-semibold text-ink-900">[{tc("sampleData")}] </span> : null}
+              {d.nameEn} ({cityName}): median apartment price SAR {fmtNumber(locale, d.median.apartment)}/m² in {QUARTERS[QUARTERS.length - 1]}, {fmtNumber(locale, d.deals)} {IS_SAMPLE_DATA ? "deals (example figure)" : "registered deals"} last quarter, {fmtPercent(locale, change)} over 12 months. Foreign ownership: {tc(`zoneHint.${d.zone}`)}.
             </p>
             {IS_SAMPLE_DATA && <p className="mt-2 text-xs leading-relaxed text-ink-400">{tc("sampleDataLong")}</p>}
           </Section>
@@ -138,7 +159,9 @@ export default async function ReportPage({ params }: Props) {
                 <tr className="font-semibold"><td className="py-3">Estimated total</td><td className="py-3 text-end tabular-nums" dir="ltr">SAR {fmtNumber(locale, costs.total)}</td></tr>
               </tbody>
             </table>
-            <p className="mt-2 text-xs text-ink-500">A transaction fee for non-Saudi buyers may also apply under the 2025 ownership law; confirm the current rate with REGA.</p>
+            <p className="mt-3 rounded-lg border border-gold-500/30 bg-gold-100/50 p-3 text-xs leading-relaxed text-ink-700">
+              When a non-Saudi owner later sells or otherwise disposes of this property in {DISPOSAL_FEE_CITIES.join(", ")}, REGA charges a fee of 2% of the value (Executive Regulations approved 23 June 2026), on top of the 5% transaction tax. On this price that would be about SAR {fmtNumber(locale, Math.round(price * 0.02))}. Fee rates last reviewed {fmtDate(locale, FEES_CHECKED)}.
+            </p>
           </Section>
         )}
 
@@ -164,21 +187,37 @@ export default async function ReportPage({ params }: Props) {
                   <StatusBadge status={r.status} label={ts(r.status as "verified")} />
                 </div>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-600">{r.summary}</p>
-                <p className="mt-1.5 truncate text-xs text-green-700" dir="ltr">{r.url}</p>
+                <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-ink-400">
+                  {r.effective && <span>{t("effective")}: {r.effective}</span>}
+                  <span>{t("checkedOn")}: {r.checked ? fmtDate(locale, r.checked) : t("notYetChecked")}</span>
+                </p>
+                <a href={r.url} target="_blank" rel="noopener noreferrer" className="mt-1 block truncate text-xs text-green-700 hover:underline" dir="ltr">{r.url}</a>
               </div>
             ))}
           </div>
         </Section>
 
         <Section title={t("sources")}>
-          <ul className="list-disc space-y-1 ps-5 text-xs text-ink-600" dir="ltr">
-            <li>Ministry of Justice, registered real estate transactions: srem.moj.gov.sa</li>
-            <li>Real Estate General Authority (REGA): rega.gov.sa, rei.rega.gov.sa</li>
-            <li>Zakat, Tax and Customs Authority (ZATCA): zatca.gov.sa</li>
+          <ul className="space-y-1.5 text-xs text-ink-600">
+            {reportSources.map((o) => (
+              <li key={o.id} className="flex flex-wrap gap-x-2">
+                <span className="font-medium text-ink-800">{o.name}</span>
+                <a href={o.url} target="_blank" rel="noopener noreferrer" className="text-green-700 hover:underline" dir="ltr">{o.url.replace(/^https?:\/\//, "")}</a>
+              </li>
+            ))}
           </ul>
         </Section>
 
-        <footer className="border-t border-sand-200 pt-5 text-[11px] leading-relaxed text-ink-400">{t("disclaimer")}</footer>
+        <Section title={t("checkYourself")}>
+          <p className="mb-3 text-xs leading-relaxed text-ink-500">{t("checkYourselfBody")}</p>
+          <OfficialChecks compact />
+        </Section>
+
+        <footer className="space-y-2 border-t border-sand-200 pt-5 text-[11px] leading-relaxed text-ink-400">
+          <p>{t("disclaimer")}</p>
+          <p>{t("independent")}</p>
+          <p>{t("mistake", { ref })}</p>
+        </footer>
       </article>
     </div>
   );

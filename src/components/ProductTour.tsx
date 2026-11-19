@@ -2,9 +2,9 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-import { getDistrict, trendChange, DATA_UNTIL } from "@/lib/districts";
+import { getDistrict, trendChange } from "@/lib/districts";
 import { feeRules } from "@/lib/fees";
-import { cn, fmtDate, fmtNumber, fmtPercent } from "@/lib/format";
+import { cn, fmtNumber, fmtPercent } from "@/lib/format";
 import { Sparkline } from "./Sparkline";
 import { IconCalc, IconChat, IconCheck, IconDatabase, IconDoc, IconMap, IconShield, IconTag } from "./Icons";
 import { LogoMark } from "./Logo";
@@ -130,7 +130,7 @@ function Screen({ step }: { step: StepKey }) {
         <div className="ms-auto max-w-[85%] rounded-2xl rounded-se-md bg-night-900 px-4 py-3 text-sm text-white">{t("ask.q")}</div>
         <div className="flex flex-wrap gap-2">
           {(["zone", "stats", "cost"] as const).map((k, i) => (
-            <span key={k} className="tour-chip inline-flex items-center gap-1.5 rounded-full border border-sand-200 bg-sand-50 px-3 py-1 font-mono text-[11px] text-ink-500" style={{ animationDelay: `${300 + i * 350}ms` }}>
+            <span key={k} className="tour-chip inline-flex items-center gap-1.5 rounded-full border border-sand-200 bg-sand-50 px-3 py-1 text-[11px] font-medium text-ink-500" style={{ animationDelay: `${300 + i * 350}ms` }}>
               <IconDatabase width={12} height={12} className="text-green-600" /> {t(`ask.tool.${k}`)} <IconCheck width={12} height={12} className="text-green-600" />
             </span>
           ))}
@@ -138,7 +138,7 @@ function Screen({ step }: { step: StepKey }) {
         <div className="tour-chip max-w-[92%] rounded-2xl rounded-ss-md border border-sand-200 bg-white p-4 text-sm leading-relaxed text-ink-700" style={{ animationDelay: "1500ms" }}>
           <p className="font-semibold text-ink-900">{t("ask.a1", { district: nm(malqa) })}</p>
           <p className="mt-2">{t("ask.a2", { price: sar(malqa.median.apartment) })}</p>
-          <p className="mt-3 border-t border-sand-100 pt-2 text-xs text-ink-400">{t("source")} · {c("dataUntil")} {fmtDate(locale, DATA_UNTIL)}</p>
+          <p className="mt-3 border-t border-sand-100 pt-2 text-xs font-medium text-ink-500">{t("sample")}</p>
         </div>
       </div>
     );
@@ -196,7 +196,7 @@ function Screen({ step }: { step: StepKey }) {
                   <tr key={d.slug} className={cn(i === 0 && "bg-green-50/40")}>
                     <td className="px-4 py-3 font-medium text-ink-900">{nm(d)}</td>
                     <td className="px-4 py-3 text-end tabular-nums" dir="ltr">{sar(d.median.apartment)}</td>
-                    <td className="hidden px-4 py-2 sm:table-cell"><Sparkline id={`tour-${d.slug}`} values={d.trend} stroke="#2a50d8" className="ms-auto h-7 w-24" /></td>
+                    <td className="hidden px-4 py-2 sm:table-cell"><Sparkline id={`tour-${d.slug}`} values={d.trend} stroke="#006c35" className="ms-auto h-7 w-24" /></td>
                     <td className={cn("px-4 py-3 text-end font-semibold tabular-nums", ch >= 0 ? "text-emerald-700" : "text-ink-500")} dir="ltr">{fmtPercent(locale, ch)}</td>
                   </tr>
                 );
@@ -263,7 +263,7 @@ function Screen({ step }: { step: StepKey }) {
         <div className="flex items-center gap-1.5"><LogoMark className="h-5 w-5" /><span className="text-[10px] font-bold text-ink-900">Miftah AI</span></div>
         <div className="mt-3 h-2 w-3/4 rounded bg-ink-900/80" />
         <div className="mt-1.5 h-1.5 w-1/2 rounded bg-ink-200" />
-        <Sparkline id="tour-report" values={malqa.trend} stroke="#2a50d8" className="mt-4 h-10 w-full" />
+        <Sparkline id="tour-report" values={malqa.trend} stroke="#006c35" className="mt-4 h-10 w-full" />
         {[0, 1, 2, 3].map((i) => <div key={i} className="mt-2 h-1.5 rounded bg-sand-200" style={{ width: `${90 - i * 12}%` }} />)}
         <div className="mt-4 h-6 rounded bg-green-50" />
       </div>

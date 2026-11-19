@@ -1,49 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  /* White-first SaaS palette.
-     night = near-black for text, buttons and the rare dark surface;
-     green = the single brand accent (a deep cobalt blue, kept under the old token name);
-     gold  = cool slate, used for quiet secondary details;
-     sand  = cool neutral greys for surfaces and hairlines. */
-  --color-night-950: #0a0b0d;
-  --color-night-900: #111318;
-  --color-night-800: #171a20;
-  --color-night-700: #23272f;
-  --color-night-600: #343944;
+  /* Saudi palette.
+     night = deep palm green, used for primary buttons, text on light and the rare dark surface;
+     green = Saudi green (#006C35 at 600), the single brand accent;
+     gold  = desert gold, for small details only;
+     sand  = warm off-whites and hairlines. */
+  --color-night-950: #062a1c;
+  --color-night-900: #0a3424;
+  --color-night-800: #0f3f2c;
+  --color-night-700: #174d37;
+  --color-night-600: #235c44;
 
-  --color-green-950: #0d1a45;
-  --color-green-900: #142463;
-  --color-green-800: #1a2f86;
-  --color-green-700: #1f3fb0;
-  --color-green-600: #2a50d8; /* brand accent */
-  --color-green-500: #4166ea;
-  --color-green-400: #7290f2;
-  --color-green-300: #a9bdf8;
-  --color-green-100: #e3eaff;
-  --color-green-50: #f3f6ff;
+  --color-green-950: #02251a;
+  --color-green-900: #053a24;
+  --color-green-800: #004a26;
+  --color-green-700: #005a2e;
+  --color-green-600: #006c35; /* brand accent: Saudi green */
+  --color-green-500: #1a8048;
+  --color-green-400: #4fa173;
+  --color-green-300: #8fc6a5;
+  --color-green-100: #dbeee2;
+  --color-green-50: #eff7f2;
 
-  --color-gold-700: #3f4652;
-  --color-gold-600: #5b6372;
-  --color-gold-500: #8a929f;
-  --color-gold-400: #c3c9d2;
-  --color-gold-300: #dfe3e9;
-  --color-gold-100: #f2f4f7;
+  --color-gold-700: #7a5c1e;
+  --color-gold-600: #9c7628;
+  --color-gold-500: #c49a3c;
+  --color-gold-400: #d8b76e;
+  --color-gold-300: #e8d3a3;
+  --color-gold-100: #f7efdc;
 
-  --color-sand-50: #fafbfc;
-  --color-sand-100: #f4f5f7;
-  --color-sand-200: #e7e9ed;
-  --color-sand-300: #d5d9df;
+  --color-sand-50: #fcfaf5;
+  --color-sand-100: #f6f2e9;
+  --color-sand-200: #e9e3d6;
+  --color-sand-300: #d9d1c0;
 
-  --color-ink-900: #0b0d12;
-  --color-ink-800: #1d2027;
-  --color-ink-700: #363b45;
-  --color-ink-500: #5f6672;
-  --color-ink-400: #8b919b;
-  --color-ink-200: #dcdfe4;
+  --color-ink-900: #14201a;
+  --color-ink-800: #222d27;
+  --color-ink-700: #37423c;
+  --color-ink-500: #5b6660;
+  --color-ink-400: #858f89;
+  --color-ink-200: #dcdfdb;
 
-  --font-sans: var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex), var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-plex), var(--font-geist), var(--font-arabic), var(--font-devanagari), var(--font-sc), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --animate-float: float 7s ease-in-out infinite;
@@ -65,6 +65,7 @@
 }
 
 :root {
+  --font-plex: "IBM Plex Sans";
   --font-geist: "Geist Variable";
   --font-geist-mono: "Geist Mono Variable";
   --font-serif: "Instrument Serif";
@@ -115,17 +116,10 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 @layer components {
   .bg-hero { background: #0a0b0d; }
   /* Soft hero canvas: white with a faint grid and a cool glow at the top */
-  .bg-canvas {
-    background:
-      radial-gradient(900px 420px at 50% -120px, rgb(42 80 216 / .10), transparent 70%),
-      #ffffff;
-  }
-  .grid-lines {
-    background-image: linear-gradient(rgb(11 13 18 / .045) 1px, transparent 1px), linear-gradient(90deg, rgb(11 13 18 / .045) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 20%, transparent 75%);
-  }
-  .font-display { font-weight: 600; letter-spacing: -0.035em; }
+  /* Plain, warm canvas. No glows or grids. */
+  .bg-canvas { background: var(--color-sand-50); }
+  .grid-lines { display: none; }
+  .font-display { font-weight: 600; letter-spacing: -0.015em; }
   .container-x { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
   @media (min-width: 640px) { .container-x { padding-inline: 1.5rem; } }
 
@@ -138,13 +132,13 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   /* Firm, instant press: shrinks and darkens the moment the pointer goes down */
   .btn:not(:disabled):active { transform: scale(.97); transition-duration: 0s; filter: brightness(.92); box-shadow: none; }
   .btn:disabled { cursor: not-allowed; }
-  .btn-primary { background: var(--color-night-950); color: white; box-shadow: 0 1px 2px rgb(11 13 18 / .2), inset 0 1px 0 rgb(255 255 255 / .08); }
-  .btn-primary:hover { background: var(--color-night-700); }
-  .btn-accent { background: var(--color-green-600); color: white; box-shadow: 0 1px 2px rgb(42 80 216 / .3); }
+  .btn-primary { background: var(--color-green-600); color: white; }
+  .btn-primary:hover { background: var(--color-green-700); }
+  .btn-accent { background: var(--color-green-600); color: white; }
   .btn-accent:hover { background: var(--color-green-700); }
   .btn-gold { background: white; color: var(--color-night-950); }
   .btn-gold:hover { background: var(--color-sand-100); }
-  .btn-ghost { background: white; color: var(--color-ink-900); border: 1px solid var(--color-sand-200); box-shadow: 0 1px 2px rgb(11 13 18 / .04); }
+  .btn-ghost { background: white; color: var(--color-ink-900); border: 1px solid var(--color-sand-200); box-shadow: none; }
   .btn-ghost:hover { border-color: var(--color-sand-300); background: var(--color-sand-50); }
   .btn-ghost-dark { background: rgb(255 255 255 / .06); color: white; border: 1px solid rgb(255 255 255 / .14); }
   .btn-ghost-dark:hover { background: rgb(255 255 255 / .12); }
@@ -157,35 +151,43 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   html[dir="rtl"] .eyebrow { font-size: .875rem; }
 
   .card {
-    background: white; border: 1px solid var(--color-sand-200); border-radius: .875rem;
-    box-shadow: 0 1px 2px rgb(11 13 18 / .03);
+    background: white; border: 1px solid var(--color-sand-200); border-radius: .75rem;
   }
   .card-dark {
     background: rgb(255 255 255 / .04);
     border: 1px solid rgb(255 255 255 / .1); border-radius: .875rem;
   }
-  .shadow-frame { box-shadow: 0 0 0 1px rgb(11 13 18 / .06), 0 2px 4px rgb(11 13 18 / .04), 0 24px 60px -12px rgb(11 13 18 / .16); }
+  .shadow-frame { box-shadow: 0 0 0 1px var(--color-sand-200), 0 12px 32px -16px rgb(6 42 28 / .18); }
   .input {
     width: 100%; border-radius: .625rem; border: 1px solid var(--color-sand-300); background: white;
     padding: .7rem .9rem; font-size: .95rem; outline: none; transition: border-color .15s, box-shadow .15s;
   }
-  .input:focus { border-color: var(--color-green-500); box-shadow: 0 0 0 3px rgb(42 80 216 / .15); }
+  .input:focus { border-color: var(--color-green-500); box-shadow: 0 0 0 3px rgb(0 108 53 / .15); }
 
   .text-gradient-gold { color: var(--color-green-600); }
 
-  /* Kept for compatibility; intentionally invisible in the white design */
+  /* Thin Al-Sadu weave band: a quiet Saudi detail under page heroes. */
+  .sadu-band {
+    height: 6px;
+    background:
+      linear-gradient(135deg, var(--color-green-600) 25%, transparent 25%) -6px 0 / 12px 6px,
+      linear-gradient(225deg, var(--color-green-600) 25%, transparent 25%) -6px 0 / 12px 6px,
+      linear-gradient(315deg, var(--color-gold-500) 25%, transparent 25%) 0 0 / 12px 6px,
+      linear-gradient(45deg, var(--color-gold-500) 25%, transparent 25%) 0 0 / 12px 6px,
+      var(--color-sand-100);
+    opacity: .85;
+  }
   .sadu-pattern { display: none; }
-  .sadu-band { display: none; }
   .grid-fade { display: none; }
 }
 
 /* Above-the-fold entrance: pure CSS, so it plays before JavaScript loads */
-@keyframes hero-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-.hero-in { animation: hero-in .8s cubic-bezier(.2,.7,.2,1) both; }
-.hero-in-delay { animation: hero-in .8s .15s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.hero-in { animation: hero-in .4s cubic-bezier(.2,.7,.2,1) both; }
+.hero-in-delay { animation: hero-in .4s .08s cubic-bezier(.2,.7,.2,1) both; }
 
 /* Reveal-on-scroll */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal { opacity: 0; transform: translateY(6px); transition: opacity .45s ease, transform .45s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
@@ -207,21 +209,10 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 
 /* ───────── Workspace (signed-in app) ───────── */
 .kpi-card {
-  position: relative; overflow: hidden; border-radius: 1rem; color: white;
-  background: linear-gradient(135deg, #142463 0%, #1f3fb0 55%, #2a50d8 100%);
-  box-shadow: 0 1px 2px rgb(11 13 18 / .12), 0 14px 30px -14px rgb(26 47 134 / .55);
+  position: relative; overflow: hidden; border-radius: .875rem; color: white;
+  background: var(--color-night-950);
 }
-.kpi-card::after {
-  content: ""; position: absolute; inset-inline-end: -60px; bottom: -80px; width: 220px; height: 220px; border-radius: 9999px;
-  background: repeating-radial-gradient(circle, rgb(255 255 255 / .12) 0 1px, transparent 1px 14px);
-  pointer-events: none;
-}
-.app-canvas {
-  background:
-    radial-gradient(700px 320px at 50% -80px, rgb(42 80 216 / .09), transparent 70%),
-    radial-gradient(500px 260px at 85% 10%, rgb(196 154 60 / .07), transparent 70%),
-    #ffffff;
-}
+.app-canvas { background: var(--color-sand-50); }
 .prose-chat p { margin: .5rem 0; }
 .prose-chat ul, .prose-chat ol { margin: .5rem 0; padding-inline-start: 1.25rem; }
 .prose-chat ul { list-style: disc; }
@@ -234,7 +225,7 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
 .prose-chat th { background: var(--color-sand-50); font-weight: 600; }
 .cite { display: inline-grid; place-items: center; min-width: 1.15rem; height: 1.15rem; padding: 0 .25rem; margin-inline: 1px; border-radius: .35rem; background: var(--color-green-50); color: var(--color-green-700); font-size: .68rem; font-weight: 600; vertical-align: .15em; line-height: 1; }
 .cite:hover { background: var(--color-green-600); color: white; }
-.leaflet-container { font-family: var(--font-sans); background: #eef1f5; }
+.leaflet-container { font-family: var(--font-sans); background: #f1eee6; }
 .leaflet-tooltip.district-label { background: rgb(255 255 255 / .95); border: 0; border-radius: 6px; box-shadow: 0 1px 3px rgb(11 13 18 / .2); padding: 2px 7px; font-size: 11px; font-weight: 600; color: #0b0d12; }
 .leaflet-tooltip.district-label::before { display: none; }
 
@@ -245,7 +236,7 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   .no-print { display: none !important; }
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
-.map-tiles { filter: grayscale(1) contrast(.9) brightness(1.06); }
+.map-tiles { filter: grayscale(.85) sepia(.12) contrast(.92) brightness(1.05); }
 
 /* ── Miftah AI chat ── */
 @keyframes msg-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -264,39 +255,15 @@ html[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
   content: ""; display: inline-block; width: .5em; height: 1.05em; margin-inline-start: 2px; vertical-align: -.15em;
   border-radius: 2px; background: var(--color-green-600); animation: caret 1s steps(1) infinite;
 }
-.ai-stage { background: linear-gradient(180deg, #f7f9ff 0%, #ffffff 46%); }
-.ai-orb {
-  position: absolute; top: -180px; left: 50%; width: 760px; height: 420px; transform: translateX(-50%); pointer-events: none;
-  background:
-    radial-gradient(closest-side, rgb(65 102 234 / .16), transparent 70%),
-    radial-gradient(closest-side at 30% 60%, rgb(114 144 242 / .14), transparent 70%);
-  filter: blur(10px);
-}
-.ai-stage::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: linear-gradient(to right, rgb(11 13 18 / .035) 1px, transparent 1px), linear-gradient(to bottom, rgb(11 13 18 / .035) 1px, transparent 1px);
-  background-size: 44px 44px;
-  -webkit-mask-image: radial-gradient(ellipse 60% 45% at 50% 0%, #000 30%, transparent 75%);
-  mask-image: radial-gradient(ellipse 60% 45% at 50% 0%, #000 30%, transparent 75%);
-}
+.ai-stage { background: var(--color-sand-50); }
+.ai-orb { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .msg-in, .animate-spin-slow, .shimmer-text, .streaming *::after { animation: none !important; }
   .shimmer-text { color: var(--color-ink-700); background: none; }
 }
 
-/* Dashboard AI hero: deep navy into brand blue, faint grid, soft glow. */
+/* Dashboard hero: flat palm green. */
 .ai-hero {
-  position: relative; overflow: hidden; border-radius: 1.25rem; color: white;
-  background:
-    radial-gradient(600px 300px at 85% -10%, rgb(114 144 242 / .45), transparent 65%),
-    radial-gradient(500px 260px at 0% 120%, rgb(42 80 216 / .55), transparent 70%),
-    linear-gradient(135deg, #0b1233 0%, #13256f 55%, #1f3fb0 100%);
-  box-shadow: 0 1px 2px rgb(11 13 18 / .12), 0 24px 48px -24px rgb(19 37 111 / .6);
-}
-.ai-hero::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: linear-gradient(to right, rgb(255 255 255 / .06) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / .06) 1px, transparent 1px);
-  background-size: 36px 36px;
-  -webkit-mask-image: linear-gradient(to bottom left, #000, transparent 70%);
-  mask-image: linear-gradient(to bottom left, #000, transparent 70%);
+  position: relative; overflow: hidden; border-radius: 1rem; color: white;
+  background: var(--color-night-950);
 }

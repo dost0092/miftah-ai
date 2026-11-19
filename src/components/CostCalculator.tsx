@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
-import { feeRules, type FeeRule } from "@/lib/fees";
+import { FEES_CHECKED, feeRules, type FeeRule } from "@/lib/fees";
 import { cn, fmtNumber } from "@/lib/format";
 import { IconArrow } from "./Icons";
 
@@ -103,6 +103,7 @@ export function CostCalculator() {
           {toggle(payRett, setPayRett, t("rettPayer"))}
         </div>
         <p className="text-xs text-ink-400">{t("editRates")}</p>
+        <p className="text-xs text-ink-400">{t("checked", { date: FEES_CHECKED })}</p>
       </div>
 
       {/* results */}
@@ -139,7 +140,10 @@ export function CostCalculator() {
             </li>
           ))}
         </ul>
-        <div className="space-y-2 border-t border-sand-200 bg-night-900 px-6 py-5 text-white">
+        {mode === "buy" && nonSaudi && (
+          <p className="border-t border-sand-200 bg-gold-100/60 px-6 py-3 text-xs leading-relaxed text-ink-700">{t("sellLater")}</p>
+        )}
+        <div className="space-y-2 border-t border-sand-200 bg-night-950 px-6 py-5 text-white">
           <div className="flex justify-between text-sm text-white/70">
             <span>{t("total")}</span>
             <span className="tabular-nums" dir="ltr">{fmtNumber(locale, total)} SAR</span>

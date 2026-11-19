@@ -28,10 +28,10 @@ export function PageHeader({ title, subtitle, actions }: { title: string; subtit
 }
 
 const statusStyle: Record<string, string> = {
-  verified: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
-  needs_review: "bg-sand-100 text-ink-700 ring-sand-300",
-  guidance: "bg-green-50 text-green-700 ring-green-600/20",
-  sample: "bg-sand-100 text-ink-500 ring-ink-400/25",
+  verified: "bg-green-50 text-green-800 ring-green-600/25",
+  needs_review: "bg-gold-100 text-gold-700 ring-gold-500/30",
+  guidance: "bg-white text-ink-700 ring-ink-400/30",
+  sample: "bg-sand-100 text-ink-700 ring-ink-400/30",
 };
 
 export function StatusBadge({ status, label, className }: { status: string; label: string; className?: string }) {

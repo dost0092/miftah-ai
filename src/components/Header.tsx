@@ -32,10 +32,10 @@ const productItems = [
 ] as const;
 
 const links = [
+  { key: "guide", href: "/guide" },
   { key: "solutions", href: "/solutions" },
   { key: "pricing", href: "/pricing" },
   { key: "trust", href: "/trust" },
-  { key: "developers", href: "/developers" },
   { key: "about", href: "/about" },
 ] as const;
 
