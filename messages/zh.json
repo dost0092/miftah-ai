@@ -14,14 +14,14 @@
     "company": "公司",
     "about": "关于我们",
     "contact": "联系我们",
-    "cta": "免费开始",
+    "cta": "免费试用 Miftah AI",
     "menu": "菜单",
     "close": "关闭",
     "language": "语言",
     "productItems": {
       "advisor": {
-        "title": "AI 顾问",
-        "desc": "随便问，答案附带来源"
+        "title": "Miftah AI",
+        "desc": "您的 AI 房产顾问，附来源"
       },
       "districts": {
         "title": "街区浏览器",
@@ -86,9 +86,9 @@
       "titleHighlight": "置业",
       "titleB": "的 AI 钥匙",
       "subtitle": "Miftah AI 帮您了解哪里可以合法购房、全部费用是多少、签约前要核实什么。使用您的语言，每条规定都附官方来源。",
-      "ctaPrimary": "免费开始",
+      "ctaPrimary": "免费试用 Miftah AI",
       "ctaSecondary": "阅读购房指南",
-      "askPlaceholder": "关于在沙特购房，随便问…",
+      "askPlaceholder": "向 Miftah AI 询问在沙特购房的问题…",
       "askButton": "提问",
       "suggestions": [
         "外国人可以在 Al Malqa 买房吗？",
@@ -96,7 +96,8 @@
         "作为外国买家我需要支付哪些费用？",
         "Al Yasmin 160 m² 公寓 120 万里亚尔合理吗？"
       ],
-      "trustNote": "每条规定都链接到官方来源"
+      "trustNote": "每条规定都链接到官方来源",
+      "aiBadge": "认识 Miftah AI，您的 AI 房产顾问"
     },
     "demo": {
       "label": "实时回答预览",
@@ -145,7 +146,7 @@
     },
     "how": {
       "eyebrow": "工作原理",
-      "title": "先核对规定，再作回答",
+      "title": "Miftah AI 先核对规定，再作回答",
       "subtitle": "Miftah AI 先查询已存储的官方规定和数据，再用您的语言回答，并注明来源和日期。如果找不到答案，会直接告诉您。",
       "steps": [
         {
@@ -172,7 +173,7 @@
       "subtitle": "从您的第一个问题，到可以发给国内家人的报告。",
       "items": [
         {
-          "title": "房产顾问",
+          "title": "Miftah AI 顾问",
           "body": "用您自己的话提问。回答中的每条规定都附来源和日期，未知的信息会标明未知。"
         },
         {
@@ -303,9 +304,9 @@
       ]
     },
     "cta": {
-      "title": "获取您通往沙特房产的钥匙",
+      "title": "向 Miftah AI 提出您的第一个问题",
       "subtitle": "创建免费账户，今天就提出您的第一个问题。免费版每月 5 条附来源的回答，Pro 版不限次数。",
-      "button": "免费开始",
+      "button": "免费试用 Miftah AI",
       "secondary": "联系我们"
     },
     "guideTeaser": {
@@ -1350,5 +1351,37 @@
     "labelsTitle": "我们如何标注信息",
     "moreHelp": "想知道您的价格对应的全部费用？",
     "calcLink": "打开费用计算器"
+  },
+  "widget": {
+    "launcher": "询问 Miftah AI",
+    "title": "Miftah AI",
+    "light": "轻量版",
+    "subtitle": "AI 房产顾问 · 依据官方来源作答",
+    "welcome": "您好！我是 Miftah AI。您可以问我外国人在沙特购房的问题：哪里可以买、费用、如何申请或居留。我依据官方来源回答，并会说明哪些内容尚未确认。",
+    "nudge": "对在沙特购房有疑问？问问 Miftah AI。",
+    "suggestions": [
+      "外国人可以在利雅得买公寓吗？",
+      "100 万里亚尔的公寓要付多少费用？",
+      "买房能获得居留权吗？"
+    ],
+    "placeholder": "向 Miftah AI 提问…",
+    "send": "发送",
+    "expand": "放大",
+    "shrink": "缩小",
+    "close": "关闭",
+    "newChat": "新对话",
+    "thinking": "正在查询官方来源…",
+    "sources": "来源（{n}）",
+    "error": "回答中断，请重试。",
+    "left": "今日剩余免费问题：{n}",
+    "disclaimer": "信息来自官方来源，不构成法律建议。",
+    "savedNote": "已保存到您的账户",
+    "openFull": "打开完整版 Miftah AI",
+    "limitTitle": "今日免费问题已用完",
+    "limitBody": "创建免费账户继续使用：每月 5 个问题和 1 份报告，对话会被保存。",
+    "limitCta": "免费试用 Miftah AI",
+    "planLimitTitle": "本月免费额度已用完",
+    "planLimitBody": "升级到 Pro，问题和报告不限量。",
+    "planLimitCta": "查看 Pro"
   }
 }

@@ -11,6 +11,7 @@ import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/Section";
 import { ProductTour } from "@/components/ProductTour";
 import { FactLabels } from "@/components/TrustKit";
+import { LogoMark } from "@/components/Logo";
 import { officialSources } from "@/lib/official/sources";
 import {
   IconArrow, IconBriefcase, IconBuilding, IconCalc, IconChat, IconCheck, IconDatabase, IconDoc, IconGlobe,
@@ -56,9 +57,9 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
       <section className="relative overflow-hidden bg-canvas">
         <div className="container-x relative pb-16 pt-14 sm:pt-20 lg:pb-24">
           <div className="hero-in mx-auto max-w-3xl text-center">
-            <Link href="/trust" className="inline-flex items-center gap-2 rounded-full border border-sand-200 bg-white py-1 pe-3 ps-1 text-[13px] text-ink-700 transition hover:border-sand-300">
-              <span className="grid h-6 w-6 place-items-center rounded-full bg-green-50 text-green-600 ring-1 ring-inset ring-green-600/15"><IconShield width={13} height={13} /></span>
-              {t("hero.trustNote")}
+            <Link href="/product" className="inline-flex items-center gap-2 rounded-full border border-green-600/25 bg-white py-1 pe-3 ps-1 text-[13px] font-medium text-ink-800 transition hover:border-green-600/50">
+              <LogoMark className="h-6 w-6" />
+              {t("hero.aiBadge")}
               <IconArrow width={13} height={13} className="flip-rtl text-ink-400" />
             </Link>
             <h1 className="font-display mx-auto mt-7 max-w-[20ch] text-[2.4rem] leading-[1.1] text-ink-900 sm:text-5xl lg:text-6xl">
@@ -68,6 +69,9 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
             <div className="mx-auto mt-9 flex max-w-xl justify-center">
               <HeroAsk />
             </div>
+            <p className="mt-4 inline-flex items-center justify-center gap-1.5 text-xs text-ink-500">
+              <IconShield width={13} height={13} className="text-green-600" /> {t("hero.trustNote")}
+            </p>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
               <Link href="/signup" className="btn btn-primary">
                 {t("hero.ctaPrimary")}

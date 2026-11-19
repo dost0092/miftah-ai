@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
+import { MiftahWidget } from "@/components/MiftahWidget";
 
 /** Public marketing site: announcement bar, header and footer around every page. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -13,6 +14,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <Header />
       <main id="main">{children}</main>
       <Footer />
+      <MiftahWidget />
     </>
   );
 }

@@ -60,6 +60,12 @@ src/lib/fees.ts      fee rates for the calculator — verify each with ZATCA / R
 supabase/migrations/ database schema
 ```
 
+## Miftah AI widget (public site)
+
+A chat window in the bottom corner of every public page (`src/components/MiftahWidget.tsx`). Visitors get 3 free answers a day from `/api/public/ask` (same official sources and rules as the full advisor, shorter answers, nothing stored; the limit is per server instance, so add a shared store such as Supabase or Upstash for a hard limit). Signed-in users chat through their account, so history and plan limits apply. The hero question box opens it.
+
+Shareable links for outreach: `https://miftahai.co/ur?ask=<question>` opens the widget in Urdu and answers the question; `?ask=1` just opens it.
+
 ## Signed-in workspace (`/[locale]/app`)
 
 After sign-in users land in the workspace: **Dashboard**, **Miftah AI advisor** (chat with cited sources and saved conversations), **Market map** (districts, prices, ownership status, costs), **Official data** library, **Reports** (district brief, due-diligence checklist, cost estimate; printable to PDF), **Costs** calculator and **Account & usage**.
