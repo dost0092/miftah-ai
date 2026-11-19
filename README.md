@@ -4,7 +4,7 @@
 
 - **Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · next-intl · Supabase · Vercel
 - **Languages:** English, العربية (RTL), اردو (RTL), हिन्दी, 中文: every page, every string
-- **Pages:** Home, Product, District Explorer (+ one SEO page per district × 5 languages), Cost Calculator, Pricing, Solutions, Trust & Data, Developers/API, About, Contact, Waitlist, Privacy, Terms, Disclaimer, localized 404
+- **Pages:** Home, Buyer's guide, Product, District Explorer (+ one SEO page per district × 5 languages), Cost Calculator, Pricing, Solutions, Trust & Data, Developers/API, About, Contact, Waitlist, Privacy, Terms, Disclaimer, localized 404
 - **Built in:** per-language URLs with hreflang, sitemap.xml, robots.txt, Open Graph, JSON-LD, security headers, honeypot spam protection
 
 ## Run locally
@@ -83,5 +83,13 @@ Local design preview without signing in: put `APP_DEV_PREVIEW=1` in `.env.develo
 - [ ] Verify fee rates in `src/lib/fees.ts` (5% RETT, 2.5% brokerage cap, 15% VAT, 2% non-Saudi disposal fee).
 - [ ] Have the legal pages reviewed by a Saudi lawyer (PDPL, real-estate advertising rules).
 - [ ] Set up the `hello@`, `partners@` and `privacy@miftah.ai` mailboxes.
+- [ ] Match every district against REGA's official zone map (saudiproperties.rega.gov.sa/zones) before changing any `zone` from `unknown`.
+- [ ] Confirm the 2% non-Saudi disposal fee and its zero-rate cases in the official Executive Regulations text (published summaries differ).
+- [ ] Have the Arabic, Urdu, Hindi and Chinese copy (especially `guide`, `trustKit`, `faq`) reviewed by native speakers.
+- [ ] Keep the `trust.status` table on the Trust page honest: update it when prices or zones become real data.
+
+## Trust rules for copy
+
+Never claim on the site what is not true yet. Sample figures are labelled "Sample data" everywhere; rules show "Check the source" until checked line by line; every page links to the official service where the reader can check it themselves (`src/components/TrustKit.tsx`). Miftah AI is independent: never use government logos or imply affiliation.
 
 Brand colours: Saudi green `#006C35`, palm `#062A1C`, desert gold `#C49A3C`, sand `#FCFAF5`. The background pattern is inspired by Al-Sadu weaving.

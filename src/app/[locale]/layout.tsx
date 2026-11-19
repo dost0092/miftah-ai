@@ -6,6 +6,10 @@ import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { SITE_URL, pageMetadata } from "@/lib/site";
 // Fonts are bundled from npm (Fontsource), so builds never depend on reaching Google Fonts.
 // Each file uses unicode-range, so browsers only download the scripts a page actually uses.
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/500.css";
+import "@fontsource/ibm-plex-sans/600.css";
+import "@fontsource/ibm-plex-sans/700.css";
 import "@fontsource-variable/geist";
 import "@fontsource-variable/geist-mono";
 import "@fontsource/instrument-serif/400.css";
@@ -25,7 +29,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#006c35",
   width: "device-width",
   initialScale: 1,
 };

@@ -2,14 +2,13 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-import { DATA_UNTIL, getDistrict, trendChange } from "@/lib/districts";
-import { fmtDate, fmtNumber, fmtPercent, cn } from "@/lib/format";
-import { IconCheck, IconDoc, IconFlag, IconSpark } from "./Icons";
+import { getDistrict, trendChange } from "@/lib/districts";
+import { fmtNumber, fmtPercent, cn } from "@/lib/format";
+import { IconCheck, IconDoc, IconFlag } from "./Icons";
 import { LogoMark } from "./Logo";
 import { ZoneBadge } from "./ZoneBadge";
 import { Sparkline } from "./Sparkline";
 
-const TOOLS = ["get_district_stats", "check_foreign_ownership"];
 
 export function ChatDemo() {
   const t = useTranslations("home.demo");
@@ -38,7 +37,7 @@ export function ChatDemo() {
             <span className="h-2.5 w-2.5 rounded-full bg-sand-300" />
           </div>
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-400">
-            <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-emerald-500" />
+            <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
             {t("label")}
           </span>
         </div>
@@ -53,29 +52,28 @@ export function ChatDemo() {
           <div className="flex gap-3">
             <LogoMark className="h-8 w-8" />
             <div className="min-w-0 flex-1 space-y-3">
-              {/* tool calls */}
+              {/* what was checked, in plain words */}
               <div className="flex flex-wrap gap-1.5">
-                {TOOLS.map((tool, i) => {
+                {(t.raw("checks") as string[]).map((label, i) => {
                   const done = stage >= i + 2;
                   const visible = stage >= i + 1;
                   return (
                     <span
-                      key={tool}
+                      key={label}
                       className={cn(
-                        "inline-flex items-center gap-1.5 rounded-lg border px-2 py-1 font-mono text-[11px] transition-all duration-500",
+                        "inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-[11px] font-medium transition-opacity duration-300",
                         visible ? "opacity-100" : "opacity-0",
-                        done ? "border-emerald-600/20 bg-emerald-50 text-emerald-700" : "border-sand-200 bg-sand-50 text-ink-500",
+                        done ? "border-green-600/20 bg-green-50 text-green-700" : "border-sand-200 bg-sand-50 text-ink-500",
                       )}
-                      dir="ltr"
                     >
-                      {done ? <IconCheck width={12} height={12} /> : <IconSpark width={12} height={12} className="animate-spin" />}
-                      {tool}()
+                      {done ? <IconCheck width={12} height={12} /> : <span className="h-1.5 w-1.5 rounded-full bg-ink-400" />}
+                      {label}
                     </span>
                   );
                 })}
               </div>
 
-              <div className={cn("space-y-3 transition-all duration-700", stage >= 3 ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0")}>
+              <div className={cn("space-y-3 transition-all duration-700", stage >= 3 ? "opacity-100" : "opacity-0")}>
                 <p className="text-sm text-ink-700">{t("intro")}</p>
                 <div className="grid grid-cols-3 gap-2">
                   <Stat label={c("medianPrice")} value={fmtNumber(locale, d.median.apartment)} unit={c("perSqm")} />
@@ -90,7 +88,7 @@ export function ChatDemo() {
 
               <div className={cn("flex flex-wrap items-center justify-between gap-2 border-t border-sand-200 pt-3 transition-all duration-700", stage >= 4 ? "opacity-100" : "opacity-0")}>
                 <p className="text-[11px] text-ink-400">
-                  {c("source")}: MOJ · {c("dataUntil")} {fmtDate(locale, DATA_UNTIL)} · <span className="font-semibold text-ink-500">{c("sampleData")}</span>
+                  <span className="font-semibold text-gold-700">{t("example")}</span> · {c("sampleData")}
                 </p>
                 <div className="flex gap-1.5">
                   <span className="inline-flex items-center gap-1 rounded-lg bg-night-950 px-2 py-1 text-[11px] font-medium text-white">

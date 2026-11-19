@@ -103,7 +103,7 @@ function ReportMock({ title }: { title: string }) {
   return (
     <div className="relative grid place-items-center overflow-hidden rounded-2xl border border-sand-200 bg-sand-50 px-6 py-12">
       <div className="sadu-pattern absolute inset-0" />
-      <div className="relative w-full max-w-xs rotate-[-3deg] rounded-xl bg-white p-6 shadow-2xl animate-float">
+      <div className="relative w-full max-w-xs rounded-xl bg-white p-6 shadow-frame">
         <div className="flex items-center justify-between">
           <LogoMark className="h-7 w-7" />
           <IconDoc width={18} height={18} className="text-ink-400" />
@@ -111,7 +111,7 @@ function ReportMock({ title }: { title: string }) {
         <p className="mt-5 text-xs font-medium text-ink-500">{title}</p>
         <p className="mt-1 text-lg font-semibold">Al Malqa, Riyadh</p>
         <svg viewBox="0 0 200 60" className="mt-4 w-full" aria-hidden>
-          <path d="M0 50 L30 44 L60 46 L90 34 L120 30 L150 22 L200 12" fill="none" stroke="#2a50d8" strokeWidth="3" strokeLinecap="round" />
+          <path d="M0 50 L30 44 L60 46 L90 34 L120 30 L150 22 L200 12" fill="none" stroke="#006c35" strokeWidth="3" strokeLinecap="round" />
         </svg>
         <div className="mt-4 space-y-2">
           <span className="block h-2 w-full rounded-full bg-sand-200" />

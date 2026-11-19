@@ -101,7 +101,7 @@ export function DistrictExplorer({ limit }: { limit?: number }) {
                   <td className="px-5 py-3.5 text-end tabular-nums text-ink-700" dir="ltr">{fmtNumber(locale, d.deals)}</td>
                   <td className="px-5 py-3.5">
                     <div className="flex items-center gap-2">
-                      <Sparkline id={d.slug} values={d.trend} stroke={ch >= 0 ? "#2a50d8" : "#8b919b"} className="h-7 w-20" />
+                      <Sparkline id={d.slug} values={d.trend} stroke={ch >= 0 ? "#006c35" : "#858f89"} className="h-7 w-20" />
                       <span className={cn("text-xs font-semibold tabular-nums", ch >= 0 ? "text-emerald-700" : "text-ink-500")} dir="ltr">{fmtPercent(locale, ch)}</span>
                     </div>
                   </td>

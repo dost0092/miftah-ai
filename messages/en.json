@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Miftah AI, Your AI key to property in Saudi Arabia",
-    "description": "Miftah AI tells foreigners where in Saudi Arabia they can legally buy property, what prices really are from official government data, and what the total cost will be, in English, Arabic, Urdu, Hindi and Chinese."
+    "description": "Miftah AI helps foreigners understand where in Saudi Arabia they can legally buy property, the full cost, and what to check before signing, with a link to the official source for every rule. In English, Arabic, Urdu, Hindi and Chinese."
   },
   "nav": {
     "product": "Product",
@@ -38,7 +38,8 @@
     },
     "signIn": "Sign in",
     "account": "My account",
-    "getStarted": "Get started"
+    "getStarted": "Get started",
+    "guide": "Buyer's guide"
   },
   "common": {
     "learnMore": "Learn more",
@@ -65,7 +66,7 @@
       "yes": "Designated zone open to non-Saudi buyers",
       "no": "Not open to non-Saudi buyers",
       "conditional": "Allowed with special conditions",
-      "unknown": "Not yet verified, confirm with REGA or a licensed broker"
+      "unknown": "Not yet confirmed. Check REGA's official zone map before buying."
     },
     "type": {
       "apartment": "Apartment",
@@ -84,9 +85,9 @@
       "titleA": "Your AI key to",
       "titleHighlight": "property",
       "titleB": "in Saudi Arabia",
-      "subtitle": "Miftah AI tells you where foreigners can legally buy, what homes really sell for according to official government records, and the full cost before you sign, in your own language.",
+      "subtitle": "Miftah AI helps foreigners understand where they can legally buy, the full cost, and what to check before signing. In your own language, with the official source for every rule.",
       "ctaPrimary": "Start free",
-      "ctaSecondary": "Explore districts",
+      "ctaSecondary": "Read the buyer's guide",
       "askPlaceholder": "Ask anything about buying property in Saudi Arabia…",
       "askButton": "Ask",
       "suggestions": [
@@ -95,19 +96,24 @@
         "What fees will I pay as a foreign buyer?",
         "Is 1.2M SAR fair for a 160 m² flat in Al Yasmin?"
       ],
-      "trustNote": "Built on official open data from the Ministry of Justice, REGA and KAPSARC"
+      "trustNote": "Every rule linked to its official source"
     },
     "demo": {
       "label": "Live answer preview",
       "question": "Can I buy an apartment in Al Malqa as a foreigner, and what is a fair price?",
-      "intro": "Here is what official records show for Al Malqa, Riyadh:",
+      "intro": "How an answer looks for Al Malqa, Riyadh (example figures):",
       "zoneLine": "Foreign ownership status is not yet verified for this district. Please confirm with REGA or a licensed broker before buying.",
       "tools": "Tools used",
       "reportButton": "Get PDF report",
-      "flag": "Report a mistake"
+      "flag": "Report a mistake",
+      "checks": [
+        "Checked district records",
+        "Checked ownership rules"
+      ],
+      "example": "Example answer"
     },
     "sources": {
-      "title": "Grounded in official Saudi data sources",
+      "title": "Every rule links back to the official source",
       "items": [
         "Ministry of Justice",
         "REGA Indicators",
@@ -115,7 +121,8 @@
         "National Open Data Portal",
         "Umm Al-Qura Gazette",
         "OpenStreetMap"
-      ]
+      ],
+      "note": "Miftah AI is independent and is not affiliated with these government bodies."
     },
     "problem": {
       "eyebrow": "The problem",
@@ -138,24 +145,24 @@
     },
     "how": {
       "eyebrow": "How it works",
-      "title": "An AI agent that checks the records before it speaks",
-      "subtitle": "Miftah AI doesn't guess. It calls dedicated tools that query verified data, then answers in your language with the source and date.",
+      "title": "It checks the rules before it answers",
+      "subtitle": "Miftah AI looks up the stored official rule texts and data first, then answers in your language with the source and date. If it cannot find an answer, it says so.",
       "steps": [
         {
           "title": "You ask, in your language",
-          "body": "English, Arabic, Urdu, Hindi or Chinese. Type it like you'd ask a friend."
+          "body": "English, Arabic, Urdu, Hindi or Chinese. Type it the way you'd ask a friend."
         },
         {
-          "title": "The agent picks the right tool",
-          "body": "District stats, foreign-zone check, cost estimate, rule search or asking-price check."
+          "title": "It finds the right information",
+          "body": "District figures, the ownership rules, a cost estimate or the rule library."
         },
         {
-          "title": "Tools query verified data",
-          "body": "Fixed, safe database queries over cleaned MOJ and REGA records and dated rule texts."
+          "title": "It reads the stored sources",
+          "body": "Fixed, safe queries over the data and dated official rule texts. Nothing is made up."
         },
         {
-          "title": "You get a sourced answer",
-          "body": "Key answer first, a small table, then the source and 'data until' date. Every time."
+          "title": "You get an answer you can check",
+          "body": "Key answer first, then the source and date. Unknowns are shown as unknown."
         }
       ]
     },
@@ -165,41 +172,43 @@
       "subtitle": "From your first question to a report you can send to family back home.",
       "items": [
         {
-          "title": "AI Property Advisor",
-          "body": "Chat that answers with real numbers, a chart and a citation, never an invented price."
+          "title": "Property advisor",
+          "body": "Ask in your own words. Every rule in the answer comes with its source and date, and unknowns are shown as unknown."
         },
         {
           "title": "Foreign-zone check",
-          "body": "Allowed, not allowed, conditional or unverified, with the official source and checked date."
+          "body": "Allowed, not allowed, conditional or not yet confirmed, with a link to REGA's official zone map."
         },
         {
           "title": "District Explorer",
-          "body": "Median price per m², deal counts and quarterly trends for every district in Riyadh and Jeddah."
+          "body": "Median price per m², deal counts and trends by district in Riyadh and Jeddah. Shown as sample data until the official feed is connected."
         },
         {
           "title": "Total-cost calculator",
-          "body": "Put in a price, see every known fee with a link to the rule behind it."
+          "body": "Enter a price and see every known fee, with a link to the rule behind each one."
         },
         {
           "title": "Asking-price checker",
-          "body": "See if an asking price sits below, around or above recent official transactions."
+          "body": "See where an asking price sits compared with recorded deals in the district."
         },
         {
-          "title": "Shareable PDF reports",
-          "body": "Beautiful area and comparison reports to share with your partner, family or bank."
+          "title": "Reports you can check",
+          "body": "District, cost and due-diligence reports with every source, its date and a check-it-yourself list."
         }
       ]
     },
     "principle": {
       "eyebrow": "Our number-one rule",
-      "title": "The AI never invents numbers or rules.",
-      "body": "Numbers come only from our data tools. Rules come only from stored, dated official texts. If something is unclear, Miftah AI says so and links the official source. Trust is the whole business.",
+      "title": "Every fact tells you how sure we are.",
+      "body": "Rules come only from stored official texts, each with a link and a date. Numbers come only from data tools. If something is not confirmed, we say so plainly and tell you where to check.",
       "points": [
-        "Every number shows its source and date",
+        "Every rule shows its source and date",
+        "Sample figures are always labelled",
         "Unknown is shown as unknown, never guessed",
-        "Every answer is logged and reviewed for quality",
-        "A 'Report a mistake' button under every answer"
-      ]
+        "A 'Report a mistake' link on every page and report"
+      ],
+      "labelsTitle": "The four labels you will see",
+      "labelsBody": "On every page, answer and report."
     },
     "languages": {
       "eyebrow": "Made for everyone",
@@ -232,8 +241,12 @@
     "stats": {
       "items": [
         {
-          "value": "9.5M+",
-          "label": "official transaction records to learn from"
+          "value": "2026",
+          "label": "the year Saudi Arabia opened property ownership to non-Saudis"
+        },
+        {
+          "value": "13",
+          "label": "official government sources linked"
         },
         {
           "value": "5",
@@ -241,18 +254,14 @@
         },
         {
           "value": "2",
-          "label": "cities covered: Riyadh and Jeddah"
-        },
-        {
-          "value": "0",
-          "label": "invented numbers. Ever."
+          "label": "cities with district pages today: Riyadh and Jeddah"
         }
       ]
     },
     "pricingTeaser": {
       "eyebrow": "Pricing",
-      "title": "Start free. Pay only when you're serious.",
-      "subtitle": "Free daily questions for everyone. Detailed reports and Pro plans when you're ready to buy.",
+      "title": "Start free. Pay only when you're ready to buy.",
+      "subtitle": "5 free questions and 1 report every month. Pro when you need more.",
       "cta": "See pricing"
     },
     "faq": {
@@ -261,27 +270,35 @@
       "items": [
         {
           "q": "Can foreigners really buy property in Saudi Arabia now?",
-          "a": "Yes. The Law of Real Estate Ownership by Non-Saudis came into force in January 2026, allowing ownership in designated zones, mainly in Riyadh and Jeddah, with special conditions for Makkah and Madinah. The Executive Regulation was published in the Umm Al-Qura gazette on 3 July 2026. Always confirm specifics with REGA."
+          "a": "Yes. REGA announced that the Law of Real Estate Ownership by Non-Saudis came into force on 22 January 2026. It covers Riyadh, Jeddah, Makkah and Madinah, inside zones designated by the government. The Executive Regulations and the zones were approved on 23 June 2026. In Makkah and Madinah, ownership is limited to Muslim individuals and Saudi companies. Always check the exact property on REGA's official zone map."
         },
         {
-          "q": "Where does Miftah AI's data come from?",
-          "a": "From official open data: Ministry of Justice transaction records published on the National Open Data Portal, REGA's Real Estate Indicators, and KAPSARC price indices. We never scrape private websites."
+          "q": "How do I apply?",
+          "a": "On REGA's Saudi Properties portal (saudiproperties.rega.gov.sa). Residents apply with their Iqama number. People living abroad first get a Saudi digital identity through a Saudi embassy, and also need a Saudi bank account and mobile number in their own name. Foreign companies first register with the Ministry of Investment."
         },
         {
-          "q": "Is Miftah AI a broker or a lawyer?",
-          "a": "No. We provide facts and official data so you can make your own decision. We don't list properties, recommend what to buy, or give legal or financial advice."
+          "q": "Does buying a home give me residency?",
+          "a": "No, not by itself. Residency comes from your work visa (Iqama) or from Premium Residency. The Real Estate Owner Premium Residency is a separate application for owners of residential property worth at least SAR 4 million that is not mortgaged. Check current conditions on sapr.gov.sa."
         },
         {
-          "q": "How current are the prices?",
-          "a": "Official transaction data is updated periodically, usually quarterly. Every number shows a 'data until' date, and these are recorded deal prices, not live asking prices."
+          "q": "What will I pay on top of the price?",
+          "a": "5% Real Estate Transaction Tax, brokerage (2.5% unless agreed otherwise) plus 15% VAT on the commission, and financing costs if you take a mortgage. When a non-Saudi later sells in Riyadh, Jeddah, Makkah or Madinah, REGA charges a 2% fee."
+        },
+        {
+          "q": "Are the prices on Miftah AI real?",
+          "a": "Not yet. Until the official Ministry of Justice data feed is connected, district prices, deal counts and trends are sample data and are labelled as such on every page and report. Do not use them to judge a real price."
+        },
+        {
+          "q": "Is Miftah AI part of the government, a broker or a lawyer?",
+          "a": "None of these. Miftah AI is an independent company. We explain the official rules and link to them so you can check for yourself. We do not sell property, recommend what to buy, or give legal or financial advice."
         },
         {
           "q": "Which languages are supported?",
-          "a": "English, Arabic, Urdu, Hindi and Chinese. The AI replies in whatever language you write in."
+          "a": "English, Arabic, Urdu, Hindi and Chinese. The advisor replies in the language you write in."
         },
         {
           "q": "How much does it cost?",
-          "a": "The free plan includes 5 Miftah AI questions and 1 report a month, plus the market map, cost calculator and official library. Pro is SAR 99 a month for unlimited questions and reports. Cancel anytime."
+          "a": "The free plan includes 5 questions and 1 report a month, plus the market map, cost calculator and official library. Pro is SAR 99 a month for unlimited questions and reports. Cancel anytime."
         }
       ]
     },
@@ -290,6 +307,19 @@
       "subtitle": "Create a free account and ask your first questions today. 5 cited answers a month on the free plan, unlimited on Pro.",
       "button": "Start free",
       "secondary": "Talk to us"
+    },
+    "guideTeaser": {
+      "eyebrow": "Free guide",
+      "title": "Buying and settling in Saudi Arabia, step by step",
+      "body": "Who can buy, where, how to apply, the full cost, and what a home means for residency. Written in plain words and linked to the official sources.",
+      "cta": "Read the guide",
+      "steps": [
+        "Check the property on REGA's official zone map",
+        "Apply on the Saudi Properties portal",
+        "Use a licensed broker and check the title deed",
+        "Budget the full cost: 5% tax, brokerage and VAT",
+        "Know that a home alone does not give residency"
+      ]
     }
   },
   "product": {
@@ -298,58 +328,58 @@
     "subtitle": "Miftah AI combines an AI agent, official government data and the new foreign-ownership rules into simple answers you can trust.",
     "modules": [
       {
-        "tag": "AI Advisor",
-        "title": "Ask like you'd ask a friend. Get answers like an analyst.",
-        "body": "Our agent understands your question in five languages, calls the right data tool and replies with the key answer first, a compact table, and the source and date underneath.",
+        "tag": "Advisor",
+        "title": "Ask in your own words. Get an answer you can check.",
+        "body": "The advisor understands five languages, looks up the stored official rules and data, and replies with the key answer first, then the source and date.",
         "points": [
           "Replies in your language",
-          "Numbers only from verified tools",
-          "Source + 'data until' on every answer",
-          "Report-a-mistake on every message"
+          "Rules only from official texts",
+          "Source and date on every answer",
+          "Says clearly when it does not know"
         ]
       },
       {
         "tag": "Foreign-zone check",
         "title": "Know if you're allowed to buy, before you fall in love with a home.",
-        "body": "Every district carries a clear status: allowed, not allowed, conditional, or to be verified. Each status links to the official REGA publication and shows when we last checked.",
+        "body": "Every district carries a clear status: allowed, not allowed, conditional, or not yet confirmed, with a link to REGA's official zone map.",
         "points": [
           "Four honest statuses",
-          "Linked official sources",
-          "Re-checked monthly",
-          "Alerts when rules change"
+          "Link to the official zone map",
+          "Date of last check shown",
+          "Never guessed"
         ]
       },
       {
         "tag": "District Explorer",
         "title": "Every district, in plain English and Arabic.",
-        "body": "Median price per square metre, deals per quarter and price trends, from official MOJ records, cleaned, translated and de-duplicated.",
+        "body": "Median price per square metre, deals per quarter and price trends, built from Ministry of Justice records. Until the official feed is connected, figures are sample data and labelled as such.",
         "points": [
-          "Riyadh and Jeddah covered today",
+          "Riyadh and Jeddah",
           "Apartments, villas and land",
           "Quarterly trend charts",
-          "Small samples hidden for accuracy"
+          "Small samples hidden"
         ]
       },
       {
         "tag": "Cost calculator",
         "title": "The true cost. No surprises after signing.",
-        "body": "Enter a price and see every known fee, transaction tax, brokerage, VAT and the non-Saudi disposal fee when selling, each linked to the rule behind it.",
+        "body": "Enter a price and see every known fee: transaction tax, brokerage, VAT and the 2% non-Saudi fee when selling, each linked to the rule behind it.",
         "points": [
-          "Buy and sell scenarios",
+          "Buy and sell",
           "Editable rates",
-          "Links to each official rule",
-          "Shareable breakdown"
+          "Link to each official rule",
+          "Date rates were reviewed"
         ]
       },
       {
         "tag": "Reports",
-        "title": "A report you can send to your family.",
-        "body": "Branded PDF area and comparison reports with charts, official figures and plain-language explanations. Brokers can add their own logo.",
+        "title": "A report you can send to your family, and they can check.",
+        "body": "District, cost and due-diligence reports with every source and its date, a clear label on anything not yet confirmed, and a check-it-yourself list of official services. Print or save as PDF.",
         "points": [
-          "Area & comparison reports",
-          "Charts and official sources",
-          "Broker white-label",
-          "Delivered by email"
+          "District, cost and checklist reports",
+          "Every source with its date",
+          "Check-it-yourself links",
+          "Reference number on every report"
         ]
       }
     ],
@@ -433,19 +463,21 @@
       },
       "brokerage": {
         "name": "Brokerage fee",
-        "note": "Maximum typically capped by REGA brokerage rules; often negotiable."
+        "note": "2.5% of the price unless you agree a different rate in a written brokerage contract."
       },
       "brokerageVat": {
         "name": "VAT on brokerage",
         "note": "Applied to the brokerage fee, not the property price."
       },
       "disposal": {
-        "name": "Non-Saudi disposal fee",
-        "note": "Fixed fee for non-Saudi sellers in major designated zones (Riyadh, Jeddah, Makkah, Madinah), per the 2026 Executive Regulation."
+        "name": "Non-Saudi disposal fee (REGA)",
+        "note": "2% of the value when a non-Saudi sells or disposes of property in Riyadh, Jeddah, Makkah or Madinah (Executive Regulations, June 2026)."
       }
     },
     "disclaimer": "Rates are based on public sources and may change. This is an estimate, not tax or legal advice. Verify every fee with ZATCA, REGA and a licensed professional.",
-    "editRates": "Rates are editable, tap a rate to adjust it."
+    "editRates": "Rates are editable, tap a rate to adjust it.",
+    "sellLater": "If you sell later: as a non-Saudi you will pay REGA a 2% fee on the value in Riyadh, Jeddah, Makkah or Madinah. Switch to 'Selling' to see it.",
+    "checked": "Rates last reviewed {date}, from ZATCA, REGA and published summaries of the 2026 regulations."
   },
   "pricing": {
     "eyebrow": "Pricing",
@@ -543,10 +575,10 @@
         "question": "\"I need fast, credible numbers in English for my clients.\"",
         "body": "Give foreign clients professional, sourced reports with your branding, and turn hours of research into minutes.",
         "points": [
-          "White-label reports",
+          "Reports with every source",
           "Client sharing",
           "Monthly subscription",
-          "5 free reports to start"
+          "Free plan to try first"
         ]
       },
       {
@@ -578,7 +610,7 @@
   "trust": {
     "eyebrow": "Trust & data",
     "title": "Trust is the whole business",
-    "subtitle": "Here's exactly where our numbers come from, how our AI is allowed to answer, and how we check its work.",
+    "subtitle": "Where our information comes from, how sure we are about each part, and how you can check it yourself.",
     "rulesTitle": "How the advisor is allowed to answer",
     "rules": [
       "Use only numbers returned by data tools. Never estimate or guess a price.",
@@ -625,7 +657,7 @@
     "pipeline": [
       {
         "title": "Download",
-        "body": "Official MOJ transaction files from the National Open Data Portal."
+        "body": "Official Ministry of Justice transaction files from the National Open Data Portal."
       },
       {
         "title": "Clean",
@@ -637,7 +669,7 @@
       },
       {
         "title": "Aggregate",
-        "body": "Median, quartiles and counts per quarter. Figures with fewer than 5 deals are hidden."
+        "body": "Median, quartiles and counts per quarter. Figures from fewer than 5 deals are hidden."
       },
       {
         "title": "Verify",
@@ -645,26 +677,26 @@
       },
       {
         "title": "Refresh",
-        "body": "Automated monthly runs, with 'data until' recorded on every figure."
+        "body": "Re-run when the official sources publish new data, with 'data until' on every figure."
       }
     ],
-    "qualityTitle": "Quality control",
+    "qualityTitle": "How we check our work",
     "quality": [
       {
-        "title": "Test set",
-        "body": "100+ real questions in English and Urdu with verified answers, run after every change."
+        "title": "Sources first",
+        "body": "The advisor answers only from the rule library and data tools. If nothing matches, it says so."
       },
       {
-        "title": "Weekly review",
-        "body": "Random answers reviewed by a human every week; mistakes fixed at the source."
+        "title": "Human review",
+        "body": "Answers and pages reported by users are reviewed by our team and corrected at the source."
       },
       {
         "title": "Report a mistake",
-        "body": "One click under every answer flags it for review."
+        "body": "A link on every page and report sends the problem straight to us."
       },
       {
         "title": "Exact digits",
-        "body": "Numbers are returned as structured data and formatted by the app, so the model never changes a digit."
+        "body": "Numbers are passed as structured data and formatted by the app, so the AI never changes a digit."
       }
     ],
     "noScrape": "We never scrape private websites or copy other platforms' data. Only official, openly licensed sources, with attribution.",
@@ -672,8 +704,47 @@
       "ai": "AI rules",
       "data": "Data",
       "pipeline": "Pipeline",
-      "qa": "Quality"
-    }
+      "qa": "Quality",
+      "status": "Status",
+      "check": "Check it yourself"
+    },
+    "statusTitle": "Where we are today",
+    "statusBody": "We would rather tell you what is not finished than let you rely on something unchecked. This table changes when the status changes.",
+    "status": [
+      {
+        "area": "Ownership rules",
+        "state": "Check the source",
+        "level": "review",
+        "body": "Summaries of the 2026 law and Executive Regulations, each linked to REGA. We are comparing them line by line with the official text, and each rule shows its own status."
+      },
+      {
+        "area": "Fees and tax",
+        "state": "Check the source",
+        "level": "review",
+        "body": "5% transaction tax, 2.5% brokerage plus VAT, and the 2% non-Saudi disposal fee, from ZATCA, REGA and published summaries of the regulations."
+      },
+      {
+        "area": "District prices",
+        "state": "Sample data",
+        "level": "sample",
+        "body": "Prices, deal counts and trends on district pages are examples until the official Ministry of Justice data feed is connected. They are labelled on every page and report."
+      },
+      {
+        "area": "Zone status per district",
+        "state": "Not confirmed",
+        "level": "sample",
+        "body": "Every district shows 'To be verified' until it has been matched against REGA's official zone map. Please use the official map."
+      },
+      {
+        "area": "Advisor answers",
+        "state": "Rules in place",
+        "level": "ok",
+        "body": "The advisor may only answer from the stored rule library and the data tools. It shows its sources and says when it does not know."
+      }
+    ],
+    "labelsTitle": "How we label information",
+    "checkTitle": "Don't just take our word for it",
+    "checkBody": "Every important point can be checked with an official Saudi government service. These are the ones we use."
   },
   "developers": {
     "eyebrow": "Developers",
@@ -954,8 +1025,9 @@
     "rights": "All rights reserved.",
     "newsletterTitle": "Monthly Saudi foreign-buyer market update",
     "newsletterCta": "Subscribe",
-    "attribution": "Data: Ministry of Justice, REGA, KAPSARC (open data). Map data © OpenStreetMap contributors.",
-    "refunds": "Refunds"
+    "attribution": "Rules: REGA, ZATCA, Ministry of Justice and other official sources, linked on every page. Map data © OpenStreetMap contributors.",
+    "refunds": "Refunds",
+    "independent": "Miftah AI is an independent company. We are not part of REGA or any government body, and we do not sell property."
   },
   "notFound": {
     "title": "This door is locked",
@@ -963,8 +1035,8 @@
     "cta": "Back to home"
   },
   "announce": {
-    "text": "Miftah AI is now open. Ask about foreign ownership, fees and prices in Riyadh and Jeddah.",
-    "cta": "Start free"
+    "text": "Since January 2026 foreigners can own property in designated zones. Read the plain-language guide.",
+    "cta": "Read the guide"
   },
   "auth": {
     "loginTitle": "Welcome back",
@@ -1051,15 +1123,15 @@
     "source": "Source: Ministry of Justice deals (cleaned)",
     "ask": {
       "tab": "Ask in your language",
-      "desc": "Type a question the way you'd ask a friend. The agent decides which verified tools to call.",
+      "desc": "Type a question the way you'd ask a friend. Miftah AI decides which data and rules to check.",
       "q": "Can I buy an apartment in Al Malqa as a foreigner, and what is a fair price?",
       "tool": {
-        "zone": "check_foreign_zone",
-        "stats": "get_district_stats",
-        "cost": "estimate_costs"
+        "zone": "Ownership rules",
+        "stats": "District figures",
+        "cost": "Cost estimate"
       },
-      "a1": "{district} sits inside Riyadh's proposed foreign-ownership zone. Final status is being verified against REGA's published list.",
-      "a2": "Apartments there recently sold at a median of {price} SAR/m². Anything well above that deserves a second look."
+      "a1": "Foreign-ownership status for {district} is not yet confirmed. Check REGA's official zone map before you buy.",
+      "a2": "In this example, apartments sold at a median of {price} SAR/m²."
     },
     "zone": {
       "tab": "Check if you can buy",
@@ -1076,14 +1148,14 @@
     },
     "price": {
       "tab": "Know the fair price",
-      "desc": "Median prices per m² from real recorded deals, the trend over 2 years and how nearby districts compare.",
+      "desc": "Median prices per m², the 2-year trend and how nearby districts compare. Sample figures until the official data feed is connected.",
       "kicker": "Price check",
       "title": "Apartments, median price per m²",
       "colDistrict": "District",
       "colTrend": "2-year trend",
       "colChange": "Change",
       "verdictLabel": "Verdict:",
-      "verdict": "An asking price of {asking} SAR/m² is about 12% above the recorded median of {median}. Room to negotiate."
+      "verdict": "In this example, an asking price of {asking} SAR/m² is about 12% above the median of {median}."
     },
     "cost": {
       "tab": "See the full cost",
@@ -1095,7 +1167,7 @@
       "brokerage": "Brokerage",
       "vat": "VAT on brokerage",
       "total": "Total to budget",
-      "note": "Estimate only. Rates come from ZATCA and REGA publications and are reviewed regularly."
+      "note": "Estimate only. Rates come from ZATCA and REGA publications, with the date they were last reviewed."
     },
     "report": {
       "tab": "Get a shareable report",
@@ -1231,8 +1303,8 @@
       "thinking": "Searching official sources…",
       "sources": "Sources",
       "status": {
-        "verified": "Verified",
-        "needs_review": "Verify with source",
+        "verified": "Checked",
+        "needs_review": "Check the source",
         "guidance": "Miftah guidance",
         "sample": "Sample data"
       },
@@ -1367,7 +1439,19 @@
       "checklist": "Checklist",
       "sources": "Sources",
       "error": "Could not create the report. Please try again.",
-      "disclaimer": "This report compiles information from official sources and Miftah AI market data. It is not legal, tax, financial or brokerage advice. Confirm every point with REGA, ZATCA, the Ministry of Justice or a licensed professional before acting."
+      "disclaimer": "This report compiles information from official sources and Miftah AI market data. It is not legal, tax, financial or brokerage advice. Confirm every point with REGA, ZATCA, the Ministry of Justice or a licensed professional before acting.",
+      "reference": "Reference",
+      "rulesReviewed": "Rules last reviewed",
+      "howToRead": "How to read this report",
+      "howToReadBody": "This report uses {rules} rule summaries from official sources. {verified} of them have been checked line by line against the official text; the others are marked 'Check the source'.",
+      "sampleWarning": "The prices and deal counts in this report are sample data, not real transactions.",
+      "effective": "In force since",
+      "checkedOn": "Checked line by line",
+      "notYetChecked": "not yet, open the source",
+      "checkYourself": "Check it yourself",
+      "checkYourselfBody": "Before you sign or pay anything, check each point with the official service below.",
+      "independent": "Miftah AI is an independent company. It is not part of REGA, the Ministry of Justice or any other government body, and it does not sell property.",
+      "mistake": "Found a mistake? Email hello@miftah.ai with reference {ref} and we will correct it."
     },
     "calculator": {
       "title": "Purchase cost calculator",
@@ -1445,5 +1529,150 @@
       "activating": "Payment received. Activating Pro on your account…",
       "activatingSlow": "Your payment went through. Activation is taking longer than usual; refresh this page in a minute or contact us."
     }
+  },
+  "trustKit": {
+    "reviewed": "Last reviewed {date}",
+    "reportMistake": "Report a mistake",
+    "labels": [
+      {
+        "id": "verified",
+        "title": "Checked",
+        "body": "Compared line by line with the official text. The date of the check is shown."
+      },
+      {
+        "id": "review",
+        "title": "Check the source",
+        "body": "Written from official announcements and published summaries, not yet compared line by line. Open the link before you rely on it."
+      },
+      {
+        "id": "sample",
+        "title": "Sample data",
+        "body": "Example figures that show how a page works. Not real prices. Never use them to judge a property."
+      },
+      {
+        "id": "unknown",
+        "title": "Not confirmed",
+        "body": "We don't know yet. We say so instead of guessing, and show you where to check."
+      }
+    ],
+    "checks": [
+      {
+        "title": "Is the property in a zone open to me?",
+        "body": "REGA's official map of designated zones.",
+        "url": "https://saudiproperties.rega.gov.sa/zones"
+      },
+      {
+        "title": "Apply for ownership",
+        "body": "REGA's Saudi Properties portal. Residents use their Iqama number.",
+        "url": "https://saudiproperties.rega.gov.sa"
+      },
+      {
+        "title": "Is the broker licensed?",
+        "body": "Check the broker's FAL licence and the advert's licence number with REGA.",
+        "url": "https://rega.gov.sa/en"
+      },
+      {
+        "title": "Is the title deed genuine?",
+        "body": "Check the deed through the Ministry of Justice's Najiz services.",
+        "url": "https://najiz.sa"
+      },
+      {
+        "title": "Transaction tax",
+        "body": "Rules and payment of the 5% Real Estate Transaction Tax.",
+        "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/Real-Estate-Transaction-Tax.aspx"
+      },
+      {
+        "title": "Residency through property",
+        "body": "Premium Residency products and their current conditions.",
+        "url": "https://sapr.gov.sa/en"
+      },
+      {
+        "title": "Rental contracts",
+        "body": "Register and check leases on Ejar.",
+        "url": "https://www.ejar.sa/en"
+      }
+    ]
+  },
+  "guide": {
+    "eyebrow": "Buyer's guide",
+    "title": "Buying and settling in Saudi Arabia as a foreigner",
+    "subtitle": "A plain, step-by-step guide to the 2026 rules: who can buy, where, how to apply, the full cost, and what owning a home means for residency.",
+    "contents": "Contents",
+    "caution": "This guide is a plain-language summary of official rules, written by Miftah AI. It is not legal advice. Rules can change, so confirm every point with the official source before you act.",
+    "sections": [
+      {
+        "id": "can-i-buy",
+        "title": "Can a foreigner buy property?",
+        "intro": "Yes. REGA announced that the Law of Real Estate Ownership by Non-Saudis came into force on 22 January 2026.",
+        "points": [
+          "Who can buy: non-Saudi individuals living in the Kingdom or abroad, foreign companies, foreign non-profit entities, and Saudi companies with foreign shareholders.",
+          "Where: the law covers Riyadh, Jeddah, Makkah and Madinah, inside zones designated by the government. The Council of Ministers approved the zones and the Executive Regulations on 23 June 2026. REGA shows them on its official zone map.",
+          "Makkah and Madinah: ownership is limited to Muslim individuals and Saudi companies.",
+          "Outside the designated zones, ownership is more limited and depends on who you are. Do not assume a district is open until you have checked the official map."
+        ],
+        "note": "Older articles that describe the 2000 law (ownership only with a Ministry of Interior permit) are out of date."
+      },
+      {
+        "id": "how-to-apply",
+        "title": "How to apply",
+        "points": [
+          "Everything is done online on REGA's Saudi Properties portal (saudiproperties.rega.gov.sa).",
+          "If you live in Saudi Arabia: apply with your Iqama number. Eligibility is checked automatically.",
+          "If you live abroad: first get a Saudi digital identity through a Saudi embassy or consulate. You also need a bank account in Saudi Arabia and a Saudi mobile number, both in your own name.",
+          "If you are a foreign company: register with the Ministry of Investment (Invest Saudi) to get a Unified Number starting with 700, then apply."
+        ],
+        "note": "Use only the official portal. Be careful with anyone who offers to 'register' your ownership for a fee."
+      },
+      {
+        "id": "steps",
+        "title": "Buying, step by step",
+        "points": [
+          "Find the exact property on REGA's official zone map and confirm it is open to you.",
+          "Use a FAL-licensed broker only. Every property advert must show a REGA advertising licence number.",
+          "Check the title deed: it must be electronic, in the seller's name, and free of mortgages or disputes. Deeds can be checked through Najiz.",
+          "Buying off-plan? Ask for the project's Wafi licence. Your payments must go into the project's escrow account.",
+          "Sign the contract, pay the 5% transaction tax through ZATCA, then complete the transfer of the deed electronically.",
+          "Pay only through regulated electronic channels. Never pay a deposit in cash or into a personal account."
+        ]
+      },
+      {
+        "id": "costs",
+        "title": "The full cost",
+        "intro": "On top of the price, plan for:",
+        "points": [
+          "5% Real Estate Transaction Tax on the value (ZATCA). By law the seller owes it, but the contract can say who pays.",
+          "Brokerage: 2.5% of the price unless you agree a different rate in writing, plus 15% VAT on the commission.",
+          "A 2% REGA fee when a non-Saudi later sells or disposes of property in Riyadh, Jeddah, Makkah or Madinah.",
+          "Bank valuation, financing and service costs if you take a mortgage."
+        ],
+        "note": "Example: on a SAR 1,000,000 flat bought through a broker, if you pay the tax, the extra cost is about SAR 78,750 (SAR 50,000 tax + SAR 25,000 commission + SAR 3,750 VAT). Use the cost calculator for your own numbers."
+      },
+      {
+        "id": "settling",
+        "title": "Settling in Saudi Arabia: home and residency",
+        "intro": "Owning a home and the right to live in the Kingdom are two separate things.",
+        "points": [
+          "Buying a property does not give you residency by itself. Most expats live here on a work residency (Iqama).",
+          "Premium Residency is a separate route. One product, Real Estate Owner residency, is for owners of residential property worth at least SAR 4 million that is not mortgaged. Its fee is reported as SAR 4,000. Check current conditions on sapr.gov.sa.",
+          "Premium Residency holders can live with their family, sponsor relatives and own property, except in Makkah, Madinah and border areas.",
+          "Renting: leases are registered on Ejar. In Riyadh, rent increases inside the city boundary were frozen for five years from September 2025.",
+          "Before you buy, think about what happens if your job or Iqama ends, and ask a licensed professional about your own situation."
+        ]
+      }
+    ],
+    "mistakesTitle": "Common mistakes to avoid",
+    "mistakes": [
+      "Paying a deposit before checking the zone map, the broker's FAL licence and the title deed.",
+      "Trusting a social media advert that shows no REGA licence number.",
+      "Paying someone to 'register' your ownership. Applications are made on the official portal.",
+      "Relying on old articles about the 2000 law, or on the 10% fee figure from 2025 news coverage.",
+      "Assuming that buying a flat gives you or your family residency.",
+      "Paying in cash or into a personal bank account."
+    ],
+    "checksTitle": "Check it yourself",
+    "checksBody": "You don't have to take our word for anything. These official services let you check each point yourself.",
+    "labelsTitle": "How we label information",
+    "moreHelp": "Want the full cost for your price?",
+    "calcLink": "Open the cost calculator"
   }
 }

@@ -3,7 +3,7 @@ import { locales } from "@/i18n/routing";
 import { districts } from "@/lib/districts";
 import { SITE_URL } from "@/lib/site";
 
-const staticPaths = ["", "/product", "/districts", "/calculator", "/pricing", "/solutions", "/trust", "/developers", "/about", "/contact", "/signup", "/legal/privacy", "/legal/terms", "/legal/refunds", "/legal/disclaimer"];
+const staticPaths = ["", "/guide", "/product", "/districts", "/calculator", "/pricing", "/solutions", "/trust", "/developers", "/about", "/contact", "/signup", "/legal/privacy", "/legal/terms", "/legal/refunds", "/legal/disclaimer"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [...staticPaths, ...districts.map((d) => `/districts/${d.slug}`)];

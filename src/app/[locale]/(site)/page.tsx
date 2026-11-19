@@ -10,14 +10,17 @@ import { FAQ } from "@/components/FAQ";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/Section";
 import { ProductTour } from "@/components/ProductTour";
+import { FactLabels } from "@/components/TrustKit";
+import { officialSources } from "@/lib/official/sources";
 import {
   IconArrow, IconBriefcase, IconBuilding, IconCalc, IconChat, IconCheck, IconDatabase, IconDoc, IconGlobe,
-  IconMap, IconPlane, IconSearch, IconShield, IconSpark, IconTag, IconUser,
+  IconMap, IconPlane, IconSearch, IconShield, IconTag, IconUser,
 } from "@/components/Icons";
 import { localeNames, type Locale } from "@/i18n/routing";
 
 const featureIcons = [IconChat, IconShield, IconMap, IconCalc, IconTag, IconDoc];
-const stepIcons = [IconGlobe, IconSpark, IconDatabase, IconCheck];
+const stepIcons = [IconGlobe, IconSearch, IconDatabase, IconCheck];
+const stripSources = ["rega", "saudi-properties", "zatca", "moj", "najiz", "sapr", "ejar"];
 const personaIcons = [IconUser, IconPlane, IconBriefcase, IconBuilding];
 
 const languageSamples: Array<{ locale: Locale; text: string }> = [
@@ -43,22 +46,22 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
   const points = t.raw("principle.points") as string[];
   const personas = t.raw("personas.items") as Item[];
   const stats = t.raw("stats.items") as Array<{ value: string; label: string }>;
-  const sources = t.raw("sources.items") as string[];
+  const sources = stripSources.map((id) => officialSources.find((s) => s.id === id)!).filter(Boolean);
+  const guideSteps = t.raw("guideTeaser.steps") as string[];
   const faq = t.raw("faq.items") as Array<{ q: string; a: string }>;
 
   return (
     <>
       {/* ───────────── HERO ───────────── */}
       <section className="relative overflow-hidden bg-canvas">
-        <div className="grid-lines pointer-events-none absolute inset-0" />
-        <div className="container-x relative pb-20 pt-16 sm:pt-24 lg:pb-28">
+        <div className="container-x relative pb-16 pt-14 sm:pt-20 lg:pb-24">
           <div className="hero-in mx-auto max-w-3xl text-center">
-            <Link href="/trust" className="inline-flex items-center gap-2 rounded-full border border-sand-200 bg-white py-1 pe-3 ps-1 text-[13px] text-ink-700 shadow-sm transition hover:border-sand-300">
+            <Link href="/trust" className="inline-flex items-center gap-2 rounded-full border border-sand-200 bg-white py-1 pe-3 ps-1 text-[13px] text-ink-700 transition hover:border-sand-300">
               <span className="grid h-6 w-6 place-items-center rounded-full bg-green-50 text-green-600 ring-1 ring-inset ring-green-600/15"><IconShield width={13} height={13} /></span>
               {t("hero.trustNote")}
               <IconArrow width={13} height={13} className="flip-rtl text-ink-400" />
             </Link>
-            <h1 className="font-display mx-auto mt-7 max-w-[18ch] text-[2.6rem] leading-[1.04] text-ink-900 sm:text-6xl lg:text-[4.5rem]">
+            <h1 className="font-display mx-auto mt-7 max-w-[20ch] text-[2.4rem] leading-[1.1] text-ink-900 sm:text-5xl lg:text-6xl">
               {t("hero.titleA")} <span className="text-green-600">{t("hero.titleHighlight")}</span> {t("hero.titleB")}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-500 sm:text-xl">{t("hero.subtitle")}</p>
@@ -70,32 +73,34 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
                 {t("hero.ctaPrimary")}
                 <IconArrow width={16} height={16} className="flip-rtl" />
               </Link>
-              <Link href="/districts" className="btn btn-ghost">
-                <IconSearch width={16} height={16} />
+              <Link href="/guide" className="btn btn-ghost">
+                <IconDoc width={16} height={16} />
                 {t("hero.ctaSecondary")}
               </Link>
             </div>
           </div>
-          <div className="hero-in-delay mx-auto mt-16 max-w-4xl sm:mt-20">
+          <div className="hero-in-delay mx-auto mt-14 max-w-4xl sm:mt-16">
             <ChatDemo />
           </div>
         </div>
+        <div className="sadu-band" />
       </section>
 
-      {/* ───────────── SOURCES STRIP ───────────── */}
-      <section className="border-y border-sand-200 bg-white py-10">
+      {/* ───────────── OFFICIAL SOURCES ───────────── */}
+      <section className="border-b border-sand-200 bg-white py-10">
         <div className="container-x">
-          <p className="text-center text-sm text-ink-400">{t("sources.title")}</p>
-          <div className="relative mt-6 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_15%,black_85%,transparent)]" dir="ltr">
-            <div className="flex w-max animate-marquee gap-14">
-              {[...sources, ...sources].map((s, i) => (
-                <span key={i} className="flex items-center gap-2.5 whitespace-nowrap text-base font-semibold text-ink-400">
-                  <IconDatabase width={17} height={17} className="text-sand-300" />
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
+          <p className="text-center text-sm text-ink-500">{t("sources.title")}</p>
+          <ul className="mx-auto mt-5 flex max-w-5xl flex-wrap justify-center gap-x-6 gap-y-3">
+            {sources.map((s) => (
+              <li key={s.id}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-ink-700 hover:text-green-700">
+                  <IconShield width={15} height={15} className="text-green-600" />
+                  {s.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-center text-xs text-ink-400">{t("sources.note")}</p>
         </div>
       </section>
 
@@ -111,6 +116,29 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* ───────────── GUIDE ───────────── */}
+      <section className="container-x pb-24 sm:pb-32">
+        <Reveal className="grid gap-10 rounded-xl border border-sand-200 bg-sand-50 p-7 sm:p-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+          <div>
+            <p className="eyebrow">{t("guideTeaser.eyebrow")}</p>
+            <h2 className="font-display mt-3 text-3xl leading-tight text-ink-900 sm:text-4xl">{t("guideTeaser.title")}</h2>
+            <p className="mt-4 leading-relaxed text-ink-600">{t("guideTeaser.body")}</p>
+            <Link href="/guide" className="btn btn-primary mt-7">
+              {t("guideTeaser.cta")}
+              <IconArrow width={16} height={16} className="flip-rtl" />
+            </Link>
+          </div>
+          <ol className="space-y-3">
+            {guideSteps.map((g, i) => (
+              <li key={i} className="flex gap-4 rounded-lg border border-sand-200 bg-white p-4">
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-green-600 text-sm font-semibold text-white" dir="ltr">{i + 1}</span>
+                <span className="pt-0.5 text-ink-700">{g}</span>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
       </section>
 
       {/* ───────────── HOW IT WORKS ───────────── */}
@@ -163,7 +191,7 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               <Reveal
                 key={i}
                 delay={(i % 3) * 100}
-                className={highlight ? "relative overflow-hidden rounded-[.875rem] bg-night-950 p-7 text-white" : "card p-7 transition hover:border-sand-300 hover:shadow-md"}
+                className={highlight ? "relative overflow-hidden rounded-xl bg-night-950 p-7 text-white" : "card p-7 transition hover:border-sand-300"}
               >
                 {highlight && <div className="sadu-pattern pointer-events-none absolute inset-0" />}
                 <span className={highlight ? "relative grid h-12 w-12 place-items-center rounded-xl bg-white/10 text-white ring-1 ring-white/15" : "grid h-12 w-12 place-items-center rounded-xl bg-sand-100 text-ink-900 ring-1 ring-sand-200"}>
@@ -197,28 +225,11 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
               </Link>
             </Reveal>
           </div>
-          <Reveal delay={150}>
-            <div className="shadow-frame overflow-hidden rounded-[.875rem] bg-night-950 font-mono text-[13px] text-white" dir="ltr">
-              <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3 text-xs text-white/50">
-                <IconShield width={14} height={14} className="text-green-400" /> advisor.system.ts
-              </div>
-              <pre className="overflow-x-auto p-5 leading-7 text-white/80">
-{`const rules = [
-  `}<span className="text-gold-300">{`"Use ONLY numbers returned by tools"`}</span>{`,
-  `}<span className="text-gold-300">{`"Use ONLY dated, official rule texts"`}</span>{`,
-  `}<span className="text-gold-300">{`"Always show source + data_until"`}</span>{`,
-  `}<span className="text-gold-300">{`"Unknown zone → tell user to confirm"`}</span>{`,
-  `}<span className="text-gold-300">{`"Facts, never buy recommendations"`}</span>{`,
-];
-
-const tools = [`}
-<span className="text-green-300">{`
-  get_district_stats, compare_districts,
-  check_foreign_ownership, estimate_costs,
-  search_rules, check_asking_price,
-  create_report,`}</span>{`
-];`}
-              </pre>
+          <Reveal delay={100}>
+            <div className="rounded-xl border border-sand-200 bg-white p-6 sm:p-7">
+              <p className="font-semibold text-ink-900">{t("principle.labelsTitle")}</p>
+              <p className="mt-1 text-sm text-ink-500">{t("principle.labelsBody")}</p>
+              <FactLabels compact className="mt-5" />
             </div>
           </Reveal>
         </div>
@@ -269,7 +280,7 @@ const tools = [`}
             const Icon = personaIcons[i];
             return (
               <Reveal key={i} delay={i * 90}>
-                <Link href="/solutions" className="card group flex h-full flex-col p-7 transition hover:border-sand-300 hover:shadow-md">
+                <Link href="/solutions" className="card group flex h-full flex-col p-7 transition hover:border-sand-300">
                   <span className="grid h-12 w-12 place-items-center rounded-xl border border-sand-200 bg-sand-50 text-ink-900 transition group-hover:text-green-600">
                     <Icon width={22} height={22} />
                   </span>
@@ -285,10 +296,10 @@ const tools = [`}
 
       {/* ───────────── STATS ───────────── */}
       <section className="container-x">
-        <div className="grid overflow-hidden rounded-2xl border border-sand-200 bg-white sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid overflow-hidden rounded-xl border border-sand-200 bg-white sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal key={i} delay={i * 80} className="border-sand-200 p-8 text-center [&:not(:last-child)]:border-b sm:[&:nth-child(odd)]:border-e lg:border-b-0 lg:[&:not(:last-child)]:border-e">
-              <p className="font-display text-5xl text-ink-900" dir="ltr">{s.value}</p>
+              <p className="font-display text-4xl text-green-700" dir="ltr">{s.value}</p>
               <p className="mt-3 text-sm text-ink-500">{s.label}</p>
             </Reveal>
           ))}
@@ -297,7 +308,7 @@ const tools = [`}
 
       {/* ───────────── PRICING TEASER ───────────── */}
       <section className="container-x py-24 sm:py-32">
-        <Reveal className="relative overflow-hidden rounded-2xl border border-sand-200 bg-sand-50 p-8 sm:p-14">
+        <Reveal className="relative overflow-hidden rounded-xl border border-sand-200 bg-sand-50 p-8 sm:p-14">
           <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
             <div className="max-w-xl">
               <p className="eyebrow">{t("pricingTeaser.eyebrow")}</p>
