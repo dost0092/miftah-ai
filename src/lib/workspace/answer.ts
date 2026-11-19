@@ -1,6 +1,6 @@
 import "server-only";
 import Anthropic from "@anthropic-ai/sdk";
-import { SYSTEM_PROMPT, extractiveAnswer, type Grounding } from "./advisor";
+import { SYSTEM_PROMPT, detectLang, extractiveAnswer, isSmalltalk, smalltalkReply, type Grounding } from "./advisor";
 import { aiProvider, streamOpenRouter } from "./llm";
 
 const MODEL = "claude-opus-5-5";
@@ -22,8 +22,10 @@ export async function streamAnswer(opts: {
   signal?: AbortSignal;
   maxTokens?: number;
   extraInstructions?: string;
+  /** Page language, used when the message itself does not show one (Latin script). */
+  locale?: string;
 }): Promise<string> {
-  const { question, history, g, send, signal, maxTokens, extraInstructions } = opts;
+  const { question, history, g, send, signal, maxTokens, extraInstructions, locale } = opts;
   const provider = aiProvider();
   const system = extraInstructions ? `${SYSTEM_PROMPT}\n\n${extraInstructions}` : SYSTEM_PROMPT;
   const userTurn = `Sources:\n\n${g.context || "(no matching official sources found)"}\n\n---\nQuestion: ${question}`;
@@ -32,6 +34,13 @@ export async function streamAnswer(opts: {
     answer += text;
     send({ type: "delta", text });
   };
+
+  // "hello", "salam", "thanks": a friendly welcome with example questions, no lookup needed.
+  if (isSmalltalk(question)) {
+    emit(smalltalkReply(detectLang(question, locale)));
+    send({ type: "done" });
+    return answer;
+  }
 
   try {
     if (!provider) {

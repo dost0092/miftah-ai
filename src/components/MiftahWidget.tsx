@@ -83,8 +83,8 @@ export function MiftahWidget() {
       abort.current = ctrl;
       try {
         const res = signedIn
-          ? await fetch("/api/app/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q, threadId }), signal: ctrl.signal })
-          : await fetch("/api/public/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q, history }), signal: ctrl.signal });
+          ? await fetch("/api/app/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q, threadId, locale }), signal: ctrl.signal })
+          : await fetch("/api/public/ask", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q, history, locale }), signal: ctrl.signal });
         if (res.status === 429 || res.status === 402) {
           setLeft(0);
           patch((m) => ({ ...m, pending: false, limit: res.status === 402 ? "plan" : "visitor" }));
@@ -119,7 +119,7 @@ export function MiftahWidget() {
         setBusy(false);
       }
     },
-    [busy, messages, signedIn, threadId],
+    [busy, messages, signedIn, threadId, locale],
   );
 
   // openMiftah(question) from anywhere on the page.

@@ -1,30 +1,28 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { IconArrow } from "./Icons";
-import { Reveal } from "./Reveal";
 
+/** Closing call to action: plain, left-aligned, with a human contact next to the button. */
 export function CTASection() {
   const t = useTranslations("home.cta");
   return (
-    <section className="container-x py-20 sm:py-28">
-      <Reveal>
-        <div className="relative overflow-hidden rounded-2xl border border-sand-200 bg-canvas px-6 py-16 text-center sm:px-12 sm:py-20">
-          <div className="grid-lines pointer-events-none absolute inset-0" />
-          <div className="relative mx-auto max-w-2xl">
-            <h2 className="font-display text-3xl leading-tight text-ink-900 sm:text-5xl">{t("title")}</h2>
-            <p className="mx-auto mt-5 max-w-xl text-lg text-ink-500">{t("subtitle")}</p>
-            <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/signup" className="btn btn-primary">
-                {t("button")}
-                <IconArrow width={16} height={16} className="flip-rtl" />
-              </Link>
-              <Link href="/contact" className="btn btn-ghost">
-                {t("secondary")}
-              </Link>
-            </div>
-          </div>
+    <section className="border-t border-sand-200 bg-night-950 text-white">
+      <div className="container-x grid gap-8 py-16 sm:py-20 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+        <div>
+          <h2 className="max-w-xl text-3xl font-semibold leading-[1.15] tracking-tight sm:text-[2.6rem]">{t("title")}</h2>
+          <p className="mt-4 max-w-lg text-lg leading-relaxed text-white/70">{t("subtitle")}</p>
         </div>
-      </Reveal>
+        <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+          <Link href="/signup" className="btn bg-white text-night-950 hover:bg-sand-100">
+            {t("button")}
+            <IconArrow width={16} height={16} className="flip-rtl" />
+          </Link>
+          <Link href="/contact" className="btn border border-white/25 text-white hover:bg-white/10">
+            {t("secondary")}
+          </Link>
+        </div>
+      </div>
+      <div className="sadu-band" />
     </section>
   );
 }

@@ -51,10 +51,54 @@ const STOP = new Set(
   "a an the and or but if of to in on at for from by with about as is are was were be been being do does did can could should would will may might must i me my we our you your it its this that these those what which who whom how when where why there here than then so not no yes any some all into over under up down out off very just also please tell know want need get got have has had buy buying sell selling property properties saudi arabia ksa".split(" "),
 );
 
+/**
+ * Topic hints: common misspellings and Arabic, Urdu, Hindi and Chinese words mapped to the
+ * English terms the library is written in, so "riydh", "خریدنا" or "किराया" still find the rules.
+ */
+const TOPICS: Array<[RegExp, string]> = [
+  [/\b(riy+a+d+h?|ri?yadh|ryadh|riydh|riyadh?)\b|الرياض|ریاض|रियाद|利雅得/i, "riyadh zones designated"],
+  [/\b(jedd?ah?|jidd?ah?|jeda|jedah)\b|جدة|جدہ|जेद्दा|吉达/i, "jeddah zones designated"],
+  [/\b(mak+ah?|mecca|makka)\b|مكة|مکہ|मक्का|麦加/i, "makkah muslim"],
+  [/\b(madin+ah?|medina)\b|المدينة|مدینہ|मदीना|麦地那/i, "madinah muslim"],
+  [/\b(buy|buying|bought|purchase|own|owner|ownership|allowed|eligible|foreigners?|expats?|non saudi|non-saudi)\b|شراء|تملك|أجنبي|خرید|ملکیت|غیر ملکی|खरीद|स्वामित्व|विदेशी|买|购|外国人/i, "ownership non-saudi zones designated"],
+  [/\b(fees?|tax|taxes|costs?|charges?|commission|vat|rett|price|total)\b|رسوم|ضريبة|تكلفة|فیس|ٹیکس|لاگت|शुल्क|टैक्स|लागत|费用|税/i, "rett tax brokerage vat disposal fee"],
+  [/\b(iqama|residen\w*|visa|settle\w*|premium|family|stay|live)\b|إقامة|اقامہ|رہائش|इक़ामा|रेज़िडेंसी|居留|定居/i, "residency premium settling"],
+  [/\b(rent\w*|lease|tenant|landlord|ejar)\b|إيجار|کرایہ|किराया|租/i, "ejar lease rent"],
+  [/\b(apply|application|portal|process|steps?|how|register|digital id|absher)\b|تقديم|درخواست|طریقہ|आवेदन|प्रक्रिया|申请|步骤/i, "portal apply saudi properties steps"],
+  [/\b(deed|title|najiz|broker|agent|agency|fal|scam|fraud)\b|صك|وسيط|بروکر|ब्रोकर|डीड|经纪|产权/i, "deed najiz broker fal licence"],
+  [/\b(off.?plan|developer|wafi|escrow|new project)\b|على الخارطة|آف پلان|ऑफ़-प्लान|期房/i, "off-plan wafi escrow"],
+  [/\b(land|plot)\b|أرض|زمین|ज़मीन|土地/i, "white land fees"],
+];
+
+export function topicHints(question: string): string {
+  return TOPICS.filter(([re]) => re.test(question)).map(([, terms]) => terms).join(" ");
+}
+
 /** Question → safe OR-query terms for Postgres (letters/digits only). */
 export function searchTerms(question: string): string[] {
-  const words = question.toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
-  return [...new Set(words.filter((w) => w.length > 1 && !STOP.has(w)))].slice(0, 16);
+  const text = `${question} ${topicHints(question)}`.toLowerCase();
+  const words = text.match(/[\p{L}\p{N}]+/gu) ?? [];
+  return [...new Set(words.filter((w) => w.length > 1 && !STOP.has(w)))].slice(0, 20);
+}
+
+/** Core passages used when a question matches nothing: what most visitors want to know first. */
+const CORE: Array<[string, number]> = [
+  ["non-saudi-ownership-law-2025", 2],
+  ["non-saudi-ownership-law-2025", 1],
+  ["saudi-properties-portal", 1],
+  ["buying-process-foreigner", 3],
+];
+
+export async function coreHits(): Promise<Hit[]> {
+  const { docs, sources } = await getLibrary();
+  const sourceName = new Map(sources.map((x) => [x.id, x.name]));
+  const out: Hit[] = [];
+  for (const [id, ord] of CORE) {
+    const d = docs.find((x) => x.id === id);
+    const content = d?.paragraphs[ord];
+    if (d && content) out.push({ docId: d.id, ord, content, rank: 0, title: d.title, category: d.category, url: d.url, status: d.status, source: sourceName.get(d.sourceId) ?? "" });
+  }
+  return out;
 }
 
 function bundledSearch(terms: string[], k: number): Hit[] {

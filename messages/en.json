@@ -301,11 +301,13 @@
           "q": "How much does it cost?",
           "a": "The free plan includes 5 questions and 1 report a month, plus the market map, cost calculator and official library. Pro is SAR 99 a month for unlimited questions and reports. Cancel anytime."
         }
-      ]
+      ],
+      "title1": "Good questions.",
+      "title2": "Plain answers."
     },
     "cta": {
-      "title": "Ask Miftah AI your first question",
-      "subtitle": "Create a free account and ask your first questions today. 5 cited answers a month on the free plan, unlimited on Pro.",
+      "title": "Ask your first question today.",
+      "subtitle": "The free account gives you 5 questions and 1 report a month. No card needed.",
       "button": "Try Miftah AI free",
       "secondary": "Talk to us"
     },
@@ -320,6 +322,91 @@
         "Use a licensed broker and check the title deed",
         "Budget the full cost: 5% tax, brokerage and VAT",
         "Know that a home alone does not give residency"
+      ]
+    },
+    "lead": {
+      "kicker": "Miftah AI · AI property advisor for foreigners in Saudi Arabia",
+      "title1": "Buying property in Saudi Arabia?",
+      "title2": "Ask Miftah AI first.",
+      "subtitle": "Where you're allowed to buy, what it really costs, and what to check before you sign. Answered in your language, with the official source for every rule.",
+      "points": [
+        "Free to try, no card",
+        "English · العربية · اردو · हिन्दी · 中文",
+        "Every rule linked to its source"
+      ]
+    },
+    "ledger": {
+      "title1": "What changed in 2026.",
+      "title2": "The rules, with dates.",
+      "body": "Saudi Arabia opened property ownership to foreigners this year. These are the milestones Miftah AI answers from, each linked to the official page.",
+      "cta": "Read the full buyer's guide",
+      "items": [
+        {
+          "date": "2026-01-22",
+          "url": "https://rega.gov.sa/en/media-center/news-announcements/rega-non-saudi-property-ownership-system-enters-into-force-as-of-today/",
+          "title": "Foreigners can own property",
+          "body": "The Law of Real Estate Ownership by Non-Saudis came into force. It covers Riyadh, Jeddah, Makkah and Madinah, inside designated zones. In Makkah and Madinah, only Muslim individuals and Saudi companies can own.",
+          "source": "REGA announcement"
+        },
+        {
+          "date": "2026-01-22",
+          "url": "https://saudiproperties.rega.gov.sa",
+          "title": "Applications open online",
+          "body": "Apply on REGA's Saudi Properties portal. Residents use their Iqama number. People living abroad first get a Saudi digital identity through an embassy.",
+          "source": "Saudi Properties portal"
+        },
+        {
+          "date": "2026-06-23",
+          "url": "https://saudiproperties.rega.gov.sa",
+          "title": "Regulations and zones approved",
+          "body": "The Executive Regulations set a 2% REGA fee when a non-Saudi sells, and require non-residents to hold a Saudi bank account and mobile number.",
+          "source": "Saudi Properties portal"
+        },
+        {
+          "date": "2025-09-25",
+          "url": "https://rega.gov.sa/en",
+          "title": "Riyadh rent increases frozen",
+          "body": "Annual rent increases inside Riyadh's urban boundary are frozen for five years, for homes and shops.",
+          "source": "REGA"
+        },
+        {
+          "date": "2020-10-04",
+          "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/Real-Estate-Transaction-Tax.aspx",
+          "title": "5% tax on every property sale",
+          "body": "The Real Estate Transaction Tax is paid to ZATCA before the title deed is transferred to you.",
+          "source": "ZATCA"
+        }
+      ]
+    },
+    "work": {
+      "title1": "How Miftah AI works.",
+      "title2": "From first question to report."
+    },
+    "who": {
+      "title1": "Who it's for.",
+      "title2": "Different buyers, same rules."
+    },
+    "honest": {
+      "title1": "What Miftah AI is not.",
+      "title2": "Better you hear it from us.",
+      "cta": "How we check our facts",
+      "items": [
+        {
+          "title": "We're not a law firm",
+          "body": "Miftah AI explains the official rules in plain words. For a contract or a dispute, speak to a licensed lawyer."
+        },
+        {
+          "title": "We don't sell property",
+          "body": "We're not a broker and we don't list homes. Use a REGA-licensed (FAL) broker and check the deed on Najiz."
+        },
+        {
+          "title": "District prices are samples, for now",
+          "body": "Until we connect the Ministry of Justice deal data, district prices are examples and labelled that way. Don't negotiate with them."
+        },
+        {
+          "title": "The zone map has the final word",
+          "body": "Whether a building is inside a foreign-ownership zone is decided by REGA's official map, not by us. Check it before you pay anything."
+        }
       ]
     }
   },
