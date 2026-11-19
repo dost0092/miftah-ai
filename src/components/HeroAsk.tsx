@@ -38,7 +38,7 @@ export function HeroAsk() {
           <IconArrow width={16} height={16} className="flip-rtl" />
         </button>
       </form>
-      <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-center">
+      <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
         {suggestions.map((s) => (
           <button
             key={s}

@@ -301,11 +301,13 @@
           "q": "费用是多少？",
           "a": "免费版每月包含 5 个问题和 1 份报告，以及市场地图、费用计算器和官方资料库。Pro 版每月 99 里亚尔，问题和报告不限量，可随时取消。"
         }
-      ]
+      ],
+      "title1": "好问题。",
+      "title2": "直白的回答。"
     },
     "cta": {
-      "title": "向 Miftah AI 提出您的第一个问题",
-      "subtitle": "创建免费账户，今天就提出您的第一个问题。免费版每月 5 条附来源的回答，Pro 版不限次数。",
+      "title": "今天就提出您的第一个问题。",
+      "subtitle": "免费账户每月可提 5 个问题、生成 1 份报告，无需银行卡。",
       "button": "免费试用 Miftah AI",
       "secondary": "联系我们"
     },
@@ -320,6 +322,91 @@
         "选择持牌经纪人并核实产权证",
         "计算全部费用：5% 交易税、佣金及增值税",
         "请注意：仅购房并不能获得居留权"
+      ]
+    },
+    "lead": {
+      "kicker": "Miftah AI · 面向在沙特外国人的 AI 房产顾问",
+      "title1": "想在沙特阿拉伯买房？",
+      "title2": "先问问 Miftah AI。",
+      "subtitle": "您可以在哪里买、真实成本是多少、签约前要核实什么。用您的语言回答，每条规定都附官方来源。",
+      "points": [
+        "免费试用，无需银行卡",
+        "English · العربية · اردو · हिन्दी · 中文",
+        "每条规定都链接到来源"
+      ]
+    },
+    "ledger": {
+      "title1": "2026 年有哪些变化。",
+      "title2": "规定与日期。",
+      "body": "沙特今年向外国人开放了房产所有权。以下是 Miftah AI 作答所依据的关键节点，每一项都链接到官方页面。",
+      "cta": "阅读完整购房指南",
+      "items": [
+        {
+          "date": "2026-01-22",
+          "url": "https://rega.gov.sa/en/media-center/news-announcements/rega-non-saudi-property-ownership-system-enters-into-force-as-of-today/",
+          "title": "外国人可以拥有房产",
+          "body": "《非沙特人不动产所有权法》生效，适用于利雅得、吉达、麦加和麦地那的指定区域。在麦加和麦地那，只有穆斯林个人和沙特公司可以拥有房产。",
+          "source": "REGA 公告"
+        },
+        {
+          "date": "2026-01-22",
+          "url": "https://saudiproperties.rega.gov.sa",
+          "title": "开放在线申请",
+          "body": "在 REGA 的 Saudi Properties 平台申请。居民使用居留证（Iqama）号码；居住在国外的人需先通过沙特使馆获得沙特数字身份。",
+          "source": "Saudi Properties 平台"
+        },
+        {
+          "date": "2026-06-23",
+          "url": "https://saudiproperties.rega.gov.sa",
+          "title": "实施条例与区域获批",
+          "body": "实施条例规定，非沙特人出售房产时需缴纳 2% 的 REGA 费用，非居民须持有沙特银行账户和手机号码。",
+          "source": "Saudi Properties 平台"
+        },
+        {
+          "date": "2025-09-25",
+          "url": "https://rega.gov.sa/en",
+          "title": "利雅得冻结租金上涨",
+          "body": "利雅得城市范围内住宅和商铺的年度租金上涨冻结五年。",
+          "source": "REGA"
+        },
+        {
+          "date": "2020-10-04",
+          "url": "https://zatca.gov.sa/en/RulesRegulations/Taxes/Pages/Real-Estate-Transaction-Tax.aspx",
+          "title": "每笔房产交易 5% 税",
+          "body": "不动产交易税在产权证过户给您之前缴纳给 ZATCA。",
+          "source": "ZATCA"
+        }
+      ]
+    },
+    "work": {
+      "title1": "Miftah AI 如何工作。",
+      "title2": "从第一个问题到报告。"
+    },
+    "who": {
+      "title1": "适合谁。",
+      "title2": "买家不同，规定相同。"
+    },
+    "honest": {
+      "title1": "Miftah AI 不是什么。",
+      "title2": "我们先说清楚。",
+      "cta": "我们如何核实信息",
+      "items": [
+        {
+          "title": "我们不是律师事务所",
+          "body": "Miftah AI 用通俗语言解释官方规定。涉及合同或纠纷，请咨询持牌律师。"
+        },
+        {
+          "title": "我们不卖房",
+          "body": "我们不是中介，也不发布房源。请选择 REGA 持牌（FAL）中介，并在 Najiz 核实产权证。"
+        },
+        {
+          "title": "街区价格目前为样本",
+          "body": "在接入司法部成交数据之前，街区价格只是示例并已标注，请勿用于议价。"
+        },
+        {
+          "title": "以区域地图为准",
+          "body": "楼盘是否位于外国人可购区域，以 REGA 官方地图为准，而不是我们。付款前请先核实。"
+        }
       ]
     }
   },

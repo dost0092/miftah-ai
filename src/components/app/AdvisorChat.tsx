@@ -336,7 +336,7 @@ export function AdvisorChat({
       const ctrl = new AbortController();
       abort.current = ctrl;
       try {
-        const res = await fetch("/api/app/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q, threadId }), signal: ctrl.signal });
+        const res = await fetch("/api/app/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q, threadId, locale }), signal: ctrl.signal });
         if (res.status === 402) {
           const data = await res.json().catch(() => ({}));
           setLeft(0);

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ground } from "@/lib/workspace/advisor";
+import { EMPTY_GROUNDING, ground, isSmalltalk } from "@/lib/workspace/advisor";
 import { aiProvider } from "@/lib/workspace/llm";
 import { streamAnswer } from "@/lib/workspace/answer";
 
@@ -17,6 +17,7 @@ const Body = z.object({
     .array(z.object({ role: z.enum(["user", "assistant"]), content: z.string().max(3000) }))
     .max(6)
     .default([]),
+  locale: z.string().max(8).optional(),
 });
 
 // Per-instance memory. Good enough to stop casual overuse; a shared store (e.g. Supabase or
@@ -40,20 +41,22 @@ const LIGHT_RULES = `This is the light version of Miftah AI in a small website c
 export async function POST(req: Request) {
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return Response.json({ error: "invalid" }, { status: 400 });
-  const { question, history } = parsed.data;
+  const { question, history, locale } = parsed.data;
+  const small = isSmalltalk(question);
 
   const ip = clientIp(req);
   const now = Date.now();
   const recent = (usage.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  if (recent.length >= LIGHT_DAILY_LIMIT) {
+  if (!small && recent.length >= LIGHT_DAILY_LIMIT) {
     return Response.json({ error: "limit", limit: LIGHT_DAILY_LIMIT }, { status: 429 });
   }
-  recent.push(now);
+  // Greetings are free; only real questions count.
+  if (!small) recent.push(now);
   usage.set(ip, recent);
   const left = LIGHT_DAILY_LIMIT - recent.length;
 
   const previousUser = [...history].reverse().find((m) => m.role === "user")?.content ?? "";
-  const gr = await ground(question, previousUser);
+  const gr = small ? EMPTY_GROUNDING : await ground(question, previousUser);
 
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
@@ -61,7 +64,7 @@ export async function POST(req: Request) {
       const send = (e: unknown) => controller.enqueue(encoder.encode(JSON.stringify(e) + "\n"));
       send({ type: "meta", sources: gr.sources, mode: aiProvider() ? "ai" : "library", left });
       try {
-        await streamAnswer({ question, history: history.slice(-4), g: gr, send, signal: req.signal, maxTokens: 700, extraInstructions: LIGHT_RULES });
+        await streamAnswer({ question, history: history.slice(-4), g: gr, send, signal: req.signal, maxTokens: 700, extraInstructions: LIGHT_RULES, locale });
       } finally {
         controller.close();
       }
