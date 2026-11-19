@@ -1,25 +1,20 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
-import { useRouter } from "@/i18n/navigation";
-import { getBrowserSupabase } from "@/lib/supabase-auth";
-import { IconArrow, IconSearch } from "./Icons";
+import { openMiftah } from "@/lib/hooks/use-user";
+import { LogoMark } from "./Logo";
+import { IconArrow } from "./Icons";
 
 export function HeroAsk() {
   const t = useTranslations("home.hero");
-  const router = useRouter();
-  const locale = useLocale();
   const [q, setQ] = useState("");
   const suggestions = t.raw("suggestions") as string[];
 
-  // Signed in: straight to Miftah AI. Otherwise sign up first, then land on the answer.
-  async function go(question: string) {
-    const value = question.trim();
-    const target = value ? `/app/advisor?q=${encodeURIComponent(value)}` : "/app/advisor";
-    const { data } = (await getBrowserSupabase()?.auth.getSession()) ?? { data: { session: null } };
-    if (data.session) router.push(target);
-    else router.push({ pathname: "/signup", query: { next: `/${locale}${target}` } });
+  // Answers right here in the Miftah AI window: no sign-up needed for the first questions.
+  function go(question: string) {
+    openMiftah(question.trim() || undefined);
+    setQ("");
   }
 
   function onSubmit(e: FormEvent) {
@@ -30,7 +25,7 @@ export function HeroAsk() {
   return (
     <div className="w-full max-w-xl">
       <form onSubmit={onSubmit} className="group flex items-center gap-2 rounded-xl border border-sand-200 bg-white p-1.5 shadow-frame transition focus-within:border-green-500">
-        <IconSearch className="ms-2.5 shrink-0 text-ink-400" />
+        <LogoMark className="ms-1 h-8 w-8" />
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}

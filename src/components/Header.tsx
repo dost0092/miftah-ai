@@ -1,27 +1,88 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
-import { Link, usePathname } from "@/i18n/navigation";
+import { useEffect, useRef, useState } from "react";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { IconArrow, IconCalc, IconChat, IconChevron, IconDoc, IconMap, IconMenu, IconX } from "./Icons";
+import { IconArrow, IconCalc, IconChat, IconChevron, IconDashboard, IconDoc, IconLogout, IconMap, IconMenu, IconTag, IconUser, IconX } from "./Icons";
 import { cn } from "@/lib/format";
 import { getBrowserSupabase } from "@/lib/supabase-auth";
+import { useUser, type SiteUser } from "@/lib/hooks/use-user";
 
-/** Tracks the signed-in user (null = signed out, undefined = still checking). */
-function useUser() {
-  const [user, setUser] = useState<{ email?: string; name?: string } | null | undefined>(undefined);
+const accountLinks = [
+  { key: "dashboard", href: "/app", Icon: IconDashboard },
+  { key: "advisor", href: "/app/advisor", Icon: IconChat },
+  { key: "reports", href: "/app/reports", Icon: IconDoc },
+  { key: "account", href: "/app/account", Icon: IconUser },
+  { key: "billing", href: "/app/billing", Icon: IconTag },
+] as const;
+
+function useSignOut() {
+  const router = useRouter();
+  return async () => {
+    await getBrowserSupabase()?.auth.signOut();
+    router.replace("/");
+    router.refresh();
+  };
+}
+
+/** Signed-in account button with a dropdown, shown on the public site. */
+function AccountMenu({ user }: { user: SiteUser }) {
+  const t = useTranslations("app.nav");
+  const signOut = useSignOut();
+  const [open, setOpen] = useState(false);
+  const box = useRef<HTMLDivElement>(null);
+  const name = user.name || user.email?.split("@")[0] || "";
+  const initial = (name || "?").trim().charAt(0).toUpperCase();
+
   useEffect(() => {
-    const supabase = getBrowserSupabase();
-    if (!supabase) return setUser(null);
-    const map = (u: { email?: string; user_metadata?: Record<string, unknown> } | null | undefined) =>
-      u ? { email: u.email, name: (u.user_metadata?.full_name as string | undefined) ?? undefined } : null;
-    supabase.auth.getSession().then(({ data }) => setUser(map(data.session?.user)));
-    const { data } = supabase.auth.onAuthStateChange((_e, session) => setUser(map(session?.user)));
-    return () => data.subscription.unsubscribe();
-  }, []);
-  return user;
+    if (!open) return;
+    const onDown = (e: MouseEvent) => box.current && !box.current.contains(e.target as Node) && setOpen(false);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={box} className="relative hidden sm:block">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+        className="press inline-flex items-center gap-2 rounded-lg border border-sand-200 bg-white py-1 pe-2.5 ps-1 text-sm font-medium text-ink-800 transition hover:border-sand-300"
+      >
+        <span className="grid h-7 w-7 place-items-center rounded-md bg-green-600 text-xs font-semibold text-white">{initial}</span>
+        <span className="max-w-[120px] truncate">{name}</span>
+        <IconChevron width={14} height={14} className={cn("text-ink-400 transition", open && "rotate-180")} />
+      </button>
+      {open && (
+        <div role="menu" className="absolute end-0 top-full z-50 mt-2 w-64 overflow-hidden rounded-xl border border-sand-200 bg-white py-1.5 shadow-frame">
+          <div className="border-b border-sand-200 px-4 pb-3 pt-2">
+            <p className="truncate text-sm font-semibold text-ink-900">{name}</p>
+            <p className="truncate text-xs text-ink-400" dir="ltr">{user.email}</p>
+          </div>
+          <div className="py-1">
+            {accountLinks.map(({ key, href, Icon }) => (
+              <Link key={key} href={href} role="menuitem" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-4 py-2 text-sm text-ink-700 hover:bg-sand-50">
+                <Icon width={16} height={16} className={key === "advisor" ? "text-green-600" : "text-ink-400"} /> {t(key)}
+              </Link>
+            ))}
+          </div>
+          <div className="border-t border-sand-200 pt-1">
+            <button type="button" role="menuitem" onClick={signOut} className="flex w-full items-center gap-2.5 px-4 py-2 text-start text-sm text-ink-700 hover:bg-sand-50">
+              <IconLogout width={16} height={16} className="flip-rtl text-ink-400" /> {t("signOut")}
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 const productItems = [
@@ -46,7 +107,8 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productOpen, setProductOpen] = useState(false);
   const user = useUser();
-  const initial = (user?.name || user?.email || "?").trim().charAt(0).toUpperCase();
+  const tn = useTranslations("app.nav");
+  const signOut = useSignOut();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -117,10 +179,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <LanguageSwitcher className="hidden sm:block" />
           {user ? (
-            <Link href="/app" className="hidden items-center gap-2 rounded-lg border border-sand-200 bg-white py-1 pe-3 ps-1 text-sm font-medium text-ink-800 transition hover:border-sand-300 sm:inline-flex" title={user.email}>
-              <span className="grid h-7 w-7 place-items-center rounded-md bg-night-950 text-xs font-semibold text-white">{initial}</span>
-              {t("account")}
-            </Link>
+            <AccountMenu user={user} />
           ) : (
             <>
               <Link href="/login" className={cn("hidden rounded-lg px-3 py-2 text-sm font-medium text-ink-700 transition hover:bg-sand-100 hover:text-ink-900 md:inline-flex", user === undefined && "invisible")}>
@@ -163,7 +222,17 @@ export function Header() {
             <div className="mt-4 flex flex-col gap-3">
               <LanguageSwitcher align="start" />
               {user ? (
-                <Link href="/app" className="btn btn-primary w-full">{t("account")}</Link>
+                <div className="rounded-xl border border-sand-200 p-2">
+                  <p className="truncate px-3 py-2 text-sm font-semibold text-ink-900">{user.name || user.email}</p>
+                  {accountLinks.map(({ key, href, Icon }) => (
+                    <Link key={key} href={href} className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-base font-medium hover:bg-sand-100">
+                      <Icon width={18} height={18} className={key === "advisor" ? "text-green-600" : "text-ink-500"} /> {tn(key)}
+                    </Link>
+                  ))}
+                  <button type="button" onClick={signOut} className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-start text-base font-medium hover:bg-sand-100">
+                    <IconLogout width={18} height={18} className="flip-rtl text-ink-500" /> {tn("signOut")}
+                  </button>
+                </div>
               ) : (
                 <>
                   <Link href="/signup" className="btn btn-primary w-full">{t("cta")}</Link>

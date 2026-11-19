@@ -14,14 +14,14 @@
     "company": "Company",
     "about": "About",
     "contact": "Contact",
-    "cta": "Start free",
+    "cta": "Try Miftah AI free",
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
     "productItems": {
       "advisor": {
-        "title": "AI Advisor",
-        "desc": "Ask anything, get answers with sources"
+        "title": "Miftah AI",
+        "desc": "Your AI property advisor, with sources"
       },
       "districts": {
         "title": "District Explorer",
@@ -86,9 +86,9 @@
       "titleHighlight": "property",
       "titleB": "in Saudi Arabia",
       "subtitle": "Miftah AI helps foreigners understand where they can legally buy, the full cost, and what to check before signing. In your own language, with the official source for every rule.",
-      "ctaPrimary": "Start free",
+      "ctaPrimary": "Try Miftah AI free",
       "ctaSecondary": "Read the buyer's guide",
-      "askPlaceholder": "Ask anything about buying property in Saudi Arabia…",
+      "askPlaceholder": "Ask Miftah AI about buying property in Saudi Arabia…",
       "askButton": "Ask",
       "suggestions": [
         "Can a foreigner buy in Al Malqa?",
@@ -96,7 +96,8 @@
         "What fees will I pay as a foreign buyer?",
         "Is 1.2M SAR fair for a 160 m² flat in Al Yasmin?"
       ],
-      "trustNote": "Every rule linked to its official source"
+      "trustNote": "Every rule linked to its official source",
+      "aiBadge": "Meet Miftah AI, your AI property advisor"
     },
     "demo": {
       "label": "Live answer preview",
@@ -145,7 +146,7 @@
     },
     "how": {
       "eyebrow": "How it works",
-      "title": "It checks the rules before it answers",
+      "title": "Miftah AI checks the rules before it answers",
       "subtitle": "Miftah AI looks up the stored official rule texts and data first, then answers in your language with the source and date. If it cannot find an answer, it says so.",
       "steps": [
         {
@@ -172,7 +173,7 @@
       "subtitle": "From your first question to a report you can send to family back home.",
       "items": [
         {
-          "title": "Property advisor",
+          "title": "Miftah AI advisor",
           "body": "Ask in your own words. Every rule in the answer comes with its source and date, and unknowns are shown as unknown."
         },
         {
@@ -303,9 +304,9 @@
       ]
     },
     "cta": {
-      "title": "Get your key to Saudi property",
+      "title": "Ask Miftah AI your first question",
       "subtitle": "Create a free account and ask your first questions today. 5 cited answers a month on the free plan, unlimited on Pro.",
-      "button": "Start free",
+      "button": "Try Miftah AI free",
       "secondary": "Talk to us"
     },
     "guideTeaser": {
@@ -1674,5 +1675,37 @@
     "labelsTitle": "How we label information",
     "moreHelp": "Want the full cost for your price?",
     "calcLink": "Open the cost calculator"
+  },
+  "widget": {
+    "launcher": "Ask Miftah AI",
+    "title": "Miftah AI",
+    "light": "Light",
+    "subtitle": "AI property advisor · answers from official sources",
+    "welcome": "Salam! I'm Miftah AI. Ask me about buying property in Saudi Arabia as a foreigner: where you can buy, the fees, how to apply or residency. I answer from official sources and tell you when something isn't confirmed.",
+    "nudge": "Have a question about buying property in Saudi Arabia? Ask Miftah AI.",
+    "suggestions": [
+      "Can a foreigner buy a flat in Riyadh?",
+      "What fees will I pay on a SAR 1M flat?",
+      "Does buying a home give me residency?"
+    ],
+    "placeholder": "Ask Miftah AI…",
+    "send": "Send",
+    "expand": "Expand",
+    "shrink": "Make smaller",
+    "close": "Close",
+    "newChat": "New chat",
+    "thinking": "Checking official sources…",
+    "sources": "Sources ({n})",
+    "error": "The answer was interrupted. Please try again.",
+    "left": "Free questions left today: {n}",
+    "disclaimer": "Information from official sources, not legal advice.",
+    "savedNote": "Saved to your account",
+    "openFull": "Open full Miftah AI",
+    "limitTitle": "You've used today's free questions",
+    "limitBody": "Create a free account to keep going: 5 questions and 1 report every month, with your chats saved.",
+    "limitCta": "Try Miftah AI free",
+    "planLimitTitle": "You've reached this month's free limit",
+    "planLimitBody": "Upgrade to Pro for unlimited questions and reports.",
+    "planLimitCta": "See Pro"
   }
 }

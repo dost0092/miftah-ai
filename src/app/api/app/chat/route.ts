@@ -1,9 +1,9 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { getAppSession } from "@/lib/workspace/session";
 import { addMessage, createThread, getThread, logActivity } from "@/lib/workspace/store";
-import { SYSTEM_PROMPT, extractiveAnswer, ground } from "@/lib/workspace/advisor";
-import { aiProvider, streamOpenRouter } from "@/lib/workspace/llm";
+import { ground } from "@/lib/workspace/advisor";
+import { aiProvider } from "@/lib/workspace/llm";
+import { streamAnswer } from "@/lib/workspace/answer";
 import { canUse, getAllowance, recordUsage } from "@/lib/billing";
 
 export const runtime = "nodejs";
@@ -14,8 +14,6 @@ const Body = z.object({
   question: z.string().trim().min(2).max(2000),
   threadId: z.string().uuid().nullish(),
 });
-
-const MODEL = "claude-opus-5-5";
 
 /**
  * AI advisor endpoint. Streams newline-delimited JSON events:
@@ -51,62 +49,16 @@ export async function POST(req: Request) {
   const stream = new ReadableStream({
     async start(controller) {
       const send = (e: unknown) => controller.enqueue(encoder.encode(JSON.stringify(e) + "\n"));
-      const provider = aiProvider();
-      send({ type: "meta", threadId, sources: g.sources, mode: provider ? "ai" : "library" });
+      send({ type: "meta", threadId, sources: g.sources, mode: aiProvider() ? "ai" : "library" });
       let answer = "";
-      const userTurn = `Sources:\n\n${g.context || "(no matching official sources found)"}\n\n---\nQuestion: ${question}`;
-
       try {
-        if (!provider) {
-          answer = extractiveAnswer(g);
-          send({ type: "delta", text: answer });
-        } else if (provider === "openrouter") {
-          await streamOpenRouter(
-            [
-              { role: "system", content: SYSTEM_PROMPT },
-              ...history.map((m) => ({ role: m.role, content: m.content })),
-              { role: "user", content: userTurn },
-            ],
-            (text) => {
-              answer += text;
-              send({ type: "delta", text });
-            },
-            { signal: req.signal },
-          );
-        } else {
-          const client = new Anthropic();
-          const messages: Anthropic.MessageParam[] = [
-            ...history.map((m) => ({ role: m.role, content: m.content }) as Anthropic.MessageParam),
-            { role: "user", content: userTurn },
-          ];
-          const s = client.messages.stream({
-            model: MODEL,
-            max_tokens: 4000,
-            system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
-            output_config: { effort: "low" },
-            messages,
-          });
-          for await (const ev of s) {
-            if (ev.type === "content_block_delta" && ev.delta.type === "text_delta") {
-              answer += ev.delta.text;
-              send({ type: "delta", text: ev.delta.text });
-            }
-          }
-          const final = await s.finalMessage();
-          if (final.stop_reason === "refusal" && !answer) {
-            answer = extractiveAnswer(g);
-            send({ type: "delta", text: answer });
-          }
-        }
-        send({ type: "done" });
-      } catch (err) {
-        console.error("advisor error", err instanceof Anthropic.APIError ? `${err.status} ${err.message}` : err);
-        // Fall back to the sources themselves rather than leaving the user with nothing.
-        if (!answer) {
-          answer = extractiveAnswer(g);
-          send({ type: "delta", text: answer });
-          send({ type: "done" });
-        } else send({ type: "error", message: "The answer was interrupted." });
+        answer = await streamAnswer({
+          question,
+          history: history.map((m) => ({ role: m.role, content: m.content })),
+          g,
+          send,
+          signal: req.signal,
+        });
       } finally {
         if (threadId && answer) await addMessage(session, threadId, "assistant", answer, g.sources).catch(() => {});
         controller.close();

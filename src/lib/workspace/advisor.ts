@@ -16,7 +16,7 @@ const FEE_LABEL: Record<string, string> = {
   rett: "Real Estate Transaction Tax (RETT)",
   brokerage: "Brokerage commission (default, negotiable in writing)",
   brokerageVat: "VAT on the brokerage commission",
-  disposal: "Non-Saudi transaction fee (illustrative; confirm the current rate with REGA)",
+  disposal: "REGA fee on a non-Saudi's disposal (sale) of property in Riyadh, Jeddah, Makkah or Madinah (Executive Regulations, June 2026)",
 };
 
 function pct(n: number) {
